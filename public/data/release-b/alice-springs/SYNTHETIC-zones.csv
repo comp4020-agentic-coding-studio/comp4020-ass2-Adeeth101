@@ -1,0 +1,6 @@
+"# SYNTHETIC CASE DATA - SLOP4761 Release B, Alice Springs, April 2027 to March 2028. Generated, not measured."
+zone,label,area_m2,texture,ph_water,ec_ds_m,organic_carbon_pct,nitrate_n_mg_kg,colwell_p_mg_kg,rooting_depth_cm,sun_hours_summer,sun_hours_winter,relative_productivity,productivity_class,note
+G1,Shade-house garden,54.0,sandy loam,7.9,0.45,0.9,18,30,60,12.0,8.5,0.9,A,shadecloth transmits about 45 per cent of light after ten years
+G2,Main garden,168.0,loamy sand,8.2,0.62,0.6,10,18,80,13.0,9.0,0.85,B,calcium carbonate at depth; emitters scaled
+G3,Windbreak strip,90.0,loamy sand,8.3,0.4,0.7,5,10,80,10.0,6.5,0.5,D,tree roots; wind-exposed edge
+G4,Trial plot,96.0,sand,8.4,0.35,0.3,3,8,90,13.5,9.5,0.7,C,bare; surface temperature above 60 degC in January

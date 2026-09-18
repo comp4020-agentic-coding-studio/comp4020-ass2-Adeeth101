@@ -1,0 +1,14 @@
+"# SOURCED: Bureau of Meteorology, climate statistics for station 014015 (Darwin Airport), all years of record. ETo derived by FAO-56 Hargreaves."
+month,rain_mm,tmax_c,tmin_c,eto_mm,effective_rain_mm
+Jan,432.1,31.8,24.9,142,320.7
+Feb,372.2,31.5,24.8,124,272.8
+Mar,310.7,32.0,24.6,137,223.6
+Apr,102.4,32.8,24.1,130,56.9
+May,20.2,32.1,22.2,124,2.1
+Jun,1.7,30.8,20.0,112,0.0
+Jul,1.1,30.7,19.3,121,0.0
+Aug,4.5,31.5,20.3,136,0.0
+Sep,16.8,32.7,23.0,144,0.1
+Oct,69.7,33.4,25.0,153,31.8
+Nov,146.5,33.4,25.4,150,92.2
+Dec,255.5,32.8,25.4,149,179.4

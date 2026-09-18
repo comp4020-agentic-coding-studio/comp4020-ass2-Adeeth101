@@ -1,0 +1,251 @@
+{
+ "generated_by": "research/model/export_cases.py",
+ "end_uses": [
+  {
+   "use": "toilet",
+   "label": "toilet flushing",
+   "l_person_day": 22.0
+  },
+  {
+   "use": "shower",
+   "label": "showers and basins",
+   "l_person_day": 55.0
+  },
+  {
+   "use": "laundry",
+   "label": "laundry",
+   "l_person_day": 28.0
+  },
+  {
+   "use": "kitchen",
+   "label": "kitchen and drinking",
+   "l_person_day": 30.0
+  },
+  {
+   "use": "other",
+   "label": "other indoor uses",
+   "l_person_day": 15.0
+  }
+ ],
+ "greywater_uses": [
+  "shower",
+  "laundry"
+ ],
+ "efficiency": {
+  "drip": 0.9,
+  "sprinkler": 0.75,
+  "hose": 0.75
+ },
+ "dormant_below_c": 10.0,
+ "crop_mixes": [
+  {
+   "key": "leafy",
+   "label": "Leafy and salad crops",
+   "kcal_m2": 350,
+   "kcal_per_kg": 180,
+   "protein_g_100kcal": 8.0,
+   "kc": 1.0,
+   "perennial": 0.0,
+   "labour_h_m2": 0.9
+  },
+  {
+   "key": "mixed",
+   "label": "Mixed vegetables",
+   "kcal_m2": 900,
+   "kcal_per_kg": 330,
+   "protein_g_100kcal": 4.0,
+   "kc": 0.95,
+   "perennial": 0.15,
+   "labour_h_m2": 0.6
+  },
+  {
+   "key": "staple",
+   "label": "Staples and perennials",
+   "kcal_m2": 1500,
+   "kcal_per_kg": 650,
+   "protein_g_100kcal": 2.5,
+   "kc": 0.9,
+   "perennial": 0.5,
+   "labour_h_m2": 0.35
+  }
+ ],
+ "existing_planting": {
+  "kcal_m2": 800,
+  "kcal_per_kg": 350,
+  "protein_g_100kcal": 3.0,
+  "kc": 0.85,
+  "labour_h_m2": 0.4
+ },
+ "kwh_per_kl": {
+  "pressure": 1.5,
+  "garden": 0.7,
+  "bore": 0.8,
+  "greywater": 0.3
+ },
+ "tariff_kwh": 0.33,
+ "water_price": {
+  "S1": 3.1,
+  "S2": 28.0,
+  "S3": 3.4,
+  "S4": 3.6,
+  "S5": 22.0
+ },
+ "modules": [
+  {
+   "key": "compost",
+   "label": "Hot-compost bays",
+   "capital": 500,
+   "kwh_steady": 0.0,
+   "kwh_upper": 0.0,
+   "heat_below_c": null,
+   "heat_kwh_per_k": null,
+   "hours_year": 30,
+   "attendance_days": 7,
+   "pausable": true,
+   "tolerance_days": null,
+   "consumables_year": 0
+  },
+  {
+   "key": "composting_toilet",
+   "label": "Composting toilet with urine diversion",
+   "capital": 4400,
+   "kwh_steady": 0.12,
+   "kwh_upper": 0.12,
+   "heat_below_c": 10.0,
+   "heat_kwh_per_k": 0.03,
+   "hours_year": 25,
+   "attendance_days": 14,
+   "pausable": true,
+   "tolerance_days": null,
+   "consumables_year": 80
+  },
+  {
+   "key": "insects",
+   "label": "Insect rearing unit",
+   "capital": 300,
+   "kwh_steady": 0.0,
+   "kwh_upper": 0.0,
+   "heat_below_c": 20.0,
+   "heat_kwh_per_k": 0.06,
+   "hours_year": 40,
+   "attendance_days": 3,
+   "pausable": true,
+   "tolerance_days": null,
+   "consumables_year": 30
+  },
+  {
+   "key": "mushrooms",
+   "label": "Humidified mushroom chamber",
+   "capital": 800,
+   "kwh_steady": 0.3,
+   "kwh_upper": 0.6,
+   "heat_below_c": null,
+   "heat_kwh_per_k": null,
+   "hours_year": 40,
+   "attendance_days": 2,
+   "pausable": true,
+   "tolerance_days": null,
+   "consumables_year": 180
+  },
+  {
+   "key": "aquaponics",
+   "label": "Aquaponics, one 4 m\u00b2 bed",
+   "capital": 2500,
+   "kwh_steady": 1.32,
+   "kwh_upper": 1.32,
+   "heat_below_c": null,
+   "heat_kwh_per_k": null,
+   "hours_year": 120,
+   "attendance_days": 1,
+   "pausable": false,
+   "tolerance_days": 3,
+   "consumables_year": 220
+  },
+  {
+   "key": "digester",
+   "label": "Household anaerobic digester",
+   "capital": 1500,
+   "kwh_steady": 0.0,
+   "kwh_upper": 0.1,
+   "heat_below_c": 20.0,
+   "heat_kwh_per_k": 0.03,
+   "hours_year": 60,
+   "attendance_days": 1,
+   "pausable": true,
+   "tolerance_days": null,
+   "consumables_year": 40
+  }
+ ],
+ "extra_schedule": [
+  {
+   "key": "slimline_tank_per_kl",
+   "price": 450,
+   "basis": "assumption",
+   "description": "Slimline modular tank, 600 mm wide or less, supply, per kL"
+  },
+  {
+   "key": "slimline_establishment",
+   "price": 300,
+   "basis": "assumption",
+   "description": "Slimline module installation: base, connection, overflow, per module"
+  },
+  {
+   "key": "zone_reconnection",
+   "price": 600,
+   "basis": "assumption",
+   "description": "Roof-zone connection: gutter check, downpipe and charged line to storage, per zone"
+  },
+  {
+   "key": "mains_changeover",
+   "price": 450,
+   "basis": "assumption",
+   "description": "Automatic rainwater-to-mains changeover for an indoor non-potable supply"
+  },
+  {
+   "key": "overflow_discharge",
+   "price": 800,
+   "basis": "assumption",
+   "description": "Tank overflow to a nominated discharge point with an energy dissipater"
+  },
+  {
+   "key": "frost_protection",
+   "price": 250,
+   "basis": "assumption",
+   "description": "Frost protection: pump enclosure and pipe lagging"
+  },
+  {
+   "key": "acoustic_enclosure",
+   "price": 350,
+   "basis": "assumption",
+   "description": "Acoustic enclosure for one pump"
+  },
+  {
+   "key": "disc_filter",
+   "price": 200,
+   "basis": "assumption",
+   "description": "Disc filter and flushing valve for a drip system"
+  }
+ ],
+ "strategies": {
+  "garden": "Rainwater to the garden only",
+  "indoor": "Rainwater to the garden and the client's permitted indoor uses",
+  "garden_grey": "Rainwater to the garden, plus greywater diversion to subsurface irrigation",
+  "indoor_grey": "Rainwater to the garden and permitted indoor uses, plus greywater diversion"
+ },
+ "schedules": {
+  "year_round": "Crop the added area all year",
+  "fallow_peak": "Rest the added annual crops in the three highest-deficit months",
+  "garden_first": "In the three highest-deficit months, reserve the tank for the garden and switch indoor uses to the mains"
+ },
+ "hydraulics": {
+  "outlet_head_m": {
+   "indoor": 15.0,
+   "drip": 10.0
+  },
+  "friction_allowance": 0.25,
+  "pump_efficiency": 0.4
+ },
+ "food_n_kg_year": 2.3,
+ "household_n_kg_year": 13.6,
+ "n_uptake_g_m2_year": 12
+}

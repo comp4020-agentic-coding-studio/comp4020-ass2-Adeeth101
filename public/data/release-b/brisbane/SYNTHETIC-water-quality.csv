@@ -1,0 +1,5 @@
+"# SYNTHETIC CASE DATA - SLOP4761 Release B, Brisbane, April 2027 to March 2028. Generated, not measured."
+month,source,turbidity_ntu,e_coli_mpn_100ml,hardness_mg_l_caco3,tds_mg_l,ph,iron_mg_l,note
+2027-06,tank T1,0.9,1,12,35,6.6,0.02,
+2028-01,tank T1,7.8,25,10,30,6.5,0.04,after 120 mm in a day; first flush absent on this zone
+2028-01,mains,0.2,0,70,150,7.7,0.01,reference sample

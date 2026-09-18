@@ -1,0 +1,7 @@
+"# SYNTHETIC CASE DATA - SLOP4761 Release B, Adelaide, April 2027 to March 2028. Generated, not measured."
+zone,label,area_m2,texture,ph_water,ec_ds_m,organic_carbon_pct,nitrate_n_mg_kg,colwell_p_mg_kg,rooting_depth_cm,sun_hours_summer,sun_hours_winter,relative_productivity,productivity_class,note
+G1,Front garden,95.2,red-brown loam,7.4,0.2,1.8,10,30,55,11.5,6.5,0.95,A,full sun
+G2,West border,18.6,red-brown loam,7.5,0.22,1.3,6,20,40,7.0,3.0,0.7,C,narrow; afternoon sun only
+G3,Vegetable beds,26.2,"loam, heavily amended",7.9,0.95,3.9,35,90,50,11.0,6.0,0.85,B,salinity elevated after decades of mains irrigation
+G4,Orchard corner,40.0,red-brown loam,7.6,0.3,2.0,12,28,55,9.5,5.5,0.8,B,tree shade; the almond is mostly dead
+G5,North bed,81.2,red-brown loam,7.3,0.18,2.4,14,34,60,12.0,7.5,1.0,A,best aspect

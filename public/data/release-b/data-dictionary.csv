@@ -1,0 +1,56 @@
+"# SLOP4761 Release B data dictionary. 'synthetic measured year' values are generated case data, not measurements."
+file,column,unit,meaning,kind
+SYNTHETIC-monthly.csv,month,,"Measured month, ISO year-month",synthetic measured year
+SYNTHETIC-monthly.csv,days,d,Days in the month,calendar
+SYNTHETIC-monthly.csv,rain_mm,mm,Rain at the on-site gauge,synthetic measured year
+SYNTHETIC-monthly.csv,tmax_c,°C,Mean daily maximum air temperature,synthetic measured year
+SYNTHETIC-monthly.csv,tmin_c,°C,Mean daily minimum air temperature,synthetic measured year
+SYNTHETIC-monthly.csv,eto_mm,mm,"Reference evapotranspiration, FAO-56 Hargreaves from the logged temperatures",derived
+SYNTHETIC-monthly.csv,roof_inflow_kl,kL,"Water reaching storage from the connected roof zones, from the tank balance",derived
+SYNTHETIC-monthly.csv,overflow_kl,kL,"Tank overflow, from the level logger at full",derived
+SYNTHETIC-monthly.csv,tank_end_kl,kL,"Stored volume at the end of the month, all existing tanks",synthetic measured year
+SYNTHETIC-monthly.csv,indoor_kl,kL,Total indoor use,synthetic measured year
+SYNTHETIC-monthly.csv,toilet_kl,kL,"Toilet flushing, from flow-trace disaggregation",derived
+SYNTHETIC-monthly.csv,shower_basin_kl,kL,"Showers, bath and basins",derived
+SYNTHETIC-monthly.csv,laundry_kl,kL,Laundry,derived
+SYNTHETIC-monthly.csv,kitchen_kl,kL,"Kitchen sink, dishwasher, drinking and cooking",derived
+SYNTHETIC-monthly.csv,other_kl,kL,Other indoor use and leaks,derived
+SYNTHETIC-monthly.csv,indoor_from_tank_kl,kL,Indoor use supplied from the tanks,synthetic measured year
+SYNTHETIC-monthly.csv,bore_kl,kL,Bore draw at the licence meter,synthetic measured year
+SYNTHETIC-monthly.csv,imported_kl,kL,"Mains water (Canberra, Brisbane, Adelaide) or carted water (Alice Springs, Darwin)",synthetic measured year
+SYNTHETIC-monthly.csv,garden_applied_kl,kL,"Irrigation water applied, all sources",synthetic measured year
+SYNTHETIC-monthly.csv,garden_from_mains_kl,kL,Of which from the mains,synthetic measured year
+SYNTHETIC-monthly.csv,garden_unmet_estimate_kl,kL,"Irrigation the existing plantings needed but did not get, estimated from soil moisture and ETo",derived
+SYNTHETIC-monthly.csv,pump_kwh,kWh,"Electricity used by the existing pumps, from a plug-in or circuit meter",synthetic measured year
+SYNTHETIC-monthly.csv,coldest_night_c,°C,Lowest air temperature recorded in the month,synthetic measured year
+SYNTHETIC-monthly.csv,frost_nights,nights,Nights with the air temperature below 0 °C,synthetic measured year
+SYNTHETIC-monthly.csv,quality_flag,,"Data-quality note for the month, if any",record
+SYNTHETIC-zones.csv,zone,,Growing-zone id on the Release A plan,synthetic measured year
+SYNTHETIC-zones.csv,area_m2,m2,Zone area from the plan,synthetic measured year
+SYNTHETIC-zones.csv,texture,,Field texture,synthetic measured year
+SYNTHETIC-zones.csv,ph_water,,"pH, 1:5 soil:water",synthetic measured year
+SYNTHETIC-zones.csv,ec_ds_m,dS/m,"Electrical conductivity, 1:5",synthetic measured year
+SYNTHETIC-zones.csv,organic_carbon_pct,%,"Organic carbon, Walkley-Black",synthetic measured year
+SYNTHETIC-zones.csv,nitrate_n_mg_kg,mg/kg,Nitrate nitrogen,synthetic measured year
+SYNTHETIC-zones.csv,colwell_p_mg_kg,mg/kg,Colwell phosphorus,synthetic measured year
+SYNTHETIC-zones.csv,rooting_depth_cm,cm,Depth to a restricting layer,synthetic measured year
+SYNTHETIC-zones.csv,sun_hours_summer,h/day,"Direct sun, December solstice",synthetic measured year
+SYNTHETIC-zones.csv,sun_hours_winter,h/day,"Direct sun, June solstice",synthetic measured year
+SYNTHETIC-zones.csv,relative_productivity,0-1,Specialists' relative productivity of the zone against the best on the site,synthetic measured year
+SYNTHETIC-zones.csv,productivity_class,,"A (0.9 or more), B (0.75), C (0.6), D (below 0.6)",synthetic measured year
+SYNTHETIC-flow-events.csv,peak_lpm,L/min,Highest one-minute average flow in the event,synthetic measured year
+SYNTHETIC-flow-events.csv,duration_min,min,Event duration,synthetic measured year
+SYNTHETIC-flow-events.csv,fixtures,,Fixtures identified from the flow signature,synthetic measured year
+SYNTHETIC-water-quality.csv,turbidity_ntu,NTU,Turbidity,synthetic measured year
+SYNTHETIC-water-quality.csv,e_coli_mpn_100ml,MPN/100 mL,"E. coli, most probable number",synthetic measured year
+SYNTHETIC-water-quality.csv,hardness_mg_l_caco3,mg/L as CaCO3,Total hardness,synthetic measured year
+SYNTHETIC-water-quality.csv,tds_mg_l,mg/L,Total dissolved solids,synthetic measured year
+SYNTHETIC-water-quality.csv,ph,,pH,synthetic measured year
+SYNTHETIC-water-quality.csv,iron_mg_l,mg/L,Total iron,synthetic measured year
+SYNTHETIC-food-waste-audit.csv,total_kg,kg/week,All food waste in the audit week,synthetic measured year
+SYNTHETIC-food-waste-audit.csv,plant_kg,kg/week,Plant-based food waste,synthetic measured year
+SYNTHETIC-food-waste-audit.csv,meat_dairy_kg,kg/week,"Meat, fish and dairy",synthetic measured year
+SYNTHETIC-food-waste-audit.csv,garden_kg,kg/week,"Garden trimmings, not food waste",synthetic measured year
+BOM-long-term-<station>.csv,rain_mm,mm,Long-term mean monthly rain,sourced (BoM); derived columns computed
+BOM-long-term-<station>.csv,eto_mm,mm,Hargreaves ETo from long-term mean temperatures,sourced (BoM); derived columns computed
+BOM-long-term-<station>.csv,effective_rain_mm,mm,FAO effective rain from the mean monthly rain,sourced (BoM); derived columns computed

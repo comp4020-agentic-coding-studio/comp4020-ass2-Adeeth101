@@ -3,11 +3,13 @@
 The evidence base behind SLOP4761. Everything here is background working material: the
 student-facing course is the site under `src/`. Paths below are relative to this directory.
 
-**Status (2026-09-18):** research, five critique iterations and the reference-cost
-reconciliation done. All design decisions are recorded in `course-design.md` §9, and the
-figures the site publishes are exported to `../src/data/course-model.json` so no page
-retypes a number the model produced. Figure verification against primary sources
-(`course-design.md` §7) is recorded in `sources.md`.
+**Status (2026-09-18, second draft):** the course is now an engineering optimisation course
+told through a consultancy case on five fixed homes. `course-design.md` §0 lists what the
+second draft changes. The first draft's screening model is kept for the diagnostic bands;
+the client cases, the scenario engine, the synthetic Release B year and the practice house
+are new. Every figure the site publishes is exported to `../src/data/*.json`, so no page
+retypes a number the model produced. Verification against primary sources is in
+`verification-log.md`.
 
 ## Files
 
@@ -23,7 +25,13 @@ retypes a number the model produced. Figure verification against primary sources
 | `model/sensitivity.py` | Stress test of the reference bands under 11 perturbations |
 | `model/band_thresholds.py` | Writes publishable thresholds and the reference-design recipe to `output/band-thresholds.md` |
 | `model/reference_costs.py` | Prices the reference designs against the full course price schedule, and checks both hard constraints |
-| `model/export_site_data.py` | Writes `../src/data/course-model.json`, the single source of truth the website renders from |
+| `model/export_site_data.py` | Writes `../src/data/course-model.json`: diagnostic bands, reference costs and the price schedule |
+| `model/case.py` | The five fixed client homes: personas, Release A dossiers, scaled plan geometry and its self-check |
+| `model/scenario.py` | The scenario engine: seven decision variables, monthly balances within each client's permitted uses, peak-month energy, costs, care limits, client targets and the staff feasibility check |
+| `model/release_b.py` | Release B: the synthetic measured year, specialist findings, CSVs and the data dictionary |
+| `model/practice.py` | The Wattle Street practice house: every worked optimisation example, on invented round numbers |
+| `model/measurement.py` | The $1,500 measurement schedule, the demonstrated practice plan and the per-home staff check |
+| `model/export_cases.py` | Writes `../src/data/homes.json` and `design.json` |
 | `model/data/climate_stations.json` | BoM monthly statistics for 10 stations |
 | `model/output/` | Generated tables; `iteration-*` files are snapshots of earlier model versions |
 
@@ -36,11 +44,16 @@ python band_thresholds.py   # -> output/band-thresholds.md
 python reference_costs.py   # -> output/reference-costs.md / .json
 python sensitivity.py       # -> output/sensitivity.md
 python export_site_data.py  # -> ../../src/data/course-model.json
+python case.py              # geometry self-check for the five plans
+python release_b.py         # -> ../../src/data/release-b.json and public/data/release-b/
+python practice.py          # -> ../../src/data/practice.json and public/data/practice/
+python measurement.py       # -> ../../src/data/measurement.json
+python export_cases.py      # -> ../../src/data/homes.json, design.json (runs the staff check, ~2 min)
 python search_presets.py    # -> output/search_results.json (~15 s)
 ```
 
-Run the first five in that order after changing any course constant, preset or reference
-recipe: the bands, the costs and the published site data all derive from `site_model.py`.
+Run them in that order after changing any course constant, preset, price, target or case
+geometry.
 
 ## Headline conclusions
 

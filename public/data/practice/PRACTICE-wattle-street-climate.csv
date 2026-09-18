@@ -1,0 +1,14 @@
+# PRACTICE CASE - invented round-number data for SLOP4761 tutorials; not a client home and not a real climate.
+month,rain_mm,eto_mm,tmean_c,effective_rain_mm
+Jan,40,180,22,14.0
+Feb,40,150,22,14.0
+Mar,50,120,19,20.0
+Apr,50,80,15,20.0
+May,60,50,12,26.0
+Jun,60,40,9,26.0
+Jul,60,40,8,26.0
+Aug,60,60,9,26.0
+Sep,50,80,12,20.0
+Oct,50,120,15,20.0
+Nov,40,150,18,14.0
+Dec,40,170,21,14.0

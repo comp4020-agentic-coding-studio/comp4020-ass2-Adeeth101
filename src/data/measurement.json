@@ -1,0 +1,284 @@
+{
+ "allowance": 1500,
+ "schedule": [
+  {
+   "key": "M01",
+   "item": "Tipping-bucket rain gauge with logger",
+   "price": 190,
+   "unit": "each",
+   "measures": "rain, event intensity"
+  },
+  {
+   "key": "M02",
+   "item": "Manual rain gauge, read by the household",
+   "price": 25,
+   "unit": "each",
+   "measures": "rain, daily; a cross-check on M01"
+  },
+  {
+   "key": "M03",
+   "item": "Tank level logger (pressure transducer)",
+   "price": 240,
+   "unit": "each",
+   "measures": "stored volume, inflow and draw by difference"
+  },
+  {
+   "key": "M04",
+   "item": "Inline pulse water meter, 20 mm, with logger",
+   "price": 180,
+   "unit": "each",
+   "measures": "flow on one line, such as a garden or laundry supply"
+  },
+  {
+   "key": "M05",
+   "item": "Optical pulse reader and logger for an existing meter",
+   "price": 150,
+   "unit": "each",
+   "measures": "whole-house or bore flow at 10 s resolution"
+  },
+  {
+   "key": "M06",
+   "item": "Clamp-on ultrasonic flow logger, hire",
+   "price": 70,
+   "unit": "week",
+   "measures": "short campaigns on pipes that cannot be cut"
+  },
+  {
+   "key": "M07",
+   "item": "Pressure logger",
+   "price": 160,
+   "unit": "each",
+   "measures": "pump cut-in and cut-out, fixture pressure"
+  },
+  {
+   "key": "M08",
+   "item": "Soil laboratory panel, one composite sample",
+   "price": 95,
+   "unit": "sample",
+   "measures": "texture, pH, EC, organic carbon, nitrate, phosphorus"
+  },
+  {
+   "key": "M09",
+   "item": "Soil moisture sensor with logger",
+   "price": 150,
+   "unit": "each",
+   "measures": "irrigation response, one depth"
+  },
+  {
+   "key": "M10",
+   "item": "Water chemistry panel",
+   "price": 85,
+   "unit": "sample",
+   "measures": "hardness, dissolved solids, pH, iron, turbidity"
+  },
+  {
+   "key": "M11",
+   "item": "E. coli and total coliforms",
+   "price": 70,
+   "unit": "sample",
+   "measures": "microbial quality"
+  },
+  {
+   "key": "M12",
+   "item": "Temperature logger (air or water)",
+   "price": 55,
+   "unit": "each",
+   "measures": "frost exposure, tank or chamber temperature"
+  },
+  {
+   "key": "M13",
+   "item": "Sun-path survey kit, hire",
+   "price": 60,
+   "unit": "visit",
+   "measures": "direct-sun hours by zone and season"
+  },
+  {
+   "key": "M14",
+   "item": "Scales and labelled bins for a food-waste audit",
+   "price": 40,
+   "unit": "set",
+   "measures": "food and garden waste by stream"
+  },
+  {
+   "key": "M15",
+   "item": "Plug-in energy meter",
+   "price": 35,
+   "unit": "each",
+   "measures": "one appliance or pump on a plug"
+  },
+  {
+   "key": "M16",
+   "item": "Circuit energy monitor, installed",
+   "price": 220,
+   "unit": "each",
+   "measures": "a hard-wired pump or circuit"
+  },
+  {
+   "key": "M17",
+   "item": "Logger data service",
+   "price": 120,
+   "unit": "year",
+   "measures": "remote download; optional if loggers are read by hand"
+  },
+  {
+   "key": "M18",
+   "item": "Calibration kit: graduated container, reference gauge, stopwatch",
+   "price": 40,
+   "unit": "set",
+   "measures": "field checks of meters and gauges"
+  }
+ ],
+ "practice_plan": {
+  "lines": [
+   {
+    "key": "M01",
+    "item": "Tipping-bucket rain gauge with logger",
+    "qty": 1,
+    "unit_price": 190,
+    "cost": 190,
+    "where": "Rain at the back fence, clear of the shed and trees"
+   },
+   {
+    "key": "M02",
+    "item": "Manual rain gauge, read by the household",
+    "qty": 1,
+    "unit_price": 25,
+    "cost": 25,
+    "where": "Beside M01; the household reads it on weekdays"
+   },
+   {
+    "key": "M03",
+    "item": "Tank level logger (pressure transducer)",
+    "qty": 1,
+    "unit_price": 240,
+    "cost": 240,
+    "where": "Existing 5 kL tank"
+   },
+   {
+    "key": "M05",
+    "item": "Optical pulse reader and logger for an existing meter",
+    "qty": 1,
+    "unit_price": 150,
+    "cost": 150,
+    "where": "Mains meter at the street"
+   },
+   {
+    "key": "M04",
+    "item": "Inline pulse water meter, 20 mm, with logger",
+    "qty": 1,
+    "unit_price": 180,
+    "cost": 180,
+    "where": "Garden tap line, so garden use separates from indoor use"
+   },
+   {
+    "key": "M08",
+    "item": "Soil laboratory panel, one composite sample",
+    "qty": 3,
+    "unit_price": 95,
+    "cost": 285,
+    "where": "Back beds, front garden, east strip"
+   },
+   {
+    "key": "M11",
+    "item": "E. coli and total coliforms",
+    "qty": 2,
+    "unit_price": 70,
+    "cost": 140,
+    "where": "Tank, once after a dry spell and once two days after heavy rain"
+   },
+   {
+    "key": "M12",
+    "item": "Temperature logger (air or water)",
+    "qty": 1,
+    "unit_price": 55,
+    "cost": 55,
+    "where": "Air temperature at the back beds"
+   },
+   {
+    "key": "M14",
+    "item": "Scales and labelled bins for a food-waste audit",
+    "qty": 1,
+    "unit_price": 40,
+    "cost": 40,
+    "where": "Four one-week audits, one a season"
+   },
+   {
+    "key": "M18",
+    "item": "Calibration kit: graduated container, reference gauge, stopwatch",
+    "qty": 1,
+    "unit_price": 40,
+    "cost": 40,
+    "where": "Quarterly checks of M01 and both meters"
+   }
+  ],
+  "total": 1345,
+  "headroom": 155,
+  "left_out": [
+   {
+    "key": "M17",
+    "why": "Loggers are downloaded by hand at the monthly visit, which the hours schedule already carries."
+   },
+   {
+    "key": "M09",
+    "why": "Gravimetric soil moisture samples at the monthly visit answer the same question for no equipment cost."
+   },
+   {
+    "key": "M15",
+    "why": "There is no pump at Wattle Street yet, so there is nothing to meter."
+   }
+  ],
+  "hours": [
+   {
+    "task": "Installation and baseline survey",
+    "times": 1,
+    "hours_each": 8.0,
+    "hours": 8.0
+   },
+   {
+    "task": "Monthly visit: download, gauge read, soil sample",
+    "times": 12,
+    "hours_each": 1.5,
+    "hours": 18.0
+   },
+   {
+    "task": "Quarterly calibration check",
+    "times": 4,
+    "hours_each": 2.0,
+    "hours": 8.0
+   },
+   {
+    "task": "Food-waste audit week: briefing and analysis",
+    "times": 4,
+    "hours_each": 2.0,
+    "hours": 8.0
+   },
+   {
+    "task": "Soil sampling for the laboratory panel",
+    "times": 1,
+    "hours_each": 3.0,
+    "hours": 3.0
+   },
+   {
+    "task": "Water sampling runs",
+    "times": 2,
+    "hours_each": 1.0,
+    "hours": 2.0
+   },
+   {
+    "task": "Monthly data processing and quality control",
+    "times": 12,
+    "hours_each": 2.0,
+    "hours": 24.0
+   },
+   {
+    "task": "Handover report",
+    "times": 1,
+    "hours_each": 6.0,
+    "hours": 6.0
+   }
+  ],
+  "hours_total": 77.0
+ },
+ "staff_check_note": "A comparable plan was costed at each client home and fits the allowance; the plans are not published because designing them is Assignment 1.",
+ "staff_check_max": 1470
+}

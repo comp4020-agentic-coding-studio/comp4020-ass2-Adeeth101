@@ -1,0 +1,14 @@
+"# SOURCED: Bureau of Meteorology, climate statistics for station 070014 (Canberra Airport Comparison), all years of record. ETo derived by FAO-56 Hargreaves."
+month,rain_mm,tmax_c,tmin_c,eto_mm,effective_rain_mm
+Jan,58.5,28.0,13.2,186,25.1
+Feb,56.4,27.1,13.1,145,23.8
+Mar,50.7,24.5,10.7,125,20.4
+Apr,46.0,20.0,6.7,79,17.6
+May,44.4,15.6,3.2,51,16.6
+Jun,40.5,12.3,1.0,36,14.3
+Jul,41.4,11.4,-0.1,38,14.8
+Aug,46.2,13.0,1.0,54,17.7
+Sep,52.0,16.2,3.3,81,21.2
+Oct,62.4,19.4,6.1,118,27.4
+Nov,64.4,22.7,8.8,148,28.6
+Dec,53.2,26.2,11.4,182,21.9

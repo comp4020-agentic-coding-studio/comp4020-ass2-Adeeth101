@@ -1,0 +1,5 @@
+"# SYNTHETIC CASE DATA - SLOP4761 Release B, Adelaide, April 2027 to March 2028. Generated, not measured."
+month,source,turbidity_ntu,e_coli_mpn_100ml,hardness_mg_l_caco3,tds_mg_l,ph,iron_mg_l,note
+2027-07,tank T1,1.5,0,22,60,7.1,0.02,
+2027-12,tank T1,2.8,6,25,64,7.0,0.03,"low tank, warm water"
+2027-12,mains,0.3,0,110,290,7.8,0.01,reference sample; typical of the metropolitan supply

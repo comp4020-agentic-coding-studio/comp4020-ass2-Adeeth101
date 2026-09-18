@@ -1,0 +1,152 @@
+{
+ "S1": {
+  "n_feasible": 360,
+  "n_pareto": 70,
+  "existing_targets": {
+   "T1": false,
+   "T2": false,
+   "T3": true,
+   "T4": true
+  },
+  "cheapest": {
+   "choice": "+10 kL, zones R1+R2+R3, +0 m2 mixed, indoor, garden_first",
+   "capital": 7216,
+   "energy_peak_declared": 0.41,
+   "peak_month": "Nov",
+   "imported_kl": 164.0,
+   "running_year": 603,
+   "maintenance_h_year": 26.5,
+   "fresh_kg": 60
+  },
+  "cheapest_dry_targets": {
+   "T1": false,
+   "T2": false,
+   "T3": true,
+   "T4": true
+  },
+  "margin": {
+   "budget": 22784,
+   "energy": 4.59
+  }
+ },
+ "S2": {
+  "n_feasible": 352,
+  "n_pareto": 29,
+  "existing_targets": {
+   "T1": false,
+   "T2": true,
+   "T3": false,
+   "T4": true
+  },
+  "cheapest": {
+   "choice": "+0 kL, zones R1+R2+R5, +0 m2 mixed, indoor_grey, year_round, compost/composting_toilet",
+   "capital": 9515,
+   "energy_peak_declared": 1.25,
+   "peak_month": "Feb",
+   "imported_kl": 38.7,
+   "running_year": 1375,
+   "maintenance_h_year": 107.5,
+   "fresh_kg": 78
+  },
+  "cheapest_dry_targets": {
+   "T1": false,
+   "T2": true,
+   "T3": true,
+   "T4": true
+  },
+  "margin": {
+   "budget": 20485,
+   "energy": 3.75
+  }
+ },
+ "S3": {
+  "n_feasible": 1909,
+  "n_pareto": 134,
+  "existing_targets": {
+   "T1": false,
+   "T2": false,
+   "T3": true,
+   "T4": true
+  },
+  "cheapest": {
+   "choice": "+2 kL, zones R2, +58 m2 mixed, indoor, year_round",
+   "capital": 4389,
+   "energy_peak_declared": 0.19,
+   "peak_month": "Nov",
+   "imported_kl": 187.0,
+   "running_year": 715,
+   "maintenance_h_year": 45.1,
+   "fresh_kg": 142
+  },
+  "cheapest_dry_targets": {
+   "T1": true,
+   "T2": true,
+   "T3": false,
+   "T4": true
+  },
+  "margin": {
+   "budget": 25611,
+   "energy": 4.81
+  }
+ },
+ "S4": {
+  "n_feasible": 342,
+  "n_pareto": 93,
+  "existing_targets": {
+   "T1": false,
+   "T2": true,
+   "T3": true,
+   "T4": true
+  },
+  "cheapest": {
+   "choice": "+0 kL, zones R1+R2+R3, +0 m2 mixed, garden_grey, year_round",
+   "capital": 4290,
+   "energy_peak_declared": 0.14,
+   "peak_month": "Jan",
+   "imported_kl": 219.0,
+   "running_year": 827,
+   "maintenance_h_year": 38.9,
+   "fresh_kg": 92
+  },
+  "cheapest_dry_targets": {
+   "T1": false,
+   "T2": true,
+   "T3": true,
+   "T4": true
+  },
+  "margin": {
+   "budget": 25710,
+   "energy": 4.86
+  }
+ },
+ "S5": {
+  "n_feasible": 232,
+  "n_pareto": 61,
+  "existing_targets": {
+   "T1": false,
+   "T2": false,
+   "T3": false,
+   "T4": false
+  },
+  "cheapest": {
+   "choice": "+67.5 kL, zones R1+R2, +0 m2 mixed, indoor_grey, year_round",
+   "capital": 17133,
+   "energy_peak_declared": 1.03,
+   "peak_month": "Aug",
+   "imported_kl": 20.2,
+   "running_year": 639,
+   "maintenance_h_year": 63.0,
+   "fresh_kg": 239
+  },
+  "cheapest_dry_targets": {
+   "T1": false,
+   "T2": true,
+   "T3": true,
+   "T4": true
+  },
+  "margin": {
+   "budget": 12867,
+   "energy": 3.97
+  }
+ }
+}

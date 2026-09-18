@@ -1,0 +1,2540 @@
+{
+ "label": "PRACTICE CASE. Invented round-number data for teaching; not a client home and not a real climate.",
+ "home": {
+  "slug": "wattle-street",
+  "areas": {
+   "parcel_m2": 648,
+   "drawn_m2": 648.0,
+   "footprint_m2": 188.0,
+   "roof_plan_m2": 219.8,
+   "roof_zone_sum_m2": 219.8,
+   "roof_connected_now_m2": 24.8,
+   "roof_guttered_m2": 219.8,
+   "eaves_and_overhead_m2": 31.8,
+   "hardstand_m2": 100.0,
+   "growing_envelope_m2": 207.8,
+   "retained_within_envelope_m2": 0.0,
+   "cultivable_max_m2": 207.8,
+   "recreation_m2": 0,
+   "other_m2": 152.2,
+   "floor_rooms_m2": 168.0,
+   "floor_envelope_m2": 168.0,
+   "existing_storage_kl": 5
+  },
+  "zones": [
+   {
+    "id": "R1",
+    "label": "House, north plane",
+    "x": 1.5,
+    "y": 13.0,
+    "w": 13.0,
+    "h": 7.5,
+    "plan_m2": 98,
+    "downpipes": [
+     [
+      1.5,
+      20.5
+     ],
+     [
+      14.5,
+      20.5
+     ]
+    ],
+    "connected_now": false,
+    "gutter": true,
+    "note": ""
+   },
+   {
+    "id": "R2",
+    "label": "House, south plane",
+    "x": 1.5,
+    "y": 5.5,
+    "w": 13.0,
+    "h": 7.5,
+    "plan_m2": 98,
+    "downpipes": [
+     [
+      1.5,
+      5.5
+     ],
+     [
+      14.5,
+      5.5
+     ]
+    ],
+    "connected_now": false,
+    "gutter": true,
+    "note": ""
+   },
+   {
+    "id": "R3",
+    "label": "Shed",
+    "x": 12.25,
+    "y": 27.75,
+    "w": 4.5,
+    "h": 5.5,
+    "plan_m2": 25,
+    "downpipes": [
+     [
+      12.25,
+      27.75
+     ]
+    ],
+    "connected_now": true,
+    "gutter": true,
+    "note": ""
+   }
+  ],
+  "cover": [
+   {
+    "id": "B1",
+    "x": 2.0,
+    "y": 6.0,
+    "w": 12.0,
+    "h": 14.0,
+    "label": "House",
+    "kind": "building",
+    "note": "",
+    "area": 168.0,
+    "roof": {
+     "x": 1.5,
+     "y": 5.5,
+     "w": 13.0,
+     "h": 15.0,
+     "area": 195.0
+    }
+   },
+   {
+    "id": "B2",
+    "x": 12.5,
+    "y": 28.0,
+    "w": 4.0,
+    "h": 5.0,
+    "label": "Shed",
+    "kind": "building",
+    "note": "",
+    "area": 20.0,
+    "roof": {
+     "x": 12.25,
+     "y": 27.75,
+     "w": 4.5,
+     "h": 5.5,
+     "area": 24.8
+    }
+   },
+   {
+    "id": "H1",
+    "x": 14.5,
+    "y": 0.0,
+    "w": 3.5,
+    "h": 20.0,
+    "label": "Driveway",
+    "kind": "hardstand",
+    "note": "",
+    "area": 70.0
+   },
+   {
+    "id": "H2",
+    "x": 2.0,
+    "y": 20.0,
+    "w": 12.0,
+    "h": 2.5,
+    "label": "Terrace",
+    "kind": "hardstand",
+    "note": "",
+    "area": 30.0
+   },
+   {
+    "id": "G1",
+    "x": 1.0,
+    "y": 24.0,
+    "w": 10.0,
+    "h": 10.0,
+    "label": "Back beds",
+    "kind": "growing",
+    "note": "the existing 30 m\u00b2 of beds are here",
+    "area": 100.0
+   },
+   {
+    "id": "G2",
+    "x": 0.0,
+    "y": 0.0,
+    "w": 14.5,
+    "h": 5.5,
+    "label": "Front garden",
+    "kind": "growing",
+    "note": "",
+    "area": 79.8
+   },
+   {
+    "id": "G3",
+    "x": 14.5,
+    "y": 20.0,
+    "w": 3.5,
+    "h": 8.0,
+    "label": "East strip",
+    "kind": "growing",
+    "note": "",
+    "area": 28.0
+   }
+  ],
+  "circles": [
+   {
+    "id": "T1",
+    "cx": 12.0,
+    "cy": 26.5,
+    "r": 0.9,
+    "label": "Existing 5 kL tank",
+    "kind": "tank",
+    "note": "shed roof, gravity tap",
+    "kl": 5
+   }
+  ],
+  "points": [
+   {
+    "id": "P1",
+    "x": 14.2,
+    "y": 0.4,
+    "label": "Water meter",
+    "kind": "service",
+    "status": "known",
+    "note": ""
+   },
+   {
+    "id": "L1",
+    "x": 9.0,
+    "y": 0.5,
+    "label": "RL 100.0",
+    "kind": "level",
+    "status": "estimate",
+    "note": ""
+   },
+   {
+    "id": "L2",
+    "x": 9.0,
+    "y": 35.5,
+    "label": "RL 100.8",
+    "kind": "level",
+    "status": "estimate",
+    "note": ""
+   }
+  ],
+  "extent": [
+   18.0,
+   36.0
+  ]
+ },
+ "climate": {
+  "months": [
+   "Jan",
+   "Feb",
+   "Mar",
+   "Apr",
+   "May",
+   "Jun",
+   "Jul",
+   "Aug",
+   "Sep",
+   "Oct",
+   "Nov",
+   "Dec"
+  ],
+  "rain": [
+   40,
+   40,
+   50,
+   50,
+   60,
+   60,
+   60,
+   60,
+   50,
+   50,
+   40,
+   40
+  ],
+  "eto": [
+   180,
+   150,
+   120,
+   80,
+   50,
+   40,
+   40,
+   60,
+   80,
+   120,
+   150,
+   170
+  ],
+  "tmean": [
+   22,
+   22,
+   19,
+   15,
+   12,
+   9,
+   8,
+   9,
+   12,
+   15,
+   18,
+   21
+  ],
+  "pe": [
+   14.0,
+   14.0,
+   20.0,
+   20.0,
+   26.0,
+   26.0,
+   26.0,
+   26.0,
+   20.0,
+   20.0,
+   14.0,
+   14.0
+  ],
+  "gfac": [
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   0.7,
+   0.4,
+   0.3,
+   0.4,
+   0.7,
+   1.0,
+   1.0,
+   1.0
+  ],
+  "dry_factor": 0.6
+ },
+ "targets": [
+  {
+   "id": "PT1",
+   "text": "The existing 30 m\u00b2 of beds fully watered from on-site water in every month of the average year"
+  },
+  {
+   "id": "PT2",
+   "text": "Toilet and laundry supplied at least 70 % from rainwater over the year"
+  }
+ ],
+ "runoff": {
+  "by_zone": {
+   "R1": [
+    2.96,
+    2.96,
+    3.74,
+    3.74,
+    4.52,
+    4.52,
+    4.52,
+    4.52,
+    3.74,
+    3.74,
+    2.96,
+    2.96
+   ],
+   "R2": [
+    2.96,
+    2.96,
+    3.74,
+    3.74,
+    4.52,
+    4.52,
+    4.52,
+    4.52,
+    3.74,
+    3.74,
+    2.96,
+    2.96
+   ],
+   "R3": [
+    0.75,
+    0.75,
+    0.95,
+    0.95,
+    1.15,
+    1.15,
+    1.15,
+    1.15,
+    0.95,
+    0.95,
+    0.75,
+    0.75
+   ]
+  },
+  "annual": {
+   "R1": 44.9,
+   "R2": 44.9,
+   "R3": 11.4
+  }
+ },
+ "existing": {
+  "imported_kl": 238.5,
+  "garden_mains_kl": 19.5,
+  "priority_months_full": 12,
+  "running_year": 787,
+  "capital": 0,
+  "energy_peak_declared": 0.0,
+  "fresh_kg": 54,
+  "monthly": [
+   {
+    "month": "Jan",
+    "rain": 40.0,
+    "eto": 180.0,
+    "inflow": 0.75,
+    "overflow": 0.0,
+    "indoor": 18.6,
+    "tank_indoor": 0.0,
+    "imported": 23.41,
+    "garden_gross": 5.56,
+    "garden_tank": 0.75,
+    "garden_mains": 4.81,
+    "garden_unmet": 0.0,
+    "tank_end": 0.0,
+    "toilet_laundry": 6.2,
+    "toilet_laundry_tank": 0.0,
+    "energy_declared": 0.0
+   },
+   {
+    "month": "Feb",
+    "rain": 40.0,
+    "eto": 150.0,
+    "inflow": 0.75,
+    "overflow": 0.0,
+    "indoor": 16.8,
+    "tank_indoor": 0.0,
+    "imported": 20.59,
+    "garden_gross": 4.54,
+    "garden_tank": 0.75,
+    "garden_mains": 3.79,
+    "garden_unmet": 0.0,
+    "tank_end": 0.0,
+    "toilet_laundry": 5.6,
+    "toilet_laundry_tank": 0.0,
+    "energy_declared": 0.0
+   },
+   {
+    "month": "Mar",
+    "rain": 50.0,
+    "eto": 120.0,
+    "inflow": 0.95,
+    "overflow": 0.0,
+    "indoor": 18.6,
+    "tank_indoor": 0.0,
+    "imported": 20.93,
+    "garden_gross": 3.28,
+    "garden_tank": 0.95,
+    "garden_mains": 2.33,
+    "garden_unmet": 0.0,
+    "tank_end": 0.0,
+    "toilet_laundry": 6.2,
+    "toilet_laundry_tank": 0.0,
+    "energy_declared": 0.0
+   },
+   {
+    "month": "Apr",
+    "rain": 50.0,
+    "eto": 80.0,
+    "inflow": 0.95,
+    "overflow": 0.0,
+    "indoor": 18.0,
+    "tank_indoor": 0.0,
+    "imported": 18.97,
+    "garden_gross": 1.92,
+    "garden_tank": 0.95,
+    "garden_mains": 0.97,
+    "garden_unmet": 0.0,
+    "tank_end": 0.0,
+    "toilet_laundry": 6.0,
+    "toilet_laundry_tank": 0.0,
+    "energy_declared": 0.0
+   },
+   {
+    "month": "May",
+    "rain": 60.0,
+    "eto": 50.0,
+    "inflow": 1.15,
+    "overflow": 0.0,
+    "indoor": 18.6,
+    "tank_indoor": 0.0,
+    "imported": 18.6,
+    "garden_gross": 0.66,
+    "garden_tank": 0.66,
+    "garden_mains": 0.0,
+    "garden_unmet": 0.0,
+    "tank_end": 0.49,
+    "toilet_laundry": 6.2,
+    "toilet_laundry_tank": 0.0,
+    "energy_declared": 0.0
+   },
+   {
+    "month": "Jun",
+    "rain": 60.0,
+    "eto": 40.0,
+    "inflow": 1.15,
+    "overflow": 0.0,
+    "indoor": 18.0,
+    "tank_indoor": 0.0,
+    "imported": 18.0,
+    "garden_gross": 0.0,
+    "garden_tank": 0.0,
+    "garden_mains": 0.0,
+    "garden_unmet": 0.0,
+    "tank_end": 1.64,
+    "toilet_laundry": 6.0,
+    "toilet_laundry_tank": 0.0,
+    "energy_declared": 0.0
+   },
+   {
+    "month": "Jul",
+    "rain": 60.0,
+    "eto": 40.0,
+    "inflow": 1.15,
+    "overflow": 0.0,
+    "indoor": 18.6,
+    "tank_indoor": 0.0,
+    "imported": 18.6,
+    "garden_gross": 0.0,
+    "garden_tank": 0.0,
+    "garden_mains": 0.0,
+    "garden_unmet": 0.0,
+    "tank_end": 2.79,
+    "toilet_laundry": 6.2,
+    "toilet_laundry_tank": 0.0,
+    "energy_declared": 0.0
+   },
+   {
+    "month": "Aug",
+    "rain": 60.0,
+    "eto": 60.0,
+    "inflow": 1.15,
+    "overflow": 0.0,
+    "indoor": 18.6,
+    "tank_indoor": 0.0,
+    "imported": 18.6,
+    "garden_gross": 0.0,
+    "garden_tank": 0.0,
+    "garden_mains": 0.0,
+    "garden_unmet": 0.0,
+    "tank_end": 3.93,
+    "toilet_laundry": 6.2,
+    "toilet_laundry_tank": 0.0,
+    "energy_declared": 0.0
+   },
+   {
+    "month": "Sep",
+    "rain": 50.0,
+    "eto": 80.0,
+    "inflow": 0.95,
+    "overflow": 0.0,
+    "indoor": 18.0,
+    "tank_indoor": 0.0,
+    "imported": 18.0,
+    "garden_gross": 1.92,
+    "garden_tank": 1.92,
+    "garden_mains": 0.0,
+    "garden_unmet": 0.0,
+    "tank_end": 2.96,
+    "toilet_laundry": 6.0,
+    "toilet_laundry_tank": 0.0,
+    "energy_declared": 0.0
+   },
+   {
+    "month": "Oct",
+    "rain": 50.0,
+    "eto": 120.0,
+    "inflow": 0.95,
+    "overflow": 0.0,
+    "indoor": 18.6,
+    "tank_indoor": 0.0,
+    "imported": 18.6,
+    "garden_gross": 3.28,
+    "garden_tank": 3.28,
+    "garden_mains": 0.0,
+    "garden_unmet": 0.0,
+    "tank_end": 0.63,
+    "toilet_laundry": 6.2,
+    "toilet_laundry_tank": 0.0,
+    "energy_declared": 0.0
+   },
+   {
+    "month": "Nov",
+    "rain": 40.0,
+    "eto": 150.0,
+    "inflow": 0.75,
+    "overflow": 0.0,
+    "indoor": 18.0,
+    "tank_indoor": 0.0,
+    "imported": 21.15,
+    "garden_gross": 4.54,
+    "garden_tank": 1.39,
+    "garden_mains": 3.15,
+    "garden_unmet": 0.0,
+    "tank_end": 0.0,
+    "toilet_laundry": 6.0,
+    "toilet_laundry_tank": 0.0,
+    "energy_declared": 0.0
+   },
+   {
+    "month": "Dec",
+    "rain": 40.0,
+    "eto": 170.0,
+    "inflow": 0.75,
+    "overflow": 0.0,
+    "indoor": 18.6,
+    "tank_indoor": 0.0,
+    "imported": 23.07,
+    "garden_gross": 5.22,
+    "garden_tank": 0.75,
+    "garden_mains": 4.47,
+    "garden_unmet": 0.0,
+    "tank_end": 0.0,
+    "toilet_laundry": 6.2,
+    "toilet_laundry_tank": 0.0,
+    "energy_declared": 0.0
+   }
+  ]
+ },
+ "grid": [
+  {
+   "id": "O1",
+   "new_storage_kl": 5,
+   "zones": "R1+R3",
+   "roof_m2": 122.2,
+   "strategy": "garden",
+   "schedule": "year_round",
+   "capital": 3839,
+   "running_year": 729,
+   "imported_kl": 219.0,
+   "priority_months_full": 12,
+   "toilet_laundry_share": 0.0,
+   "energy_peak": 0.1,
+   "peak_month": "Jan",
+   "dry_priority_months_full": 11,
+   "dry_imported_kl": 219.0,
+   "meets": {
+    "PT1": true,
+    "PT2": false
+   },
+   "feasible": false,
+   "bill": [
+    {
+     "key": "tank_shell_per_kl",
+     "line": "Polyethylene rainwater storage, supply only [S31]",
+     "qty": 5,
+     "unit": "kL",
+     "cost": 650
+    },
+    {
+     "key": "tank_establishment",
+     "line": "Pad, inlet/outlet plumbing, overflow, per tank",
+     "qty": 1,
+     "unit": "tank",
+     "cost": 1000
+    },
+    {
+     "key": "zone_reconnection",
+     "line": "Roof-zone connection: gutter check, downpipe and charged line to storage, per zone",
+     "qty": 1,
+     "unit": "zone",
+     "cost": 600
+    },
+    {
+     "key": "first_flush_per_downpipe",
+     "line": "First-flush diverter and leaf screen, per downpipe",
+     "qty": 2,
+     "unit": "downpipe",
+     "cost": 300
+    },
+    {
+     "key": "pump",
+     "line": "Garden transfer pump",
+     "qty": 1,
+     "unit": "ea",
+     "cost": 700
+    },
+    {
+     "key": "drip_per_m2",
+     "line": "Drip irrigation, per m2 irrigated",
+     "qty": 30,
+     "unit": "m2",
+     "cost": 240
+    }
+   ],
+   "capital_subtotal": 3490,
+   "capital_contingency": 349,
+   "dominated_by": []
+  },
+  {
+   "id": "O2",
+   "new_storage_kl": 5,
+   "zones": "R1+R3",
+   "roof_m2": 122.2,
+   "strategy": "indoor",
+   "schedule": "garden_first",
+   "capital": 5104,
+   "running_year": 659,
+   "imported_kl": 173.8,
+   "priority_months_full": 3,
+   "toilet_laundry_share": 0.62,
+   "energy_peak": 0.28,
+   "peak_month": "Jun",
+   "dry_priority_months_full": 3,
+   "dry_imported_kl": 192.6,
+   "meets": {
+    "PT1": false,
+    "PT2": false
+   },
+   "feasible": false,
+   "bill": [
+    {
+     "key": "tank_shell_per_kl",
+     "line": "Polyethylene rainwater storage, supply only [S31]",
+     "qty": 5,
+     "unit": "kL",
+     "cost": 650
+    },
+    {
+     "key": "tank_establishment",
+     "line": "Pad, inlet/outlet plumbing, overflow, per tank",
+     "qty": 1,
+     "unit": "tank",
+     "cost": 1000
+    },
+    {
+     "key": "zone_reconnection",
+     "line": "Roof-zone connection: gutter check, downpipe and charged line to storage, per zone",
+     "qty": 1,
+     "unit": "zone",
+     "cost": 600
+    },
+    {
+     "key": "first_flush_per_downpipe",
+     "line": "First-flush diverter and leaf screen, per downpipe",
+     "qty": 2,
+     "unit": "downpipe",
+     "cost": 300
+    },
+    {
+     "key": "pump",
+     "line": "Pressure pump for the indoor non-potable supply",
+     "qty": 1,
+     "unit": "ea",
+     "cost": 700
+    },
+    {
+     "key": "mains_changeover",
+     "line": "Automatic rainwater-to-mains changeover for an indoor non-potable supply",
+     "qty": 1,
+     "unit": "ea",
+     "cost": 450
+    },
+    {
+     "key": "pump",
+     "line": "Garden transfer pump",
+     "qty": 1,
+     "unit": "ea",
+     "cost": 700
+    },
+    {
+     "key": "drip_per_m2",
+     "line": "Drip irrigation, per m2 irrigated",
+     "qty": 30,
+     "unit": "m2",
+     "cost": 240
+    }
+   ],
+   "capital_subtotal": 4640,
+   "capital_contingency": 464,
+   "dominated_by": []
+  },
+  {
+   "id": "O3",
+   "new_storage_kl": 5,
+   "zones": "R1+R2+R3",
+   "roof_m2": 219.8,
+   "strategy": "garden",
+   "schedule": "year_round",
+   "capital": 4829,
+   "running_year": 729,
+   "imported_kl": 219.0,
+   "priority_months_full": 12,
+   "toilet_laundry_share": 0.0,
+   "energy_peak": 0.1,
+   "peak_month": "Jan",
+   "dry_priority_months_full": 12,
+   "dry_imported_kl": 219.0,
+   "meets": {
+    "PT1": true,
+    "PT2": false
+   },
+   "feasible": false,
+   "bill": [
+    {
+     "key": "tank_shell_per_kl",
+     "line": "Polyethylene rainwater storage, supply only [S31]",
+     "qty": 5,
+     "unit": "kL",
+     "cost": 650
+    },
+    {
+     "key": "tank_establishment",
+     "line": "Pad, inlet/outlet plumbing, overflow, per tank",
+     "qty": 1,
+     "unit": "tank",
+     "cost": 1000
+    },
+    {
+     "key": "zone_reconnection",
+     "line": "Roof-zone connection: gutter check, downpipe and charged line to storage, per zone",
+     "qty": 2,
+     "unit": "zone",
+     "cost": 1200
+    },
+    {
+     "key": "first_flush_per_downpipe",
+     "line": "First-flush diverter and leaf screen, per downpipe",
+     "qty": 4,
+     "unit": "downpipe",
+     "cost": 600
+    },
+    {
+     "key": "pump",
+     "line": "Garden transfer pump",
+     "qty": 1,
+     "unit": "ea",
+     "cost": 700
+    },
+    {
+     "key": "drip_per_m2",
+     "line": "Drip irrigation, per m2 irrigated",
+     "qty": 30,
+     "unit": "m2",
+     "cost": 240
+    }
+   ],
+   "capital_subtotal": 4390,
+   "capital_contingency": 439,
+   "dominated_by": [
+    "O5"
+   ]
+  },
+  {
+   "id": "O4",
+   "new_storage_kl": 5,
+   "zones": "R1+R2+R3",
+   "roof_m2": 219.8,
+   "strategy": "indoor",
+   "schedule": "garden_first",
+   "capital": 6094,
+   "running_year": 634,
+   "imported_kl": 164.0,
+   "priority_months_full": 11,
+   "toilet_laundry_share": 0.75,
+   "energy_peak": 0.36,
+   "peak_month": "Mar",
+   "dry_priority_months_full": 5,
+   "dry_imported_kl": 171.0,
+   "meets": {
+    "PT1": false,
+    "PT2": true
+   },
+   "feasible": false,
+   "bill": [
+    {
+     "key": "tank_shell_per_kl",
+     "line": "Polyethylene rainwater storage, supply only [S31]",
+     "qty": 5,
+     "unit": "kL",
+     "cost": 650
+    },
+    {
+     "key": "tank_establishment",
+     "line": "Pad, inlet/outlet plumbing, overflow, per tank",
+     "qty": 1,
+     "unit": "tank",
+     "cost": 1000
+    },
+    {
+     "key": "zone_reconnection",
+     "line": "Roof-zone connection: gutter check, downpipe and charged line to storage, per zone",
+     "qty": 2,
+     "unit": "zone",
+     "cost": 1200
+    },
+    {
+     "key": "first_flush_per_downpipe",
+     "line": "First-flush diverter and leaf screen, per downpipe",
+     "qty": 4,
+     "unit": "downpipe",
+     "cost": 600
+    },
+    {
+     "key": "pump",
+     "line": "Pressure pump for the indoor non-potable supply",
+     "qty": 1,
+     "unit": "ea",
+     "cost": 700
+    },
+    {
+     "key": "mains_changeover",
+     "line": "Automatic rainwater-to-mains changeover for an indoor non-potable supply",
+     "qty": 1,
+     "unit": "ea",
+     "cost": 450
+    },
+    {
+     "key": "pump",
+     "line": "Garden transfer pump",
+     "qty": 1,
+     "unit": "ea",
+     "cost": 700
+    },
+    {
+     "key": "drip_per_m2",
+     "line": "Drip irrigation, per m2 irrigated",
+     "qty": 30,
+     "unit": "m2",
+     "cost": 240
+    }
+   ],
+   "capital_subtotal": 5540,
+   "capital_contingency": 554,
+   "dominated_by": []
+  },
+  {
+   "id": "O5",
+   "new_storage_kl": 10,
+   "zones": "R1+R3",
+   "roof_m2": 122.2,
+   "strategy": "garden",
+   "schedule": "year_round",
+   "capital": 4554,
+   "running_year": 729,
+   "imported_kl": 219.0,
+   "priority_months_full": 12,
+   "toilet_laundry_share": 0.0,
+   "energy_peak": 0.1,
+   "peak_month": "Jan",
+   "dry_priority_months_full": 12,
+   "dry_imported_kl": 219.0,
+   "meets": {
+    "PT1": true,
+    "PT2": false
+   },
+   "feasible": false,
+   "bill": [
+    {
+     "key": "tank_shell_per_kl",
+     "line": "Polyethylene rainwater storage, supply only [S31]",
+     "qty": 10,
+     "unit": "kL",
+     "cost": 1300
+    },
+    {
+     "key": "tank_establishment",
+     "line": "Pad, inlet/outlet plumbing, overflow, per tank",
+     "qty": 1,
+     "unit": "tank",
+     "cost": 1000
+    },
+    {
+     "key": "zone_reconnection",
+     "line": "Roof-zone connection: gutter check, downpipe and charged line to storage, per zone",
+     "qty": 1,
+     "unit": "zone",
+     "cost": 600
+    },
+    {
+     "key": "first_flush_per_downpipe",
+     "line": "First-flush diverter and leaf screen, per downpipe",
+     "qty": 2,
+     "unit": "downpipe",
+     "cost": 300
+    },
+    {
+     "key": "pump",
+     "line": "Garden transfer pump",
+     "qty": 1,
+     "unit": "ea",
+     "cost": 700
+    },
+    {
+     "key": "drip_per_m2",
+     "line": "Drip irrigation, per m2 irrigated",
+     "qty": 30,
+     "unit": "m2",
+     "cost": 240
+    }
+   ],
+   "capital_subtotal": 4140,
+   "capital_contingency": 414,
+   "dominated_by": []
+  },
+  {
+   "id": "O6",
+   "new_storage_kl": 10,
+   "zones": "R1+R3",
+   "roof_m2": 122.2,
+   "strategy": "indoor",
+   "schedule": "garden_first",
+   "capital": 5819,
+   "running_year": 659,
+   "imported_kl": 173.8,
+   "priority_months_full": 3,
+   "toilet_laundry_share": 0.62,
+   "energy_peak": 0.28,
+   "peak_month": "Jun",
+   "dry_priority_months_full": 3,
+   "dry_imported_kl": 192.6,
+   "meets": {
+    "PT1": false,
+    "PT2": false
+   },
+   "feasible": false,
+   "bill": [
+    {
+     "key": "tank_shell_per_kl",
+     "line": "Polyethylene rainwater storage, supply only [S31]",
+     "qty": 10,
+     "unit": "kL",
+     "cost": 1300
+    },
+    {
+     "key": "tank_establishment",
+     "line": "Pad, inlet/outlet plumbing, overflow, per tank",
+     "qty": 1,
+     "unit": "tank",
+     "cost": 1000
+    },
+    {
+     "key": "zone_reconnection",
+     "line": "Roof-zone connection: gutter check, downpipe and charged line to storage, per zone",
+     "qty": 1,
+     "unit": "zone",
+     "cost": 600
+    },
+    {
+     "key": "first_flush_per_downpipe",
+     "line": "First-flush diverter and leaf screen, per downpipe",
+     "qty": 2,
+     "unit": "downpipe",
+     "cost": 300
+    },
+    {
+     "key": "pump",
+     "line": "Pressure pump for the indoor non-potable supply",
+     "qty": 1,
+     "unit": "ea",
+     "cost": 700
+    },
+    {
+     "key": "mains_changeover",
+     "line": "Automatic rainwater-to-mains changeover for an indoor non-potable supply",
+     "qty": 1,
+     "unit": "ea",
+     "cost": 450
+    },
+    {
+     "key": "pump",
+     "line": "Garden transfer pump",
+     "qty": 1,
+     "unit": "ea",
+     "cost": 700
+    },
+    {
+     "key": "drip_per_m2",
+     "line": "Drip irrigation, per m2 irrigated",
+     "qty": 30,
+     "unit": "m2",
+     "cost": 240
+    }
+   ],
+   "capital_subtotal": 5290,
+   "capital_contingency": 529,
+   "dominated_by": [
+    "O2"
+   ]
+  },
+  {
+   "id": "O7",
+   "new_storage_kl": 10,
+   "zones": "R1+R2+R3",
+   "roof_m2": 219.8,
+   "strategy": "garden",
+   "schedule": "year_round",
+   "capital": 5544,
+   "running_year": 729,
+   "imported_kl": 219.0,
+   "priority_months_full": 12,
+   "toilet_laundry_share": 0.0,
+   "energy_peak": 0.1,
+   "peak_month": "Jan",
+   "dry_priority_months_full": 12,
+   "dry_imported_kl": 219.0,
+   "meets": {
+    "PT1": true,
+    "PT2": false
+   },
+   "feasible": false,
+   "bill": [
+    {
+     "key": "tank_shell_per_kl",
+     "line": "Polyethylene rainwater storage, supply only [S31]",
+     "qty": 10,
+     "unit": "kL",
+     "cost": 1300
+    },
+    {
+     "key": "tank_establishment",
+     "line": "Pad, inlet/outlet plumbing, overflow, per tank",
+     "qty": 1,
+     "unit": "tank",
+     "cost": 1000
+    },
+    {
+     "key": "zone_reconnection",
+     "line": "Roof-zone connection: gutter check, downpipe and charged line to storage, per zone",
+     "qty": 2,
+     "unit": "zone",
+     "cost": 1200
+    },
+    {
+     "key": "first_flush_per_downpipe",
+     "line": "First-flush diverter and leaf screen, per downpipe",
+     "qty": 4,
+     "unit": "downpipe",
+     "cost": 600
+    },
+    {
+     "key": "pump",
+     "line": "Garden transfer pump",
+     "qty": 1,
+     "unit": "ea",
+     "cost": 700
+    },
+    {
+     "key": "drip_per_m2",
+     "line": "Drip irrigation, per m2 irrigated",
+     "qty": 30,
+     "unit": "m2",
+     "cost": 240
+    }
+   ],
+   "capital_subtotal": 5040,
+   "capital_contingency": 504,
+   "dominated_by": [
+    "O3",
+    "O5",
+    "O9"
+   ]
+  },
+  {
+   "id": "O8",
+   "new_storage_kl": 10,
+   "zones": "R1+R2+R3",
+   "roof_m2": 219.8,
+   "strategy": "indoor",
+   "schedule": "garden_first",
+   "capital": 6809,
+   "running_year": 634,
+   "imported_kl": 164.0,
+   "priority_months_full": 12,
+   "toilet_laundry_share": 0.75,
+   "energy_peak": 0.39,
+   "peak_month": "Nov",
+   "dry_priority_months_full": 5,
+   "dry_imported_kl": 170.3,
+   "meets": {
+    "PT1": true,
+    "PT2": true
+   },
+   "feasible": true,
+   "bill": [
+    {
+     "key": "tank_shell_per_kl",
+     "line": "Polyethylene rainwater storage, supply only [S31]",
+     "qty": 10,
+     "unit": "kL",
+     "cost": 1300
+    },
+    {
+     "key": "tank_establishment",
+     "line": "Pad, inlet/outlet plumbing, overflow, per tank",
+     "qty": 1,
+     "unit": "tank",
+     "cost": 1000
+    },
+    {
+     "key": "zone_reconnection",
+     "line": "Roof-zone connection: gutter check, downpipe and charged line to storage, per zone",
+     "qty": 2,
+     "unit": "zone",
+     "cost": 1200
+    },
+    {
+     "key": "first_flush_per_downpipe",
+     "line": "First-flush diverter and leaf screen, per downpipe",
+     "qty": 4,
+     "unit": "downpipe",
+     "cost": 600
+    },
+    {
+     "key": "pump",
+     "line": "Pressure pump for the indoor non-potable supply",
+     "qty": 1,
+     "unit": "ea",
+     "cost": 700
+    },
+    {
+     "key": "mains_changeover",
+     "line": "Automatic rainwater-to-mains changeover for an indoor non-potable supply",
+     "qty": 1,
+     "unit": "ea",
+     "cost": 450
+    },
+    {
+     "key": "pump",
+     "line": "Garden transfer pump",
+     "qty": 1,
+     "unit": "ea",
+     "cost": 700
+    },
+    {
+     "key": "drip_per_m2",
+     "line": "Drip irrigation, per m2 irrigated",
+     "qty": 30,
+     "unit": "m2",
+     "cost": 240
+    }
+   ],
+   "capital_subtotal": 6190,
+   "capital_contingency": 619,
+   "dominated_by": []
+  },
+  {
+   "id": "O9",
+   "new_storage_kl": 15,
+   "zones": "R1+R3",
+   "roof_m2": 122.2,
+   "strategy": "garden",
+   "schedule": "year_round",
+   "capital": 5269,
+   "running_year": 729,
+   "imported_kl": 219.0,
+   "priority_months_full": 12,
+   "toilet_laundry_share": 0.0,
+   "energy_peak": 0.1,
+   "peak_month": "Jan",
+   "dry_priority_months_full": 12,
+   "dry_imported_kl": 219.0,
+   "meets": {
+    "PT1": true,
+    "PT2": false
+   },
+   "feasible": false,
+   "bill": [
+    {
+     "key": "tank_shell_per_kl",
+     "line": "Polyethylene rainwater storage, supply only [S31]",
+     "qty": 15,
+     "unit": "kL",
+     "cost": 1950
+    },
+    {
+     "key": "tank_establishment",
+     "line": "Pad, inlet/outlet plumbing, overflow, per tank",
+     "qty": 1,
+     "unit": "tank",
+     "cost": 1000
+    },
+    {
+     "key": "zone_reconnection",
+     "line": "Roof-zone connection: gutter check, downpipe and charged line to storage, per zone",
+     "qty": 1,
+     "unit": "zone",
+     "cost": 600
+    },
+    {
+     "key": "first_flush_per_downpipe",
+     "line": "First-flush diverter and leaf screen, per downpipe",
+     "qty": 2,
+     "unit": "downpipe",
+     "cost": 300
+    },
+    {
+     "key": "pump",
+     "line": "Garden transfer pump",
+     "qty": 1,
+     "unit": "ea",
+     "cost": 700
+    },
+    {
+     "key": "drip_per_m2",
+     "line": "Drip irrigation, per m2 irrigated",
+     "qty": 30,
+     "unit": "m2",
+     "cost": 240
+    }
+   ],
+   "capital_subtotal": 4790,
+   "capital_contingency": 479,
+   "dominated_by": [
+    "O3",
+    "O5"
+   ]
+  },
+  {
+   "id": "O10",
+   "new_storage_kl": 15,
+   "zones": "R1+R3",
+   "roof_m2": 122.2,
+   "strategy": "indoor",
+   "schedule": "garden_first",
+   "capital": 6534,
+   "running_year": 659,
+   "imported_kl": 173.8,
+   "priority_months_full": 3,
+   "toilet_laundry_share": 0.62,
+   "energy_peak": 0.28,
+   "peak_month": "Jun",
+   "dry_priority_months_full": 3,
+   "dry_imported_kl": 192.6,
+   "meets": {
+    "PT1": false,
+    "PT2": false
+   },
+   "feasible": false,
+   "bill": [
+    {
+     "key": "tank_shell_per_kl",
+     "line": "Polyethylene rainwater storage, supply only [S31]",
+     "qty": 15,
+     "unit": "kL",
+     "cost": 1950
+    },
+    {
+     "key": "tank_establishment",
+     "line": "Pad, inlet/outlet plumbing, overflow, per tank",
+     "qty": 1,
+     "unit": "tank",
+     "cost": 1000
+    },
+    {
+     "key": "zone_reconnection",
+     "line": "Roof-zone connection: gutter check, downpipe and charged line to storage, per zone",
+     "qty": 1,
+     "unit": "zone",
+     "cost": 600
+    },
+    {
+     "key": "first_flush_per_downpipe",
+     "line": "First-flush diverter and leaf screen, per downpipe",
+     "qty": 2,
+     "unit": "downpipe",
+     "cost": 300
+    },
+    {
+     "key": "pump",
+     "line": "Pressure pump for the indoor non-potable supply",
+     "qty": 1,
+     "unit": "ea",
+     "cost": 700
+    },
+    {
+     "key": "mains_changeover",
+     "line": "Automatic rainwater-to-mains changeover for an indoor non-potable supply",
+     "qty": 1,
+     "unit": "ea",
+     "cost": 450
+    },
+    {
+     "key": "pump",
+     "line": "Garden transfer pump",
+     "qty": 1,
+     "unit": "ea",
+     "cost": 700
+    },
+    {
+     "key": "drip_per_m2",
+     "line": "Drip irrigation, per m2 irrigated",
+     "qty": 30,
+     "unit": "m2",
+     "cost": 240
+    }
+   ],
+   "capital_subtotal": 5940,
+   "capital_contingency": 594,
+   "dominated_by": [
+    "O2",
+    "O4",
+    "O6"
+   ]
+  },
+  {
+   "id": "O11",
+   "new_storage_kl": 15,
+   "zones": "R1+R2+R3",
+   "roof_m2": 219.8,
+   "strategy": "garden",
+   "schedule": "year_round",
+   "capital": 6259,
+   "running_year": 729,
+   "imported_kl": 219.0,
+   "priority_months_full": 12,
+   "toilet_laundry_share": 0.0,
+   "energy_peak": 0.1,
+   "peak_month": "Jan",
+   "dry_priority_months_full": 12,
+   "dry_imported_kl": 219.0,
+   "meets": {
+    "PT1": true,
+    "PT2": false
+   },
+   "feasible": false,
+   "bill": [
+    {
+     "key": "tank_shell_per_kl",
+     "line": "Polyethylene rainwater storage, supply only [S31]",
+     "qty": 15,
+     "unit": "kL",
+     "cost": 1950
+    },
+    {
+     "key": "tank_establishment",
+     "line": "Pad, inlet/outlet plumbing, overflow, per tank",
+     "qty": 1,
+     "unit": "tank",
+     "cost": 1000
+    },
+    {
+     "key": "zone_reconnection",
+     "line": "Roof-zone connection: gutter check, downpipe and charged line to storage, per zone",
+     "qty": 2,
+     "unit": "zone",
+     "cost": 1200
+    },
+    {
+     "key": "first_flush_per_downpipe",
+     "line": "First-flush diverter and leaf screen, per downpipe",
+     "qty": 4,
+     "unit": "downpipe",
+     "cost": 600
+    },
+    {
+     "key": "pump",
+     "line": "Garden transfer pump",
+     "qty": 1,
+     "unit": "ea",
+     "cost": 700
+    },
+    {
+     "key": "drip_per_m2",
+     "line": "Drip irrigation, per m2 irrigated",
+     "qty": 30,
+     "unit": "m2",
+     "cost": 240
+    }
+   ],
+   "capital_subtotal": 5690,
+   "capital_contingency": 569,
+   "dominated_by": [
+    "O3",
+    "O5",
+    "O7",
+    "O9",
+    "O13"
+   ]
+  },
+  {
+   "id": "O12",
+   "new_storage_kl": 15,
+   "zones": "R1+R2+R3",
+   "roof_m2": 219.8,
+   "strategy": "indoor",
+   "schedule": "garden_first",
+   "capital": 7524,
+   "running_year": 634,
+   "imported_kl": 164.0,
+   "priority_months_full": 12,
+   "toilet_laundry_share": 0.75,
+   "energy_peak": 0.39,
+   "peak_month": "Nov",
+   "dry_priority_months_full": 7,
+   "dry_imported_kl": 169.0,
+   "meets": {
+    "PT1": true,
+    "PT2": true
+   },
+   "feasible": true,
+   "bill": [
+    {
+     "key": "tank_shell_per_kl",
+     "line": "Polyethylene rainwater storage, supply only [S31]",
+     "qty": 15,
+     "unit": "kL",
+     "cost": 1950
+    },
+    {
+     "key": "tank_establishment",
+     "line": "Pad, inlet/outlet plumbing, overflow, per tank",
+     "qty": 1,
+     "unit": "tank",
+     "cost": 1000
+    },
+    {
+     "key": "zone_reconnection",
+     "line": "Roof-zone connection: gutter check, downpipe and charged line to storage, per zone",
+     "qty": 2,
+     "unit": "zone",
+     "cost": 1200
+    },
+    {
+     "key": "first_flush_per_downpipe",
+     "line": "First-flush diverter and leaf screen, per downpipe",
+     "qty": 4,
+     "unit": "downpipe",
+     "cost": 600
+    },
+    {
+     "key": "pump",
+     "line": "Pressure pump for the indoor non-potable supply",
+     "qty": 1,
+     "unit": "ea",
+     "cost": 700
+    },
+    {
+     "key": "mains_changeover",
+     "line": "Automatic rainwater-to-mains changeover for an indoor non-potable supply",
+     "qty": 1,
+     "unit": "ea",
+     "cost": 450
+    },
+    {
+     "key": "pump",
+     "line": "Garden transfer pump",
+     "qty": 1,
+     "unit": "ea",
+     "cost": 700
+    },
+    {
+     "key": "drip_per_m2",
+     "line": "Drip irrigation, per m2 irrigated",
+     "qty": 30,
+     "unit": "m2",
+     "cost": 240
+    }
+   ],
+   "capital_subtotal": 6840,
+   "capital_contingency": 684,
+   "dominated_by": []
+  },
+  {
+   "id": "O13",
+   "new_storage_kl": 20,
+   "zones": "R1+R3",
+   "roof_m2": 122.2,
+   "strategy": "garden",
+   "schedule": "year_round",
+   "capital": 5984,
+   "running_year": 729,
+   "imported_kl": 219.0,
+   "priority_months_full": 12,
+   "toilet_laundry_share": 0.0,
+   "energy_peak": 0.1,
+   "peak_month": "Jan",
+   "dry_priority_months_full": 12,
+   "dry_imported_kl": 219.0,
+   "meets": {
+    "PT1": true,
+    "PT2": false
+   },
+   "feasible": false,
+   "bill": [
+    {
+     "key": "tank_shell_per_kl",
+     "line": "Polyethylene rainwater storage, supply only [S31]",
+     "qty": 20,
+     "unit": "kL",
+     "cost": 2600
+    },
+    {
+     "key": "tank_establishment",
+     "line": "Pad, inlet/outlet plumbing, overflow, per tank",
+     "qty": 1,
+     "unit": "tank",
+     "cost": 1000
+    },
+    {
+     "key": "zone_reconnection",
+     "line": "Roof-zone connection: gutter check, downpipe and charged line to storage, per zone",
+     "qty": 1,
+     "unit": "zone",
+     "cost": 600
+    },
+    {
+     "key": "first_flush_per_downpipe",
+     "line": "First-flush diverter and leaf screen, per downpipe",
+     "qty": 2,
+     "unit": "downpipe",
+     "cost": 300
+    },
+    {
+     "key": "pump",
+     "line": "Garden transfer pump",
+     "qty": 1,
+     "unit": "ea",
+     "cost": 700
+    },
+    {
+     "key": "drip_per_m2",
+     "line": "Drip irrigation, per m2 irrigated",
+     "qty": 30,
+     "unit": "m2",
+     "cost": 240
+    }
+   ],
+   "capital_subtotal": 5440,
+   "capital_contingency": 544,
+   "dominated_by": [
+    "O3",
+    "O5",
+    "O7",
+    "O9"
+   ]
+  },
+  {
+   "id": "O14",
+   "new_storage_kl": 20,
+   "zones": "R1+R3",
+   "roof_m2": 122.2,
+   "strategy": "indoor",
+   "schedule": "garden_first",
+   "capital": 7249,
+   "running_year": 659,
+   "imported_kl": 173.8,
+   "priority_months_full": 3,
+   "toilet_laundry_share": 0.62,
+   "energy_peak": 0.28,
+   "peak_month": "Jun",
+   "dry_priority_months_full": 3,
+   "dry_imported_kl": 192.6,
+   "meets": {
+    "PT1": false,
+    "PT2": false
+   },
+   "feasible": false,
+   "bill": [
+    {
+     "key": "tank_shell_per_kl",
+     "line": "Polyethylene rainwater storage, supply only [S31]",
+     "qty": 20,
+     "unit": "kL",
+     "cost": 2600
+    },
+    {
+     "key": "tank_establishment",
+     "line": "Pad, inlet/outlet plumbing, overflow, per tank",
+     "qty": 1,
+     "unit": "tank",
+     "cost": 1000
+    },
+    {
+     "key": "zone_reconnection",
+     "line": "Roof-zone connection: gutter check, downpipe and charged line to storage, per zone",
+     "qty": 1,
+     "unit": "zone",
+     "cost": 600
+    },
+    {
+     "key": "first_flush_per_downpipe",
+     "line": "First-flush diverter and leaf screen, per downpipe",
+     "qty": 2,
+     "unit": "downpipe",
+     "cost": 300
+    },
+    {
+     "key": "pump",
+     "line": "Pressure pump for the indoor non-potable supply",
+     "qty": 1,
+     "unit": "ea",
+     "cost": 700
+    },
+    {
+     "key": "mains_changeover",
+     "line": "Automatic rainwater-to-mains changeover for an indoor non-potable supply",
+     "qty": 1,
+     "unit": "ea",
+     "cost": 450
+    },
+    {
+     "key": "pump",
+     "line": "Garden transfer pump",
+     "qty": 1,
+     "unit": "ea",
+     "cost": 700
+    },
+    {
+     "key": "drip_per_m2",
+     "line": "Drip irrigation, per m2 irrigated",
+     "qty": 30,
+     "unit": "m2",
+     "cost": 240
+    }
+   ],
+   "capital_subtotal": 6590,
+   "capital_contingency": 659,
+   "dominated_by": [
+    "O2",
+    "O4",
+    "O6",
+    "O8",
+    "O10"
+   ]
+  },
+  {
+   "id": "O15",
+   "new_storage_kl": 20,
+   "zones": "R1+R2+R3",
+   "roof_m2": 219.8,
+   "strategy": "garden",
+   "schedule": "year_round",
+   "capital": 6974,
+   "running_year": 729,
+   "imported_kl": 219.0,
+   "priority_months_full": 12,
+   "toilet_laundry_share": 0.0,
+   "energy_peak": 0.1,
+   "peak_month": "Jan",
+   "dry_priority_months_full": 12,
+   "dry_imported_kl": 219.0,
+   "meets": {
+    "PT1": true,
+    "PT2": false
+   },
+   "feasible": false,
+   "bill": [
+    {
+     "key": "tank_shell_per_kl",
+     "line": "Polyethylene rainwater storage, supply only [S31]",
+     "qty": 20,
+     "unit": "kL",
+     "cost": 2600
+    },
+    {
+     "key": "tank_establishment",
+     "line": "Pad, inlet/outlet plumbing, overflow, per tank",
+     "qty": 1,
+     "unit": "tank",
+     "cost": 1000
+    },
+    {
+     "key": "zone_reconnection",
+     "line": "Roof-zone connection: gutter check, downpipe and charged line to storage, per zone",
+     "qty": 2,
+     "unit": "zone",
+     "cost": 1200
+    },
+    {
+     "key": "first_flush_per_downpipe",
+     "line": "First-flush diverter and leaf screen, per downpipe",
+     "qty": 4,
+     "unit": "downpipe",
+     "cost": 600
+    },
+    {
+     "key": "pump",
+     "line": "Garden transfer pump",
+     "qty": 1,
+     "unit": "ea",
+     "cost": 700
+    },
+    {
+     "key": "drip_per_m2",
+     "line": "Drip irrigation, per m2 irrigated",
+     "qty": 30,
+     "unit": "m2",
+     "cost": 240
+    }
+   ],
+   "capital_subtotal": 6340,
+   "capital_contingency": 634,
+   "dominated_by": [
+    "O3",
+    "O5",
+    "O7",
+    "O9",
+    "O11",
+    "O13"
+   ]
+  },
+  {
+   "id": "O16",
+   "new_storage_kl": 20,
+   "zones": "R1+R2+R3",
+   "roof_m2": 219.8,
+   "strategy": "indoor",
+   "schedule": "garden_first",
+   "capital": 8239,
+   "running_year": 634,
+   "imported_kl": 164.0,
+   "priority_months_full": 12,
+   "toilet_laundry_share": 0.75,
+   "energy_peak": 0.39,
+   "peak_month": "Nov",
+   "dry_priority_months_full": 9,
+   "dry_imported_kl": 166.7,
+   "meets": {
+    "PT1": true,
+    "PT2": true
+   },
+   "feasible": true,
+   "bill": [
+    {
+     "key": "tank_shell_per_kl",
+     "line": "Polyethylene rainwater storage, supply only [S31]",
+     "qty": 20,
+     "unit": "kL",
+     "cost": 2600
+    },
+    {
+     "key": "tank_establishment",
+     "line": "Pad, inlet/outlet plumbing, overflow, per tank",
+     "qty": 1,
+     "unit": "tank",
+     "cost": 1000
+    },
+    {
+     "key": "zone_reconnection",
+     "line": "Roof-zone connection: gutter check, downpipe and charged line to storage, per zone",
+     "qty": 2,
+     "unit": "zone",
+     "cost": 1200
+    },
+    {
+     "key": "first_flush_per_downpipe",
+     "line": "First-flush diverter and leaf screen, per downpipe",
+     "qty": 4,
+     "unit": "downpipe",
+     "cost": 600
+    },
+    {
+     "key": "pump",
+     "line": "Pressure pump for the indoor non-potable supply",
+     "qty": 1,
+     "unit": "ea",
+     "cost": 700
+    },
+    {
+     "key": "mains_changeover",
+     "line": "Automatic rainwater-to-mains changeover for an indoor non-potable supply",
+     "qty": 1,
+     "unit": "ea",
+     "cost": 450
+    },
+    {
+     "key": "pump",
+     "line": "Garden transfer pump",
+     "qty": 1,
+     "unit": "ea",
+     "cost": 700
+    },
+    {
+     "key": "drip_per_m2",
+     "line": "Drip irrigation, per m2 irrigated",
+     "qty": 30,
+     "unit": "m2",
+     "cost": 240
+    }
+   ],
+   "capital_subtotal": 7490,
+   "capital_contingency": 749,
+   "dominated_by": []
+  }
+ ],
+ "grid_objectives": [
+  "capital",
+  "running_year",
+  "imported_kl",
+  "priority_months_full",
+  "dry_priority_months_full"
+ ],
+ "cheapest_feasible": "O8",
+ "alternatives": {
+  "minimum": "O8",
+  "balanced": "O12",
+  "resilience": "O16"
+ },
+ "storage_curve": [
+  {
+   "new_storage_kl": 0,
+   "total_kl": 5,
+   "imported_kl": 159.0,
+   "overflow_kl": 41.3,
+   "priority_months_full": 3,
+   "toilet_laundry_share": 0.822,
+   "capital": 4279
+  },
+  {
+   "new_storage_kl": 2,
+   "total_kl": 7,
+   "imported_kl": 146.0,
+   "overflow_kl": 21.4,
+   "priority_months_full": 4,
+   "toilet_laundry_share": 1.0,
+   "capital": 5665
+  },
+  {
+   "new_storage_kl": 5,
+   "total_kl": 10,
+   "imported_kl": 146.0,
+   "overflow_kl": 15.8,
+   "priority_months_full": 7,
+   "toilet_laundry_share": 1.0,
+   "capital": 6094
+  },
+  {
+   "new_storage_kl": 8,
+   "total_kl": 13,
+   "imported_kl": 146.0,
+   "overflow_kl": 12.8,
+   "priority_months_full": 8,
+   "toilet_laundry_share": 1.0,
+   "capital": 6523
+  },
+  {
+   "new_storage_kl": 10,
+   "total_kl": 15,
+   "imported_kl": 146.0,
+   "overflow_kl": 10.8,
+   "priority_months_full": 8,
+   "toilet_laundry_share": 1.0,
+   "capital": 6809
+  },
+  {
+   "new_storage_kl": 12,
+   "total_kl": 17,
+   "imported_kl": 146.0,
+   "overflow_kl": 8.8,
+   "priority_months_full": 9,
+   "toilet_laundry_share": 1.0,
+   "capital": 7095
+  },
+  {
+   "new_storage_kl": 15,
+   "total_kl": 20,
+   "imported_kl": 146.0,
+   "overflow_kl": 5.8,
+   "priority_months_full": 9,
+   "toilet_laundry_share": 1.0,
+   "capital": 7524
+  },
+  {
+   "new_storage_kl": 20,
+   "total_kl": 25,
+   "imported_kl": 146.0,
+   "overflow_kl": 2.5,
+   "priority_months_full": 12,
+   "toilet_laundry_share": 1.0,
+   "capital": 8239
+  },
+  {
+   "new_storage_kl": 25,
+   "total_kl": 30,
+   "imported_kl": 146.0,
+   "overflow_kl": 2.5,
+   "priority_months_full": 12,
+   "toilet_laundry_share": 1.0,
+   "capital": 8954
+  },
+  {
+   "new_storage_kl": 30,
+   "total_kl": 35,
+   "imported_kl": 146.0,
+   "overflow_kl": 2.5,
+   "priority_months_full": 12,
+   "toilet_laundry_share": 1.0,
+   "capital": 10769
+  }
+ ],
+ "hydraulics": {
+  "fixtures": {
+   "toilet cistern refill": 7.0,
+   "washing machine fill": 11.0,
+   "garden drip zone": 6.0
+  },
+  "design_flow_lpm": 18.0,
+  "static_lift_m": 1.8,
+  "static_m": 1.8,
+  "outlet_m": 15.0,
+  "friction": 0.25,
+  "total_head_m": 21.0,
+  "hydraulic_w": 62,
+  "input_w": 155,
+  "duty_kwh_per_kl": 0.143,
+  "empirical_kwh_per_kl": 1.5
+ },
+ "energy_example": {
+  "choice": "+10 kL, zones R1+R2+R3, +0 m2 mixed, indoor, year_round, compost/insects",
+  "peak_month": "Jul",
+  "modelled": 1.02,
+  "declared": 1.02,
+  "monthly": [
+   {
+    "month": "Jan",
+    "pump": 0.31,
+    "modules": 0.0,
+    "total": 0.31
+   },
+   {
+    "month": "Feb",
+    "pump": 0.33,
+    "modules": 0.0,
+    "total": 0.33
+   },
+   {
+    "month": "Mar",
+    "pump": 0.35,
+    "modules": 0.06,
+    "total": 0.41
+   },
+   {
+    "month": "Apr",
+    "pump": 0.34,
+    "modules": 0.3,
+    "total": 0.64
+   },
+   {
+    "month": "May",
+    "pump": 0.31,
+    "modules": 0.48,
+    "total": 0.79
+   },
+   {
+    "month": "Jun",
+    "pump": 0.3,
+    "modules": 0.66,
+    "total": 0.96
+   },
+   {
+    "month": "Jul",
+    "pump": 0.3,
+    "modules": 0.72,
+    "total": 1.02
+   },
+   {
+    "month": "Aug",
+    "pump": 0.3,
+    "modules": 0.66,
+    "total": 0.96
+   },
+   {
+    "month": "Sep",
+    "pump": 0.34,
+    "modules": 0.48,
+    "total": 0.82
+   },
+   {
+    "month": "Oct",
+    "pump": 0.36,
+    "modules": 0.3,
+    "total": 0.66
+   },
+   {
+    "month": "Nov",
+    "pump": 0.39,
+    "modules": 0.12,
+    "total": 0.51
+   },
+   {
+    "month": "Dec",
+    "pump": 0.38,
+    "modules": 0.0,
+    "total": 0.38
+   }
+  ]
+ },
+ "sensitivity": {
+  "option": "O8",
+  "rows": [
+   {
+    "case": "central",
+    "imported_kl": 164.0,
+    "priority_months_full": 12,
+    "toilet_laundry_share": 0.75,
+    "running_year": 634
+   },
+   {
+    "case": "demand +20 %",
+    "imported_kl": 196.8,
+    "priority_months_full": 12,
+    "toilet_laundry_share": 0.75,
+    "running_year": 748
+   },
+   {
+    "case": "demand \u221220 %",
+    "imported_kl": 131.2,
+    "priority_months_full": 12,
+    "toilet_laundry_share": 0.75,
+    "running_year": 521
+   },
+   {
+    "case": "dry year",
+    "imported_kl": 170.3,
+    "priority_months_full": 5,
+    "toilet_laundry_share": 0.67,
+    "running_year": 650
+   },
+   {
+    "case": "capital prices +20 %",
+    "capital": 8171
+   },
+   {
+    "case": "yield \u221230 %",
+    "fresh_kg": 38
+   }
+  ],
+  "capital": 6809,
+  "fresh_kg": 54
+ },
+ "chosen_monthly": [
+  {
+   "month": "Jan",
+   "rain": 40.0,
+   "eto": 180.0,
+   "inflow": 6.68,
+   "overflow": 0.0,
+   "indoor": 18.6,
+   "tank_indoor": 0.0,
+   "imported": 18.6,
+   "garden_gross": 4.63,
+   "garden_tank": 4.63,
+   "garden_mains": 0.0,
+   "garden_unmet": 0.0,
+   "tank_end": 7.34,
+   "toilet_laundry": 6.2,
+   "toilet_laundry_tank": 0.0,
+   "energy_declared": 0.1
+  },
+  {
+   "month": "Feb",
+   "rain": 40.0,
+   "eto": 150.0,
+   "inflow": 6.68,
+   "overflow": 0.0,
+   "indoor": 16.8,
+   "tank_indoor": 0.0,
+   "imported": 16.8,
+   "garden_gross": 3.78,
+   "garden_tank": 3.78,
+   "garden_mains": 0.0,
+   "garden_unmet": 0.0,
+   "tank_end": 10.24,
+   "toilet_laundry": 5.6,
+   "toilet_laundry_tank": 0.0,
+   "energy_declared": 0.1
+  },
+  {
+   "month": "Mar",
+   "rain": 50.0,
+   "eto": 120.0,
+   "inflow": 8.44,
+   "overflow": 3.68,
+   "indoor": 18.6,
+   "tank_indoor": 6.2,
+   "imported": 12.4,
+   "garden_gross": 2.73,
+   "garden_tank": 2.73,
+   "garden_mains": 0.0,
+   "garden_unmet": 0.0,
+   "tank_end": 6.07,
+   "toilet_laundry": 6.2,
+   "toilet_laundry_tank": 6.2,
+   "energy_declared": 0.36
+  },
+  {
+   "month": "Apr",
+   "rain": 50.0,
+   "eto": 80.0,
+   "inflow": 8.44,
+   "overflow": 0.0,
+   "indoor": 18.0,
+   "tank_indoor": 6.0,
+   "imported": 12.0,
+   "garden_gross": 1.6,
+   "garden_tank": 1.6,
+   "garden_mains": 0.0,
+   "garden_unmet": 0.0,
+   "tank_end": 6.91,
+   "toilet_laundry": 6.0,
+   "toilet_laundry_tank": 6.0,
+   "energy_declared": 0.34
+  },
+  {
+   "month": "May",
+   "rain": 60.0,
+   "eto": 50.0,
+   "inflow": 10.2,
+   "overflow": 2.1,
+   "indoor": 18.6,
+   "tank_indoor": 6.2,
+   "imported": 12.4,
+   "garden_gross": 0.55,
+   "garden_tank": 0.55,
+   "garden_mains": 0.0,
+   "garden_unmet": 0.0,
+   "tank_end": 8.25,
+   "toilet_laundry": 6.2,
+   "toilet_laundry_tank": 6.2,
+   "energy_declared": 0.31
+  },
+  {
+   "month": "Jun",
+   "rain": 60.0,
+   "eto": 40.0,
+   "inflow": 10.2,
+   "overflow": 3.45,
+   "indoor": 18.0,
+   "tank_indoor": 6.0,
+   "imported": 12.0,
+   "garden_gross": 0.0,
+   "garden_tank": 0.0,
+   "garden_mains": 0.0,
+   "garden_unmet": 0.0,
+   "tank_end": 9.0,
+   "toilet_laundry": 6.0,
+   "toilet_laundry_tank": 6.0,
+   "energy_declared": 0.3
+  },
+  {
+   "month": "Jul",
+   "rain": 60.0,
+   "eto": 40.0,
+   "inflow": 10.2,
+   "overflow": 4.2,
+   "indoor": 18.6,
+   "tank_indoor": 6.2,
+   "imported": 12.4,
+   "garden_gross": 0.0,
+   "garden_tank": 0.0,
+   "garden_mains": 0.0,
+   "garden_unmet": 0.0,
+   "tank_end": 8.8,
+   "toilet_laundry": 6.2,
+   "toilet_laundry_tank": 6.2,
+   "energy_declared": 0.3
+  },
+  {
+   "month": "Aug",
+   "rain": 60.0,
+   "eto": 60.0,
+   "inflow": 10.2,
+   "overflow": 4.0,
+   "indoor": 18.6,
+   "tank_indoor": 6.2,
+   "imported": 12.4,
+   "garden_gross": 0.0,
+   "garden_tank": 0.0,
+   "garden_mains": 0.0,
+   "garden_unmet": 0.0,
+   "tank_end": 8.8,
+   "toilet_laundry": 6.2,
+   "toilet_laundry_tank": 6.2,
+   "energy_declared": 0.3
+  },
+  {
+   "month": "Sep",
+   "rain": 50.0,
+   "eto": 80.0,
+   "inflow": 8.44,
+   "overflow": 2.24,
+   "indoor": 18.0,
+   "tank_indoor": 6.0,
+   "imported": 12.0,
+   "garden_gross": 1.6,
+   "garden_tank": 1.6,
+   "garden_mains": 0.0,
+   "garden_unmet": 0.0,
+   "tank_end": 7.4,
+   "toilet_laundry": 6.0,
+   "toilet_laundry_tank": 6.0,
+   "energy_declared": 0.34
+  },
+  {
+   "month": "Oct",
+   "rain": 50.0,
+   "eto": 120.0,
+   "inflow": 8.44,
+   "overflow": 0.84,
+   "indoor": 18.6,
+   "tank_indoor": 6.2,
+   "imported": 12.4,
+   "garden_gross": 2.73,
+   "garden_tank": 2.73,
+   "garden_mains": 0.0,
+   "garden_unmet": 0.0,
+   "tank_end": 6.07,
+   "toilet_laundry": 6.2,
+   "toilet_laundry_tank": 6.2,
+   "energy_declared": 0.36
+  },
+  {
+   "month": "Nov",
+   "rain": 40.0,
+   "eto": 150.0,
+   "inflow": 6.68,
+   "overflow": 0.0,
+   "indoor": 18.0,
+   "tank_indoor": 6.0,
+   "imported": 12.0,
+   "garden_gross": 3.78,
+   "garden_tank": 3.78,
+   "garden_mains": 0.0,
+   "garden_unmet": 0.0,
+   "tank_end": 2.96,
+   "toilet_laundry": 6.0,
+   "toilet_laundry_tank": 6.0,
+   "energy_declared": 0.39
+  },
+  {
+   "month": "Dec",
+   "rain": 40.0,
+   "eto": 170.0,
+   "inflow": 6.68,
+   "overflow": 0.0,
+   "indoor": 18.6,
+   "tank_indoor": 0.0,
+   "imported": 18.6,
+   "garden_gross": 4.35,
+   "garden_tank": 4.35,
+   "garden_mains": 0.0,
+   "garden_unmet": 0.0,
+   "tank_end": 5.29,
+   "toilet_laundry": 6.2,
+   "toilet_laundry_tank": 0.0,
+   "energy_declared": 0.1
+  }
+ ],
+ "chosen_dry_monthly": [
+  {
+   "month": "Jan",
+   "rain": 24.0,
+   "eto": 189.0,
+   "inflow": 3.87,
+   "overflow": 0.0,
+   "indoor": 18.6,
+   "tank_indoor": 0.0,
+   "imported": 18.6,
+   "garden_gross": 5.21,
+   "garden_tank": 5.21,
+   "garden_mains": 0.0,
+   "garden_unmet": 0.0,
+   "tank_end": 3.95,
+   "toilet_laundry": 6.2,
+   "toilet_laundry_tank": 0.0,
+   "energy_declared": 0.12
+  },
+  {
+   "month": "Feb",
+   "rain": 24.0,
+   "eto": 157.5,
+   "inflow": 3.87,
+   "overflow": 0.0,
+   "indoor": 16.8,
+   "tank_indoor": 0.0,
+   "imported": 16.8,
+   "garden_gross": 4.32,
+   "garden_tank": 4.32,
+   "garden_mains": 0.0,
+   "garden_unmet": 0.0,
+   "tank_end": 3.5,
+   "toilet_laundry": 5.6,
+   "toilet_laundry_tank": 0.0,
+   "energy_declared": 0.11
+  },
+  {
+   "month": "Mar",
+   "rain": 30.0,
+   "eto": 126.0,
+   "inflow": 4.92,
+   "overflow": 0.0,
+   "indoor": 18.6,
+   "tank_indoor": 6.2,
+   "imported": 12.4,
+   "garden_gross": 3.3,
+   "garden_tank": 2.23,
+   "garden_mains": 0.0,
+   "garden_unmet": 1.08,
+   "tank_end": 0.0,
+   "toilet_laundry": 6.2,
+   "toilet_laundry_tank": 6.2,
+   "energy_declared": 0.35
+  },
+  {
+   "month": "Apr",
+   "rain": 30.0,
+   "eto": 84.0,
+   "inflow": 4.92,
+   "overflow": 0.0,
+   "indoor": 18.0,
+   "tank_indoor": 4.92,
+   "imported": 13.08,
+   "garden_gross": 2.11,
+   "garden_tank": 0.0,
+   "garden_mains": 0.0,
+   "garden_unmet": 2.11,
+   "tank_end": 0.0,
+   "toilet_laundry": 6.0,
+   "toilet_laundry_tank": 4.92,
+   "energy_declared": 0.25
+  },
+  {
+   "month": "May",
+   "rain": 36.0,
+   "eto": 52.5,
+   "inflow": 5.98,
+   "overflow": 0.0,
+   "indoor": 18.6,
+   "tank_indoor": 5.98,
+   "imported": 12.62,
+   "garden_gross": 1.1,
+   "garden_tank": 0.0,
+   "garden_mains": 0.0,
+   "garden_unmet": 1.1,
+   "tank_end": 0.0,
+   "toilet_laundry": 6.2,
+   "toilet_laundry_tank": 5.98,
+   "energy_declared": 0.29
+  },
+  {
+   "month": "Jun",
+   "rain": 36.0,
+   "eto": 42.0,
+   "inflow": 5.98,
+   "overflow": 0.0,
+   "indoor": 18.0,
+   "tank_indoor": 5.98,
+   "imported": 12.02,
+   "garden_gross": 0.0,
+   "garden_tank": 0.0,
+   "garden_mains": 0.0,
+   "garden_unmet": 0.0,
+   "tank_end": 0.0,
+   "toilet_laundry": 6.0,
+   "toilet_laundry_tank": 5.98,
+   "energy_declared": 0.3
+  },
+  {
+   "month": "Jul",
+   "rain": 36.0,
+   "eto": 42.0,
+   "inflow": 5.98,
+   "overflow": 0.0,
+   "indoor": 18.6,
+   "tank_indoor": 5.98,
+   "imported": 12.62,
+   "garden_gross": 0.0,
+   "garden_tank": 0.0,
+   "garden_mains": 0.0,
+   "garden_unmet": 0.0,
+   "tank_end": 0.0,
+   "toilet_laundry": 6.2,
+   "toilet_laundry_tank": 5.98,
+   "energy_declared": 0.29
+  },
+  {
+   "month": "Aug",
+   "rain": 36.0,
+   "eto": 63.0,
+   "inflow": 5.98,
+   "overflow": 0.0,
+   "indoor": 18.6,
+   "tank_indoor": 5.98,
+   "imported": 12.62,
+   "garden_gross": 0.0,
+   "garden_tank": 0.0,
+   "garden_mains": 0.0,
+   "garden_unmet": 0.0,
+   "tank_end": 0.0,
+   "toilet_laundry": 6.2,
+   "toilet_laundry_tank": 5.98,
+   "energy_declared": 0.29
+  },
+  {
+   "month": "Sep",
+   "rain": 30.0,
+   "eto": 84.0,
+   "inflow": 4.92,
+   "overflow": 0.0,
+   "indoor": 18.0,
+   "tank_indoor": 4.92,
+   "imported": 13.08,
+   "garden_gross": 2.11,
+   "garden_tank": 0.0,
+   "garden_mains": 0.0,
+   "garden_unmet": 2.11,
+   "tank_end": 0.0,
+   "toilet_laundry": 6.0,
+   "toilet_laundry_tank": 4.92,
+   "energy_declared": 0.25
+  },
+  {
+   "month": "Oct",
+   "rain": 30.0,
+   "eto": 126.0,
+   "inflow": 4.92,
+   "overflow": 0.0,
+   "indoor": 18.6,
+   "tank_indoor": 4.92,
+   "imported": 13.68,
+   "garden_gross": 3.3,
+   "garden_tank": 0.0,
+   "garden_mains": 0.0,
+   "garden_unmet": 3.3,
+   "tank_end": 0.0,
+   "toilet_laundry": 6.2,
+   "toilet_laundry_tank": 4.92,
+   "energy_declared": 0.24
+  },
+  {
+   "month": "Nov",
+   "rain": 24.0,
+   "eto": 157.5,
+   "inflow": 3.87,
+   "overflow": 0.0,
+   "indoor": 18.0,
+   "tank_indoor": 3.87,
+   "imported": 14.13,
+   "garden_gross": 4.32,
+   "garden_tank": 0.0,
+   "garden_mains": 0.0,
+   "garden_unmet": 4.32,
+   "tank_end": 0.0,
+   "toilet_laundry": 6.0,
+   "toilet_laundry_tank": 3.87,
+   "energy_declared": 0.19
+  },
+  {
+   "month": "Dec",
+   "rain": 24.0,
+   "eto": 178.5,
+   "inflow": 3.87,
+   "overflow": 0.0,
+   "indoor": 18.6,
+   "tank_indoor": 0.0,
+   "imported": 18.6,
+   "garden_gross": 4.91,
+   "garden_tank": 3.87,
+   "garden_mains": 0.0,
+   "garden_unmet": 1.04,
+   "tank_end": 0.0,
+   "toilet_laundry": 6.2,
+   "toilet_laundry_tank": 0.0,
+   "energy_declared": 0.09
+  }
+ ]
+}

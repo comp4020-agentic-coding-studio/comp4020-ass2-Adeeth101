@@ -1,0 +1,12 @@
+"# SYNTHETIC CASE DATA - SLOP4761 Release B, Alice Springs, April 2027 to March 2028. Generated, not measured."
+rank,month,fixtures,peak_lpm,duration_min
+1,2027-05,shower + basin + kitchen tap,21.5,4
+2,2027-06,kitchen tap + toilet cistern refill + basin,18.2,8
+3,2027-06,ensuite shower + washing machine fill,18.0,6
+4,2028-03,toilet cistern refill + washing machine fill,17.9,5
+5,2027-07,basin + washing machine fill,16.4,8
+6,2027-07,kitchen tap + shower,16.1,5
+7,2027-10,ensuite shower + kitchen tap,15.7,3
+8,2027-10,toilet cistern refill + shower,15.7,8
+9,2027-10,shower + kitchen tap,14.9,5
+10,2027-07,shower + basin,13.2,8

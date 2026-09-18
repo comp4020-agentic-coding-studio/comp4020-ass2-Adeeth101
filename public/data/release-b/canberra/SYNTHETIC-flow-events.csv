@@ -1,0 +1,12 @@
+"# SYNTHETIC CASE DATA - SLOP4761 Release B, Canberra, April 2027 to March 2028. Generated, not measured."
+rank,month,fixtures,peak_lpm,duration_min
+1,2027-12,shower + basin + washing machine fill,23.7,3
+2,2028-03,basin + kitchen tap + washing machine fill,20.5,2
+3,2027-10,washing machine fill + toilet cistern refill,17.1,8
+4,2027-04,washing machine fill + toilet cistern refill,16.4,4
+5,2027-12,basin + washing machine fill,15.0,2
+6,2027-11,toilet cistern refill + shower,14.9,5
+7,2027-05,shower + kitchen tap,14.1,5
+8,2028-02,basin + shower,12.7,6
+9,2027-10,toilet cistern refill + basin,11.9,2
+10,2028-03,toilet cistern refill + basin,11.7,4

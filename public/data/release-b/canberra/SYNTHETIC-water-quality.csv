@@ -1,0 +1,6 @@
+"# SYNTHETIC CASE DATA - SLOP4761 Release B, Canberra, April 2027 to March 2028. Generated, not measured."
+month,source,turbidity_ntu,e_coli_mpn_100ml,hardness_mg_l_caco3,tds_mg_l,ph,iron_mg_l,note
+2027-05,tank T1,1.2,0,18,45,6.9,0.02,dry spell
+2027-10,tank T1,6.5,12,15,40,6.7,0.05,two days after 38 mm of rain
+2028-01,tank T1,2.1,2,20,52,7.0,0.03,
+2027-10,mains,0.3,0,45,90,7.6,0.01,reference sample

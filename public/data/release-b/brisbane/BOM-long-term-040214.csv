@@ -1,0 +1,14 @@
+"# SOURCED: Bureau of Meteorology, climate statistics for station 040214 (Brisbane Regional Office), all years of record. ETo derived by FAO-56 Hargreaves."
+month,rain_mm,tmax_c,tmin_c,eto_mm,effective_rain_mm
+Jan,159.6,29.4,20.7,158,102.7
+Feb,158.3,29.0,20.6,129,101.6
+Mar,140.7,28.0,19.4,124,87.6
+Apr,92.5,26.1,16.6,96,49.0
+May,73.7,23.2,13.3,75,34.2
+Jun,67.8,20.9,10.9,60,30.7
+Jul,56.5,20.4,9.5,66,23.9
+Aug,45.9,21.8,10.3,85,17.5
+Sep,45.7,24.1,12.9,110,17.4
+Oct,75.4,26.1,15.8,137,35.3
+Nov,97.0,27.8,18.1,150,52.6
+Dec,133.3,29.1,19.8,163,81.6

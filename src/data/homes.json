@@ -1,0 +1,3762 @@
+{
+ "generated_by": "research/model/export_cases.py",
+ "homes": [
+  {
+   "id": "S1",
+   "slug": "canberra",
+   "short": "Canberra",
+   "family": "Taylor",
+   "household": "Alex and Morgan Taylor and their two children, aged 9 and 12",
+   "place": "Canberra, ACT",
+   "dwelling": "Single-storey brick-veneer house (1978) with a detached garage, carport and garden shed",
+   "tenure": "Owner-occupied residential lease. No body corporate.",
+   "station": "070014",
+   "climate_label": "Cool-temperate inland suburban",
+   "parcel_m2": 800,
+   "mains": true,
+   "plan": {
+    "extent": [
+     20.0,
+     40.0
+    ],
+    "cover": [
+     {
+      "id": "B1",
+      "x": 1.2,
+      "y": 6.0,
+      "w": 11.6,
+      "h": 14.5,
+      "label": "House",
+      "kind": "building",
+      "note": "single storey, tiled roof",
+      "area": 168.2,
+      "roof": {
+       "x": 0.6,
+       "y": 5.4,
+       "w": 12.8,
+       "h": 15.7,
+       "area": 201.0
+      }
+     },
+     {
+      "id": "B2",
+      "x": 14.0,
+      "y": 22.0,
+      "w": 6.0,
+      "h": 6.0,
+      "label": "Garage",
+      "kind": "building",
+      "note": "boundary wall to the east, steel roof",
+      "area": 36.0,
+      "roof": {
+       "x": 13.7,
+       "y": 21.7,
+       "w": 6.3,
+       "h": 6.6,
+       "area": 41.6
+      }
+     },
+     {
+      "id": "B3",
+      "x": 0.5,
+      "y": 36.3,
+      "w": 3.0,
+      "h": 2.5,
+      "label": "Shed",
+      "kind": "building",
+      "note": "steel, no gutter",
+      "area": 7.5,
+      "roof": {
+       "x": 0.3,
+       "y": 36.1,
+       "w": 3.4,
+       "h": 2.9,
+       "area": 9.9
+      }
+     },
+     {
+      "id": "H1",
+      "x": 16.6,
+      "y": 0.0,
+      "w": 3.4,
+      "h": 22.0,
+      "label": "Driveway",
+      "kind": "hardstand",
+      "note": "concrete, falls to the street",
+      "area": 74.8
+     },
+     {
+      "id": "H2",
+      "x": 1.2,
+      "y": 20.5,
+      "w": 11.6,
+      "h": 3.0,
+      "label": "Terrace",
+      "kind": "hardstand",
+      "note": "paved, north of the house",
+      "area": 34.8
+     },
+     {
+      "id": "G1",
+      "x": 0.0,
+      "y": 0.0,
+      "w": 16.6,
+      "h": 6.0,
+      "label": "Front garden",
+      "kind": "growing",
+      "note": "lawn and shrubs; the house shades it from May to August",
+      "area": 99.6
+     },
+     {
+      "id": "G2",
+      "x": 12.8,
+      "y": 6.0,
+      "w": 3.8,
+      "h": 14.5,
+      "label": "East side bed",
+      "kind": "growing",
+      "note": "morning sun; meters and hot-water unit on this wall",
+      "area": 55.1
+     },
+     {
+      "id": "G3",
+      "x": 0.0,
+      "y": 23.5,
+      "w": 14.0,
+      "h": 9.5,
+      "label": "Back lawn",
+      "kind": "growing",
+      "note": "where the children play; the family keeps at least 100 m\u00b2 of it as lawn",
+      "area": 133.0
+     },
+     {
+      "id": "G4",
+      "x": 4.0,
+      "y": 33.0,
+      "w": 10.0,
+      "h": 7.0,
+      "label": "North beds",
+      "kind": "growing",
+      "note": "warmest aspect; the two raised beds are here",
+      "area": 70.0
+     },
+     {
+      "id": "G5",
+      "x": 14.0,
+      "y": 28.0,
+      "w": 6.0,
+      "h": 12.0,
+      "label": "Orchard strip",
+      "kind": "growing",
+      "note": "apple, pear and plum",
+      "area": 72.0
+     },
+     {
+      "id": "G6",
+      "x": 0.0,
+      "y": 33.0,
+      "w": 4.0,
+      "h": 3.3,
+      "label": "Herb strip",
+      "kind": "growing",
+      "note": "beside the shed; the neighbour's eucalypt shades it after 2 pm",
+      "area": 13.2
+     }
+    ],
+    "roofover": [
+     {
+      "id": "V1",
+      "x": 16.6,
+      "y": 7.0,
+      "w": 3.4,
+      "h": 7.0,
+      "label": "Carport",
+      "kind": "roofover",
+      "note": "steel roof over the driveway",
+      "area": 23.8,
+      "roof": {
+       "x": 16.4,
+       "y": 6.8,
+       "w": 3.6,
+       "h": 7.4,
+       "area": 26.6
+      }
+     },
+     {
+      "id": "V2",
+      "x": 4.0,
+      "y": 21.1,
+      "w": 6.0,
+      "h": 2.4,
+      "label": "Verandah",
+      "kind": "roofover",
+      "note": "polycarbonate over part of the terrace",
+      "area": 14.4,
+      "roof": {
+       "x": 3.8,
+       "y": 21.1,
+       "w": 6.4,
+       "h": 2.6,
+       "area": 16.6
+      }
+     }
+    ],
+    "circles": [
+     {
+      "id": "T1",
+      "cx": 15.0,
+      "cy": 29.1,
+      "r": 0.9,
+      "label": "Existing 5 kL tank",
+      "kind": "tank",
+      "note": "poly, 2009, garage roof only, gravity tap",
+      "kl": 5
+     },
+     {
+      "id": "E1",
+      "cx": 17.2,
+      "cy": 31.0,
+      "r": 2.1,
+      "label": "Apple",
+      "kind": "tree",
+      "note": "mature"
+     },
+     {
+      "id": "E2",
+      "cx": 17.2,
+      "cy": 35.0,
+      "r": 1.9,
+      "label": "Pear",
+      "kind": "tree",
+      "note": "mature"
+     },
+     {
+      "id": "E3",
+      "cx": 17.3,
+      "cy": 38.4,
+      "r": 1.5,
+      "label": "Plum",
+      "kind": "tree",
+      "note": "partly shaded by the pear"
+     },
+     {
+      "id": "E4",
+      "cx": -2.5,
+      "cy": 31.0,
+      "r": 5.0,
+      "label": "Neighbour's eucalypt",
+      "kind": "tree",
+      "note": "off-site; shades the west of the back garden from about 2 pm",
+      "offsite": true
+     }
+    ],
+    "zones": [
+     {
+      "id": "R1",
+      "label": "House, north plane",
+      "x": 0.6,
+      "y": 13.25,
+      "w": 12.8,
+      "h": 7.85,
+      "plan_m2": 100,
+      "downpipes": [
+       [
+        0.6,
+        21.1
+       ],
+       [
+        13.4,
+        21.1
+       ]
+      ],
+      "connected_now": false,
+      "gutter": true,
+      "note": "gutters renewed 2021; both downpipes go to stormwater"
+     },
+     {
+      "id": "R2",
+      "label": "House, south plane",
+      "x": 0.6,
+      "y": 5.4,
+      "w": 12.8,
+      "h": 7.85,
+      "plan_m2": 100,
+      "downpipes": [
+       [
+        0.6,
+        5.4
+       ],
+       [
+        13.4,
+        5.4
+       ]
+      ],
+      "connected_now": false,
+      "gutter": true,
+      "note": "downpipes at the two front corners"
+     },
+     {
+      "id": "R3",
+      "label": "Garage",
+      "x": 13.7,
+      "y": 21.7,
+      "w": 6.3,
+      "h": 6.6,
+      "plan_m2": 42,
+      "downpipes": [
+       [
+        14.9,
+        28.3
+       ]
+      ],
+      "connected_now": true,
+      "gutter": true,
+      "note": "the only zone plumbed to the 5 kL tank"
+     },
+     {
+      "id": "R4",
+      "label": "Carport",
+      "x": 16.4,
+      "y": 6.8,
+      "w": 3.6,
+      "h": 7.4,
+      "plan_m2": 27,
+      "downpipes": [
+       [
+        16.4,
+        14.2
+       ]
+      ],
+      "connected_now": false,
+      "gutter": true,
+      "note": "drains onto the driveway"
+     },
+     {
+      "id": "R5",
+      "label": "Verandah",
+      "x": 3.8,
+      "y": 21.1,
+      "w": 6.4,
+      "h": 2.6,
+      "plan_m2": 17,
+      "downpipes": [
+       [
+        3.8,
+        23.7
+       ]
+      ],
+      "connected_now": false,
+      "gutter": true,
+      "note": "gutter to a garden bed"
+     },
+     {
+      "id": "R6",
+      "label": "Shed",
+      "x": 0.3,
+      "y": 36.1,
+      "w": 3.4,
+      "h": 2.9,
+      "plan_m2": 10,
+      "downpipes": [],
+      "connected_now": false,
+      "gutter": false,
+      "note": "no gutter fitted"
+     }
+    ],
+    "points": [
+     {
+      "id": "P1",
+      "x": 16.2,
+      "y": 0.4,
+      "label": "Water meter",
+      "kind": "service",
+      "status": "known",
+      "note": ""
+     },
+     {
+      "id": "P2",
+      "x": 16.2,
+      "y": 9.0,
+      "label": "Gas meter and hot-water unit",
+      "kind": "service",
+      "status": "known",
+      "note": ""
+     },
+     {
+      "id": "P3",
+      "x": 12.9,
+      "y": 11.0,
+      "label": "Switchboard",
+      "kind": "service",
+      "status": "known",
+      "note": ""
+     },
+     {
+      "id": "P4",
+      "x": 2.0,
+      "y": 5.5,
+      "label": "Sewer connection (approximate)",
+      "kind": "service",
+      "status": "unknown",
+      "note": "the house drain is assumed to leave the south-west corner; not located"
+     },
+     {
+      "id": "P5",
+      "x": 18.3,
+      "y": 0.3,
+      "label": "Stormwater to kerb",
+      "kind": "service",
+      "status": "known",
+      "note": ""
+     },
+     {
+      "id": "L1",
+      "x": 10.0,
+      "y": 0.5,
+      "label": "RL 100.0",
+      "kind": "level",
+      "status": "estimate",
+      "note": ""
+     },
+     {
+      "id": "L2",
+      "x": 10.0,
+      "y": 39.5,
+      "label": "RL 101.2",
+      "kind": "level",
+      "status": "estimate",
+      "note": ""
+     },
+     {
+      "id": "A1",
+      "x": 18.3,
+      "y": 1.0,
+      "label": "Vehicle access",
+      "kind": "access",
+      "status": "known",
+      "note": ""
+     }
+    ],
+    "easements": [
+     {
+      "id": "X1",
+      "x": 0.0,
+      "y": 38.2,
+      "w": 20.0,
+      "h": 1.8,
+      "label": "Sewer easement",
+      "note": "1.8 m along the rear boundary on the title; main depth and alignment not verified",
+      "status": "estimate"
+     }
+    ]
+   },
+   "floor": {
+    "extent": [
+     11.6,
+     14.5
+    ],
+    "rooms": [
+     {
+      "id": "F1",
+      "x": 0.0,
+      "y": 0.0,
+      "w": 3.9,
+      "h": 4.2,
+      "label": "Bedroom 2",
+      "kind": "room",
+      "note": "",
+      "area": 16.4
+     },
+     {
+      "id": "F2",
+      "x": 3.9,
+      "y": 0.0,
+      "w": 3.9,
+      "h": 4.2,
+      "label": "Bedroom 3",
+      "kind": "room",
+      "note": "",
+      "area": 16.4
+     },
+     {
+      "id": "F3",
+      "x": 7.8,
+      "y": 0.0,
+      "w": 3.8,
+      "h": 4.2,
+      "label": "Bedroom 1",
+      "kind": "room",
+      "note": "",
+      "area": 16.0
+     },
+     {
+      "id": "F4",
+      "x": 0.0,
+      "y": 4.2,
+      "w": 11.6,
+      "h": 1.2,
+      "label": "Hall",
+      "kind": "room",
+      "note": "",
+      "area": 13.9
+     },
+     {
+      "id": "F5",
+      "x": 0.0,
+      "y": 5.4,
+      "w": 2.8,
+      "h": 3.6,
+      "label": "Bathroom",
+      "kind": "wet",
+      "note": "shower over bath, basin",
+      "area": 10.1
+     },
+     {
+      "id": "F6",
+      "x": 2.8,
+      "y": 5.4,
+      "w": 1.4,
+      "h": 3.6,
+      "label": "WC",
+      "kind": "wet",
+      "note": "",
+      "area": 5.0
+     },
+     {
+      "id": "F7",
+      "x": 4.2,
+      "y": 5.4,
+      "w": 4.8,
+      "h": 3.6,
+      "label": "Study",
+      "kind": "room",
+      "note": "",
+      "area": 17.3
+     },
+     {
+      "id": "F8",
+      "x": 9.0,
+      "y": 5.4,
+      "w": 2.6,
+      "h": 3.6,
+      "label": "Laundry",
+      "kind": "wet",
+      "note": "tub and washing machine; door to the east side",
+      "area": 9.4
+     },
+     {
+      "id": "F9",
+      "x": 0.0,
+      "y": 9.0,
+      "w": 7.6,
+      "h": 5.5,
+      "label": "Living and dining",
+      "kind": "room",
+      "note": "",
+      "area": 41.8
+     },
+     {
+      "id": "F10",
+      "x": 7.6,
+      "y": 9.0,
+      "w": 4.0,
+      "h": 5.5,
+      "label": "Kitchen",
+      "kind": "wet",
+      "note": "sink and dishwasher on the east wall",
+      "area": 22.0
+     }
+    ],
+    "points": [
+     {
+      "id": "Q1",
+      "x": 11.6,
+      "y": 7.2,
+      "label": "Laundry door",
+      "kind": "access",
+      "status": "known",
+      "note": ""
+     },
+     {
+      "id": "Q2",
+      "x": 11.6,
+      "y": 3.0,
+      "label": "Hot-water unit (external)",
+      "kind": "service",
+      "status": "known",
+      "note": ""
+     }
+    ]
+   },
+   "parcel": null,
+   "scheme": null,
+   "areas": {
+    "parcel_m2": 800,
+    "drawn_m2": 800.0,
+    "footprint_m2": 211.7,
+    "roof_plan_m2": 295.7,
+    "roof_zone_sum_m2": 295.7,
+    "roof_connected_now_m2": 41.6,
+    "roof_guttered_m2": 285.8,
+    "eaves_and_overhead_m2": 84.0,
+    "hardstand_m2": 109.6,
+    "growing_envelope_m2": 442.9,
+    "retained_within_envelope_m2": 100.0,
+    "cultivable_max_m2": 342.9,
+    "recreation_m2": 0,
+    "other_m2": 35.8,
+    "floor_rooms_m2": 168.2,
+    "floor_envelope_m2": 168.2,
+    "existing_storage_kl": 5,
+    "preset_roof_m2": 300,
+    "preset_growable_m2": 450,
+    "preset_plot_m2": 800,
+    "shared_allocation_m2": 0.0,
+    "tolerance_abs_m2": 15.0,
+    "tolerance_rel": 0.04
+   },
+   "dossier": {
+    "slope": {
+     "text": "Falls about 1.2 m from the rear fence to the street, roughly 3 per cent, estimated from the ACT contour map. Enough for gravity from the back garden towards the street, not the reverse.",
+     "status": "estimate"
+    },
+    "services": [
+     {
+      "service": "Water",
+      "text": "Mains water, 20 mm meter at the street on the east side.",
+      "status": "known"
+     },
+     {
+      "service": "Sewer",
+      "text": "Connected. The main is on the title in the rear easement, but where the house drain runs has not been located.",
+      "status": "unknown"
+     },
+     {
+      "service": "Power",
+      "text": "Overhead supply, 63 A single phase.",
+      "status": "known"
+     },
+     {
+      "service": "Gas",
+      "text": "Natural gas; storage hot-water unit on the east wall.",
+      "status": "known"
+     },
+     {
+      "service": "Stormwater",
+      "text": "Roof and driveway both discharge to the street kerb.",
+      "status": "known"
+     }
+    ],
+    "inventory": [
+     {
+      "text": "5 kL poly rainwater tank (2009), fed by the garage roof, gravity garden tap, no pump.",
+      "status": "known"
+     },
+     {
+      "text": "Two timber raised beds, about 9 m\u00b2 in total, in the north beds.",
+      "status": "known"
+     },
+     {
+      "text": "Apple, pear and plum trees, mature, in the orchard strip.",
+      "status": "known"
+     },
+     {
+      "text": "One 220 L compost tumbler.",
+      "status": "known"
+     },
+     {
+      "text": "Hose and oscillating sprinkler on a tap timer, run from the mains in summer over the beds and fruit trees, about 45 m\u00b2.",
+      "status": "known"
+     }
+    ],
+    "bills": [
+     {
+      "text": "Water: four quarterly bills totalling 244 kL, at $3.10/kL usage charge plus a fixed supply charge.",
+      "status": "known",
+      "quarters": [
+       {
+        "quarter": "January to March",
+        "kl": 68
+       },
+       {
+        "quarter": "April to June",
+        "kl": 56
+       },
+       {
+        "quarter": "July to September",
+        "kl": 55
+       },
+       {
+        "quarter": "October to December",
+        "kl": 65
+       }
+      ]
+     },
+     {
+      "text": "Electricity: twelve monthly totals for the whole house. No circuit is metered separately.",
+      "status": "known"
+     }
+    ],
+    "observations": [
+     "\u201cThe tank is empty by January most years and we water off the mains all summer.\u201d",
+     "\u201cThe back lawn is where the kids actually play. We are not digging all of it up.\u201d",
+     "\u201cNobody is home to look at anything between Monday and Friday.\u201d",
+     "\u201cThe herb strip never does much. I assumed it was the soil.\u201d",
+     "\u201cWhatever we do has to keep working through July, when everything here freezes.\u201d"
+    ],
+    "priorities": [
+     "Keep the fruit trees and the raised beds productive through summer without watering from the mains.",
+     "Make whatever is installed work reliably through a Canberra winter, including frosts.",
+     "Keep a real lawn for the children: at least 100 m\u00b2 of the back lawn stays lawn.",
+     "Nothing that needs attention on a weekday."
+    ],
+    "constraints": [
+     {
+      "text": "Retained lawn: at least 100 m\u00b2 of the back lawn (G3) stays lawn, so at most 33 m\u00b2 of it may be cultivated.",
+      "status": "known"
+     },
+     {
+      "text": "Maintenance: up to 2 hours a week, on one weekend day only. Nothing may need attention more often than every 7 days.",
+      "status": "known"
+     },
+     {
+      "text": "Installation zones: new tanks only on the east side of the house (G2 and the driveway edge) or in the orchard strip clear of the tree canopies. Nothing in the sewer easement, nothing forward of the house.",
+      "status": "known"
+     },
+     {
+      "text": "Disruption: up to five working days on site. No internal plumbing work during school term.",
+      "status": "known"
+     },
+     {
+      "text": "Permitted uses of rainwater: garden irrigation, toilet flushing and laundry. The family does not want rainwater for drinking, cooking or bathing.",
+      "status": "known"
+     }
+    ],
+    "unknowns": [
+     "Where the house drain and the sewer main actually run, and how deep they are.",
+     "Soil texture, pH and organic matter in each growing zone.",
+     "Why the herb strip underperforms: shade, root competition from the eucalypt, or soil.",
+     "How much water the household uses indoors, month by month, and how it splits between uses.",
+     "Whether the house gutters can be connected to storage without regrading them.",
+     "How cold the ground and any exposed pipework get on the worst July nights."
+    ],
+    "permitted_uses": [
+     "toilet flushing",
+     "laundry",
+     "garden irrigation"
+    ],
+    "existing_uses": [
+     "garden irrigation"
+    ],
+    "bore_allocation_kl": 0.0,
+    "maintenance_h_week": 2.0,
+    "min_attendance_days": 7,
+    "unattended_days": 21,
+    "existing_irrigated_m2": 45.0
+   },
+   "targets": [
+    {
+     "id": "T1",
+     "text": "The raised beds and fruit trees (45 m\u00b2) fully watered from on-site water, with no mains irrigation, in every month of the average year"
+    },
+    {
+     "id": "T2",
+     "text": "Toilet and laundry supplied at least 90 % from rainwater in June, July and August"
+    },
+    {
+     "id": "T3",
+     "text": "Everything installed keeps working through a Canberra July: pumps and exposed pipework frost-protected, and the energy check made in the peak month"
+    },
+    {
+     "id": "T4",
+     "text": "At least 100 m\u00b2 of the back lawn kept; at most 2 hours of care a week, none of it needed more often than weekly"
+    }
+   ],
+   "existing_meets": {
+    "T1": false,
+    "T2": false,
+    "T3": true,
+    "T4": true
+   },
+   "decision_ranges": {
+    "new_storage_kl": [
+     0,
+     5,
+     10,
+     15,
+     20
+    ],
+    "storage_kind": "round",
+    "max_new_storage_kl": 20.0,
+    "connectable_zones": [
+     "R1",
+     "R2",
+     "R4",
+     "R5"
+    ],
+    "added_area_max_m2": 298,
+    "retained_within_envelope_m2": 100.0
+   },
+   "feasibility": {
+    "budget_margin_at_least": 22500,
+    "energy_margin_at_least": 4.5,
+    "dry_year_all_targets": false
+   }
+  },
+  {
+   "id": "S2",
+   "slug": "alice-springs",
+   "short": "Alice Springs",
+   "family": "Nguyen",
+   "household": "Linh and David Nguyen and their two children, aged 10 and 13",
+   "place": "Alice Springs, NT (rural-residential)",
+   "dwelling": "Blockwork house (1994) with deep verandahs and a steel machinery shed on a 2 ha block",
+   "tenure": "Owner-occupied freehold, rural-residential zoning.",
+   "station": "015590",
+   "climate_label": "Hot-arid rural-residential",
+   "parcel_m2": 20000,
+   "mains": false,
+   "plan": {
+    "extent": [
+     50.0,
+     40.0
+    ],
+    "cover": [
+     {
+      "id": "B1",
+      "x": 8.0,
+      "y": 18.0,
+      "w": 12.0,
+      "h": 14.0,
+      "label": "House",
+      "kind": "building",
+      "note": "blockwork, steel roof",
+      "area": 168.0,
+      "roof": {
+       "x": 7.5,
+       "y": 17.5,
+       "w": 13.0,
+       "h": 15.0,
+       "area": 195.0
+      }
+     },
+     {
+      "id": "B2",
+      "x": 32.0,
+      "y": 6.0,
+      "w": 8.0,
+      "h": 10.0,
+      "label": "Machinery shed",
+      "kind": "building",
+      "note": "steel",
+      "area": 80.0,
+      "roof": {
+       "x": 31.7,
+       "y": 5.7,
+       "w": 8.6,
+       "h": 10.6,
+       "area": 91.2
+      }
+     },
+     {
+      "id": "H1",
+      "x": 21.0,
+      "y": 0.0,
+      "w": 10.5,
+      "h": 15.0,
+      "label": "Gravel turning area",
+      "kind": "hardstand",
+      "note": "unsealed; sheet drains east",
+      "area": 157.5
+     },
+     {
+      "id": "H2",
+      "x": 7.5,
+      "y": 15.0,
+      "w": 13.0,
+      "h": 2.5,
+      "label": "South verandah slab",
+      "kind": "hardstand",
+      "note": "concrete, under the verandah",
+      "area": 32.5
+     },
+     {
+      "id": "H3",
+      "x": 40.3,
+      "y": 6.0,
+      "w": 7.0,
+      "h": 5.0,
+      "label": "Shed apron",
+      "kind": "hardstand",
+      "note": "concrete",
+      "area": 35.0
+     },
+     {
+      "id": "G1",
+      "x": 8.0,
+      "y": 35.5,
+      "w": 12.0,
+      "h": 4.5,
+      "label": "Shade-house garden",
+      "kind": "growing",
+      "note": "50 per cent shadecloth over about 40 m\u00b2",
+      "area": 54.0
+     },
+     {
+      "id": "G2",
+      "x": 25.0,
+      "y": 20.0,
+      "w": 12.0,
+      "h": 14.0,
+      "label": "Main garden",
+      "kind": "growing",
+      "note": "drip on a manual tap timer, no filtration",
+      "area": 168.0
+     },
+     {
+      "id": "G3",
+      "x": 1.0,
+      "y": 17.0,
+      "w": 5.0,
+      "h": 18.0,
+      "label": "Windbreak strip",
+      "kind": "growing",
+      "note": "established olives and figs",
+      "area": 90.0
+     },
+     {
+      "id": "G4",
+      "x": 39.0,
+      "y": 20.0,
+      "w": 8.0,
+      "h": 12.0,
+      "label": "Trial plot",
+      "kind": "growing",
+      "note": "bare since last summer's melons failed",
+      "area": 96.0
+     },
+     {
+      "id": "C1",
+      "x": 8.0,
+      "y": 2.0,
+      "w": 11.0,
+      "h": 10.0,
+      "label": "Shaded yard",
+      "kind": "recreation",
+      "note": "under the river red gum; kept as it is",
+      "area": 110.0
+     }
+    ],
+    "roofover": [
+     {
+      "id": "V1",
+      "x": 7.5,
+      "y": 15.0,
+      "w": 13.0,
+      "h": 2.5,
+      "label": "South verandah",
+      "kind": "roofover",
+      "note": "steel, guttered",
+      "area": 32.5
+     },
+     {
+      "id": "V2",
+      "x": 7.5,
+      "y": 32.5,
+      "w": 13.0,
+      "h": 2.5,
+      "label": "North verandah",
+      "kind": "roofover",
+      "note": "steel, guttered",
+      "area": 32.5
+     }
+    ],
+    "circles": [
+     {
+      "id": "T1",
+      "cx": 22.8,
+      "cy": 25.8,
+      "r": 1.8,
+      "label": "Existing 22 kL tank",
+      "kind": "tank",
+      "note": "steel-lined, 2014, house east plane, pressure pump",
+      "kl": 22
+     },
+     {
+      "id": "W1",
+      "cx": 47.5,
+      "cy": 37.0,
+      "r": 0.6,
+      "label": "Bore",
+      "kind": "bore",
+      "note": "licensed, 100 kL/yr, metered"
+     },
+     {
+      "id": "E1",
+      "cx": 3.5,
+      "cy": 20.5,
+      "r": 2.5,
+      "label": "Olive",
+      "kind": "tree",
+      "note": "windbreak"
+     },
+     {
+      "id": "E2",
+      "cx": 3.5,
+      "cy": 29.0,
+      "r": 2.5,
+      "label": "Fig",
+      "kind": "tree",
+      "note": "windbreak"
+     },
+     {
+      "id": "E3",
+      "cx": 13.5,
+      "cy": 7.0,
+      "r": 4.5,
+      "label": "River red gum",
+      "kind": "tree",
+      "note": "shades the yard from mid-afternoon"
+     }
+    ],
+    "zones": [
+     {
+      "id": "R1",
+      "label": "House, east plane",
+      "x": 14.0,
+      "y": 17.5,
+      "w": 6.5,
+      "h": 15.0,
+      "plan_m2": 98,
+      "downpipes": [
+       [
+        20.5,
+        24.0
+       ],
+       [
+        20.5,
+        27.5
+       ]
+      ],
+      "connected_now": true,
+      "gutter": true,
+      "note": "plumbed to the 22 kL tank"
+     },
+     {
+      "id": "R2",
+      "label": "House, west plane",
+      "x": 7.5,
+      "y": 17.5,
+      "w": 6.5,
+      "h": 15.0,
+      "plan_m2": 98,
+      "downpipes": [
+       [
+        7.5,
+        20.0
+       ],
+       [
+        7.5,
+        30.0
+       ]
+      ],
+      "connected_now": false,
+      "gutter": true,
+      "note": "gutter present; downpipes discharge to the windbreak"
+     },
+     {
+      "id": "R3",
+      "label": "South verandah",
+      "x": 7.5,
+      "y": 15.0,
+      "w": 13.0,
+      "h": 2.5,
+      "plan_m2": 32,
+      "downpipes": [
+       [
+        20.5,
+        15.0
+       ]
+      ],
+      "connected_now": false,
+      "gutter": true,
+      "note": "gutter to the turning area"
+     },
+     {
+      "id": "R4",
+      "label": "North verandah",
+      "x": 7.5,
+      "y": 32.5,
+      "w": 13.0,
+      "h": 2.5,
+      "plan_m2": 32,
+      "downpipes": [
+       [
+        20.5,
+        35.0
+       ]
+      ],
+      "connected_now": false,
+      "gutter": true,
+      "note": "gutter to the shade house"
+     },
+     {
+      "id": "R5",
+      "label": "Shed, north plane",
+      "x": 31.7,
+      "y": 11.0,
+      "w": 8.6,
+      "h": 5.3,
+      "plan_m2": 46,
+      "downpipes": [
+       [
+        40.3,
+        16.3
+       ]
+      ],
+      "connected_now": false,
+      "gutter": true,
+      "note": "gutter to the apron"
+     },
+     {
+      "id": "R6",
+      "label": "Shed, south plane",
+      "x": 31.7,
+      "y": 5.7,
+      "w": 8.6,
+      "h": 5.3,
+      "plan_m2": 46,
+      "downpipes": [],
+      "connected_now": false,
+      "gutter": false,
+      "note": "no gutter"
+     }
+    ],
+    "points": [
+     {
+      "id": "P1",
+      "x": 44.0,
+      "y": 38.0,
+      "label": "Bore meter",
+      "kind": "service",
+      "status": "known",
+      "note": ""
+     },
+     {
+      "id": "P2",
+      "x": 21.0,
+      "y": 30.5,
+      "label": "Pressure pump and cartridge filter",
+      "kind": "service",
+      "status": "known",
+      "note": ""
+     },
+     {
+      "id": "P3",
+      "x": 5.8,
+      "y": 21.0,
+      "label": "Septic tank (approximate)",
+      "kind": "service",
+      "status": "estimate",
+      "note": ""
+     },
+     {
+      "id": "P4",
+      "x": 20.0,
+      "y": 14.2,
+      "label": "Switchboard and shed submain",
+      "kind": "service",
+      "status": "known",
+      "note": ""
+     },
+     {
+      "id": "P5",
+      "x": 22.0,
+      "y": 21.0,
+      "label": "Carted-water fill point",
+      "kind": "service",
+      "status": "known",
+      "note": ""
+     },
+     {
+      "id": "L1",
+      "x": 25.0,
+      "y": 0.5,
+      "label": "RL 100.0",
+      "kind": "level",
+      "status": "estimate",
+      "note": ""
+     },
+     {
+      "id": "L2",
+      "x": 25.0,
+      "y": 39.5,
+      "label": "RL 100.4",
+      "kind": "level",
+      "status": "estimate",
+      "note": ""
+     },
+     {
+      "id": "A1",
+      "x": 25.5,
+      "y": 0.6,
+      "label": "Access from the road",
+      "kind": "access",
+      "status": "known",
+      "note": ""
+     }
+    ],
+    "easements": [
+     {
+      "id": "X1",
+      "x": 0.5,
+      "y": 3.0,
+      "w": 6.5,
+      "h": 12.5,
+      "label": "Septic trench exclusion",
+      "note": "trenches drawn from the 1994 approval; position not verified on the ground",
+      "status": "estimate"
+     }
+    ]
+   },
+   "floor": {
+    "extent": [
+     12.0,
+     14.0
+    ],
+    "rooms": [
+     {
+      "id": "F1",
+      "x": 0.0,
+      "y": 0.0,
+      "w": 4.4,
+      "h": 5.0,
+      "label": "Kitchen",
+      "kind": "wet",
+      "note": "sink and dishwasher",
+      "area": 22.0
+     },
+     {
+      "id": "F2",
+      "x": 4.4,
+      "y": 0.0,
+      "w": 2.8,
+      "h": 5.0,
+      "label": "Laundry",
+      "kind": "wet",
+      "note": "tub and machine; door to the south verandah",
+      "area": 14.0
+     },
+     {
+      "id": "F3",
+      "x": 7.2,
+      "y": 0.0,
+      "w": 2.6,
+      "h": 3.0,
+      "label": "Bathroom",
+      "kind": "wet",
+      "note": "shower and basin",
+      "area": 7.8
+     },
+     {
+      "id": "F4",
+      "x": 7.2,
+      "y": 3.0,
+      "w": 2.6,
+      "h": 2.0,
+      "label": "WC",
+      "kind": "wet",
+      "note": "",
+      "area": 5.2
+     },
+     {
+      "id": "F5",
+      "x": 9.8,
+      "y": 0.0,
+      "w": 2.2,
+      "h": 5.0,
+      "label": "Store and hot-water cylinder",
+      "kind": "service",
+      "note": "solar hot water on the north roof",
+      "area": 11.0
+     },
+     {
+      "id": "F6",
+      "x": 0.0,
+      "y": 5.0,
+      "w": 7.0,
+      "h": 5.0,
+      "label": "Living and dining",
+      "kind": "room",
+      "note": "",
+      "area": 35.0
+     },
+     {
+      "id": "F7",
+      "x": 7.0,
+      "y": 5.0,
+      "w": 5.0,
+      "h": 5.0,
+      "label": "Bedroom 1 and ensuite",
+      "kind": "wet",
+      "note": "second shower",
+      "area": 25.0
+     },
+     {
+      "id": "F8",
+      "x": 0.0,
+      "y": 10.0,
+      "w": 4.0,
+      "h": 4.0,
+      "label": "Bedroom 2",
+      "kind": "room",
+      "note": "",
+      "area": 16.0
+     },
+     {
+      "id": "F9",
+      "x": 4.0,
+      "y": 10.0,
+      "w": 4.0,
+      "h": 4.0,
+      "label": "Bedroom 3",
+      "kind": "room",
+      "note": "",
+      "area": 16.0
+     },
+     {
+      "id": "F10",
+      "x": 8.0,
+      "y": 10.0,
+      "w": 4.0,
+      "h": 4.0,
+      "label": "Office",
+      "kind": "room",
+      "note": "",
+      "area": 16.0
+     }
+    ],
+    "points": [
+     {
+      "id": "Q1",
+      "x": 5.8,
+      "y": 0.0,
+      "label": "Laundry door",
+      "kind": "access",
+      "status": "known",
+      "note": ""
+     }
+    ]
+   },
+   "parcel": {
+    "extent": [
+     100.0,
+     200.0
+    ],
+    "working_area": [
+     25.0,
+     5.0,
+     50.0,
+     40.0
+    ],
+    "features": [
+     {
+      "id": "K1",
+      "x": 0.0,
+      "y": 197.0,
+      "w": 100.0,
+      "h": 3.0,
+      "label": "Access easement (3 m) in favour of the lot to the north",
+      "kind": "easement"
+     },
+     {
+      "id": "K2",
+      "x": 90.0,
+      "y": 0.0,
+      "w": 10.0,
+      "h": 197.0,
+      "label": "Sandy swale",
+      "kind": "drainage"
+     },
+     {
+      "id": "K3",
+      "x": 0.0,
+      "y": 45.0,
+      "w": 90.0,
+      "h": 152.0,
+      "label": "Native vegetation, not available",
+      "kind": "retained"
+     }
+    ],
+    "road": "south",
+    "note": "Only the working area is available for the design. The rest of the parcel is retained native vegetation under the zoning, a case assumption."
+   },
+   "scheme": null,
+   "areas": {
+    "parcel_m2": 20000,
+    "drawn_m2": 2000.0,
+    "footprint_m2": 248.0,
+    "roof_plan_m2": 351.2,
+    "roof_zone_sum_m2": 351.2,
+    "roof_connected_now_m2": 97.5,
+    "roof_guttered_m2": 305.6,
+    "eaves_and_overhead_m2": 103.2,
+    "hardstand_m2": 225.0,
+    "growing_envelope_m2": 408.0,
+    "retained_within_envelope_m2": 0.0,
+    "cultivable_max_m2": 408.0,
+    "recreation_m2": 110.0,
+    "other_m2": 1009.0,
+    "floor_rooms_m2": 168.0,
+    "floor_envelope_m2": 168.0,
+    "existing_storage_kl": 22,
+    "preset_roof_m2": 350,
+    "preset_growable_m2": 400,
+    "preset_plot_m2": 20000,
+    "shared_allocation_m2": 0.0,
+    "tolerance_abs_m2": 15.0,
+    "tolerance_rel": 0.04
+   },
+   "dossier": {
+    "slope": {
+     "text": "Nearly level: about 0.4 m of fall across the working area, from a handheld level survey. The wider parcel falls gently to a sandy swale along its eastern boundary.",
+     "status": "estimate"
+    },
+    "services": [
+     {
+      "service": "Water",
+      "text": "No reticulated supply. The house runs on the tank and the bore, topped up by a water carrier who fills the tank.",
+      "status": "known"
+     },
+     {
+      "service": "Sewer",
+      "text": "Not connected. Septic tank and absorption trenches south-west of the house; their age and exact position are not known.",
+      "status": "unknown"
+     },
+     {
+      "service": "Power",
+      "text": "Overhead single phase, 80 A; submain to the shed.",
+      "status": "known"
+     },
+     {
+      "service": "Gas",
+      "text": "Bottled LPG for cooking.",
+      "status": "known"
+     },
+     {
+      "service": "Stormwater",
+      "text": "Sheet flow to the swale. No piped drainage.",
+      "status": "known"
+     }
+    ],
+    "inventory": [
+     {
+      "text": "22 kL steel-lined tank (2014) on the house east plane, with a pressure pump and a cartridge filter to the house.",
+      "status": "known"
+     },
+     {
+      "text": "Licensed bore with a meter and a submersible pump; allocation 100 kL a year. Bore water is pumped into the same tank.",
+      "status": "known"
+     },
+     {
+      "text": "Shade house over about 40 m\u00b2, 50 per cent cloth, ten years old.",
+      "status": "known"
+     },
+     {
+      "text": "Drip lines on the shade-house vegetables (40 m\u00b2) and a 50 m\u00b2 fruit block of citrus, pomegranate and grapes in the main garden, from the tank through the pressure pump, manual tap timer, no filter.",
+      "status": "known"
+     },
+     {
+      "text": "Two 1,000 L IBC totes, not plumbed.",
+      "status": "known"
+     },
+     {
+      "text": "Olives and figs established on the windbreak.",
+      "status": "known"
+     }
+    ],
+    "bills": [
+     {
+      "text": "Carted water: 12 invoices last year, each for 12 kL at $336 a load.",
+      "status": "known",
+      "loads": [
+       {
+        "month": "Jan",
+        "loads": 1
+       },
+       {
+        "month": "Feb",
+        "loads": 1
+       },
+       {
+        "month": "Mar",
+        "loads": 1
+       },
+       {
+        "month": "Apr",
+        "loads": 1
+       },
+       {
+        "month": "May",
+        "loads": 1
+       },
+       {
+        "month": "Jun",
+        "loads": 1
+       },
+       {
+        "month": "Jul",
+        "loads": 1
+       },
+       {
+        "month": "Aug",
+        "loads": 1
+       },
+       {
+        "month": "Sep",
+        "loads": 1
+       },
+       {
+        "month": "Oct",
+        "loads": 1
+       },
+       {
+        "month": "Nov",
+        "loads": 1
+       },
+       {
+        "month": "Dec",
+        "loads": 1
+       }
+      ]
+     },
+     {
+      "text": "Electricity: twelve monthly totals for the whole house; the pumps are not metered separately.",
+      "status": "known"
+     }
+    ],
+    "observations": [
+     "\u201cWe cart water most summers. That is the thing I actually want to stop.\u201d",
+     "\u201cIf a part fails I want to buy it in town, not wait two weeks for a courier.\u201d",
+     "\u201cThe drip lines block up. I do not know what with.\u201d",
+     "\u201cThe trial plot cooked. Melons in January was not clever.\u201d"
+    ],
+    "priorities": [
+     "Cart as little water as possible, and none at all in an ordinary year if that can be done.",
+     "Never exceed the 100 kL bore allocation, with the meter as the evidence.",
+     "Equipment the family can maintain with parts sold in Alice Springs.",
+     "Get the shade-house vegetables and the drip-watered fruit block, about 90 m\u00b2 together, producing reliably."
+    ],
+    "constraints": [
+     {
+      "text": "The bore allocation is 100 kL a year and is not exceeded. The course's draw rule is at most one-twelfth of the allocation in any month.",
+      "status": "known"
+     },
+     {
+      "text": "Maintenance: up to 4 hours a week. The household is comfortable with mechanical work and daily checks.",
+      "status": "known"
+     },
+     {
+      "text": "Installation zones: new tanks on the gravel turning area or the shed apron. Nothing in the septic exclusion zone.",
+      "status": "known"
+     },
+     {
+      "text": "Disruption: the shed stays usable throughout; up to ten working days on site.",
+      "status": "known"
+     },
+     {
+      "text": "Permitted uses: all household uses from the tank, as now, and garden irrigation. Carted water is delivered into the tank by a licensed potable-water carrier.",
+      "status": "known"
+     },
+     {
+      "text": "Common parts: every pump, filter and fitting must be a type stocked in Alice Springs. Specialist modules are acceptable only with a local service arrangement.",
+      "status": "known"
+     }
+    ],
+    "unknowns": [
+     "What blocks the drip emitters: bore-water hardness, biofilm, or sediment from the tank.",
+     "Bore-water quality: hardness, dissolved solids and iron.",
+     "How the bore draw actually splits month by month against the allocation.",
+     "Where the septic trenches are and whether they still work.",
+     "How much light the shade house lets through after ten years.",
+     "The household's real indoor use when nobody is rationing it."
+    ],
+    "permitted_uses": [
+     "toilet flushing",
+     "laundry",
+     "showers and basins",
+     "kitchen and drinking",
+     "other indoor uses",
+     "garden irrigation"
+    ],
+    "existing_uses": [
+     "toilet flushing",
+     "laundry",
+     "showers and basins",
+     "kitchen and drinking",
+     "other indoor uses",
+     "garden irrigation"
+    ],
+    "bore_allocation_kl": 100,
+    "maintenance_h_week": 4.0,
+    "min_attendance_days": 1,
+    "unattended_days": 14,
+    "existing_irrigated_m2": 90.0
+   },
+   "targets": [
+    {
+     "id": "T1",
+     "text": "Carted water cut to 40 kL a year or less in the average year"
+    },
+    {
+     "id": "T2",
+     "text": "Bore draw within the 100 kL allocation, and never more than one-twelfth of it in a month"
+    },
+    {
+     "id": "T3",
+     "text": "The shade-house vegetables and fruit block (90 m\u00b2) given at least 45 % of their yearly irrigation need from on-site water"
+    },
+    {
+     "id": "T4",
+     "text": "Every pump, filter and fitting a type stocked in Alice Springs"
+    }
+   ],
+   "existing_meets": {
+    "T1": false,
+    "T2": true,
+    "T3": false,
+    "T4": true
+   },
+   "decision_ranges": {
+    "new_storage_kl": [
+     0,
+     10,
+     22.5,
+     45,
+     67.5,
+     90
+    ],
+    "storage_kind": "round",
+    "max_new_storage_kl": 90.0,
+    "connectable_zones": [
+     "R2",
+     "R3",
+     "R4",
+     "R5"
+    ],
+    "added_area_max_m2": 318,
+    "retained_within_envelope_m2": 0.0
+   },
+   "feasibility": {
+    "budget_margin_at_least": 20000,
+    "energy_margin_at_least": 3.5,
+    "dry_year_all_targets": false
+   }
+  },
+  {
+   "id": "S3",
+   "slug": "brisbane",
+   "short": "Brisbane",
+   "family": "Patel",
+   "household": "Priya and Rohan Patel and their two children, aged 9 and 11",
+   "place": "Brisbane, Queensland",
+   "dwelling": "Two-storey townhouse (2006) with an internal garage, in a nine-lot community titles scheme",
+   "tenure": "Owner-occupied lot. Body corporate consent is needed for anything visible, attached or changing stormwater.",
+   "station": "040214",
+   "climate_label": "Humid subtropical townhouse",
+   "parcel_m2": 300,
+   "mains": true,
+   "plan": {
+    "extent": [
+     10.0,
+     30.0
+    ],
+    "cover": [
+     {
+      "id": "B1",
+      "x": 0.0,
+      "y": 5.0,
+      "w": 9.2,
+      "h": 14.0,
+      "label": "Townhouse",
+      "kind": "building",
+      "note": "two storey; party wall on the west boundary",
+      "area": 128.8,
+      "roof": {
+       "x": 0.0,
+       "y": 4.6,
+       "w": 9.6,
+       "h": 14.8,
+       "area": 142.1
+      }
+     },
+     {
+      "id": "B2",
+      "x": 7.2,
+      "y": 22.0,
+      "w": 2.0,
+      "h": 2.0,
+      "label": "Store",
+      "kind": "building",
+      "note": "steel, no gutter",
+      "area": 4.0,
+      "roof": {
+       "x": 7.0,
+       "y": 21.8,
+       "w": 2.4,
+       "h": 2.4,
+       "area": 5.8
+      }
+     },
+     {
+      "id": "H1",
+      "x": 0.0,
+      "y": 0.0,
+      "w": 3.5,
+      "h": 5.0,
+      "label": "Driveway apron",
+      "kind": "hardstand",
+      "note": "meets the scheme's common driveway",
+      "area": 17.5
+     },
+     {
+      "id": "H2",
+      "x": 9.2,
+      "y": 5.0,
+      "w": 0.8,
+      "h": 25.0,
+      "label": "Side path",
+      "kind": "hardstand",
+      "note": "0.8 m between wall and fence; 600 mm clear past the meter box and downpipes",
+      "area": 20.0
+     },
+     {
+      "id": "H3",
+      "x": 0.0,
+      "y": 19.0,
+      "w": 7.2,
+      "h": 5.0,
+      "label": "Courtyard",
+      "kind": "hardstand",
+      "note": "paved; the family's outdoor room",
+      "area": 36.0
+     },
+     {
+      "id": "H4",
+      "x": 7.2,
+      "y": 19.0,
+      "w": 2.0,
+      "h": 3.0,
+      "label": "Courtyard, east",
+      "kind": "hardstand",
+      "note": "paved",
+      "area": 6.0
+     },
+     {
+      "id": "G1",
+      "x": 3.5,
+      "y": 0.0,
+      "w": 6.5,
+      "h": 5.0,
+      "label": "Front bed",
+      "kind": "growing",
+      "note": "visible from the common driveway",
+      "area": 32.5
+     },
+     {
+      "id": "G2",
+      "x": 0.0,
+      "y": 24.0,
+      "w": 9.2,
+      "h": 6.0,
+      "label": "Rear garden",
+      "kind": "growing",
+      "note": "morning sun; shaded after about 11 am by the neighbour's poinciana",
+      "area": 55.2
+     }
+    ],
+    "roofover": [
+     {
+      "id": "V1",
+      "x": 0.0,
+      "y": 19.4,
+      "w": 5.0,
+      "h": 3.6,
+      "label": "Patio roof",
+      "kind": "roofover",
+      "note": "polycarbonate over the sitting area",
+      "area": 18.0,
+      "roof": {
+       "x": 0.0,
+       "y": 19.4,
+       "w": 5.2,
+       "h": 3.8,
+       "area": 19.8
+      }
+     }
+    ],
+    "circles": [
+     {
+      "id": "T1",
+      "cx": 7.3,
+      "cy": 19.4,
+      "r": 0.0,
+      "label": "Existing 3 kL slimline tank",
+      "kind": "tank",
+      "note": "poly, 2018, rear roof plane, gravity tap",
+      "w": 2.4,
+      "h": 0.6,
+      "kl": 3
+     },
+     {
+      "id": "E1",
+      "cx": 4.5,
+      "cy": 33.5,
+      "r": 4.5,
+      "label": "Neighbour's poinciana",
+      "kind": "tree",
+      "note": "off-site; canopy over the rear garden",
+      "offsite": true
+     },
+     {
+      "id": "E2",
+      "cx": 6.2,
+      "cy": 2.2,
+      "r": 0.6,
+      "label": "Dwarf citrus (pot)",
+      "kind": "tree",
+      "note": "movable"
+     }
+    ],
+    "zones": [
+     {
+      "id": "R1",
+      "label": "Townhouse, front plane",
+      "x": 0.0,
+      "y": 4.6,
+      "w": 9.6,
+      "h": 7.4,
+      "plan_m2": 71,
+      "downpipes": [
+       [
+        9.6,
+        4.6
+       ]
+      ],
+      "connected_now": false,
+      "gutter": true,
+      "note": "to the scheme's driveway drain"
+     },
+     {
+      "id": "R2",
+      "label": "Townhouse, rear plane",
+      "x": 0.0,
+      "y": 12.0,
+      "w": 9.6,
+      "h": 7.4,
+      "plan_m2": 71,
+      "downpipes": [
+       [
+        9.6,
+        19.4
+       ]
+      ],
+      "connected_now": true,
+      "gutter": true,
+      "note": "the only zone on the 3 kL slimline tank"
+     },
+     {
+      "id": "R3",
+      "label": "Patio roof",
+      "x": 0.0,
+      "y": 19.4,
+      "w": 5.2,
+      "h": 3.8,
+      "plan_m2": 20,
+      "downpipes": [
+       [
+        5.2,
+        23.2
+       ]
+      ],
+      "connected_now": false,
+      "gutter": true,
+      "note": "gutter to the courtyard drain"
+     },
+     {
+      "id": "R4",
+      "label": "Store",
+      "x": 7.0,
+      "y": 21.8,
+      "w": 2.4,
+      "h": 2.4,
+      "plan_m2": 6,
+      "downpipes": [],
+      "connected_now": false,
+      "gutter": false,
+      "note": "no gutter"
+     }
+    ],
+    "points": [
+     {
+      "id": "P1",
+      "x": 9.6,
+      "y": 5.6,
+      "label": "Meter box and water meter",
+      "kind": "service",
+      "status": "known",
+      "note": ""
+     },
+     {
+      "id": "P2",
+      "x": 0.6,
+      "y": 23.4,
+      "label": "Sewer connection (lot)",
+      "kind": "service",
+      "status": "known",
+      "note": "scheme drain inspection point"
+     },
+     {
+      "id": "P4",
+      "x": 3.6,
+      "y": 23.6,
+      "label": "Courtyard drain to common stormwater",
+      "kind": "service",
+      "status": "known",
+      "note": ""
+     },
+     {
+      "id": "L1",
+      "x": 5.0,
+      "y": 0.4,
+      "label": "RL 100.0",
+      "kind": "level",
+      "status": "estimate",
+      "note": ""
+     },
+     {
+      "id": "L2",
+      "x": 5.0,
+      "y": 29.6,
+      "label": "RL 100.2",
+      "kind": "level",
+      "status": "estimate",
+      "note": ""
+     },
+     {
+      "id": "A1",
+      "x": 9.6,
+      "y": 1.0,
+      "label": "Pedestrian access: side path only",
+      "kind": "access",
+      "status": "known",
+      "note": ""
+     }
+    ],
+    "easements": [
+     {
+      "id": "X1",
+      "x": 0.0,
+      "y": 28.5,
+      "w": 9.2,
+      "h": 1.5,
+      "label": "Common-property services easement",
+      "note": "scheme services cross the rear 1.5 m; no structures",
+      "status": "known"
+     }
+    ]
+   },
+   "floor": {
+    "extent": [
+     9.2,
+     14.0
+    ],
+    "rooms": [
+     {
+      "id": "F1",
+      "x": 0.0,
+      "y": 0.0,
+      "w": 3.4,
+      "h": 6.0,
+      "label": "Garage",
+      "kind": "room",
+      "note": "single car; water heater on the rear wall",
+      "area": 20.4
+     },
+     {
+      "id": "F2",
+      "x": 3.4,
+      "y": 0.0,
+      "w": 3.0,
+      "h": 3.0,
+      "label": "Entry and stair",
+      "kind": "room",
+      "note": "",
+      "area": 9.0
+     },
+     {
+      "id": "F3",
+      "x": 6.4,
+      "y": 0.0,
+      "w": 2.8,
+      "h": 3.0,
+      "label": "Meter cupboard and riser",
+      "kind": "service",
+      "note": "",
+      "area": 8.4
+     },
+     {
+      "id": "F4",
+      "x": 3.4,
+      "y": 3.0,
+      "w": 2.4,
+      "h": 3.0,
+      "label": "Laundry",
+      "kind": "wet",
+      "note": "internal, no external door",
+      "area": 7.2
+     },
+     {
+      "id": "F5",
+      "x": 5.8,
+      "y": 3.0,
+      "w": 1.6,
+      "h": 3.0,
+      "label": "WC",
+      "kind": "wet",
+      "note": "ground floor",
+      "area": 4.8
+     },
+     {
+      "id": "F6",
+      "x": 7.4,
+      "y": 3.0,
+      "w": 1.8,
+      "h": 3.0,
+      "label": "Store",
+      "kind": "room",
+      "note": "",
+      "area": 5.4
+     },
+     {
+      "id": "F7",
+      "x": 0.0,
+      "y": 6.0,
+      "w": 5.2,
+      "h": 8.0,
+      "label": "Living and dining",
+      "kind": "room",
+      "note": "",
+      "area": 41.6
+     },
+     {
+      "id": "F8",
+      "x": 5.2,
+      "y": 6.0,
+      "w": 4.0,
+      "h": 8.0,
+      "label": "Kitchen",
+      "kind": "wet",
+      "note": "sink and dishwasher; bathroom above",
+      "area": 32.0
+     }
+    ],
+    "points": [
+     {
+      "id": "Q1",
+      "x": 7.2,
+      "y": 14.0,
+      "label": "Stack from the first-floor bathroom",
+      "kind": "service",
+      "status": "known",
+      "note": ""
+     }
+    ]
+   },
+   "parcel": null,
+   "scheme": {
+    "extent": [
+     62.0,
+     42.0
+    ],
+    "lots": 9,
+    "lot_w": 10.0,
+    "lot_h": 30.0,
+    "patel_lot": 4,
+    "driveway": [
+     0.0,
+     30.0,
+     62.0,
+     6.0
+    ],
+    "garden": [
+     50.0,
+     0.0,
+     12.0,
+     30.0
+    ],
+    "allocation": [
+     50.0,
+     20.0,
+     8.0,
+     5.0
+    ],
+    "note": "Scheme plan, schematic. Lots 1 to 9 are private; the driveway and the shared garden are common property. The Patel allocation is 40 m\u00b2 of the 360 m\u00b2 shared garden and is not part of their 300 m\u00b2 lot."
+   },
+   "areas": {
+    "parcel_m2": 300,
+    "drawn_m2": 300.0,
+    "footprint_m2": 132.8,
+    "roof_plan_m2": 167.6,
+    "roof_zone_sum_m2": 167.6,
+    "roof_connected_now_m2": 71.0,
+    "roof_guttered_m2": 161.8,
+    "eaves_and_overhead_m2": 34.8,
+    "hardstand_m2": 79.5,
+    "growing_envelope_m2": 87.7,
+    "retained_within_envelope_m2": 0.0,
+    "cultivable_max_m2": 87.7,
+    "recreation_m2": 0,
+    "other_m2": 0.0,
+    "floor_rooms_m2": 128.8,
+    "floor_envelope_m2": 128.8,
+    "existing_storage_kl": 3,
+    "preset_roof_m2": 170,
+    "preset_growable_m2": 90,
+    "preset_plot_m2": 300,
+    "shared_allocation_m2": 40.0,
+    "tolerance_abs_m2": 15.0,
+    "tolerance_rel": 0.04
+   },
+   "dossier": {
+    "slope": {
+     "text": "Essentially level: the lot falls about 0.2 m to the common driveway, which is its only drainage outlet. Levels are from the 2006 scheme plan.",
+     "status": "estimate"
+    },
+    "services": [
+     {
+      "service": "Water",
+      "text": "Mains, individually metered in the meter box beside the side path.",
+      "status": "known"
+     },
+     {
+      "service": "Sewer",
+      "text": "Connected to the scheme's common drain; the lot's inspection point is in the courtyard.",
+      "status": "known"
+     },
+     {
+      "service": "Power",
+      "text": "Underground supply, 40 A single phase, individually metered.",
+      "status": "known"
+     },
+     {
+      "service": "Gas",
+      "text": "None.",
+      "status": "known"
+     },
+     {
+      "service": "Stormwater",
+      "text": "Roof and courtyard drain to the common system. Any change needs body corporate consent.",
+      "status": "known"
+     }
+    ],
+    "inventory": [
+     {
+      "text": "3 kL slimline poly tank (2018) on the rear roof plane, beside the courtyard, gravity tap.",
+      "status": "known"
+     },
+     {
+      "text": "Four self-watering planter boxes and about 10 m\u00b2 of the rear garden in vegetables, 12 m\u00b2 in all, watered from the tank tap.",
+      "status": "known"
+     },
+     {
+      "text": "Dwarf citrus in a pot.",
+      "status": "known"
+     },
+     {
+      "text": "Worm farm, 60 L.",
+      "status": "known"
+     },
+     {
+      "text": "An exclusive-use allocation of 40 m\u00b2 in the scheme's shared garden (common property, outside the lot).",
+      "status": "known"
+     }
+    ],
+    "bills": [
+     {
+      "text": "Water: four quarterly bills totalling 219 kL, at $3.40/kL usage charge plus a fixed supply charge.",
+      "status": "known",
+      "quarters": [
+       {
+        "quarter": "January to March",
+        "kl": 54
+       },
+       {
+        "quarter": "April to June",
+        "kl": 55
+       },
+       {
+        "quarter": "July to September",
+        "kl": 55
+       },
+       {
+        "quarter": "October to December",
+        "kl": 55
+       }
+      ]
+     },
+     {
+      "text": "Electricity: twelve monthly totals for the whole house. No circuit is metered separately.",
+      "status": "known"
+     }
+    ],
+    "observations": [
+     "\u201cWhatever we do has to get past the body corporate, and it cannot be loud.\u201d",
+     "\u201cThe side path is 600 mm clear. Everything has to come through it.\u201d",
+     "\u201cThe back garden gets sun until about eleven and then nothing.\u201d",
+     "\u201cWe have 40 m\u00b2 in the shared garden but we do not own it.\u201d"
+    ],
+    "priorities": [
+     "Grow something worthwhile in a small space without losing the courtyard.",
+     "Nothing the body corporate will refuse, and nothing audible at the boundary at night.",
+     "Compact equipment that fits through a 600 mm path.",
+     "Use the shared-garden allocation well, without installing anything on it."
+    ],
+    "constraints": [
+     {
+      "text": "Body corporate consent is needed for any external attachment, any tank over 1.8 m tall, and any change to stormwater. Assume consent is refused for plant audible above 45 dB(A) at a boundary at night.",
+      "status": "known"
+     },
+     {
+      "text": "Retained courtyard: the 20 m\u00b2 sitting area under the patio roof stays clear.",
+      "status": "known"
+     },
+     {
+      "text": "Maintenance: up to 3 hours a week.",
+      "status": "known"
+     },
+     {
+      "text": "Installation zones: inside the lot, and only where a component can come through a 600 mm path. No plant on common property.",
+      "status": "known"
+     },
+     {
+      "text": "Permitted uses of rainwater: garden irrigation and toilet flushing. The laundry is internal and the family will not open walls for it.",
+      "status": "known"
+     },
+     {
+      "text": "The 40 m\u00b2 shared-garden allocation may be cultivated and hand-watered from the scheme's garden tap, but nothing may be installed on it. The allocation can be revoked by the body corporate.",
+      "status": "known"
+     }
+    ],
+    "unknowns": [
+     "How much usable light the rear garden and the front bed get through the year.",
+     "Whether the body corporate will consent to connecting the front roof plane to storage.",
+     "The level of the common drain, which limits any gravity overflow.",
+     "Soil depth and quality in the front bed and rear garden, which sit on 2006 fill.",
+     "Whether the shared-garden tap is metered to the scheme or to the lots."
+    ],
+    "permitted_uses": [
+     "toilet flushing",
+     "garden irrigation"
+    ],
+    "existing_uses": [
+     "garden irrigation"
+    ],
+    "bore_allocation_kl": 0.0,
+    "maintenance_h_week": 3.0,
+    "min_attendance_days": 2,
+    "unattended_days": 14,
+    "existing_irrigated_m2": 12.0
+   },
+   "targets": [
+    {
+     "id": "T1",
+     "text": "At least 70 % of toilet flushing supplied from rainwater in the average year"
+    },
+    {
+     "id": "T2",
+     "text": "At least 120 kg of fresh produce a year from the lot and the shared-garden allocation together"
+    },
+    {
+     "id": "T3",
+     "text": "The existing beds (12 m\u00b2) fully watered from rainwater in at least 9 months of the average year"
+    },
+    {
+     "id": "T4",
+     "text": "Nothing audible above 45 dB(A) at a boundary at night, everything delivered through the 600 mm path, the courtyard sitting area kept, and at most 3 hours of care a week"
+    }
+   ],
+   "existing_meets": {
+    "T1": false,
+    "T2": false,
+    "T3": true,
+    "T4": true
+   },
+   "decision_ranges": {
+    "new_storage_kl": [
+     0,
+     2,
+     4
+    ],
+    "storage_kind": "slimline",
+    "max_new_storage_kl": 4.0,
+    "connectable_zones": [
+     "R1",
+     "R3"
+    ],
+    "added_area_max_m2": 116,
+    "retained_within_envelope_m2": 0.0
+   },
+   "feasibility": {
+    "budget_margin_at_least": 25500,
+    "energy_margin_at_least": 4.5,
+    "dry_year_all_targets": false
+   }
+  },
+  {
+   "id": "S4",
+   "slug": "adelaide",
+   "short": "Adelaide",
+   "family": "Rossi",
+   "household": "Elena and Marco Rossi and their two children, aged 10 and 12",
+   "place": "Adelaide, South Australia",
+   "dwelling": "Double-brick house (1965) with a detached garage reached by a side driveway",
+   "tenure": "Owner-occupied freehold. No body corporate.",
+   "station": "023000",
+   "climate_label": "Mediterranean suburban",
+   "parcel_m2": 700,
+   "mains": true,
+   "plan": {
+    "extent": [
+     17.5,
+     40.0
+    ],
+    "cover": [
+     {
+      "id": "B1",
+      "x": 1.2,
+      "y": 7.0,
+      "w": 11.0,
+      "h": 15.0,
+      "label": "House",
+      "kind": "building",
+      "note": "double brick, tiled roof",
+      "area": 165.0,
+      "roof": {
+       "x": 0.7,
+       "y": 6.5,
+       "w": 12.0,
+       "h": 16.0,
+       "area": 192.0
+      }
+     },
+     {
+      "id": "B2",
+      "x": 12.5,
+      "y": 26.0,
+      "w": 5.0,
+      "h": 6.0,
+      "label": "Garage",
+      "kind": "building",
+      "note": "boundary wall to the east, tiled roof",
+      "area": 30.0,
+      "roof": {
+       "x": 12.1,
+       "y": 25.6,
+       "w": 5.4,
+       "h": 6.8,
+       "area": 36.7
+      }
+     },
+     {
+      "id": "H1",
+      "x": 13.6,
+      "y": 0.0,
+      "w": 3.9,
+      "h": 26.0,
+      "label": "Driveway",
+      "kind": "hardstand",
+      "note": "concrete, falls to the street",
+      "area": 101.4
+     },
+     {
+      "id": "H2",
+      "x": 1.2,
+      "y": 22.5,
+      "w": 10.0,
+      "h": 3.5,
+      "label": "Pergola terrace",
+      "kind": "hardstand",
+      "note": "open vine pergola, no roof",
+      "area": 35.0
+     },
+     {
+      "id": "G1",
+      "x": 0.0,
+      "y": 0.0,
+      "w": 13.6,
+      "h": 7.0,
+      "label": "Front garden",
+      "kind": "growing",
+      "note": "roses and shrubs; full sun",
+      "area": 95.2
+     },
+     {
+      "id": "G2",
+      "x": 0.0,
+      "y": 7.0,
+      "w": 1.2,
+      "h": 15.5,
+      "label": "West border",
+      "kind": "growing",
+      "note": "narrow; afternoon sun",
+      "area": 18.6
+     },
+     {
+      "id": "G3",
+      "x": 9.0,
+      "y": 26.0,
+      "w": 3.5,
+      "h": 7.5,
+      "label": "Vegetable beds",
+      "kind": "growing",
+      "note": "four raised beds in use",
+      "area": 26.2
+     },
+     {
+      "id": "G4",
+      "x": 12.5,
+      "y": 32.0,
+      "w": 5.0,
+      "h": 8.0,
+      "label": "Orchard corner",
+      "kind": "growing",
+      "note": "lemon, almond, apricot",
+      "area": 40.0
+     },
+     {
+      "id": "G5",
+      "x": 0.0,
+      "y": 33.5,
+      "w": 12.5,
+      "h": 6.5,
+      "label": "North bed",
+      "kind": "growing",
+      "note": "best aspect",
+      "area": 81.2
+     },
+     {
+      "id": "C1",
+      "x": 0.0,
+      "y": 26.0,
+      "w": 9.0,
+      "h": 7.5,
+      "label": "Back lawn",
+      "kind": "recreation",
+      "note": "kept as lawn",
+      "area": 67.5
+     }
+    ],
+    "roofover": [],
+    "circles": [
+     {
+      "id": "T1",
+      "cx": 12.5,
+      "cy": 24.9,
+      "r": 0.9,
+      "label": "Existing 5 kL tank",
+      "kind": "tank",
+      "note": "poly, 2011, garage roof, 0.4 kW pump to two garden taps",
+      "kl": 5
+     },
+     {
+      "id": "E1",
+      "cx": 15.0,
+      "cy": 34.5,
+      "r": 1.9,
+      "label": "Lemon",
+      "kind": "tree",
+      "note": "productive"
+     },
+     {
+      "id": "E2",
+      "cx": 15.0,
+      "cy": 38.0,
+      "r": 1.7,
+      "label": "Almond",
+      "kind": "tree",
+      "note": "old, mostly dead"
+     },
+     {
+      "id": "E3",
+      "cx": 2.2,
+      "cy": 37.0,
+      "r": 1.8,
+      "label": "Apricot",
+      "kind": "tree",
+      "note": ""
+     }
+    ],
+    "zones": [
+     {
+      "id": "R1",
+      "label": "House, north plane",
+      "x": 0.7,
+      "y": 14.5,
+      "w": 12.0,
+      "h": 8.0,
+      "plan_m2": 96,
+      "downpipes": [
+       [
+        0.7,
+        22.5
+       ],
+       [
+        12.7,
+        22.5
+       ]
+      ],
+      "connected_now": false,
+      "gutter": true,
+      "note": "to the street gutter"
+     },
+     {
+      "id": "R2",
+      "label": "House, south plane",
+      "x": 0.7,
+      "y": 6.5,
+      "w": 12.0,
+      "h": 8.0,
+      "plan_m2": 96,
+      "downpipes": [
+       [
+        0.7,
+        6.5
+       ],
+       [
+        12.7,
+        6.5
+       ]
+      ],
+      "connected_now": false,
+      "gutter": true,
+      "note": "to the street gutter"
+     },
+     {
+      "id": "R3",
+      "label": "Garage",
+      "x": 12.1,
+      "y": 25.6,
+      "w": 5.4,
+      "h": 6.8,
+      "plan_m2": 37,
+      "downpipes": [
+       [
+        12.1,
+        25.6
+       ]
+      ],
+      "connected_now": true,
+      "gutter": true,
+      "note": "the only zone on the 5 kL tank"
+     }
+    ],
+    "points": [
+     {
+      "id": "P1",
+      "x": 13.9,
+      "y": 0.4,
+      "label": "Water meter",
+      "kind": "service",
+      "status": "known",
+      "note": ""
+     },
+     {
+      "id": "P2",
+      "x": 12.7,
+      "y": 12.0,
+      "label": "Electric storage hot-water unit",
+      "kind": "service",
+      "status": "known",
+      "note": ""
+     },
+     {
+      "id": "P3",
+      "x": 12.7,
+      "y": 9.0,
+      "label": "Switchboard and 5 kW solar inverter",
+      "kind": "service",
+      "status": "known",
+      "note": ""
+     },
+     {
+      "id": "P4",
+      "x": 1.0,
+      "y": 6.8,
+      "label": "Sewer connection (approximate)",
+      "kind": "service",
+      "status": "estimate",
+      "note": "drain assumed to leave the south-west corner"
+     },
+     {
+      "id": "P5",
+      "x": 15.5,
+      "y": 0.3,
+      "label": "Stormwater to kerb",
+      "kind": "service",
+      "status": "known",
+      "note": ""
+     },
+     {
+      "id": "L1",
+      "x": 7.0,
+      "y": 0.5,
+      "label": "RL 100.0",
+      "kind": "level",
+      "status": "estimate",
+      "note": ""
+     },
+     {
+      "id": "L2",
+      "x": 7.0,
+      "y": 39.5,
+      "label": "RL 100.9",
+      "kind": "level",
+      "status": "estimate",
+      "note": ""
+     },
+     {
+      "id": "A1",
+      "x": 15.5,
+      "y": 1.0,
+      "label": "Vehicle access",
+      "kind": "access",
+      "status": "known",
+      "note": ""
+     }
+    ],
+    "easements": []
+   },
+   "floor": {
+    "extent": [
+     11.0,
+     15.0
+    ],
+    "rooms": [
+     {
+      "id": "F1",
+      "x": 0.0,
+      "y": 0.0,
+      "w": 3.8,
+      "h": 4.4,
+      "label": "Bedroom 2",
+      "kind": "room",
+      "note": "",
+      "area": 16.7
+     },
+     {
+      "id": "F2",
+      "x": 3.8,
+      "y": 0.0,
+      "w": 3.6,
+      "h": 4.4,
+      "label": "Bedroom 3",
+      "kind": "room",
+      "note": "",
+      "area": 15.8
+     },
+     {
+      "id": "F3",
+      "x": 7.4,
+      "y": 0.0,
+      "w": 3.6,
+      "h": 4.4,
+      "label": "Bedroom 1",
+      "kind": "room",
+      "note": "",
+      "area": 15.8
+     },
+     {
+      "id": "F4",
+      "x": 0.0,
+      "y": 4.4,
+      "w": 11.0,
+      "h": 1.2,
+      "label": "Hall",
+      "kind": "room",
+      "note": "",
+      "area": 13.2
+     },
+     {
+      "id": "F5",
+      "x": 0.0,
+      "y": 5.6,
+      "w": 5.5,
+      "h": 4.4,
+      "label": "Living",
+      "kind": "room",
+      "note": "",
+      "area": 24.2
+     },
+     {
+      "id": "F6",
+      "x": 5.5,
+      "y": 5.6,
+      "w": 2.6,
+      "h": 4.4,
+      "label": "Bathroom",
+      "kind": "wet",
+      "note": "shower and bath",
+      "area": 11.4
+     },
+     {
+      "id": "F7",
+      "x": 8.1,
+      "y": 5.6,
+      "w": 1.3,
+      "h": 4.4,
+      "label": "WC",
+      "kind": "wet",
+      "note": "cistern on the east external wall",
+      "area": 5.7
+     },
+     {
+      "id": "F8",
+      "x": 9.4,
+      "y": 5.6,
+      "w": 1.6,
+      "h": 4.4,
+      "label": "Laundry",
+      "kind": "wet",
+      "note": "tub and machine; external door east",
+      "area": 7.0
+     },
+     {
+      "id": "F9",
+      "x": 0.0,
+      "y": 10.0,
+      "w": 6.0,
+      "h": 5.0,
+      "label": "Dining",
+      "kind": "room",
+      "note": "",
+      "area": 30.0
+     },
+     {
+      "id": "F10",
+      "x": 6.0,
+      "y": 10.0,
+      "w": 5.0,
+      "h": 5.0,
+      "label": "Kitchen",
+      "kind": "wet",
+      "note": "sink and dishwasher",
+      "area": 25.0
+     }
+    ],
+    "points": [
+     {
+      "id": "Q1",
+      "x": 11.0,
+      "y": 7.8,
+      "label": "Laundry door",
+      "kind": "access",
+      "status": "known",
+      "note": ""
+     }
+    ]
+   },
+   "parcel": null,
+   "scheme": null,
+   "areas": {
+    "parcel_m2": 700,
+    "drawn_m2": 700.0,
+    "footprint_m2": 195.0,
+    "roof_plan_m2": 228.7,
+    "roof_zone_sum_m2": 228.7,
+    "roof_connected_now_m2": 36.7,
+    "roof_guttered_m2": 228.7,
+    "eaves_and_overhead_m2": 33.7,
+    "hardstand_m2": 136.4,
+    "growing_envelope_m2": 261.3,
+    "retained_within_envelope_m2": 0.0,
+    "cultivable_max_m2": 261.3,
+    "recreation_m2": 67.5,
+    "other_m2": 39.8,
+    "floor_rooms_m2": 165.0,
+    "floor_envelope_m2": 165.0,
+    "existing_storage_kl": 5,
+    "preset_roof_m2": 230,
+    "preset_growable_m2": 250,
+    "preset_plot_m2": 700,
+    "shared_allocation_m2": 0.0,
+    "tolerance_abs_m2": 15.0,
+    "tolerance_rel": 0.04
+   },
+   "dossier": {
+    "slope": {
+     "text": "Falls about 0.9 m from the rear fence to the street, roughly 2 per cent, estimated from council contours. The back garden is the high end.",
+     "status": "estimate"
+    },
+    "services": [
+     {
+      "service": "Water",
+      "text": "Mains, 20 mm meter at the front boundary.",
+      "status": "known"
+     },
+     {
+      "service": "Sewer",
+      "text": "Connected; the main is in the street. Where the house drain leaves has not been checked.",
+      "status": "estimate"
+     },
+     {
+      "service": "Power",
+      "text": "Overhead, 63 A single phase, with a 5 kW rooftop solar system.",
+      "status": "known"
+     },
+     {
+      "service": "Gas",
+      "text": "Natural gas for cooking.",
+      "status": "known"
+     },
+     {
+      "service": "Stormwater",
+      "text": "Roof and driveway to the street kerb.",
+      "status": "known"
+     }
+    ],
+    "inventory": [
+     {
+      "text": "5 kL poly tank (2011) on the garage roof, with a 0.4 kW pump to two garden taps.",
+      "status": "known"
+     },
+     {
+      "text": "Four raised vegetable beds, about 22 m\u00b2 in total, in use.",
+      "status": "known"
+     },
+     {
+      "text": "Lemon, almond and apricot trees.",
+      "status": "known"
+     },
+     {
+      "text": "Two 220 L compost bins.",
+      "status": "known"
+     },
+     {
+      "text": "Drip line on the vegetable beds, fed from the mains through a tap timer.",
+      "status": "known"
+     },
+     {
+      "text": "Unglazed greenhouse frame, 4 m\u00b2.",
+      "status": "known"
+     }
+    ],
+    "bills": [
+     {
+      "text": "Water: four quarterly bills totalling 257 kL, at $3.60/kL usage charge plus a fixed supply charge.",
+      "status": "known",
+      "quarters": [
+       {
+        "quarter": "January to March",
+        "kl": 75
+       },
+       {
+        "quarter": "April to June",
+        "kl": 56
+       },
+       {
+        "quarter": "July to September",
+        "kl": 55
+       },
+       {
+        "quarter": "October to December",
+        "kl": 71
+       }
+      ]
+     },
+     {
+      "text": "Electricity: twelve monthly totals for the whole house. No circuit is metered separately.",
+      "status": "known"
+     }
+    ],
+    "observations": [
+     "\u201cEvery January the beds go backwards and the water bill goes up. Both annoy me.\u201d",
+     "\u201cI want to know what it costs to run before I agree to it.\u201d",
+     "\u201cThe almond is mostly dead. I would replace it if something better grows here.\u201d",
+     "\u201cWe keep the back lawn. That is not negotiable.\u201d"
+    ],
+    "priorities": [
+     "Reliable summer irrigation for the beds and fruit trees without a rising water bill.",
+     "A food garden that stays manageable across the year instead of peaking and collapsing.",
+     "Running costs that are low, predictable and stated in dollars a year."
+    ],
+    "constraints": [
+     {
+      "text": "Retained recreation: the 67.5 m\u00b2 back lawn stays.",
+      "status": "known"
+     },
+     {
+      "text": "Maintenance: up to 3 hours a week. Routine work yes; fault-finding no.",
+      "status": "known"
+     },
+     {
+      "text": "Installation zones: new tanks along the driveway edge beside the house or behind the garage. Nothing forward of the house; the driveway must stay 3 m clear.",
+      "status": "known"
+     },
+     {
+      "text": "Disruption: up to seven working days. The family will not open any internal wall.",
+      "status": "known"
+     },
+     {
+      "text": "Permitted uses of rainwater: garden irrigation and laundry; toilet flushing if the cistern can be supplied without opening an internal wall.",
+      "status": "known"
+     },
+     {
+      "text": "Running cost: the family asks for new running costs under $250 a year, and a stated reason if that is exceeded.",
+      "status": "known"
+     }
+    ],
+    "unknowns": [
+     "Whether the January decline is water, heat or nitrogen.",
+     "Soil pH and salinity in the vegetable beds after decades of mains water.",
+     "How the 12-month water use splits between indoors and the garden.",
+     "Whether the WC cistern can be supplied from outside.",
+     "The existing drip line's flow rate and uniformity."
+    ],
+    "permitted_uses": [
+     "toilet flushing",
+     "laundry",
+     "garden irrigation"
+    ],
+    "existing_uses": [
+     "garden irrigation"
+    ],
+    "bore_allocation_kl": 0.0,
+    "maintenance_h_week": 3.0,
+    "min_attendance_days": 2,
+    "unattended_days": 14,
+    "existing_irrigated_m2": 56.0
+   },
+   "targets": [
+    {
+     "id": "T1",
+     "text": "The vegetable beds and fruit trees (56 m\u00b2) at least 90 % watered from on-site water across December to February"
+    },
+    {
+     "id": "T2",
+     "text": "New running costs of $250 a year or less, stated in dollars"
+    },
+    {
+     "id": "T3",
+     "text": "The garden producing in at least 10 months of the average year"
+    },
+    {
+     "id": "T4",
+     "text": "The back lawn kept; at most 3 hours of routine care a week"
+    }
+   ],
+   "existing_meets": {
+    "T1": false,
+    "T2": true,
+    "T3": true,
+    "T4": true
+   },
+   "decision_ranges": {
+    "new_storage_kl": [
+     0,
+     5,
+     10,
+     15
+    ],
+    "storage_kind": "round",
+    "max_new_storage_kl": 15.0,
+    "connectable_zones": [
+     "R1",
+     "R2"
+    ],
+    "added_area_max_m2": 205,
+    "retained_within_envelope_m2": 0.0
+   },
+   "feasibility": {
+    "budget_margin_at_least": 25500,
+    "energy_margin_at_least": 4.5,
+    "dry_year_all_targets": false
+   }
+  },
+  {
+   "id": "S5",
+   "slug": "darwin",
+   "short": "Darwin",
+   "family": "Williams",
+   "household": "Kate and Josh Williams and their two children, aged 9 and 13",
+   "place": "Darwin rural area, NT",
+   "dwelling": "Elevated steel-frame house (2008) and a steel shed on a 1 ha block",
+   "tenure": "Owner-occupied freehold, rural-residential zoning.",
+   "station": "014015",
+   "climate_label": "Tropical wet-dry rural-residential",
+   "parcel_m2": 10000,
+   "mains": false,
+   "plan": {
+    "extent": [
+     60.0,
+     40.0
+    ],
+    "cover": [
+     {
+      "id": "B1",
+      "x": 12.0,
+      "y": 16.0,
+      "w": 13.0,
+      "h": 15.0,
+      "label": "Elevated house",
+      "kind": "building",
+      "note": "on piers; shaded storage slab underneath",
+      "area": 195.0,
+      "roof": {
+       "x": 11.1,
+       "y": 15.1,
+       "w": 14.8,
+       "h": 16.8,
+       "area": 248.6
+      }
+     },
+     {
+      "id": "B2",
+      "x": 36.0,
+      "y": 8.0,
+      "w": 6.0,
+      "h": 8.0,
+      "label": "Shed",
+      "kind": "building",
+      "note": "steel",
+      "area": 48.0,
+      "roof": {
+       "x": 35.7,
+       "y": 7.7,
+       "w": 6.6,
+       "h": 8.6,
+       "area": 56.8
+      }
+     },
+     {
+      "id": "H1",
+      "x": 26.0,
+      "y": 0.0,
+      "w": 9.0,
+      "h": 14.0,
+      "label": "Gravel drive and turnaround",
+      "kind": "hardstand",
+      "note": "unsealed",
+      "area": 126.0
+     },
+     {
+      "id": "H2",
+      "x": 42.5,
+      "y": 9.0,
+      "w": 6.0,
+      "h": 6.0,
+      "label": "Shed apron",
+      "kind": "hardstand",
+      "note": "concrete",
+      "area": 36.0
+     },
+     {
+      "id": "G1",
+      "x": 12.0,
+      "y": 33.0,
+      "w": 14.0,
+      "h": 7.0,
+      "label": "North garden",
+      "kind": "growing",
+      "note": "productive in the wet, marginal in the dry",
+      "area": 98.0
+     },
+     {
+      "id": "G2",
+      "x": 31.0,
+      "y": 18.0,
+      "w": 12.0,
+      "h": 16.0,
+      "label": "Main garden",
+      "kind": "growing",
+      "note": "banana, pawpaw, cassava, sweet potato",
+      "area": 192.0
+     },
+     {
+      "id": "G3",
+      "x": 2.0,
+      "y": 15.0,
+      "w": 8.0,
+      "h": 18.0,
+      "label": "West orchard",
+      "kind": "growing",
+      "note": "mango and citrus",
+      "area": 144.0
+     },
+     {
+      "id": "G4",
+      "x": 46.0,
+      "y": 18.0,
+      "w": 8.0,
+      "h": 9.0,
+      "label": "Nursery area",
+      "kind": "growing",
+      "note": "shadecloth frame over about 20 m\u00b2",
+      "area": 72.0
+     },
+     {
+      "id": "C1",
+      "x": 12.0,
+      "y": 3.0,
+      "w": 10.0,
+      "h": 9.0,
+      "label": "Shaded yard",
+      "kind": "recreation",
+      "note": "under the native fig; kept",
+      "area": 90.0
+     }
+    ],
+    "roofover": [],
+    "circles": [
+     {
+      "id": "T1",
+      "cx": 28.3,
+      "cy": 21.8,
+      "r": 1.8,
+      "label": "Existing tank 1 (22.5 kL)",
+      "kind": "tank",
+      "note": "poly, 2016",
+      "kl": 22.5
+     },
+     {
+      "id": "T2",
+      "cx": 28.3,
+      "cy": 26.3,
+      "r": 1.8,
+      "label": "Existing tank 2 (22.5 kL)",
+      "kind": "tank",
+      "note": "poly, 2016",
+      "kl": 22.5
+     },
+     {
+      "id": "E1",
+      "cx": 5.5,
+      "cy": 19.5,
+      "r": 3.5,
+      "label": "Mango",
+      "kind": "tree",
+      "note": "large, dense shade"
+     },
+     {
+      "id": "E2",
+      "cx": 5.5,
+      "cy": 28.0,
+      "r": 2.5,
+      "label": "Citrus",
+      "kind": "tree",
+      "note": ""
+     },
+     {
+      "id": "E3",
+      "cx": 17.0,
+      "cy": 7.5,
+      "r": 4.0,
+      "label": "Native fig",
+      "kind": "tree",
+      "note": "shades the yard"
+     }
+    ],
+    "zones": [
+     {
+      "id": "R1",
+      "label": "House, east plane",
+      "x": 18.5,
+      "y": 15.1,
+      "w": 7.4,
+      "h": 16.8,
+      "plan_m2": 124,
+      "downpipes": [
+       [
+        25.9,
+        20.0
+       ],
+       [
+        25.9,
+        28.0
+       ]
+      ],
+      "connected_now": true,
+      "gutter": true,
+      "note": "plumbed to both tanks; carries the 6.6 kW solar array"
+     },
+     {
+      "id": "R2",
+      "label": "House, west plane",
+      "x": 11.1,
+      "y": 15.1,
+      "w": 7.4,
+      "h": 16.8,
+      "plan_m2": 124,
+      "downpipes": [
+       [
+        11.1,
+        18.0
+       ],
+       [
+        11.1,
+        29.0
+       ]
+      ],
+      "connected_now": false,
+      "gutter": true,
+      "note": "gutter present; downpipes discharge beside the piers"
+     },
+     {
+      "id": "R3",
+      "label": "Shed, north plane",
+      "x": 35.7,
+      "y": 12.0,
+      "w": 6.6,
+      "h": 4.3,
+      "plan_m2": 28,
+      "downpipes": [
+       [
+        42.3,
+        16.3
+       ]
+      ],
+      "connected_now": false,
+      "gutter": true,
+      "note": "gutter fitted"
+     },
+     {
+      "id": "R4",
+      "label": "Shed, south plane",
+      "x": 35.7,
+      "y": 7.7,
+      "w": 6.6,
+      "h": 4.3,
+      "plan_m2": 28,
+      "downpipes": [
+       [
+        42.3,
+        7.7
+       ]
+      ],
+      "connected_now": false,
+      "gutter": true,
+      "note": "gutter fitted"
+     }
+    ],
+    "points": [
+     {
+      "id": "P1",
+      "x": 27.0,
+      "y": 19.0,
+      "label": "Pressure pump and cartridge filter",
+      "kind": "service",
+      "status": "known",
+      "note": ""
+     },
+     {
+      "id": "P2",
+      "x": 25.9,
+      "y": 30.5,
+      "label": "Switchboard and inverter",
+      "kind": "service",
+      "status": "known",
+      "note": ""
+     },
+     {
+      "id": "P3",
+      "x": 33.0,
+      "y": 35.5,
+      "label": "Septic tank (approximate)",
+      "kind": "service",
+      "status": "estimate",
+      "note": ""
+     },
+     {
+      "id": "P4",
+      "x": 30.5,
+      "y": 23.5,
+      "label": "Carted-water fill point",
+      "kind": "service",
+      "status": "known",
+      "note": ""
+     },
+     {
+      "id": "O1",
+      "x": 30.2,
+      "y": 28.5,
+      "label": "Tank overflow (current)",
+      "kind": "overflow",
+      "status": "known",
+      "note": "discharges beside the piers"
+     },
+     {
+      "id": "L1",
+      "x": 5.0,
+      "y": 39.0,
+      "label": "RL 100.8",
+      "kind": "level",
+      "status": "estimate",
+      "note": ""
+     },
+     {
+      "id": "L2",
+      "x": 55.0,
+      "y": 1.0,
+      "label": "RL 100.0",
+      "kind": "level",
+      "status": "estimate",
+      "note": ""
+     },
+     {
+      "id": "A1",
+      "x": 30.5,
+      "y": 0.6,
+      "label": "Access from the road",
+      "kind": "access",
+      "status": "known",
+      "note": ""
+     }
+    ],
+    "easements": [
+     {
+      "id": "X1",
+      "x": 27.0,
+      "y": 34.5,
+      "w": 12.0,
+      "h": 5.5,
+      "label": "Septic trench exclusion",
+      "note": "trench position from the 2008 approval plan; not verified",
+      "status": "estimate"
+     }
+    ]
+   },
+   "floor": {
+    "extent": [
+     13.0,
+     15.0
+    ],
+    "rooms": [
+     {
+      "id": "F1",
+      "x": 0.0,
+      "y": 0.0,
+      "w": 4.4,
+      "h": 5.0,
+      "label": "Kitchen",
+      "kind": "wet",
+      "note": "sink and dishwasher",
+      "area": 22.0
+     },
+     {
+      "id": "F2",
+      "x": 4.4,
+      "y": 0.0,
+      "w": 3.0,
+      "h": 5.0,
+      "label": "Laundry",
+      "kind": "wet",
+      "note": "tub and machine; external stair",
+      "area": 15.0
+     },
+     {
+      "id": "F3",
+      "x": 7.4,
+      "y": 0.0,
+      "w": 3.0,
+      "h": 2.8,
+      "label": "Bathroom",
+      "kind": "wet",
+      "note": "shower",
+      "area": 8.4
+     },
+     {
+      "id": "F4",
+      "x": 7.4,
+      "y": 2.8,
+      "w": 3.0,
+      "h": 2.2,
+      "label": "WC",
+      "kind": "wet",
+      "note": "",
+      "area": 6.6
+     },
+     {
+      "id": "F5",
+      "x": 10.4,
+      "y": 0.0,
+      "w": 2.6,
+      "h": 5.0,
+      "label": "Store",
+      "kind": "service",
+      "note": "solar hot water on the roof",
+      "area": 13.0
+     },
+     {
+      "id": "F6",
+      "x": 0.0,
+      "y": 5.0,
+      "w": 7.0,
+      "h": 5.5,
+      "label": "Open living",
+      "kind": "room",
+      "note": "louvred, cross-ventilated",
+      "area": 38.5
+     },
+     {
+      "id": "F7",
+      "x": 7.0,
+      "y": 5.0,
+      "w": 6.0,
+      "h": 5.5,
+      "label": "Bedroom 1 and ensuite",
+      "kind": "wet",
+      "note": "second shower",
+      "area": 33.0
+     },
+     {
+      "id": "F8",
+      "x": 0.0,
+      "y": 10.5,
+      "w": 4.3,
+      "h": 4.5,
+      "label": "Bedroom 2",
+      "kind": "room",
+      "note": "",
+      "area": 19.3
+     },
+     {
+      "id": "F9",
+      "x": 4.3,
+      "y": 10.5,
+      "w": 4.3,
+      "h": 4.5,
+      "label": "Bedroom 3",
+      "kind": "room",
+      "note": "",
+      "area": 19.3
+     },
+     {
+      "id": "F10",
+      "x": 8.6,
+      "y": 10.5,
+      "w": 4.4,
+      "h": 4.5,
+      "label": "Verandah room",
+      "kind": "room",
+      "note": "",
+      "area": 19.8
+     }
+    ],
+    "points": [
+     {
+      "id": "Q1",
+      "x": 5.9,
+      "y": 0.0,
+      "label": "Laundry stair",
+      "kind": "access",
+      "status": "known",
+      "note": ""
+     }
+    ]
+   },
+   "parcel": {
+    "extent": [
+     80.0,
+     125.0
+    ],
+    "working_area": [
+     10.0,
+     5.0,
+     60.0,
+     40.0
+    ],
+    "features": [
+     {
+      "id": "K1",
+      "x": 58.0,
+      "y": 0.0,
+      "w": 22.0,
+      "h": 30.0,
+      "label": "Seasonal drainage line",
+      "kind": "drainage"
+     },
+     {
+      "id": "K2",
+      "x": 0.0,
+      "y": 45.0,
+      "w": 80.0,
+      "h": 80.0,
+      "label": "Savanna woodland, not available",
+      "kind": "retained"
+     }
+    ],
+    "road": "south",
+    "note": "Only the working area is available for the design. The woodland north of it is retained, a case assumption."
+   },
+   "scheme": null,
+   "areas": {
+    "parcel_m2": 10000,
+    "drawn_m2": 2400.0,
+    "footprint_m2": 243.0,
+    "roof_plan_m2": 305.4,
+    "roof_zone_sum_m2": 305.4,
+    "roof_connected_now_m2": 124.3,
+    "roof_guttered_m2": 305.4,
+    "eaves_and_overhead_m2": 62.4,
+    "hardstand_m2": 162.0,
+    "growing_envelope_m2": 506.0,
+    "retained_within_envelope_m2": 0.0,
+    "cultivable_max_m2": 506.0,
+    "recreation_m2": 90.0,
+    "other_m2": 1399.0,
+    "floor_rooms_m2": 195.0,
+    "floor_envelope_m2": 195.0,
+    "existing_storage_kl": 45.0,
+    "preset_roof_m2": 300,
+    "preset_growable_m2": 500,
+    "preset_plot_m2": 10000,
+    "shared_allocation_m2": 0.0,
+    "tolerance_abs_m2": 15.0,
+    "tolerance_rel": 0.04
+   },
+   "dossier": {
+    "slope": {
+     "text": "The working area falls about 0.8 m to the south-east, where wet-season sheet flow crosses the drive. Estimated from the NT contour layer; not surveyed.",
+     "status": "estimate"
+    },
+    "services": [
+     {
+      "service": "Water",
+      "text": "No reticulated supply. Tank water, with carted top-ups delivered into the tanks in the late dry season.",
+      "status": "known"
+     },
+     {
+      "service": "Sewer",
+      "text": "Not connected. Septic tank and trenches north-east of the house; trench position unverified.",
+      "status": "estimate"
+     },
+     {
+      "service": "Power",
+      "text": "Overhead single phase, 80 A, with a 6.6 kW solar array on the east roof plane.",
+      "status": "known"
+     },
+     {
+      "service": "Gas",
+      "text": "Bottled LPG.",
+      "status": "known"
+     },
+     {
+      "service": "Stormwater",
+      "text": "Sheet flow. Tank overflow currently discharges beside the house piers.",
+      "status": "known"
+     }
+    ],
+    "inventory": [
+     {
+      "text": "Two 22.5 kL poly tanks, 45 kL in total (2016), on the house east plane, with a pressure pump and cartridge filter.",
+      "status": "known"
+     },
+     {
+      "text": "Shadecloth frame over about 20 m\u00b2 in the nursery area.",
+      "status": "known"
+     },
+     {
+      "text": "Mango and citrus; banana, pawpaw, cassava and sweet potato in the main garden.",
+      "status": "known"
+     },
+     {
+      "text": "Two timber compost bays, about 1.5 m\u00b3 each.",
+      "status": "known"
+     },
+     {
+      "text": "Drip and micro-sprays on the main garden, manual valves.",
+      "status": "known"
+     },
+     {
+      "text": "6.6 kW solar array on the east roof plane.",
+      "status": "known"
+     }
+    ],
+    "bills": [
+     {
+      "text": "Carted water: 6 invoices last year, each for 15 kL at $330 a load.",
+      "status": "known",
+      "loads": [
+       {
+        "month": "Jan",
+        "loads": 0
+       },
+       {
+        "month": "Feb",
+        "loads": 0
+       },
+       {
+        "month": "Mar",
+        "loads": 0
+       },
+       {
+        "month": "Apr",
+        "loads": 0
+       },
+       {
+        "month": "May",
+        "loads": 0
+       },
+       {
+        "month": "Jun",
+        "loads": 1
+       },
+       {
+        "month": "Jul",
+        "loads": 1
+       },
+       {
+        "month": "Aug",
+        "loads": 1
+       },
+       {
+        "month": "Sep",
+        "loads": 1
+       },
+       {
+        "month": "Oct",
+        "loads": 1
+       },
+       {
+        "month": "Nov",
+        "loads": 0
+       },
+       {
+        "month": "Dec",
+        "loads": 0
+       }
+      ]
+     },
+     {
+      "text": "Electricity: twelve monthly totals for the whole house; the pumps are not metered separately.",
+      "status": "known"
+     }
+    ],
+    "observations": [
+     "\u201cIn the wet the tanks overflow for weeks. In October we buy water. It is absurd.\u201d",
+     "\u201cWe are away for four weeks every July and things have to keep running.\u201d",
+     "\u201cThe overflow washes out under the house. I want that dealt with.\u201d",
+     "\u201cAnything I cannot service myself in the wet is no use to me.\u201d"
+    ],
+    "priorities": [
+     "Carry enough of the wet season into the dry to stop buying water.",
+     "Systems that run unattended through a four-week absence in July.",
+     "Overflow sent somewhere deliberate instead of under the house.",
+     "Keep the fruit trees and the main garden producing through the dry."
+    ],
+    "constraints": [
+     {
+      "text": "Retained recreation: the 90 m\u00b2 shaded yard stays.",
+      "status": "known"
+     },
+     {
+      "text": "Maintenance: up to 4 hours a week when home. Nothing may need attention during the four-week July absence.",
+      "status": "known"
+     },
+     {
+      "text": "Installation zones: new tanks on the gravel turnaround or the shed apron. Nothing in the septic exclusion zone and nothing under the house.",
+      "status": "known"
+     },
+     {
+      "text": "Disruption: up to ten working days. The solar array must not be disturbed.",
+      "status": "known"
+     },
+     {
+      "text": "Permitted uses: all household uses from the tanks, as now, and garden irrigation. Carted water is delivered by a licensed potable-water carrier.",
+      "status": "known"
+     },
+     {
+      "text": "Overflow must go to a nominated discharge point away from the piers. This is a requirement, not an option.",
+      "status": "known"
+     }
+    ],
+    "unknowns": [
+     "How far into the dry season the existing 45 kL lasts, month by month.",
+     "How much overflows in the wet, and where it goes.",
+     "Whether the west gutter falls the right way for new downpipes.",
+     "Soil infiltration at a possible overflow discharge point.",
+     "Tank water quality after a wet season of leaf litter."
+    ],
+    "permitted_uses": [
+     "toilet flushing",
+     "laundry",
+     "showers and basins",
+     "kitchen and drinking",
+     "other indoor uses",
+     "garden irrigation"
+    ],
+    "existing_uses": [
+     "toilet flushing",
+     "laundry",
+     "showers and basins",
+     "kitchen and drinking",
+     "other indoor uses",
+     "garden irrigation"
+    ],
+    "bore_allocation_kl": 0.0,
+    "maintenance_h_week": 4.0,
+    "min_attendance_days": 1,
+    "unattended_days": 28,
+    "existing_irrigated_m2": 120.0
+   },
+   "targets": [
+    {
+     "id": "T1",
+     "text": "Carted water cut to 20 kL a year or less in the average year"
+    },
+    {
+     "id": "T2",
+     "text": "Everything runs unattended through a four-week absence in July, with no delivery needed that month"
+    },
+    {
+     "id": "T3",
+     "text": "Overflow taken to a nominated discharge point away from the piers"
+    },
+    {
+     "id": "T4",
+     "text": "The main garden (120 m\u00b2) at least 60 % watered from on-site water through the dry season, May to October"
+    }
+   ],
+   "existing_meets": {
+    "T1": false,
+    "T2": false,
+    "T3": false,
+    "T4": false
+   },
+   "decision_ranges": {
+    "new_storage_kl": [
+     0,
+     22.5,
+     45,
+     67.5,
+     90,
+     112.5
+    ],
+    "storage_kind": "round",
+    "max_new_storage_kl": 120.0,
+    "connectable_zones": [
+     "R2",
+     "R3",
+     "R4"
+    ],
+    "added_area_max_m2": 386,
+    "retained_within_envelope_m2": 0.0
+   },
+   "feasibility": {
+    "budget_margin_at_least": 12500,
+    "energy_margin_at_least": 3.5,
+    "dry_year_all_targets": false
+   }
+  }
+ ]
+}

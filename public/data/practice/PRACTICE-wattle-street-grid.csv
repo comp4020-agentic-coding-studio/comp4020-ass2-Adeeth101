@@ -1,0 +1,18 @@
+# PRACTICE CASE - invented round-number data for SLOP4761 tutorials; not a client home and not a real climate.
+id,new_storage_kl,zones,roof_m2,strategy,schedule,capital,running_year,imported_kl,priority_months_full,toilet_laundry_share,energy_peak,dry_priority_months_full,dry_imported_kl,meets_PT1,meets_PT2,dominated_by
+O1,5,R1+R3,122.2,garden,year_round,3839,729,219.0,12,0.0,0.1,11,219.0,True,False,
+O2,5,R1+R3,122.2,indoor,garden_first,5104,659,173.8,3,0.62,0.28,3,192.6,False,False,
+O3,5,R1+R2+R3,219.8,garden,year_round,4829,729,219.0,12,0.0,0.1,12,219.0,True,False,O5
+O4,5,R1+R2+R3,219.8,indoor,garden_first,6094,634,164.0,11,0.75,0.36,5,171.0,False,True,
+O5,10,R1+R3,122.2,garden,year_round,4554,729,219.0,12,0.0,0.1,12,219.0,True,False,
+O6,10,R1+R3,122.2,indoor,garden_first,5819,659,173.8,3,0.62,0.28,3,192.6,False,False,O2
+O7,10,R1+R2+R3,219.8,garden,year_round,5544,729,219.0,12,0.0,0.1,12,219.0,True,False,O3 O5 O9
+O8,10,R1+R2+R3,219.8,indoor,garden_first,6809,634,164.0,12,0.75,0.39,5,170.3,True,True,
+O9,15,R1+R3,122.2,garden,year_round,5269,729,219.0,12,0.0,0.1,12,219.0,True,False,O3 O5
+O10,15,R1+R3,122.2,indoor,garden_first,6534,659,173.8,3,0.62,0.28,3,192.6,False,False,O2 O4 O6
+O11,15,R1+R2+R3,219.8,garden,year_round,6259,729,219.0,12,0.0,0.1,12,219.0,True,False,O3 O5 O7 O9 O13
+O12,15,R1+R2+R3,219.8,indoor,garden_first,7524,634,164.0,12,0.75,0.39,7,169.0,True,True,
+O13,20,R1+R3,122.2,garden,year_round,5984,729,219.0,12,0.0,0.1,12,219.0,True,False,O3 O5 O7 O9
+O14,20,R1+R3,122.2,indoor,garden_first,7249,659,173.8,3,0.62,0.28,3,192.6,False,False,O2 O4 O6 O8 O10
+O15,20,R1+R2+R3,219.8,garden,year_round,6974,729,219.0,12,0.0,0.1,12,219.0,True,False,O3 O5 O7 O9 O11 O13
+O16,20,R1+R2+R3,219.8,indoor,garden_first,8239,634,164.0,12,0.75,0.39,9,166.7,True,True,

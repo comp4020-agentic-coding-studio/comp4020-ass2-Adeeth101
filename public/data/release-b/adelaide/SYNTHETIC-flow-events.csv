@@ -1,0 +1,12 @@
+"# SYNTHETIC CASE DATA - SLOP4761 Release B, Adelaide, April 2027 to March 2028. Generated, not measured."
+rank,month,fixtures,peak_lpm,duration_min
+1,2027-06,bath + toilet cistern refill + kitchen tap,27.4,2
+2,2028-01,kitchen tap + toilet cistern refill + washing machine fill,24.3,3
+3,2028-02,toilet cistern refill + bath,20.4,4
+4,2027-10,washing machine fill + shower,19.8,5
+5,2028-01,washing machine fill + toilet cistern refill,17.9,2
+6,2027-09,toilet cistern refill + shower,16.4,5
+7,2027-11,kitchen tap + shower,15.9,8
+8,2027-07,toilet cistern refill + shower,15.2,3
+9,2027-05,basin + kitchen tap,12.1,8
+10,2027-12,kitchen tap + basin,11.1,8

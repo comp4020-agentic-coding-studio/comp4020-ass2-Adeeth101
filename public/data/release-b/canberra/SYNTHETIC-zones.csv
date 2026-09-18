@@ -1,0 +1,8 @@
+"# SYNTHETIC CASE DATA - SLOP4761 Release B, Canberra, April 2027 to March 2028. Generated, not measured."
+zone,label,area_m2,texture,ph_water,ec_ds_m,organic_carbon_pct,nitrate_n_mg_kg,colwell_p_mg_kg,rooting_depth_cm,sun_hours_summer,sun_hours_winter,relative_productivity,productivity_class,note
+G1,Front garden,99.6,clay loam,6.1,0.08,1.9,12,28,45,10.5,2.5,0.7,C,house shadow covers the bed from May to August
+G2,East side bed,55.1,clay loam,6.3,0.09,1.6,9,22,40,6.0,3.0,0.8,B,morning sun only
+G3,Back lawn,133.0,"clay loam, compacted",6.0,0.07,2.2,8,18,35,11.0,6.5,0.95,A,lawn; compaction to 150 mm
+G4,North beds,70.0,sandy clay loam,6.6,0.12,3.4,24,55,60,11.5,7.0,1.0,A,best soil; the raised beds are here
+G5,Orchard strip,72.0,clay loam,6.4,0.1,2.6,15,35,50,9.0,5.0,0.85,B,shade from the fruit trees
+G6,Herb strip,13.2,clay loam,5.6,0.06,1.4,4,12,20,5.5,2.0,0.45,D,eucalypt roots dense at 200 mm; afternoon shade
