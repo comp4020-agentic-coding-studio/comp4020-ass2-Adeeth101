@@ -1,0 +1,570 @@
+---
+/** A scaled site plan drawn from the case geometry in research/model/case.py.
+ *
+ *  Two views of the same lot. `ground` shows what covers the ground: buildings,
+ *  hardstand, growing zones, retained recreation, trees, tanks, services, levels
+ *  and easements. `roof` shows what collects rain: roof outlines, the separately
+ *  connectable zones, downpipes and the tanks they feed.
+ *
+ *  Only short IDs are written inside the plan; every name, area and note is in
+ *  the key beside it. That is what keeps labels from colliding at 390 px wide.
+ *  Plan coordinates are metres with y north; the SVG flips y. */
+interface R { id: string; x: number; y: number; w: number; h: number; label: string; kind: string; note?: string; area: number; roof?: { x: number; y: number; w: number; h: number; area: number } }
+interface C { id: string; cx: number; cy: number; r: number; label: string; kind: string; note?: string; kl?: number; offsite?: boolean; w?: number; h?: number }
+interface Z { id: string; label: string; x: number; y: number; w: number; h: number; plan_m2: number; downpipes: number[][]; connected_now: boolean; gutter: boolean; note?: string }
+interface P { id: string; x: number; y: number; label: string; kind: string; status?: string; note?: string }
+interface Esm { id: string; x: number; y: number; w: number; h: number; label: string; note?: string; status?: string }
+interface Marker { id: string; x: number; y: number; label: string; item?: string }
+interface Props {
+  plan: { extent: number[]; cover: R[]; roofover: R[]; circles: C[]; zones: Z[]; points: P[]; easements: Esm[] };
+  mode?: "ground" | "roof";
+  title: string;
+  street?: string;
+  markers?: Marker[];
+  keyless?: boolean;
+  labelAt?: Record<string, [number, number]>;
+}
+
+const { plan, mode = "ground", title, street = "Street", markers = [], keyless = false, labelAt = {} } = Astro.props;
+const [W, H] = plan.extent;
+const uid = `p${Math.abs([...title].reduce((a, c) => (a * 31 + c.charCodeAt(0)) | 0, 7))}`;
+const f = Math.min(1.6, Math.max(0.45, W / 28));      // label size, metres
+const pad = 3.2 * f + 0.6;
+const vbW = W + 2 * pad;
+const vbH = H + 2 * pad + 2.6 * f;
+const Y = (y: number) => H - y;                         // plan y (north) to SVG y (down)
+const portrait = H > W * 1.25;
+const fmt = (v: number) => v.toLocaleString("en-AU", { maximumFractionDigits: 1 });
+const scaleStep = W <= 12 ? 2 : W <= 25 ? 5 : 10;
+const scaleLen = scaleStep * 2;
+
+const labelPos = (r: { id: string; x: number; y: number; w: number; h: number; kind: string }): [number, number] => {
+  if (labelAt[r.id]) return labelAt[r.id];
+  if (r.kind === "building") return [r.x + Math.min(r.w * 0.22, 2.2 * f), r.y + Math.min(r.h * 0.18, 1.6 * f)];
+  return [r.x + r.w / 2, r.y + r.h / 2];
+};
+const vertical = (r: { w: number; h: number }) => r.w < 2.2 * f && r.h > r.w * 2;
+const pointsShown = mode === "ground" ? plan.points : plan.points.filter((p) => p.kind === "overflow");
+const cover = plan.cover;
+const tanks = plan.circles.filter((c) => c.kind === "tank");
+const trees = plan.circles.filter((c) => c.kind === "tree");
+const bores = plan.circles.filter((c) => c.kind === "bore");
+const kindName: Record<string, string> = {
+  building: "Building", hardstand: "Hardstand", growing: "Growing zone", recreation: "Retained recreation",
+  roofover: "Roof over hardstand", tank: "Tank", tree: "Tree canopy", bore: "Bore",
+  service: "Service point", level: "Spot level", access: "Access", overflow: "Overflow",
+};
+const statusName: Record<string, string> = { known: "known", estimate: "estimate", unknown: "to be measured" };
+---
+
+<figure class:list={["siteplan", { portrait, keyless }]} aria-label={title}>
+  <div class="plan-svg">
+    <svg viewBox={`${-pad} ${-pad} ${vbW} ${vbH}`} xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby={`${uid}-t`}>
+      <title id={`${uid}-t`}>{title}</title>
+      <defs>
+        <pattern id={`${uid}-hatch`} width={f * 0.9} height={f * 0.9} patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <line x1="0" y1="0" x2="0" y2={f * 0.9} class="hatch-line" style={`stroke-width:${f * 0.09}`} />
+        </pattern>
+        <pattern id={`${uid}-dots`} width={f * 0.7} height={f * 0.7} patternUnits="userSpaceOnUse">
+          <circle cx={f * 0.35} cy={f * 0.35} r={f * 0.07} class="dot" />
+        </pattern>
+        <pattern id={`${uid}-ease`} width={f * 0.6} height={f * 0.6} patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+          <line x1="0" y1="0" x2="0" y2={f * 0.6} class="ease-line" style={`stroke-width:${f * 0.07}`} />
+        </pattern>
+        <clipPath id={`${uid}-clip`}><rect x={-pad} y={-pad} width={vbW} height={H + 2 * pad} /></clipPath>
+      </defs>
+
+      <g clip-path={`url(#${uid}-clip)`}>
+        {/* the lot */}
+        <rect x="0" y="0" width={W} height={H} class="lot" style={`stroke-width:${f * 0.12}`} />
+
+        {mode === "ground" && cover.map((r) => (
+          <rect x={r.x} y={Y(r.y + r.h)} width={r.w} height={r.h} class={`c-${r.kind}`} style={`stroke-width:${f * 0.05}`} />
+        ))}
+        {mode === "ground" && cover.filter((r) => r.kind === "growing").map((r) => (
+          <rect x={r.x} y={Y(r.y + r.h)} width={r.w} height={r.h} fill={`url(#${uid}-hatch)`} class="nostroke" />
+        ))}
+        {mode === "ground" && cover.filter((r) => r.kind === "recreation").map((r) => (
+          <rect x={r.x} y={Y(r.y + r.h)} width={r.w} height={r.h} fill={`url(#${uid}-dots)`} class="nostroke" />
+        ))}
+
+        {/* roofs: eaves outlines on the ground plan, filled on the roof plan */}
+        {cover.filter((r) => r.roof).map((r) => (
+          <rect x={r.roof!.x} y={Y(r.roof!.y + r.roof!.h)} width={r.roof!.w} height={r.roof!.h}
+                class={mode === "roof" ? "roof-fill" : "eaves"} style={`stroke-width:${f * 0.06}; stroke-dasharray:${f * 0.3} ${f * 0.2}`} />
+        ))}
+        {plan.roofover.map((r) => (
+          <rect x={r.roof ? r.roof.x : r.x} y={Y(r.roof ? r.roof.y + r.roof.h : r.y + r.h)} width={r.roof ? r.roof.w : r.w} height={r.roof ? r.roof.h : r.h}
+                class={mode === "roof" ? "roof-fill" : "roofover"} style={`stroke-width:${f * 0.06}; stroke-dasharray:${f * 0.3} ${f * 0.2}`} />
+        ))}
+        {mode === "roof" && cover.filter((r) => r.kind === "building").map((r) => (
+          <rect x={r.x} y={Y(r.y + r.h)} width={r.w} height={r.h} class="footprint" style={`stroke-width:${f * 0.05}`} />
+        ))}
+        {mode === "roof" && plan.zones.map((z) => (
+          <rect x={z.x} y={Y(z.y + z.h)} width={z.w} height={z.h}
+                class:list={["zone", { connected: z.connected_now, ungutter: !z.gutter }]}
+                style={`stroke-width:${f * 0.1}`} />
+        ))}
+
+        {mode === "ground" && plan.easements.map((e) => (
+          <rect x={e.x} y={Y(e.y + e.h)} width={e.w} height={e.h} fill={`url(#${uid}-ease)`} class="easement" style={`stroke-width:${f * 0.06}`} />
+        ))}
+
+        {mode === "ground" && trees.map((c) => (
+          <circle cx={c.cx} cy={Y(c.cy)} r={c.r} class:list={["tree", { offsite: c.offsite }]} style={`stroke-width:${f * 0.07}; stroke-dasharray:${f * 0.25} ${f * 0.15}`} />
+        ))}
+        {tanks.map((c) => c.w ? (
+          <rect x={c.cx - c.w / 2} y={Y(c.cy + (c.h ?? 0) / 2)} width={c.w} height={c.h} class="tank" />
+        ) : (
+          <circle cx={c.cx} cy={Y(c.cy)} r={c.r} class="tank" />
+        ))}
+        {bores.map((c) => (
+          <g class="bore">
+            <circle cx={c.cx} cy={Y(c.cy)} r={Math.max(c.r, f * 0.45)} style={`stroke-width:${f * 0.1}`} />
+            <line x1={c.cx - f * 0.45} y1={Y(c.cy)} x2={c.cx + f * 0.45} y2={Y(c.cy)} style={`stroke-width:${f * 0.1}`} />
+            <line x1={c.cx} y1={Y(c.cy) - f * 0.45} x2={c.cx} y2={Y(c.cy) + f * 0.45} style={`stroke-width:${f * 0.1}`} />
+          </g>
+        ))}
+
+        {mode === "roof" && plan.zones.flatMap((z) => z.downpipes.map(([x, y]) => (
+          <circle cx={x} cy={Y(y)} r={f * 0.28} class:list={["downpipe", { connected: z.connected_now }]} style={`stroke-width:${f * 0.08}`} />
+        )))}
+
+        {/* labels: IDs only */}
+        {mode === "ground" && cover.map((r) => {
+          const [lx, ly] = labelPos(r);
+          return vertical(r) ? (
+            <text x={lx} y={Y(ly)} transform={`rotate(-90 ${lx} ${Y(ly)})`} class={`lbl lbl-${r.kind}`} style={`font-size:${f * 0.85}px`} text-anchor="middle" dominant-baseline="central">{r.id}</text>
+          ) : (
+            <text x={lx} y={Y(ly)} class={`lbl lbl-${r.kind}`} style={`font-size:${f}px`} text-anchor="middle" dominant-baseline="central">{r.id}</text>
+          );
+        })}
+        {mode === "ground" && plan.roofover.map((r) => {
+          const [lx, ly] = labelAt[r.id] ?? [r.x + r.w / 2, r.y + r.h / 2];
+          return <text x={lx} y={Y(ly)} class="lbl lbl-roofover" style={`font-size:${f * 0.8}px`} text-anchor="middle" dominant-baseline="central">{r.id}</text>;
+        })}
+        {mode === "roof" && plan.zones.map((z) => {
+          const [lx, ly] = labelAt[z.id] ?? [z.x + z.w / 2, z.y + z.h / 2];
+          const small = Math.min(z.w, z.h) < 2.4 * f;
+          return <text x={lx} y={Y(ly)} class:list={["lbl", "lbl-zone", { onconnected: z.connected_now }]} style={`font-size:${small ? f * 0.75 : f}px`} text-anchor="middle" dominant-baseline="central">{z.id}</text>;
+        })}
+        {mode === "ground" && trees.filter((c) => !c.offsite || c.cx + c.r > 0).map((c) => {
+          const [lx, ly] = labelAt[c.id] ?? [c.offsite ? Math.max(c.cx, f) : c.cx, c.cy];
+          return <text x={lx} y={Y(ly)} class="lbl lbl-tree" style={`font-size:${f * 0.8}px`} text-anchor="middle" dominant-baseline="central">{c.id}</text>;
+        })}
+        {tanks.map((c) => {
+          const [lx, ly] = labelAt[c.id] ?? [c.cx, c.cy];
+          return <text x={lx} y={Y(ly)} class="lbl lbl-tank" style={`font-size:${f * (c.w ? 0.5 : 0.75)}px`} text-anchor="middle" dominant-baseline="central">{c.id}</text>;
+        })}
+        {mode === "ground" && plan.easements.map((e) => {
+          const [lx, ly] = labelAt[e.id] ?? [e.x + e.w - 1.6 * f, e.y + e.h / 2];
+          return <text x={lx} y={Y(ly)} class="lbl lbl-ease" style={`font-size:${f * 0.75}px`} text-anchor="middle" dominant-baseline="central">{e.id}</text>;
+        })}
+        {pointsShown.map((p) => (
+          <g class={`pt pt-${p.kind}`}>
+            {p.kind === "level" ? (
+              <path d={`M ${p.x} ${Y(p.y) - f * 0.35} l ${f * 0.35} ${f * 0.6} l ${-f * 0.7} 0 z`} />
+            ) : p.kind === "access" ? (
+              <path d={`M ${p.x} ${Y(p.y) - f * 0.5} l ${f * 0.4} ${f * 0.6} l ${-f * 0.8} 0 z`} />
+            ) : (
+              <rect x={p.x - f * 0.25} y={Y(p.y) - f * 0.25} width={f * 0.5} height={f * 0.5} class:list={[{ unknown: p.status === "unknown" }]} />
+            )}
+            {p.kind !== "access" && (
+              <text x={p.x + (p.x > W - 4 * f ? -f * 0.5 : f * 0.5)} y={Y(p.y)} text-anchor={p.x > W - 4 * f ? "end" : "start"}
+                    dominant-baseline="central" class="lbl lbl-pt" style={`font-size:${f * 0.7}px`}>{p.kind === "level" ? p.label : p.id}</text>
+            )}
+          </g>
+        ))}
+        {markers.map((m) => (
+          <g class="marker">
+            <circle cx={m.x} cy={Y(m.y)} r={f * 0.62} style={`stroke-width:${f * 0.1}`} />
+            <text x={m.x} y={Y(m.y)} text-anchor="middle" dominant-baseline="central" style={`font-size:${f * 0.62}px`}>{m.id}</text>
+          </g>
+        ))}
+      </g>
+
+      {/* dimensions, north, scale, street */}
+      <g class="dims" style={`font-size:${f * 0.8}px`}>
+        <line x1="0" y1={H + f * 0.9} x2={W} y2={H + f * 0.9} style={`stroke-width:${f * 0.05}`} />
+        <line x1="0" y1={H + f * 0.6} x2="0" y2={H + f * 1.2} style={`stroke-width:${f * 0.05}`} />
+        <line x1={W} y1={H + f * 0.6} x2={W} y2={H + f * 1.2} style={`stroke-width:${f * 0.05}`} />
+        <text x={W / 2} y={H + f * 1.9} text-anchor="middle" dominant-baseline="central">{fmt(W)} m</text>
+        <line x1={-f * 0.9} y1="0" x2={-f * 0.9} y2={H} style={`stroke-width:${f * 0.05}`} />
+        <text x={-f * 1.8} y={H / 2} transform={`rotate(-90 ${-f * 1.8} ${H / 2})`} text-anchor="middle" dominant-baseline="central">{fmt(H)} m</text>
+        <text x={W / 2} y={H + f * 3.1} text-anchor="middle" dominant-baseline="central" class="street">{street}</text>
+      </g>
+      <g class="north" transform={`translate(${W + pad - 1.6 * f} ${-pad + 2.1 * f})`}>
+        <path d={`M 0 ${-1.6 * f} L ${0.55 * f} ${0.3 * f} L 0 ${-0.1 * f} L ${-0.55 * f} ${0.3 * f} Z`} />
+        <text x="0" y={1.1 * f} text-anchor="middle" style={`font-size:${f * 0.8}px`}>N</text>
+      </g>
+      <g class="scale" transform={`translate(0 ${H + pad + 1.2 * f})`} style={`font-size:${f * 0.7}px`}>
+        <rect x="0" y="0" width={scaleStep} height={f * 0.35} class="sb-dark" />
+        <rect x={scaleStep} y="0" width={scaleStep} height={f * 0.35} class="sb-light" style={`stroke-width:${f * 0.04}`} />
+        <text x="0" y={f * 1.05} text-anchor="middle">0</text>
+        <text x={scaleStep} y={f * 1.05} text-anchor="middle">{scaleStep}</text>
+        <text x={scaleLen} y={f * 1.05} text-anchor="middle">{scaleLen} m</text>
+      </g>
+    </svg>
+  </div>
+
+  {!keyless && (
+    <div class="plan-key">
+      <table>
+        <caption class="sr-caption">Key to {title.toLowerCase()}</caption>
+        <thead>
+          {mode === "roof" ? (
+            <tr><th scope="col">ID</th><th scope="col">Roof zone</th><th scope="col">Plan area</th><th scope="col">Downpipes</th><th scope="col">Now</th></tr>
+          ) : (
+            <tr><th scope="col">ID</th><th scope="col">Feature</th><th scope="col">Area or size</th></tr>
+          )}
+        </thead>
+        <tbody>
+          {mode === "roof" ? (
+            <>
+              {plan.zones.map((z) => (
+                <tr>
+                  <th scope="row">{z.id}</th>
+                  <td>{z.label}{z.note && <span class="note"> — {z.note}</span>}</td>
+                  <td class="num">{Math.round(z.plan_m2)} m²</td>
+                  <td class="num">{z.gutter ? z.downpipes.length : "no gutter"}</td>
+                  <td>{z.connected_now ? "to storage" : "not connected"}</td>
+                </tr>
+              ))}
+              {tanks.map((c) => (
+                <tr><th scope="row">{c.id}</th><td>{c.label}{c.note && <span class="note"> — {c.note}</span>}</td><td class="num">{c.kl} kL</td><td></td><td></td></tr>
+              ))}
+            </>
+          ) : (
+            <>
+              {cover.map((r) => (
+                <tr>
+                  <th scope="row">{r.id}</th>
+                  <td>{r.label}<span class="kind"> · {kindName[r.kind]}</span>{r.note && <span class="note"> — {r.note}</span>}</td>
+                  <td class="num">{fmt(r.area)} m²{r.roof && <span class="note"> (roof {fmt(r.roof.area)} m²)</span>}</td>
+                </tr>
+              ))}
+              {plan.roofover.map((r) => (
+                <tr><th scope="row">{r.id}</th><td>{r.label}<span class="kind"> · {kindName.roofover}</span>{r.note && <span class="note"> — {r.note}</span>}</td><td class="num">roof {fmt(r.roof ? r.roof.area : r.area)} m²</td></tr>
+              ))}
+              {plan.circles.map((c) => (
+                <tr>
+                  <th scope="row">{c.id}</th>
+                  <td>{c.label}<span class="kind"> · {kindName[c.kind]}</span>{c.note && <span class="note"> — {c.note}</span>}</td>
+                  <td class="num">{c.kl ? `${c.kl} kL` : c.kind === "tree" ? `canopy ≈ ${fmt(c.r * 2)} m` : ""}</td>
+                </tr>
+              ))}
+              {plan.easements.map((e) => (
+                <tr><th scope="row">{e.id}</th><td>{e.label}{e.note && <span class="note"> — {e.note}</span>}{e.status && <span class={`st st-${e.status}`}>{statusName[e.status]}</span>}</td><td class="num">{fmt(e.w * e.h)} m²</td></tr>
+              ))}
+              {plan.points.filter((p) => p.kind !== "level").map((p) => (
+                <tr><th scope="row">{p.id}</th><td>{p.label}{p.note && <span class="note"> — {p.note}</span>}{p.status && p.status !== "known" && <span class={`st st-${p.status}`}>{statusName[p.status]}</span>}</td><td></td></tr>
+              ))}
+              {markers.map((m) => (
+                <tr><th scope="row">{m.id}</th><td>{m.label}</td><td>{m.item}</td></tr>
+              ))}
+            </>
+          )}
+        </tbody>
+      </table>
+      <p class="legend">
+        {mode === "roof"
+          ? "Shaded zones drain to storage now; dashed zones do not. Circles are downpipes. Areas are roof plan area, eaves included."
+          : "Hatched: growing zone. Dotted: retained recreation. Dashed outline: roof edge or tree canopy. Cross-hatched strip: easement or exclusion zone. Triangles: estimated spot levels. Squares: service points."}
+      </p>
+    </div>
+  )}
+</figure>
+
+<style>
+  .siteplan {
+    display: grid;
+    gap: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  @media (min-width: 900px) {
+    .siteplan.portrait:not(.keyless) {
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      align-items: start;
+    }
+  }
+
+  .plan-svg {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    font-family: var(--at-font-body, system-ui);
+  }
+
+  .portrait svg {
+    max-height: 88vh;
+  }
+
+  .siteplan:not(.portrait) svg {
+    min-width: 34rem;
+  }
+
+  .lot {
+    fill: var(--at-bg);
+    stroke: var(--at-text);
+  }
+
+  .c-building {
+    fill: color-mix(in srgb, var(--at-tertiary) 55%, var(--at-bg));
+    stroke: var(--at-tertiary);
+  }
+
+  .c-hardstand {
+    fill: color-mix(in srgb, var(--at-text-muted) 16%, var(--at-bg));
+    stroke: color-mix(in srgb, var(--at-text-muted) 45%, var(--at-bg));
+  }
+
+  .c-growing {
+    fill: color-mix(in srgb, var(--at-secondary) 14%, var(--at-bg));
+    stroke: var(--at-secondary);
+  }
+
+  .c-recreation {
+    fill: color-mix(in srgb, var(--at-primary) 8%, var(--at-bg));
+    stroke: color-mix(in srgb, var(--at-primary) 55%, var(--at-bg));
+  }
+
+  .nostroke {
+    stroke: none;
+  }
+
+  .hatch-line {
+    stroke: color-mix(in srgb, var(--at-secondary) 55%, var(--at-bg));
+  }
+
+  .dot {
+    fill: color-mix(in srgb, var(--at-primary) 60%, var(--at-bg));
+  }
+
+  .ease-line {
+    stroke: color-mix(in srgb, var(--at-tertiary) 70%, var(--at-bg));
+  }
+
+  .easement {
+    stroke: var(--at-tertiary);
+  }
+
+  .eaves,
+  .roofover {
+    fill: none;
+    stroke: var(--at-tertiary);
+  }
+
+  .roofover {
+    fill: color-mix(in srgb, var(--at-tertiary) 10%, transparent);
+  }
+
+  .roof-fill {
+    fill: color-mix(in srgb, var(--at-tertiary) 14%, var(--at-bg));
+    stroke: var(--at-tertiary);
+  }
+
+  .footprint {
+    fill: none;
+    stroke: color-mix(in srgb, var(--at-tertiary) 60%, var(--at-bg));
+  }
+
+  .zone {
+    fill: none;
+    stroke: var(--at-text-secondary);
+    stroke-dasharray: 0.5 0.35;
+  }
+
+  .zone.connected {
+    fill: color-mix(in srgb, var(--at-primary) 30%, transparent);
+    stroke: var(--at-primary);
+    stroke-dasharray: none;
+  }
+
+  .zone.ungutter {
+    stroke-dasharray: 0.15 0.3;
+  }
+
+  .downpipe {
+    fill: var(--at-bg);
+    stroke: var(--at-text-secondary);
+  }
+
+  .downpipe.connected {
+    fill: var(--at-primary);
+    stroke: var(--at-primary);
+  }
+
+  .tree {
+    fill: color-mix(in srgb, var(--at-secondary) 10%, transparent);
+    stroke: var(--at-secondary);
+  }
+
+  .tree.offsite {
+    fill: none;
+  }
+
+  .tank {
+    fill: var(--at-primary);
+    stroke: color-mix(in srgb, var(--at-primary) 70%, black);
+    stroke-width: 0.06;
+  }
+
+  .bore circle,
+  .bore line {
+    fill: var(--at-bg);
+    stroke: var(--at-primary);
+  }
+
+  .lbl {
+    fill: var(--at-text);
+    font-weight: 600;
+    paint-order: stroke;
+    stroke: var(--at-bg);
+    stroke-width: 0.18;
+    stroke-linejoin: round;
+  }
+
+  .lbl-building {
+    fill: var(--at-text);
+  }
+
+  .lbl-tank {
+    fill: var(--at-on-primary, #fff);
+    stroke: none;
+  }
+
+  .lbl-zone.onconnected {
+    fill: var(--at-text);
+  }
+
+  .lbl-pt,
+  .lbl-ease {
+    font-weight: 500;
+    fill: var(--at-text-secondary);
+  }
+
+  .pt path,
+  .pt rect {
+    fill: var(--at-text-secondary);
+  }
+
+  .pt rect.unknown {
+    fill: var(--at-bg);
+    stroke: var(--at-text-secondary);
+    stroke-width: 0.1;
+    stroke-dasharray: 0.12 0.1;
+  }
+
+  .pt-level path {
+    fill: var(--at-tertiary);
+  }
+
+  .pt-access path {
+    fill: var(--at-primary);
+  }
+
+  .pt-overflow rect {
+    fill: var(--at-primary);
+  }
+
+  .marker circle {
+    fill: var(--at-bg);
+    stroke: var(--at-primary);
+  }
+
+  .marker text {
+    fill: var(--at-primary);
+    font-weight: 700;
+  }
+
+  .dims line {
+    stroke: var(--at-text-muted);
+  }
+
+  .dims text,
+  .scale text,
+  .north text {
+    fill: var(--at-text-secondary);
+  }
+
+  .street {
+    font-style: italic;
+  }
+
+  .north path {
+    fill: var(--at-text);
+  }
+
+  .sb-dark {
+    fill: var(--at-text);
+  }
+
+  .sb-light {
+    fill: var(--at-bg);
+    stroke: var(--at-text);
+  }
+
+  .plan-key {
+    overflow-x: auto;
+    font-size: 0.88rem;
+  }
+
+  .plan-key table {
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+  }
+
+  .plan-key th[scope="row"] {
+    font-family: var(--at-font-mono);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .num {
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .kind,
+  .note {
+    color: var(--at-text-muted);
+  }
+
+  .num .note {
+    display: block;
+    font-size: 0.9em;
+  }
+
+  .st {
+    display: inline-block;
+    margin-left: 0.4rem;
+    padding: 0 0.35rem;
+    border: 1px dashed var(--at-text-muted);
+    border-radius: 3px;
+    font-size: 0.78em;
+    color: var(--at-text-secondary);
+    white-space: nowrap;
+  }
+
+  .legend {
+    margin: 0.5rem 0 0;
+    color: var(--at-text-muted);
+    font-size: 0.85rem;
+  }
+
+  .sr-caption {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+</style>

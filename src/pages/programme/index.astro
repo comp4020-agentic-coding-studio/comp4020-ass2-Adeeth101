@@ -1,0 +1,98 @@
+---
+import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
+import { withBase } from "astro-theme-university/url";
+import Figure from "../../components/Figure.astro";
+import { constraints } from "../../lib/model";
+import { measurement, money } from "../../lib/cases";
+import { siteConfig } from "../../site-config";
+---
+
+<ContentLayout
+  title="The programme and the practice"
+  description="The fictional loan programme your clients are applying to, the fictional consultancy you work for, and the rules they set."
+  {...siteConfig}
+>
+  <p class="fiction">
+    <strong>Teaching fiction.</strong> The Household Resilience Loan Programme and Common Ground
+    Engineering do not exist. They are a frame for the engineering: they give every design a client,
+    a deadline, a budget and a reviewer. No real government policy, lender or endorsement is implied,
+    and nothing in this course is financial advice.
+  </p>
+
+  <h2>The Household Resilience Loan Programme</h2>
+  <p>
+    A government programme in this course's fiction lends to homeowners for retrofits that make a
+    household more self-reliant in food, water and waste. Loans are selective. An application stands
+    or falls on an engineering proposal showing that the retrofit meets the household's own service
+    needs, costs what it says, and will still be working in five years.
+  </p>
+  <p>The programme's rules are the course's hard constraints:</p>
+  <Figure caption="Programme rules. They apply to every home and every alternative." basis="course assumption">
+    <table>
+      <thead><tr><th scope="col">Rule</th><th scope="col">Limit</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Implementation cost</th><td>at most {money(constraints.budget_aud)}, including a {(constraints.contingency * 100).toFixed(0)} % contingency, priced from the <a href={withBase("/method/costing/")}>course schedule</a></td></tr>
+        <tr><th scope="row">Process energy</th><td>at most {constraints.energy_cap_kwh_day} kWh a day, averaged over the peak month, counting the loads that run the food, water and waste systems</td></tr>
+        <tr><th scope="row">Preliminary investigation</th><td>a separate {money(measurement.allowance)} per home for measurement equipment and services; consultant time is scheduled in hours, not charged</td></tr>
+        <tr><th scope="row">Scope</th><td>food, water and waste only; energy and shelter belong to a later round of the programme</td></tr>
+      </tbody>
+    </table>
+  </Figure>
+  <p>
+    Borrowing more is allowed up to the limit, but within this scheme a larger loan is a larger
+    exposure, so the programme asks a stronger question of it: what does the extra money buy that
+    a cheaper option does not? That is an engineering question about alternatives. It is not a
+    lesson in how real credit is assessed, and the course has no interest rates, credit scores or
+    income tests.
+  </p>
+  <p>
+    What an application gets from you is the <strong>technical annex and executive
+    recommendation</strong>. It is not a loan approval, and it is not a construction-certified
+    design: pipe sizes, wiring, structural detail and certification belong to licensed trades later.
+    You specify performance and how to check it has been achieved.
+  </p>
+
+  <h2>Common Ground Engineering</h2>
+  <p>
+    You are a graduate engineer at Common Ground, a small consultancy that prepares programme
+    applications. Each graduate takes one household from intake to proposal under a senior reviewer,
+    played by the teaching team, who reads your drafts the way a programme assessor will.
+  </p>
+  <p>The work runs in two stages, a year apart in the story and seven weeks apart in the course:</p>
+  <ol>
+    <li>
+      <strong>Measure first.</strong> From the intake dossier you design a year-long measurement
+      programme (<a href={withBase("/assessments/")}>Assignment 1</a>, due week 7):
+      what to measure, where, how often, how well, and what it costs.
+    </li>
+    <li>
+      <strong>Twelve months later.</strong> The story jumps a year. Common Ground's specialist team
+      hands over its analysed findings for your home (Release B), and you design the retrofit and
+      make the case for it (<a href={withBase("/assessments/")}>Assignment 2</a>).
+    </li>
+  </ol>
+  <p>
+    You do not wait a year or collect real data. The specialists' measured year is synthetic,
+    generated to be consistent with each home, and labelled that way everywhere it appears.
+  </p>
+
+  <h2>The people in the story</h2>
+  <ul>
+    <li><strong>Your client</strong>, one of <a href={withBase("/clients/")}>five households</a>, each with priorities that are theirs, not the course's.</li>
+    <li><strong>The senior reviewer</strong>, who asks the questions a programme assessor would, in design reviews in weeks 7 and 12.</li>
+    <li><strong>The specialist team</strong>, who run the measurement year and analyse it. They report conditions and implications. They do not choose the system.</li>
+  </ul>
+</ContentLayout>
+
+<style>
+  .fiction {
+    padding: 0.8rem 1rem;
+    border-left: 3px solid var(--at-primary);
+    background: var(--at-bg-alt);
+  }
+
+  th[scope="row"] {
+    text-align: left;
+    white-space: nowrap;
+  }
+</style>

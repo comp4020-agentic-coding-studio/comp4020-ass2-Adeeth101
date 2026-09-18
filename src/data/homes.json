@@ -2077,17 +2077,85 @@
    "scheme": {
     "extent": [
      62.0,
-     42.0
+     66.0
     ],
-    "lots": 9,
-    "lot_w": 10.0,
-    "lot_h": 30.0,
+    "lots": [
+     {
+      "n": 1,
+      "x": 0.0,
+      "y": 36.0,
+      "w": 10.0,
+      "h": 30.0
+     },
+     {
+      "n": 2,
+      "x": 10.0,
+      "y": 36.0,
+      "w": 10.0,
+      "h": 30.0
+     },
+     {
+      "n": 3,
+      "x": 20.0,
+      "y": 36.0,
+      "w": 10.0,
+      "h": 30.0
+     },
+     {
+      "n": 4,
+      "x": 30.0,
+      "y": 36.0,
+      "w": 10.0,
+      "h": 30.0
+     },
+     {
+      "n": 5,
+      "x": 40.0,
+      "y": 36.0,
+      "w": 10.0,
+      "h": 30.0
+     },
+     {
+      "n": 6,
+      "x": 0.0,
+      "y": 0.0,
+      "w": 10.0,
+      "h": 30.0
+     },
+     {
+      "n": 7,
+      "x": 10.0,
+      "y": 0.0,
+      "w": 10.0,
+      "h": 30.0
+     },
+     {
+      "n": 8,
+      "x": 20.0,
+      "y": 0.0,
+      "w": 10.0,
+      "h": 30.0
+     },
+     {
+      "n": 9,
+      "x": 30.0,
+      "y": 0.0,
+      "w": 10.0,
+      "h": 30.0
+     }
+    ],
     "patel_lot": 4,
     "driveway": [
      0.0,
      30.0,
      62.0,
      6.0
+    ],
+    "parking": [
+     40.0,
+     0.0,
+     10.0,
+     30.0
     ],
     "garden": [
      50.0,
@@ -2096,12 +2164,13 @@
      30.0
     ],
     "allocation": [
-     50.0,
+     52.0,
      20.0,
      8.0,
      5.0
     ],
-    "note": "Scheme plan, schematic. Lots 1 to 9 are private; the driveway and the shared garden are common property. The Patel allocation is 40 m\u00b2 of the 360 m\u00b2 shared garden and is not part of their 300 m\u00b2 lot."
+    "street": "east",
+    "note": "Scheme plan, schematic and not to survey. Lots 1 to 9 are private. The common driveway, visitor parking and the 360 m\u00b2 shared garden are common property. The Patel allocation is 40 m\u00b2 of the shared garden, held by body corporate resolution, and is not part of their 300 m\u00b2 lot (lot 4)."
    },
    "areas": {
     "parcel_m2": 300,
@@ -2600,8 +2669,8 @@
      },
      {
       "id": "P5",
-      "x": 15.5,
-      "y": 0.3,
+      "x": 17.1,
+      "y": 1.6,
       "label": "Stormwater to kerb",
       "kind": "service",
       "status": "known",

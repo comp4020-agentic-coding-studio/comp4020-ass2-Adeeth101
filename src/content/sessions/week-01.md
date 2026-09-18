@@ -9,7 +9,7 @@ teachers:
 related:
   - lectures/week-01
 spec:
-  - you have claimed one of the five preset sites, or lodged a custom-site request
+  - you have chosen one of the five client homes
   - your site sheet carries twelve rows of monthly Bureau of Meteorology data with the station number named
   - every value on the sheet has a source or is labelled a course assumption
   - you can state your household's annual demand for energy, protein, water and nitrogen without looking them up
@@ -36,5 +36,4 @@ on theirs that has no source. There is always one.
 ## Afterwards
 
 Your site sheet goes in your own repository or folder and comes to every
-subsequent studio. Custom-site requests close at the end of week 3; the approval
-rules are on the [sites page](/sites/).
+subsequent studio. The five homes are on the [clients page](/clients/).

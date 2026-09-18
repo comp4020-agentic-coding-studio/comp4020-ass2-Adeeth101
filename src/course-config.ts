@@ -55,11 +55,11 @@ export const courseMeta = slopCourseMetaSchema.parse({
   startDate: "2027-02-22",
   endDate: "2027-06-18",
   description:
-    "A household is not self-sufficient because it produces everything. It is " +
-    "self-sufficient when the output of one system is the input to another. Twelve " +
-    "weeks measuring how much of a food, water and waste loop one plot can honestly " +
-    "close, on a fixed budget and energy allowance.",
-  tags: ["closed-loop design", "water and sanitation", "food systems"],
+    "Graduate consultants measure a client's home for a year, then design the " +
+    "lowest-cost food, water and waste retrofit that meets the household's own " +
+    "targets, and argue for every dollar spent beyond it. Five fixed homes, one " +
+    "loan programme, real climates.",
+  tags: ["engineering optimisation", "water and sanitation", "food systems"],
 }) satisfies CourseMetaInput;
 
 /** The proposed sequel. Part I stops at the boundary of energy and shelter, and
@@ -72,12 +72,15 @@ export const sequel = {
   adds: "energy physics and introductory thermodynamics to the prerequisites",
 } as const;
 
-/** The prerequisites, worded identically wherever they appear. */
+/** The prerequisites, worded identically wherever they appear. The course
+ *  teaches the biology it uses; prior environmental or biological study helps
+ *  but is not required. */
 export const prerequisites = [
-  "Introductory microbiology",
-  "Soil science or plant biology",
-  "Introductory chemistry",
-  "An introductory environmental course",
-  "Engineering design principles",
-  "Some CAD and modelling experience",
+  "Engineering design (a 2000- or 3000-level design course)",
+  "Mass and energy balances",
+  "Introductory statistics and measurement",
+  "Spreadsheet modelling",
+  "Basic CAD",
 ] as const;
+
+export const helpful = "Prior environmental or biological study is helpful; the course teaches the biological context it needs.";

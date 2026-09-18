@@ -1,0 +1,119 @@
+---
+import Card from "astro-theme-university/components/Card.astro";
+import CardGrid from "astro-theme-university/components/CardGrid.astro";
+import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
+import { withBase } from "astro-theme-university/url";
+import Figure from "../../components/Figure.astro";
+import { homes } from "../../lib/cases";
+import { sites } from "../../lib/model";
+import { siteConfig } from "../../site-config";
+
+const climate = (id: string) => sites.find((s) => s.id === id)!.climate;
+const fmt = (v: number) => v.toLocaleString("en-AU", { maximumFractionDigits: 0 });
+---
+
+<ContentLayout
+  title="Five clients, five homes"
+  description="Every student advises one of five households applying to the loan programme. The homes are fixed existing properties; the climates are real; the families are fictional."
+  wide
+  {...siteConfig}
+>
+  <p class="fiction">
+    <strong>Teaching fiction.</strong> The households, their properties and the specialists who
+    measure them are invented for this course. The climates behind them are Bureau of Meteorology
+    long-term statistics, and every engineering method applied to them is real.
+  </p>
+
+  <p>
+    You choose one home in week 1 and work on it all semester. Every home comes with the same kit:
+    an intake dossier with scaled plans in week 1 (Release A), and a specialist team's findings
+    after a fictional measurement year in week 7 (Release B). Every student who chooses a home
+    receives the same Release B, whatever their own measurement programme proposed.
+  </p>
+  <p>
+    <strong>There are only these five.</strong> You cannot propose another site, substitute land,
+    or enlarge a roof or a plot. What you can change is set out on each dossier and on the{" "}
+    <a href={withBase("/method/")}>method page</a>.
+  </p>
+
+  <h2>Choose a home</h2>
+  <CardGrid columns={3}>
+    {homes.map((h) => (
+      <Card title={`${h.short}: the ${h.family} household`} href={`/clients/${h.slug}/`}>
+        <p>{h.dwelling}.</p>
+        <p class="pri">{h.dossier.priorities[0]}</p>
+      </Card>
+    ))}
+  </CardGrid>
+
+  <h2>The five side by side</h2>
+  <Figure
+    caption="Plot, growing and roof areas are computed from each plan; climate is Bureau of Meteorology long-term statistics for the named station. Brisbane's shared-garden allocation is common property and is shown separately, never added to the lot."
+    basis="sourced"
+    source="BoM stations 070014, 015590, 040214, 023000, 014015 [S39]."
+  >
+    <table>
+      <thead>
+        <tr><th scope="col">Home</th>{homes.map((h) => <th scope="col">{h.short}</th>)}</tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Client</th>{homes.map((h) => <td>{h.family}</td>)}</tr>
+        <tr><th scope="row">Whole plot</th>{homes.map((h) => <td>{h.parcel_m2 >= 10000 ? `${h.parcel_m2 / 10000} ha` : `${fmt(h.parcel_m2)} m²`}</td>)}</tr>
+        <tr><th scope="row">Designated growing area</th>{homes.map((h) => <td>{fmt(h.areas.growing_envelope_m2)} m²{h.areas.shared_allocation_m2 ? ` + ${h.areas.shared_allocation_m2} m² shared` : ""}</td>)}</tr>
+        <tr><th scope="row">Roof plan area</th>{homes.map((h) => <td>{fmt(h.areas.roof_plan_m2)} m²</td>)}</tr>
+        <tr><th scope="row">Connected today</th>{homes.map((h) => <td>{fmt(h.areas.roof_connected_now_m2)} m²</td>)}</tr>
+        <tr><th scope="row">Existing storage</th>{homes.map((h) => <td>{h.areas.existing_storage_kl} kL</td>)}</tr>
+        <tr><th scope="row">Other water</th>{homes.map((h) => <td>{h.dossier.bore_allocation_kl ? `bore, ${h.dossier.bore_allocation_kl} kL/yr` : h.mains ? "mains" : "carted"}</td>)}</tr>
+        <tr><th scope="row">Station</th>{homes.map((h) => <td>{h.station}</td>)}</tr>
+        <tr><th scope="row">Mean annual rain</th>{homes.map((h) => <td>{fmt(climate(h.id).annual_rain_mm)} mm</td>)}</tr>
+        <tr><th scope="row">Rain in driest four months</th>{homes.map((h) => <td>{(climate(h.id).driest_4_months_share * 100).toFixed(1)} %</td>)}</tr>
+        <tr><th scope="row">Annual ETo</th>{homes.map((h) => <td>{fmt(climate(h.id).annual_eto_mm)} mm</td>)}</tr>
+        <tr><th scope="row">Care available</th>{homes.map((h) => <td>{h.dossier.maintenance_h_week} h/week</td>)}</tr>
+      </tbody>
+    </table>
+  </Figure>
+
+  <p>
+    The largest <em>designated growing area</em> is Darwin's 500 m² or so; the largest <em>whole plot</em> is
+    the 2 ha Alice Springs parcel, most of which is retained vegetation. Neither number says what a
+    household can feed itself from. That depends on the crop, the water, the soil, the hours and
+    the season, and it is worked out home by home in weeks 4 and 9.
+  </p>
+
+  <h2>Why these five</h2>
+  <p>
+    They span a cool inland suburb, an arid rural block, a subtropical townhouse, a Mediterranean
+    suburb and a tropical wet-dry block, so between them they cover the problems the course teaches:
+    frost, water scarcity, space and approvals, seasonal mismatch, and storage timing. No home is
+    the easy one. Each leads two teaching weeks, and every week from 2 to 11 compares all five.
+  </p>
+  <p>
+    Realistic parameters cannot make these climates equally hard, and the course does not pretend
+    to. Fairness comes from the targets: each client's are set from the same model so that a
+    feasible option exists at every home with a comparable margin, and the assessment rewards
+    reasoning about <em>your</em> client, not a number compared across homes.
+  </p>
+</ContentLayout>
+
+<style>
+  .fiction {
+    padding: 0.8rem 1rem;
+    border-left: 3px solid var(--at-primary);
+    background: var(--at-bg-alt);
+    font-size: 0.95rem;
+  }
+
+  .pri {
+    color: var(--at-text-secondary);
+    font-size: 0.92rem;
+  }
+
+  th[scope="row"] {
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  td {
+    font-variant-numeric: tabular-nums;
+  }
+</style>

@@ -21,5 +21,5 @@ The rule they are most attached to is that water closure is never reported
 without garden water satisfaction beside it. It came from marking a design that
 scored 96 % closure by quietly watering nothing.
 
-They are the person to ask about a custom site, and the person who will tell you
-your bore allocation is doing too much work.
+They are the person to ask when a client target looks unreachable, and the person
+who will tell you your bore allocation is doing too much work.

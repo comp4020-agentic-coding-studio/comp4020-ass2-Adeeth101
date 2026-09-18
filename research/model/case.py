@@ -617,14 +617,16 @@ BRISBANE = Home(
     shared_allocation_m2=40.0,
     mains=True,
     scheme={
-        "extent": (62.0, 42.0),
-        "lots": 9,
-        "lot_w": 10.0, "lot_h": 30.0,
+        "extent": (62.0, 66.0),
+        "lots": [{"n": n, "x": (n - 1) * 10.0, "y": 36.0, "w": 10.0, "h": 30.0} for n in range(1, 6)]
+                + [{"n": n, "x": (n - 6) * 10.0, "y": 0.0, "w": 10.0, "h": 30.0} for n in range(6, 10)],
         "patel_lot": 4,
         "driveway": (0.0, 30.0, 62.0, 6.0),
+        "parking": (40.0, 0.0, 10.0, 30.0),
         "garden": (50.0, 0.0, 12.0, 30.0),
-        "allocation": (50.0, 20.0, 8.0, 5.0),
-        "note": "Scheme plan, schematic. Lots 1 to 9 are private; the driveway and the shared garden are common property. The Patel allocation is 40 m² of the 360 m² shared garden and is not part of their 300 m² lot.",
+        "allocation": (52.0, 20.0, 8.0, 5.0),
+        "street": "east",
+        "note": "Scheme plan, schematic and not to survey. Lots 1 to 9 are private. The common driveway, visitor parking and the 360 m² shared garden are common property. The Patel allocation is 40 m² of the shared garden, held by body corporate resolution, and is not part of their 300 m² lot (lot 4).",
     },
 )
 
@@ -667,7 +669,7 @@ ADELAIDE = Home(
         Point("P2", 12.7, 12.0, "Electric storage hot-water unit", "service"),
         Point("P3", 12.7, 9.0, "Switchboard and 5 kW solar inverter", "service"),
         Point("P4", 1.0, 6.8, "Sewer connection (approximate)", "service", ESTIMATE, "drain assumed to leave the south-west corner"),
-        Point("P5", 15.5, 0.3, "Stormwater to kerb", "service"),
+        Point("P5", 17.1, 1.6, "Stormwater to kerb", "service"),
         Point("L1", 7.0, 0.5, "RL 100.0", "level", ESTIMATE),
         Point("L2", 7.0, 39.5, "RL 100.9", "level", ESTIMATE),
         Point("A1", 15.5, 1.0, "Vehicle access", "access"),
@@ -1015,6 +1017,22 @@ def check(home: Home) -> list:
             bad.append(f"{home.sid} working area does not fit the parcel")
         if abs(PW * PH - home.parcel_m2) > 1:
             bad.append(f"{home.sid} parcel extent {PW}x{PH} is not {home.parcel_m2} m2")
+    # A strata scheme: the household's lot is the drawn lot, and the allocation is
+    # common property inside the shared garden, never inside a lot.
+    if home.scheme:
+        sch = home.scheme
+        lot = next(l for l in sch["lots"] if l["n"] == sch["patel_lot"])
+        if abs(lot["w"] * lot["h"] - home.parcel_m2) > 0.5:
+            bad.append(f"{home.sid} scheme lot is not the {home.parcel_m2} m2 lot")
+        ax, ay, aw, ah = sch["allocation"]
+        gx, gy, gw, gh = sch["garden"]
+        if not (ax >= gx and ay >= gy and ax + aw <= gx + gw and ay + ah <= gy + gh):
+            bad.append(f"{home.sid} allocation is not inside the shared garden")
+        if abs(aw * ah - home.shared_allocation_m2) > 0.5:
+            bad.append(f"{home.sid} allocation is {aw * ah} m2, not {home.shared_allocation_m2}")
+        for l in sch["lots"]:
+            if _overlap((l["x"], l["y"], l["w"], l["h"]), sch["allocation"]) > 0:
+                bad.append(f"{home.sid} allocation overlaps lot {l['n']}")
     return bad
 
 

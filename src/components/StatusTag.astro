@@ -1,0 +1,41 @@
+---
+/** Whether a dossier fact is known, estimated, or still to be measured. The
+ *  course asks students to treat the three differently, so the page shows it. */
+interface Props { status: string }
+const { status } = Astro.props;
+const label: Record<string, string> = { known: "known", estimate: "estimate", unknown: "to be measured" };
+---
+
+<span class={`status status-${status}`}>{label[status] ?? status}</span>
+
+<style>
+  .status {
+    display: inline-block;
+    margin-left: 0.35rem;
+    padding: 0.02rem 0.4rem;
+    border: 1px solid var(--at-border);
+    border-radius: 3px;
+    font-family: var(--at-font-mono);
+    font-size: 0.72em;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    vertical-align: 0.1em;
+    white-space: nowrap;
+  }
+
+  .status-known {
+    border-color: var(--at-tertiary);
+    color: var(--at-tertiary);
+  }
+
+  .status-estimate {
+    border-style: dashed;
+    color: var(--at-text-secondary);
+  }
+
+  .status-unknown {
+    border-color: var(--at-primary);
+    border-style: dotted;
+    color: var(--at-primary);
+  }
+</style>

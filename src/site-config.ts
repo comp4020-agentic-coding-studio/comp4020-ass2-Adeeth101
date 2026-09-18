@@ -2,11 +2,11 @@ import { defineSiteConfig } from "astro-theme-university/types";
 import { slopBranding } from "astro-theme-slop";
 import { courseMeta } from "./course-config";
 
-// Teaching sessions are design studios: students arrive with a sized system and
-// leave with it changed. The collection and URL stay `sessions`.
+// Teaching sessions are tutorials: students arrive with their home's numbers and
+// leave with the next piece of an assignment. The collection and URL stay `sessions`.
 export const sessionLabels = {
-  singular: "Studio",
-  plural: "Studios",
+  singular: "Tutorial",
+  plural: "Tutorials",
 } as const;
 
 export const graphCollections = ["sessions", "assessments", "lectures", "people"];
@@ -24,7 +24,8 @@ export const siteConfig = defineSiteConfig({
     { text: "Lectures", href: "/lectures/" },
     { text: sessionLabels.plural, href: "/sessions/" },
     { text: "Assessment", href: "/assessments/" },
-    { text: "Sites", href: "/sites/" },
+    { text: "Clients", href: "/clients/" },
+    { text: "Programme", href: "/programme/" },
     { text: "Method", href: "/method/" },
     { text: "People", href: "/people/" },
     { text: "Policies", href: "/policies/" },

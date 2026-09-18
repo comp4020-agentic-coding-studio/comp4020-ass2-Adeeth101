@@ -1,0 +1,294 @@
+---
+import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
+import { withBase } from "astro-theme-university/url";
+import Figure from "../../../components/Figure.astro";
+import SitePlan from "../../../components/SitePlan.astro";
+import FloorPlan from "../../../components/FloorPlan.astro";
+import ParcelPlan from "../../../components/ParcelPlan.astro";
+import StatusTag from "../../../components/StatusTag.astro";
+import { homes, money, type Home } from "../../../lib/cases";
+import { INTAKE } from "../../../lib/story";
+import { siteConfig } from "../../../site-config";
+
+export function getStaticPaths() {
+  return homes.map((home) => ({ params: { slug: home.slug }, props: { home } }));
+}
+
+const { home } = Astro.props as { home: Home };
+const a = home.areas;
+const d = home.dossier;
+const intake = INTAKE[home.id];
+const rural = !!home.parcel;
+const street = home.id === "S3" ? "Common driveway (common property)" : rural ? "Towards the road" : "Street";
+const fmt = (v: number) => v.toLocaleString("en-AU", { maximumFractionDigits: 1 });
+const within = (x: number, preset: number) => Math.abs(x - preset) <= Math.max(a.tolerance_abs_m2, a.tolerance_rel * Math.max(x, preset));
+const LABEL_AT: Record<string, Record<string, [number, number]>> = {
+  canberra: { G5: [18.6, 29.2], G1: [8, 3], E4: [0.8, 29.5], X1: [10, 39.1], H1: [18.3, 18.5], H2: [2.4, 22] },
+  "alice-springs": { G2: [28, 31.5], H2: [10, 16.25], V1: [18, 16.25], C1: [10, 10.5], X1: [3.7, 5] },
+  brisbane: { G2: [2, 27], H3: [6.2, 22.8], V1: [2.5, 20.6], H4: [8.2, 20.5], G1: [8.4, 3.8], E1: [4.5, 29.2] },
+  adelaide: { G4: [16.2, 33.2], G5: [7, 36.5], C1: [4.5, 29.5], H2: [6, 24.2] },
+  darwin: { G2: [34, 31], G3: [8.2, 31], X1: [36, 37.2], H1: [30.5, 7], C1: [14, 4.5] },
+};
+const labelAt = LABEL_AT[home.slug] ?? {};
+const knownCount = [d.slope, ...d.services, ...d.inventory, ...d.constraints].filter((x) => x.status === "known").length;
+---
+
+<ContentLayout
+  title={`${home.family} household, ${home.short}: intake dossier`}
+  description={`Release A for the ${home.short} home: the homeowners' brief, the property as it stands, and what nobody yet knows. Issued in week 1.`}
+  wide
+  {...siteConfig}
+>
+  <p class="fiction">
+    <strong>Case material.</strong> The {home.family} household and this property are teaching fiction
+    for the <a href={withBase("/programme/")}>Household Resilience Loan Programme</a> case. Dimensions are
+    an internally consistent educational model, not a survey.
+  </p>
+
+  <nav class="release-tabs" aria-label="Releases for this home">
+    <span class="current">Release A · intake (week 1)</span>
+    <span>Release B · specialist findings, issued in week 7</span>
+  </nav>
+
+  <h2>Intake note</h2>
+  <p class="meta">Common Ground Engineering, first client meeting, {intake.date}</p>
+  {intake.note.map((p) => <p>{p}</p>)}
+  <p><strong>Household:</strong> {home.household}. For comparability every case uses the course's demand convention for {`two adults and two children aged 9 to 13`}.</p>
+  <dl class="facts">
+    <dt>Dwelling</dt><dd>{home.dwelling}</dd>
+    <dt>Tenure</dt><dd>{home.tenure}</dd>
+    <dt>Climate</dt><dd>Bureau of Meteorology station {home.station}; long-term statistics on the <a href={withBase("/method/datasets/")}>datasets page</a></dd>
+  </dl>
+
+  <h3>In the homeowners' words</h3>
+  <ul class="quotes">
+    {d.observations.map((o) => <li>{o}</li>)}
+  </ul>
+
+  <h2>Priorities and service targets</h2>
+  <p>The household's priorities, in their order:</p>
+  <ol>{d.priorities.map((p) => <li>{p}</li>)}</ol>
+  <p>
+    Agreed at intake as the service targets a proposal must meet. They are checked in an average
+    year; the dry year is where the case for extra spending gets made.
+  </p>
+  <Figure caption="Client priority service targets. The existing condition is checked against each in the specialists' model." basis="model estimate">
+    <table>
+      <thead><tr><th scope="col">Target</th><th scope="col">Service the client needs</th><th scope="col">Met today?</th></tr></thead>
+      <tbody>
+        {home.targets.map((t) => (
+          <tr>
+            <th scope="row">{t.id}</th>
+            <td>{t.text}</td>
+            <td>{home.existing_meets[t.id as keyof typeof home.existing_meets] ? "yes" : "no"}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </Figure>
+  <p class="note">
+    <strong>Attainable, with room to spare.</strong> A staff check across the published decision
+    ranges found options meeting all four targets that leave at least{" "}
+    {money(home.feasibility.budget_margin_at_least)} of the $30,000 allowance and at least{" "}
+    {home.feasibility.energy_margin_at_least} kWh/day of the energy cap unused. Which option, and
+    whether to spend more than the minimum, is your call to make and defend.
+  </p>
+
+  <h2>The property</h2>
+  {rural && home.parcel && (
+    <>
+      <p>
+        The {fmt(home.parcel_m2 / 10000)} ha parcel matters mainly for what lies outside the
+        working area. Everything the design touches is inside the {home.plan.extent[0]} × {home.plan.extent[1]} m
+        working area drawn in full below.
+      </p>
+      <ParcelPlan title={`${home.short}: whole parcel and working area`} parcel={home.parcel} />
+    </>
+  )}
+  {home.scheme && (
+    <>
+      <p>
+        The townhouse is lot 4 of a nine-lot scheme. The 40 m² allocation in the shared garden is
+        common property: it lies outside the 300 m² lot, is held by body corporate resolution, and is
+        never counted as part of the lot.
+      </p>
+      <ParcelPlan title="Brisbane: the scheme, the lot and the shared-garden allocation" scheme={home.scheme} />
+    </>
+  )}
+
+  <h3>Site plan: what covers the ground</h3>
+  <SitePlan plan={home.plan} mode="ground" title={`${home.short} site plan`} street={street} labelAt={labelAt} />
+
+  <h3>Roof and catchment</h3>
+  <p>
+    Roof plan area is footprint plus eaves, plus any roof over hardstand. It is the area that
+    collects rain, and it is not the same number as the footprint or the pitched roof surface.
+    Only the shaded zones drain to storage today.
+  </p>
+  <SitePlan plan={home.plan} mode="roof" title={`${home.short} roof zones and downpipes`} street={street} labelAt={labelAt} />
+
+  <h3>Floor plan</h3>
+  <p>Enough to locate the wet areas, the fixtures a rainwater or greywater line would reach, and the services. Not a construction drawing.</p>
+  <FloorPlan floor={home.floor} title={`${home.short} floor plan`} />
+
+  <h3>Areas, and how they reconcile</h3>
+  <Figure
+    caption={`Areas computed from the plan geometry. Plans are drawn to round dimensions, so derived totals reproduce the case parameters within ${a.tolerance_abs_m2} m² or ${a.tolerance_rel * 100} %, whichever is larger.`}
+    basis="course assumption"
+  >
+    <table>
+      <thead><tr><th scope="col">Quantity</th><th scope="col">From the plan</th><th scope="col">Case parameter</th><th scope="col">Note</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">{rural ? "Parcel" : home.scheme ? "Lot" : "Plot"}</th><td class="num">{fmt(home.parcel_m2)} m²</td><td class="num">{fmt(a.preset_plot_m2)} m²</td><td>{rural ? `the drawn working area is ${fmt(a.drawn_m2)} m²` : "the plan is the whole lot"}</td></tr>
+        <tr><th scope="row">Building footprint</th><td class="num">{fmt(a.footprint_m2)} m²</td><td></td><td>ground the buildings cover</td></tr>
+        <tr><th scope="row">Roof plan area</th><td class="num">{fmt(a.roof_plan_m2)} m²</td><td class="num">{fmt(a.preset_roof_m2)} m²</td><td>{within(a.roof_plan_m2, a.preset_roof_m2) ? "within tolerance" : "OUTSIDE TOLERANCE"}; {fmt(a.eaves_and_overhead_m2)} m² is eaves and roof over hardstand</td></tr>
+        <tr><th scope="row">Roof connected to storage now</th><td class="num">{fmt(a.roof_connected_now_m2)} m²</td><td></td><td>of {fmt(a.roof_guttered_m2)} m² that has gutters</td></tr>
+        <tr><th scope="row">Designated growing area</th><td class="num">{fmt(a.growing_envelope_m2)} m²</td><td class="num">{fmt(a.preset_growable_m2)} m²</td><td>{within(a.growing_envelope_m2, a.preset_growable_m2) ? "within tolerance" : "OUTSIDE TOLERANCE"}</td></tr>
+        {a.retained_within_envelope_m2 > 0 && <tr><th scope="row">Kept as lawn, inside it</th><td class="num">{fmt(a.retained_within_envelope_m2)} m²</td><td></td><td>a client constraint, so at most {fmt(a.cultivable_max_m2)} m² may be cultivated</td></tr>}
+        {a.shared_allocation_m2 > 0 && <tr><th scope="row">Shared-garden allocation</th><td class="num">{fmt(a.shared_allocation_m2)} m²</td><td class="num">40 m²</td><td>common property, outside the lot</td></tr>}
+        <tr><th scope="row">Retained recreation outside it</th><td class="num">{fmt(a.recreation_m2)} m²</td><td></td><td>not available to the design</td></tr>
+        <tr><th scope="row">Hardstand</th><td class="num">{fmt(a.hardstand_m2)} m²</td><td></td><td>drives, paths, slabs</td></tr>
+        <tr><th scope="row">Other ground</th><td class="num">{fmt(a.other_m2)} m²</td><td></td><td>{rural ? "the rest of the working area" : "setbacks and narrow strips"}</td></tr>
+      </tbody>
+    </table>
+  </Figure>
+
+  <h2>Services and ground</h2>
+  <p>
+    Each fact is marked <StatusTag status="known" /> when it comes from a document or a
+    measurement at intake, <StatusTag status="estimate" /> when it is someone's estimate, and{" "}
+    <StatusTag status="unknown" /> when nobody knows yet. Nothing here is surveyed.
+  </p>
+  <dl class="facts">
+    <dt>Slope</dt><dd>{d.slope.text} <StatusTag status={d.slope.status} /></dd>
+    {d.services.map((s) => (<><dt>{s.service}</dt><dd>{s.text} <StatusTag status={s.status} /></dd></>))}
+  </dl>
+
+  <h2>What is already there</h2>
+  <ul>{d.inventory.map((i) => <li>{i.text}</li>)}</ul>
+
+  <h3>Bills the household supplied</h3>
+  {d.bills.map((b) => (
+    <p>{b.text} <StatusTag status={b.status} /></p>
+  ))}
+  {"quarters" in d.bills[0] && d.bills[0].quarters && (
+    <Figure caption="Water use from the last four quarterly bills. Bills cannot show what the garden used, or when within a quarter." basis="synthetic data">
+      <table class="narrow">
+        <thead><tr>{d.bills[0].quarters.map((q) => <th scope="col">{q.quarter}</th>)}</tr></thead>
+        <tbody><tr>{d.bills[0].quarters.map((q) => <td class="num">{q.kl} kL</td>)}</tr></tbody>
+      </table>
+    </Figure>
+  )}
+  {"loads" in d.bills[0] && d.bills[0].loads && (
+    <Figure caption="Carted-water deliveries by month last year, from the carrier's invoices." basis="synthetic data">
+      <table class="narrow">
+        <thead><tr>{d.bills[0].loads.map((l) => <th scope="col">{l.month}</th>)}</tr></thead>
+        <tbody><tr>{d.bills[0].loads.map((l) => <td class="num">{l.loads}</td>)}</tr></tbody>
+      </table>
+    </Figure>
+  )}
+
+  <h2>Case constraints</h2>
+  <ul>{d.constraints.map((c) => <li>{c.text}</li>)}</ul>
+  <dl class="facts">
+    <dt>Rainwater may serve</dt><dd>{d.permitted_uses.join(", ")}</dd>
+    <dt>It serves today</dt><dd>{d.existing_uses.join(", ")}</dd>
+    {d.bore_allocation_kl > 0 && (<><dt>Bore</dt><dd>{d.bore_allocation_kl} kL a year, metered</dd></>)}
+    <dt>Care available</dt><dd>up to {d.maintenance_h_week} hours a week; nothing needed more often than every {d.min_attendance_days === 1 ? "day" : `${d.min_attendance_days} days`}; everything survives {d.unattended_days} days unattended</dd>
+  </dl>
+
+  <h3>What a design may change</h3>
+  <p>
+    The home is fixed. A design may add storage in the permitted zones (the published steps are{" "}
+    {home.decision_ranges.new_storage_kl.join(", ")} kL{home.decision_ranges.storage_kind === "slimline" ? ", slimline modules only" : ""}),
+    connect roof zones {home.decision_ranges.connectable_zones.join(", ")} that have gutters but no
+    connection, and cultivate up to {home.decision_ranges.added_area_max_m2} m² beyond the existing
+    plantings. It may not build roof, buy land, or enlarge anything. The other decision variables
+    are on the <a href={withBase("/method/")}>method page</a>.
+  </p>
+
+  <h2>What nobody knows yet</h2>
+  <p>
+    {knownCount} facts above come from documents. These do not, and they are the starting point for
+    your <a href={withBase("/assessments/")}>measurement programme</a>:
+  </p>
+  <ul class="unknowns">{d.unknowns.map((u) => <li>{u}</li>)}</ul>
+</ContentLayout>
+
+<style>
+  .fiction,
+  .note {
+    padding: 0.8rem 1rem;
+    border-left: 3px solid var(--at-primary);
+    background: var(--at-bg-alt);
+    font-size: 0.95rem;
+  }
+
+  .release-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .release-tabs > * {
+    padding: 0.35rem 0.75rem;
+    border: 1px solid var(--at-border);
+    border-radius: 999px;
+    font-size: 0.9rem;
+  }
+
+  .release-tabs .current {
+    border-color: var(--at-primary);
+    background: color-mix(in srgb, var(--at-primary) 12%, var(--at-bg));
+    font-weight: 600;
+  }
+
+  .meta {
+    color: var(--at-text-muted);
+    font-size: 0.9rem;
+  }
+
+  .quotes li {
+    font-style: italic;
+  }
+
+  .facts {
+    display: grid;
+    grid-template-columns: minmax(7rem, max-content) 1fr;
+    gap: 0.4rem 1rem;
+  }
+
+  .facts dt {
+    font-weight: 600;
+  }
+
+  .facts dd {
+    margin: 0;
+  }
+
+  @media (max-width: 560px) {
+    .facts {
+      grid-template-columns: 1fr;
+    }
+
+    .facts dd {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .num {
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+
+  table.narrow {
+    min-width: 0;
+  }
+
+  .unknowns li::marker {
+    content: "? ";
+    color: var(--at-primary);
+    font-weight: 700;
+  }
+</style>

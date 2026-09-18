@@ -1,5 +1,5 @@
-import { readFileSync, existsSync } from "node:fs";
-import { resolve } from "node:path";
+import { readFileSync, existsSync, readdirSync, statSync } from "node:fs";
+import { join, resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 
 /**
@@ -47,6 +47,16 @@ const api = JSON.parse(readFileSync(resolve("dist/api/index.json"), "utf8")) as 
 const model = JSON.parse(readFileSync(resolve("src/data/course-model.json"), "utf8"));
 const comparison = JSON.parse(readFileSync(resolve("src/data/comparison.json"), "utf8"));
 const datasets = JSON.parse(readFileSync(resolve("src/data/datasets.json"), "utf8"));
+const homes = JSON.parse(readFileSync(resolve("src/data/homes.json"), "utf8"));
+
+/** Every built HTML page, for checks that must hold site-wide. */
+function htmlFiles(dir: string): string[] {
+  return readdirSync(dir).flatMap((name) => {
+    const p = join(dir, name);
+    if (statSync(p).isDirectory()) return htmlFiles(p);
+    return p.endsWith(".html") ? [p] : [];
+  });
+}
 
 const nodesOf = (type: string) => api.nodes.filter((n) => n.type === type);
 /** Node ids are prefixed with their collection ("lectures/week-01"), which is also
@@ -258,23 +268,103 @@ describe("site coverage", () => {
     }
   });
 
-  it("keeps the two site facts the model cannot score", () => {
-    const sitesPage = text(page("sites"));
-    // Canberra's rainfall evenness and chill.
-    expect(sitesPage).toMatch(/driest four months/i);
-    expect(sitesPage).toMatch(/chill/i);
-    // The townhouse's space and strata limits.
-    expect(sitesPage).toMatch(/strata/i);
-    const brisbane = model.sites.find((s: { short: string }) => s.short === "Brisbane");
-    expect(brisbane.growable_m2 + brisbane.shared_growing_m2).toBe(130);
+});
+
+// --------------------------------------------------------------------------
+describe("five fixed client homes", () => {
+  const SLUGS = ["canberra", "alice-springs", "brisbane", "adelaide", "darwin"];
+
+  it("has exactly five homes, the five presets, and nothing else", () => {
+    expect(homes.homes.map((h: any) => h.slug)).toEqual(SLUGS);
+    expect(homes.homes.map((h: any) => h.id)).toEqual(model.sites.map((s: any) => s.id));
   });
 
-  it("publishes a card for each of the five presets", () => {
-    expect(model.sites.length).toBe(5);
-    const sitesPage = text(page("sites"));
-    for (const s of model.sites) {
-      expect(sitesPage, `no card for ${s.short}`).toContain(s.short);
-      expect(sitesPage, `${s.short} station not named`).toContain(s.station);
+  it("publishes an intake dossier for every home and lists all five on the clients page", () => {
+    const index = text(page("clients"));
+    for (const h of homes.homes) {
+      expect(index, `${h.short} missing from the clients page`).toContain(h.short);
+      const t = text(page(`clients/${h.slug}`));
+      expect(t, `${h.slug} dossier`).toContain("Release A");
+      expect(t.toLowerCase(), `${h.slug} fiction label`).toContain("teaching fiction");
+    }
+  });
+
+  it("offers no custom site anywhere", () => {
+    expect(existsSync(resolve("dist/sites/index.html")), "the old /sites/ route still exists").toBe(false);
+    const OFFERS = /propose your own site|custom[- ]site (request|approval)|custom sites? (may|can|are)|approval by (the end of )?week 3/i;
+    for (const f of htmlFiles("dist")) {
+      expect(readFileSync(f, "utf8"), `${f} offers a custom site`).not.toMatch(OFFERS);
+    }
+  });
+
+  it("draws every home to scale and keys every feature it draws", () => {
+    for (const h of homes.homes) {
+      const html = page(`clients/${h.slug}`);
+      const t = text(html);
+      // a north arrow, a scale bar and the lot dimensions on the plan
+      expect(html).toMatch(/<text[^>]*>N<\/text>/);
+      expect(t, `${h.slug} lot width`).toContain(`${h.plan.extent[0]} m`);
+      for (const r of h.plan.cover) expect(t, `${h.slug} key lacks ${r.id}`).toContain(r.label);
+      for (const z of h.plan.zones) expect(t, `${h.slug} key lacks zone ${z.id}`).toContain(z.label);
+      for (const room of h.floor.rooms) expect(t, `${h.slug} floor key lacks ${room.label}`).toContain(room.label);
+    }
+  });
+
+  it("reconciles every plan with its case parameters", () => {
+    for (const h of homes.homes) {
+      const a = h.areas;
+      const tol = (x: number, y: number) => Math.max(a.tolerance_abs_m2, a.tolerance_rel * Math.max(x, y));
+      expect(Math.abs(a.roof_plan_m2 - a.preset_roof_m2), `${h.slug} roof`).toBeLessThanOrEqual(tol(a.roof_plan_m2, a.preset_roof_m2));
+      expect(Math.abs(a.roof_zone_sum_m2 - a.roof_plan_m2), `${h.slug} zones`).toBeLessThanOrEqual(tol(a.roof_zone_sum_m2, a.roof_plan_m2));
+      expect(Math.abs(a.growing_envelope_m2 - a.preset_growable_m2), `${h.slug} growing`).toBeLessThanOrEqual(tol(a.growing_envelope_m2, a.preset_growable_m2));
+      expect(a.roof_plan_m2, `${h.slug} roof plan is footprint plus eaves`).toBeGreaterThan(a.footprint_m2);
+      expect(a.other_m2, `${h.slug} parts exceed the drawn area`).toBeGreaterThanOrEqual(0);
+      if (!h.parcel) expect(a.drawn_m2, `${h.slug} suburban plan is the whole lot`).toBeCloseTo(h.parcel_m2, 0);
+      expect(a.existing_storage_kl).toBe(model.sites.find((s: any) => s.id === h.id).existing_storage_kl);
+    }
+  });
+
+  it("keeps everything a household owns inside its boundary", () => {
+    for (const h of homes.homes) {
+      const [W, H] = h.plan.extent;
+      const inside = (x: number, y: number, w: number, hh: number) =>
+        x >= -0.01 && y >= -0.01 && x + w <= W + 0.01 && y + hh <= H + 0.01;
+      for (const r of [...h.plan.cover, ...h.plan.roofover]) expect(inside(r.x, r.y, r.w, r.h), `${h.slug} ${r.id}`).toBe(true);
+      for (const c of h.plan.circles.filter((c: any) => c.kind === "tank")) {
+        const [w, hh] = c.w ? [c.w, c.h] : [2 * c.r, 2 * c.r];
+        expect(inside(c.cx - w / 2, c.cy - hh / 2, w, hh), `${h.slug} tank ${c.id}`).toBe(true);
+      }
+    }
+  });
+
+  it("never adds Brisbane's shared-garden allocation to the lot", () => {
+    const b = homes.homes.find((h: any) => h.slug === "brisbane");
+    expect(b.parcel_m2).toBe(300);
+    expect(b.areas.shared_allocation_m2).toBe(40);
+    const lot = b.scheme.lots.find((l: any) => l.n === b.scheme.patel_lot);
+    expect(lot.w * lot.h).toBe(300);
+    const [ax, ay, aw, ah] = b.scheme.allocation;
+    const outside = ax + aw <= lot.x || ax >= lot.x + lot.w || ay + ah <= lot.y || ay >= lot.y + lot.h;
+    expect(outside, "allocation inside the lot").toBe(true);
+    expect(text(page("clients/brisbane")).toLowerCase()).toContain("common property");
+  });
+
+  it("tags dossier facts as known, estimated or still to be measured", () => {
+    for (const h of homes.homes) {
+      const statuses = new Set([h.dossier.slope, ...h.dossier.services, ...h.dossier.constraints].map((f: any) => f.status));
+      expect(statuses.has("known"), `${h.slug} has no known fact`).toBe(true);
+      expect(statuses.has("estimate") || statuses.has("unknown"), `${h.slug} pretends to certainty`).toBe(true);
+      expect(h.dossier.unknowns.length, `${h.slug} unknowns`).toBeGreaterThanOrEqual(4);
+    }
+  });
+
+  it("gives every client attainable targets the existing home does not already meet", () => {
+    for (const h of homes.homes) {
+      expect(h.targets.length, `${h.slug} targets`).toBeGreaterThanOrEqual(4);
+      expect(Object.values(h.existing_meets).some((v) => !v), `${h.slug} is already done`).toBe(true);
+      expect(h.feasibility.budget_margin_at_least, `${h.slug} budget margin`).toBeGreaterThanOrEqual(5000);
+      expect(h.feasibility.energy_margin_at_least, `${h.slug} energy margin`).toBeGreaterThanOrEqual(1);
+      expect(text(page(`clients/${h.slug}`))).toContain(h.feasibility.budget_margin_at_least.toLocaleString("en-AU"));
     }
   });
 });
@@ -305,16 +395,16 @@ describe("prerequisites and the proposed sequel", () => {
 
   it("states the prerequisites on the home page, all of them", () => {
     const home = text(page(""));
-    for (const p of [
-      "microbiology",
-      "Soil science",
-      "chemistry",
-      "environmental",
-      "Engineering design",
-      "CAD",
-    ]) {
+    for (const p of ["Engineering design", "Mass and energy balances", "statistics and measurement", "Spreadsheet", "CAD"]) {
       expect(home, `prerequisite "${p}" missing`).toContain(p);
     }
+    expect(home).toMatch(/biological[^.]*helpful|helpful[^.]*biological/i);
+  });
+
+  it("makes no land-per-person claim on the home page", () => {
+    const home = text(page(""));
+    expect(home).not.toMatch(/372/);
+    expect(home).not.toMatch(/largest site has 500/i);
   });
 });
 
@@ -425,7 +515,7 @@ describe("the paired water indicators", () => {
   });
 
   it("never publishes a water closure table without garden water satisfaction beside it", () => {
-    for (const route of ["method", "sites"]) {
+    for (const route of ["method", "clients"]) {
       const t = text(page(route));
       if (t.includes(WATER)) {
         expect(t, `${route} shows water closure alone`).toContain(GARDEN);
@@ -567,11 +657,12 @@ function bundlePlusExtra(m: any): number {
 
 // --------------------------------------------------------------------------
 describe("published figures agree with the model that produced them", () => {
-  it("renders the site parameter table from the preset data", () => {
-    const t = text(page("sites"));
-    for (const s of model.sites) {
-      expect(t, `${s.short} roof`).toContain(`${s.roof_m2} m²`);
-      expect(t, `${s.short} rain`).toContain(`${s.climate.annual_rain_mm} mm/yr`);
+  it("renders the clients comparison from the case data", () => {
+    const t = text(page("clients"));
+    for (const h of homes.homes) {
+      expect(t, `${h.short} roof`).toContain(`${Math.round(h.areas.roof_plan_m2).toLocaleString("en-AU")} m²`);
+      const site = model.sites.find((x: any) => x.id === h.id);
+      expect(t, `${h.short} rain`).toContain(`${site.climate.annual_rain_mm.toLocaleString("en-AU")} mm`);
     }
   });
 
@@ -664,7 +755,7 @@ describe("scope", () => {
     // The course's position is that students compute and the site publishes. The
     // theme's site-wide search box is platform furniture and is excluded; what must
     // not appear is a control that takes a design parameter and returns a result.
-    for (const route of ["method", "method/costing", "method/comparison", "sites", ""]) {
+    for (const route of ["method", "method/costing", "method/comparison", "clients", ""]) {
       const html = page(route).replace(/<input[^>]*type="search"[^>]*>/gi, "");
       expect(html, `${route || "home"} has a form`).not.toMatch(/<form[\s>]/i);
       expect(html, `${route || "home"} has a numeric input`).not.toMatch(

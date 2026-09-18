@@ -2,17 +2,14 @@
 import Card from "astro-theme-university/components/Card.astro";
 import CardGrid from "astro-theme-university/components/CardGrid.astro";
 import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
-import Figure from "../components/Figure.astro";
-import LoopDiagram from "../components/LoopDiagram.astro";
-import { courseMeta, prerequisites, sequel } from "../course-config";
+import { withBase } from "astro-theme-university/url";
+import Timeline from "../components/Timeline.astro";
+import { courseMeta, helpful, prerequisites, sequel } from "../course-config";
 import { midSemesterBreak, teachingEnds } from "../lib/calendar";
-import { constraints, sites, household } from "../lib/model";
+import { constraints } from "../lib/model";
+import { homes, measurement, money } from "../lib/cases";
 import { formatCourseDate } from "../lib/dates";
 import { sessionLabels, siteConfig } from "../site-config";
-
-const worst = sites.reduce((a, b) =>
-  a.reference.excellent.cost_headroom < b.reference.excellent.cost_headroom ? a : b,
-);
 ---
 
 <ContentLayout
@@ -25,101 +22,109 @@ const worst = sites.reduce((a, b) =>
   </ul>
 
   <p class="claim">
-    Growing a near-complete diet takes something like 372 m² of good ground per
-    adult. The largest site in this course has 500 m², for four people.
+    What can this client's land <a href={withBase("/lectures/week-09/")}>reliably provide</a>, and
+    which improvements <a href={withBase("/lectures/week-11/")}>justify their cost</a>?
   </p>
 
   <p>
-    No suburban block has that ground, and no amount of design will conjure it.
-    So the course does not ask you to close the loop. It asks you to measure{" "}
-    <strong>how much of it you close, honestly counted</strong> — and to be
-    equally precise about what still has to come through the front gate. Partial
-    closure, stated accurately, is the deliverable.
+    That is the question a homeowner asks when they apply for a loan to make their house more
+    self-reliant, and it is the one this course trains you to answer. You work as a graduate
+    engineer at a small consultancy, taking one household from its first meeting to a costed
+    proposal. The household and the <a href={withBase("/programme/")}>loan programme</a> are
+    fiction; the climates, the water balances, the soil, the pumps and the prices are not.
   </p>
 
-  <Figure
-    caption="The loop the course teaches, and the two places it leaks. Dashed arrows are the imports and exports no design on these five sites removes."
-    basis="model estimate"
-  >
-    <LoopDiagram />
-  </Figure>
-
-  <h2>What you will do</h2>
+  <h2>One commission, two assignments</h2>
   <p>
-    You take one of five preset sites — a household of {household.occupants} on a
-    real block, with real Bureau of Meteorology climate behind it — and design
-    its food, water and waste systems over twelve weeks. Each week sizes one
-    subsystem with a named method you can reproduce by hand, and hands you back a
-    piece of the whole. By week 12 you hold a site master plan with mass balances
-    that close, a bill of materials priced from a published schedule, and a list
-    of the loads you were not certain about.
+    First you work out what you would need to know. From an intake dossier and a scaled plan of an
+    existing home you design a year of measurement: which instruments, where, how often, how
+    accurate, what it costs against a {money(measurement.allowance)} allowance, and how every reading
+    feeds a decision. That is Assignment 1, due in week 7.
   </p>
   <p>
-    Two numbers bound every decision: <strong>${constraints.budget_aud.toLocaleString("en-AU")}</strong> of
-    new spend including a required {(constraints.contingency * 100).toFixed(0)} %
-    contingency, and <strong>{constraints.energy_cap_kwh_day} kWh a day</strong> of
-    process energy in the peak month, with uncertain loads counted at their upper
-    estimate. Both are hard. The excellent reference design at the tightest site
-    clears the budget by {`$${worst.reference.excellent.cost_headroom.toLocaleString("en-AU")}`},
-    which tells you how much room there is to be wrong.
+    Then the story jumps twelve months. A specialist team hands over what the measurement year
+    found, and you design the retrofit: the lowest-cost option that meets the household's own
+    service targets, then an honest case for any money spent beyond it. That is Assignment 2, the
+    technical annex to the family's loan application.
+  </p>
+
+  <Timeline />
+
+  <h2>The five clients</h2>
+  <p>
+    Every student advises one of five fixed existing homes in five Australian climates. There is no
+    sixth option and no custom site: the comparison between homes is part of what the course teaches.
+  </p>
+  <CardGrid columns={3}>
+    {homes.map((h) => (
+      <Card title={`${h.short}: the ${h.family}s`} href={`/clients/${h.slug}/`}>
+        <p>{h.dossier.priorities[0]}</p>
+      </Card>
+    ))}
+  </CardGrid>
+
+  <h2>What the engineering is</h2>
+  <p>
+    A constrained, multi-objective decision made with spreadsheet-sized models you can check by
+    hand. Seven decision variables — storage, which roof zones to connect, how much ground to crop
+    and with what, how to use rainwater and greywater, which biological modules to adopt, and how
+    to run it all through the year — each with a short list of options bounded by what the home
+    already has. Two hard limits from the programme: {money(constraints.budget_aud)} including
+    contingency, and {constraints.energy_cap_kwh_day} kWh a day in the peak month.
+  </p>
+  <p>
+    You will size storage from a monthly balance, estimate a critical flow and a pump head, check
+    nutrient recovery against what the crop can take up, and test your recommendation against a
+    dry year. You will not pick pipe diameters, draw wiring or certify anything; you specify
+    performance and how a builder proves it has been met.
   </p>
 
   <h2>What you will not do</h2>
   <p>
-    You will not build, operate, plumb, eat from or drink from anything. This is
-    a design course, assessed on drawings, calculations and justified
-    assumptions. Where the course sets a rule stricter than the law in your
-    jurisdiction — and it often does — it says so, and says why.
+    You will not build, operate, eat from or drink from anything, and you will not collect a year
+    of real data. Where the course sets a safety rule stricter than the law in your client's
+    jurisdiction, it says so, and says why.
   </p>
   <p>
-    Energy and shelter are out of scope. Biogas is recorded and not credited;
-    only the digestate's nutrients count. Those belong to <strong>{sequel.code} — {sequel.title}</strong>,
+    Energy supply and shelter are out of scope. Biogas is recorded and not credited; only the
+    digestate's nutrients count. Those belong to <strong>{sequel.code} — {sequel.title}</strong>,
     a {sequel.status} that adds {sequel.adds}.
   </p>
 
   <h2>Who it is for</h2>
-  <p>
-    Fourth-year engineering and environmental-science students who want a design
-    problem with a real constraint set rather than an open brief. You should
-    arrive with:
-  </p>
+  <p>Fourth-year engineering students. You should arrive with:</p>
   <ul>
     {prerequisites.map((p) => <li>{p}</li>)}
   </ul>
-  <p>
-    If you have never sized anything against a monthly water balance, you will be
-    fine. If you are looking for a course that concludes households can be
-    self-sufficient, you will be disappointed by week 2.
-  </p>
+  <p>{helpful}</p>
 
   <h2>The semester</h2>
   <p>
     Twelve teaching weeks from {formatCourseDate(courseMeta.startDate)} to{" "}
     {formatCourseDate(teachingEnds)}, with a two-week mid-semester break from{" "}
-    {formatCourseDate(midSemesterBreak.from)}. The capstone falls in the
-    assessment period afterwards, which is why the course record runs to{" "}
-    {formatCourseDate(courseMeta.endDate)}.
+    {formatCourseDate(midSemesterBreak.from)}. Assignment 2 falls in the assessment period, which
+    is why the course record runs to {formatCourseDate(courseMeta.endDate)}.
   </p>
 
   <h2>Where to go next</h2>
   <CardGrid columns={2}>
-    <Card title="The five sites" href="/sites/">
-      <p>Canberra, Alice Springs, Brisbane, Adelaide and Darwin — parameters, inventory, and the strengths and constraints the model cannot score.</p>
-    </Card>
-    <Card title="Method" href="/method/">
-      <p>The indicators, the reference bands and what they are and are not: performance evidence inside a rubric, never an automatic grade.</p>
+    <Card title="The programme and the practice" href="/programme/">
+      <p>The fictional loan programme, the consultancy you work for, and the rules they set.</p>
     </Card>
     <Card title="Lectures" href="/lectures/">
-      <p>Twelve weeks, each with one engineering question, one quantitative method and one worked example.</p>
+      <p>Twelve weeks: six on measurement, one handover, five on design, each with its slides.</p>
     </Card>
     <Card title={sessionLabels.plural} href="/sessions/">
-      <p>What you bring to each studio, what happens in the room, and what leaves it changed.</p>
+      <p>Ninety-minute sessions with worked examples on a practice house and exercises on your own home.</p>
     </Card>
     <Card title="Assessment" href="/assessments/">
-      <p>Five conceptual quizzes, the Food Loop Design and the capstone master plan.</p>
+      <p>Five conceptual quizzes, the measurement programme and the investment proposal.</p>
     </Card>
-    <Card title="Costing and energy" href="/method/costing/">
-      <p>The price schedule every design is costed from, and exactly which loads count against the daily allowance.</p>
+    <Card title="Method" href="/method/">
+      <p>The decision variables, the reference data and the price schedules every design is costed from.</p>
+    </Card>
+    <Card title="Policies" href="/policies/">
+      <p>Deadlines, extensions, generative AI, and how the fiction and the facts are kept apart.</p>
     </Card>
   </CardGrid>
 </ContentLayout>
@@ -146,7 +151,7 @@ const worst = sites.reduce((a, b) =>
     margin: 0 0 1.5rem;
     padding-left: 1.1rem;
     border-left: 3px solid var(--at-primary);
-    font-size: 1.2rem;
-    line-height: 1.55;
+    font-size: 1.25rem;
+    line-height: 1.5;
   }
 </style>
