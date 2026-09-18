@@ -1,0 +1,103 @@
+---
+/** One practice question. The options are plain text and the explanation is a
+ *  <details>, so it works with no JavaScript and reads correctly to a screen
+ *  reader. Nothing is submitted anywhere: this is a static site, and the quiz
+ *  pages say so.
+ *
+ *  `correct` is the 0-based index of the right option. `why` explains the
+ *  reasoning, not just the answer, and `wrong` says what the tempting wrong
+ *  answer gets wrong — that is where the teaching is. */
+interface Props {
+  n: number;
+  question: string;
+  options: string[];
+  correct: number;
+  why: string;
+  wrong?: string;
+}
+
+const { n, question, options, correct, why, wrong } = Astro.props;
+const letters = ["A", "B", "C", "D", "E"];
+---
+
+<article class="q">
+  <h3><span class="n">Q{n}</span> {question}</h3>
+  <ol class="opts">
+    {options.map((o, i) => <li><span class="ltr">{letters[i]}</span> {o}</li>)}
+  </ol>
+  <details>
+    <summary>Answer and reasoning</summary>
+    <p class="ans"><strong>{letters[correct]}.</strong> {options[correct]}</p>
+    <p>{why}</p>
+    {wrong && <p class="wrong"><strong>The tempting wrong answer.</strong> {wrong}</p>}
+  </details>
+</article>
+
+<style>
+  .q {
+    margin: 1.75rem 0;
+    padding: 1.1rem 1.25rem;
+    border: 1px solid var(--at-border);
+    border-radius: var(--at-border-radius, 4px);
+  }
+
+  .q h3 {
+    margin: 0 0 0.75rem;
+    font-size: 1.05rem;
+    line-height: 1.45;
+  }
+
+  .n {
+    display: inline-block;
+    margin-right: 0.4rem;
+    color: var(--at-primary);
+    font-family: var(--at-font-mono);
+    font-size: 0.8em;
+  }
+
+  .opts {
+    margin: 0 0 0.5rem;
+    padding: 0;
+    list-style: none;
+  }
+
+  .opts li {
+    margin-bottom: 0.4rem;
+    padding-left: 2rem;
+    text-indent: -2rem;
+  }
+
+  .ltr {
+    display: inline-block;
+    width: 1.5rem;
+    color: var(--at-text-muted);
+    font-family: var(--at-font-mono);
+    text-indent: 0;
+  }
+
+  summary {
+    padding: 0.35rem 0;
+    color: var(--at-link);
+    cursor: pointer;
+    font-size: 0.92rem;
+  }
+
+  details[open] summary {
+    margin-bottom: 0.35rem;
+  }
+
+  details p {
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+  }
+
+  .ans {
+    color: var(--at-primary);
+  }
+
+  .wrong {
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--at-divider);
+    color: var(--at-text-secondary);
+  }
+</style>

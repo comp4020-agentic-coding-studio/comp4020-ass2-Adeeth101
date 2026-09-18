@@ -1,0 +1,677 @@
+{
+ "question": "Starting from the excellent reference design, what does another dollar of rainwater storage actually buy at each site?",
+ "method": "New-storage spend is stepped from $2,000 to $10,000 at $130/kL for the shell. Each step re-runs the monthly tank balance with a three-year spin-up and re-prices the whole bill of materials from the course schedule, including the required 10 % contingency and the per-tank establishment charge, which steps up every 25 kL.",
+ "base_spend": 4000,
+ "steps": [
+  2000,
+  3000,
+  4000,
+  5000,
+  6000,
+  7000,
+  8000,
+  9000,
+  10000
+ ],
+ "labels": {
+  "S1": "Cool-temperate inland suburban",
+  "S2": "Hot-arid rural-residential",
+  "S3": "Humid subtropical townhouse",
+  "S4": "Mediterranean suburban",
+  "S5": "Tropical wet-dry rural-residential"
+ },
+ "rows": {
+  "S1": [
+   {
+    "spend": 2000,
+    "storage_kl": 20,
+    "water_closure": 0.94,
+    "garden_water_satisfaction": 0.2,
+    "imported_kl": 16,
+    "overflow_kl": 0,
+    "cost_total": 25135,
+    "headroom": 4865,
+    "fits": true
+   },
+   {
+    "spend": 3000,
+    "storage_kl": 28,
+    "water_closure": 0.94,
+    "garden_water_satisfaction": 0.2,
+    "imported_kl": 16,
+    "overflow_kl": 0,
+    "cost_total": 26235,
+    "headroom": 3765,
+    "fits": true
+   },
+   {
+    "spend": 4000,
+    "storage_kl": 36,
+    "water_closure": 0.94,
+    "garden_water_satisfaction": 0.2,
+    "imported_kl": 16,
+    "overflow_kl": 0,
+    "cost_total": 28435,
+    "headroom": 1565,
+    "fits": true
+   },
+   {
+    "spend": 5000,
+    "storage_kl": 43,
+    "water_closure": 0.94,
+    "garden_water_satisfaction": 0.2,
+    "imported_kl": 16,
+    "overflow_kl": 0,
+    "cost_total": 29535,
+    "headroom": 465,
+    "fits": true
+   },
+   {
+    "spend": 6000,
+    "storage_kl": 51,
+    "water_closure": 0.94,
+    "garden_water_satisfaction": 0.2,
+    "imported_kl": 16,
+    "overflow_kl": 0,
+    "cost_total": 30635,
+    "headroom": -635,
+    "fits": false
+   },
+   {
+    "spend": 7000,
+    "storage_kl": 59,
+    "water_closure": 0.94,
+    "garden_water_satisfaction": 0.2,
+    "imported_kl": 16,
+    "overflow_kl": 0,
+    "cost_total": 32835,
+    "headroom": -2835,
+    "fits": false
+   },
+   {
+    "spend": 8000,
+    "storage_kl": 67,
+    "water_closure": 0.94,
+    "garden_water_satisfaction": 0.2,
+    "imported_kl": 16,
+    "overflow_kl": 0,
+    "cost_total": 33935,
+    "headroom": -3935,
+    "fits": false
+   },
+   {
+    "spend": 9000,
+    "storage_kl": 74,
+    "water_closure": 0.94,
+    "garden_water_satisfaction": 0.2,
+    "imported_kl": 16,
+    "overflow_kl": 0,
+    "cost_total": 35035,
+    "headroom": -5035,
+    "fits": false
+   },
+   {
+    "spend": 10000,
+    "storage_kl": 82,
+    "water_closure": 0.94,
+    "garden_water_satisfaction": 0.2,
+    "imported_kl": 16,
+    "overflow_kl": 0,
+    "cost_total": 37235,
+    "headroom": -7235,
+    "fits": false
+   }
+  ],
+  "S2": [
+   {
+    "spend": 2000,
+    "storage_kl": 37,
+    "water_closure": 0.97,
+    "garden_water_satisfaction": 0.16,
+    "imported_kl": 8,
+    "overflow_kl": 0,
+    "cost_total": 24860,
+    "headroom": 5140,
+    "fits": true
+   },
+   {
+    "spend": 3000,
+    "storage_kl": 45,
+    "water_closure": 0.97,
+    "garden_water_satisfaction": 0.16,
+    "imported_kl": 8,
+    "overflow_kl": 0,
+    "cost_total": 25960,
+    "headroom": 4040,
+    "fits": true
+   },
+   {
+    "spend": 4000,
+    "storage_kl": 53,
+    "water_closure": 0.97,
+    "garden_water_satisfaction": 0.16,
+    "imported_kl": 8,
+    "overflow_kl": 0,
+    "cost_total": 28160,
+    "headroom": 1840,
+    "fits": true
+   },
+   {
+    "spend": 5000,
+    "storage_kl": 60,
+    "water_closure": 0.97,
+    "garden_water_satisfaction": 0.16,
+    "imported_kl": 8,
+    "overflow_kl": 0,
+    "cost_total": 29260,
+    "headroom": 740,
+    "fits": true
+   },
+   {
+    "spend": 6000,
+    "storage_kl": 68,
+    "water_closure": 0.97,
+    "garden_water_satisfaction": 0.16,
+    "imported_kl": 8,
+    "overflow_kl": 0,
+    "cost_total": 30360,
+    "headroom": -360,
+    "fits": false
+   },
+   {
+    "spend": 7000,
+    "storage_kl": 76,
+    "water_closure": 0.97,
+    "garden_water_satisfaction": 0.16,
+    "imported_kl": 8,
+    "overflow_kl": 0,
+    "cost_total": 32560,
+    "headroom": -2560,
+    "fits": false
+   },
+   {
+    "spend": 8000,
+    "storage_kl": 84,
+    "water_closure": 0.97,
+    "garden_water_satisfaction": 0.16,
+    "imported_kl": 8,
+    "overflow_kl": 0,
+    "cost_total": 33660,
+    "headroom": -3660,
+    "fits": false
+   },
+   {
+    "spend": 9000,
+    "storage_kl": 91,
+    "water_closure": 0.97,
+    "garden_water_satisfaction": 0.16,
+    "imported_kl": 8,
+    "overflow_kl": 0,
+    "cost_total": 34760,
+    "headroom": -4760,
+    "fits": false
+   },
+   {
+    "spend": 10000,
+    "storage_kl": 99,
+    "water_closure": 0.97,
+    "garden_water_satisfaction": 0.16,
+    "imported_kl": 8,
+    "overflow_kl": 0,
+    "cost_total": 36960,
+    "headroom": -6960,
+    "fits": false
+   }
+  ],
+  "S3": [
+   {
+    "spend": 2000,
+    "storage_kl": 18,
+    "water_closure": 0.89,
+    "garden_water_satisfaction": 0.8,
+    "imported_kl": 24,
+    "overflow_kl": 23,
+    "cost_total": 21560,
+    "headroom": 8440,
+    "fits": true
+   },
+   {
+    "spend": 3000,
+    "storage_kl": 26,
+    "water_closure": 0.93,
+    "garden_water_satisfaction": 0.8,
+    "imported_kl": 17,
+    "overflow_kl": 15,
+    "cost_total": 22660,
+    "headroom": 7340,
+    "fits": true
+   },
+   {
+    "spend": 4000,
+    "storage_kl": 34,
+    "water_closure": 0.96,
+    "garden_water_satisfaction": 0.81,
+    "imported_kl": 10,
+    "overflow_kl": 8,
+    "cost_total": 24860,
+    "headroom": 5140,
+    "fits": true
+   },
+   {
+    "spend": 5000,
+    "storage_kl": 41,
+    "water_closure": 0.99,
+    "garden_water_satisfaction": 0.82,
+    "imported_kl": 3,
+    "overflow_kl": 0,
+    "cost_total": 25960,
+    "headroom": 4040,
+    "fits": true
+   },
+   {
+    "spend": 6000,
+    "storage_kl": 49,
+    "water_closure": 0.99,
+    "garden_water_satisfaction": 0.82,
+    "imported_kl": 3,
+    "overflow_kl": 0,
+    "cost_total": 27060,
+    "headroom": 2940,
+    "fits": true
+   },
+   {
+    "spend": 7000,
+    "storage_kl": 57,
+    "water_closure": 0.99,
+    "garden_water_satisfaction": 0.82,
+    "imported_kl": 3,
+    "overflow_kl": 0,
+    "cost_total": 29260,
+    "headroom": 740,
+    "fits": true
+   },
+   {
+    "spend": 8000,
+    "storage_kl": 65,
+    "water_closure": 0.99,
+    "garden_water_satisfaction": 0.82,
+    "imported_kl": 3,
+    "overflow_kl": 0,
+    "cost_total": 30360,
+    "headroom": -360,
+    "fits": false
+   },
+   {
+    "spend": 9000,
+    "storage_kl": 72,
+    "water_closure": 0.99,
+    "garden_water_satisfaction": 0.82,
+    "imported_kl": 3,
+    "overflow_kl": 0,
+    "cost_total": 31460,
+    "headroom": -1460,
+    "fits": false
+   },
+   {
+    "spend": 10000,
+    "storage_kl": 80,
+    "water_closure": 0.99,
+    "garden_water_satisfaction": 0.84,
+    "imported_kl": 3,
+    "overflow_kl": 0,
+    "cost_total": 33660,
+    "headroom": -3660,
+    "fits": false
+   }
+  ],
+  "S4": [
+   {
+    "spend": 2000,
+    "storage_kl": 20,
+    "water_closure": 0.72,
+    "garden_water_satisfaction": 0.27,
+    "imported_kl": 61,
+    "overflow_kl": 0,
+    "cost_total": 22979,
+    "headroom": 7021,
+    "fits": true
+   },
+   {
+    "spend": 3000,
+    "storage_kl": 28,
+    "water_closure": 0.72,
+    "garden_water_satisfaction": 0.27,
+    "imported_kl": 61,
+    "overflow_kl": 0,
+    "cost_total": 24079,
+    "headroom": 5921,
+    "fits": true
+   },
+   {
+    "spend": 4000,
+    "storage_kl": 36,
+    "water_closure": 0.72,
+    "garden_water_satisfaction": 0.27,
+    "imported_kl": 61,
+    "overflow_kl": 0,
+    "cost_total": 26279,
+    "headroom": 3721,
+    "fits": true
+   },
+   {
+    "spend": 5000,
+    "storage_kl": 43,
+    "water_closure": 0.72,
+    "garden_water_satisfaction": 0.27,
+    "imported_kl": 61,
+    "overflow_kl": 0,
+    "cost_total": 27379,
+    "headroom": 2621,
+    "fits": true
+   },
+   {
+    "spend": 6000,
+    "storage_kl": 51,
+    "water_closure": 0.72,
+    "garden_water_satisfaction": 0.27,
+    "imported_kl": 61,
+    "overflow_kl": 0,
+    "cost_total": 28479,
+    "headroom": 1521,
+    "fits": true
+   },
+   {
+    "spend": 7000,
+    "storage_kl": 59,
+    "water_closure": 0.72,
+    "garden_water_satisfaction": 0.27,
+    "imported_kl": 61,
+    "overflow_kl": 0,
+    "cost_total": 30679,
+    "headroom": -679,
+    "fits": false
+   },
+   {
+    "spend": 8000,
+    "storage_kl": 67,
+    "water_closure": 0.72,
+    "garden_water_satisfaction": 0.27,
+    "imported_kl": 61,
+    "overflow_kl": 0,
+    "cost_total": 31779,
+    "headroom": -1779,
+    "fits": false
+   },
+   {
+    "spend": 9000,
+    "storage_kl": 74,
+    "water_closure": 0.72,
+    "garden_water_satisfaction": 0.27,
+    "imported_kl": 61,
+    "overflow_kl": 0,
+    "cost_total": 32879,
+    "headroom": -2879,
+    "fits": false
+   },
+   {
+    "spend": 10000,
+    "storage_kl": 82,
+    "water_closure": 0.72,
+    "garden_water_satisfaction": 0.27,
+    "imported_kl": 61,
+    "overflow_kl": 0,
+    "cost_total": 35079,
+    "headroom": -5079,
+    "fits": false
+   }
+  ],
+  "S5": [
+   {
+    "spend": 2000,
+    "storage_kl": 60,
+    "water_closure": 0.82,
+    "garden_water_satisfaction": 0.27,
+    "imported_kl": 48,
+    "overflow_kl": 261,
+    "cost_total": 25575,
+    "headroom": 4425,
+    "fits": true
+   },
+   {
+    "spend": 3000,
+    "storage_kl": 68,
+    "water_closure": 0.83,
+    "garden_water_satisfaction": 0.29,
+    "imported_kl": 48,
+    "overflow_kl": 253,
+    "cost_total": 26675,
+    "headroom": 3325,
+    "fits": true
+   },
+   {
+    "spend": 4000,
+    "storage_kl": 76,
+    "water_closure": 0.83,
+    "garden_water_satisfaction": 0.31,
+    "imported_kl": 48,
+    "overflow_kl": 245,
+    "cost_total": 28875,
+    "headroom": 1125,
+    "fits": true
+   },
+   {
+    "spend": 5000,
+    "storage_kl": 83,
+    "water_closure": 0.84,
+    "garden_water_satisfaction": 0.33,
+    "imported_kl": 48,
+    "overflow_kl": 238,
+    "cost_total": 29975,
+    "headroom": 25,
+    "fits": true
+   },
+   {
+    "spend": 6000,
+    "storage_kl": 91,
+    "water_closure": 0.84,
+    "garden_water_satisfaction": 0.35,
+    "imported_kl": 48,
+    "overflow_kl": 230,
+    "cost_total": 31075,
+    "headroom": -1075,
+    "fits": false
+   },
+   {
+    "spend": 7000,
+    "storage_kl": 99,
+    "water_closure": 0.84,
+    "garden_water_satisfaction": 0.36,
+    "imported_kl": 48,
+    "overflow_kl": 222,
+    "cost_total": 33275,
+    "headroom": -3275,
+    "fits": false
+   },
+   {
+    "spend": 8000,
+    "storage_kl": 107,
+    "water_closure": 0.87,
+    "garden_water_satisfaction": 0.37,
+    "imported_kl": 42,
+    "overflow_kl": 215,
+    "cost_total": 34375,
+    "headroom": -4375,
+    "fits": false
+   },
+   {
+    "spend": 9000,
+    "storage_kl": 114,
+    "water_closure": 0.89,
+    "garden_water_satisfaction": 0.37,
+    "imported_kl": 35,
+    "overflow_kl": 207,
+    "cost_total": 35475,
+    "headroom": -5475,
+    "fits": false
+   },
+   {
+    "spend": 10000,
+    "storage_kl": 122,
+    "water_closure": 0.89,
+    "garden_water_satisfaction": 0.39,
+    "imported_kl": 35,
+    "overflow_kl": 199,
+    "cost_total": 37675,
+    "headroom": -7675,
+    "fits": false
+   }
+  ]
+ },
+ "summary": {
+  "S1": {
+   "base": {
+    "spend": 4000,
+    "storage_kl": 36,
+    "water_closure": 0.94,
+    "garden_water_satisfaction": 0.2,
+    "imported_kl": 16,
+    "overflow_kl": 0,
+    "cost_total": 28435,
+    "headroom": 1565,
+    "fits": true
+   },
+   "top": {
+    "spend": 10000,
+    "storage_kl": 82,
+    "water_closure": 0.94,
+    "garden_water_satisfaction": 0.2,
+    "imported_kl": 16,
+    "overflow_kl": 0,
+    "cost_total": 37235,
+    "headroom": -7235,
+    "fits": false
+   },
+   "gain_water_closure": 0.0,
+   "gain_garden": 0.0,
+   "extra_cost": 8800,
+   "saturates_at": 2000,
+   "largest_affordable_spend": 5000
+  },
+  "S2": {
+   "base": {
+    "spend": 4000,
+    "storage_kl": 53,
+    "water_closure": 0.97,
+    "garden_water_satisfaction": 0.16,
+    "imported_kl": 8,
+    "overflow_kl": 0,
+    "cost_total": 28160,
+    "headroom": 1840,
+    "fits": true
+   },
+   "top": {
+    "spend": 10000,
+    "storage_kl": 99,
+    "water_closure": 0.97,
+    "garden_water_satisfaction": 0.16,
+    "imported_kl": 8,
+    "overflow_kl": 0,
+    "cost_total": 36960,
+    "headroom": -6960,
+    "fits": false
+   },
+   "gain_water_closure": 0.0,
+   "gain_garden": 0.0,
+   "extra_cost": 8800,
+   "saturates_at": 2000,
+   "largest_affordable_spend": 5000
+  },
+  "S3": {
+   "base": {
+    "spend": 4000,
+    "storage_kl": 34,
+    "water_closure": 0.96,
+    "garden_water_satisfaction": 0.81,
+    "imported_kl": 10,
+    "overflow_kl": 8,
+    "cost_total": 24860,
+    "headroom": 5140,
+    "fits": true
+   },
+   "top": {
+    "spend": 10000,
+    "storage_kl": 80,
+    "water_closure": 0.99,
+    "garden_water_satisfaction": 0.84,
+    "imported_kl": 3,
+    "overflow_kl": 0,
+    "cost_total": 33660,
+    "headroom": -3660,
+    "fits": false
+   },
+   "gain_water_closure": 0.03,
+   "gain_garden": 0.03,
+   "extra_cost": 8800,
+   "saturates_at": 5000,
+   "largest_affordable_spend": 7000
+  },
+  "S4": {
+   "base": {
+    "spend": 4000,
+    "storage_kl": 36,
+    "water_closure": 0.72,
+    "garden_water_satisfaction": 0.27,
+    "imported_kl": 61,
+    "overflow_kl": 0,
+    "cost_total": 26279,
+    "headroom": 3721,
+    "fits": true
+   },
+   "top": {
+    "spend": 10000,
+    "storage_kl": 82,
+    "water_closure": 0.72,
+    "garden_water_satisfaction": 0.27,
+    "imported_kl": 61,
+    "overflow_kl": 0,
+    "cost_total": 35079,
+    "headroom": -5079,
+    "fits": false
+   },
+   "gain_water_closure": 0.0,
+   "gain_garden": 0.0,
+   "extra_cost": 8800,
+   "saturates_at": 2000,
+   "largest_affordable_spend": 6000
+  },
+  "S5": {
+   "base": {
+    "spend": 4000,
+    "storage_kl": 76,
+    "water_closure": 0.83,
+    "garden_water_satisfaction": 0.31,
+    "imported_kl": 48,
+    "overflow_kl": 245,
+    "cost_total": 28875,
+    "headroom": 1125,
+    "fits": true
+   },
+   "top": {
+    "spend": 10000,
+    "storage_kl": 122,
+    "water_closure": 0.89,
+    "garden_water_satisfaction": 0.39,
+    "imported_kl": 35,
+    "overflow_kl": 199,
+    "cost_total": 37675,
+    "headroom": -7675,
+    "fits": false
+   },
+   "gain_water_closure": 0.06,
+   "gain_garden": 0.08,
+   "extra_cost": 8800,
+   "saturates_at": 3000,
+   "largest_affordable_spend": 5000
+  }
+ }
+}

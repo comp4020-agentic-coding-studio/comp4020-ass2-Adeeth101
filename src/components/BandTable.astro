@@ -1,0 +1,95 @@
+---
+import { sites, indicators, pct } from "../lib/model";
+
+/** Per-site band thresholds. Each cell is baseline / competent / excellent, so
+ *  band 1 is below the first figure, 2 and 3 are the intervals, and 4 is at or
+ *  beyond the third. Water closure and garden water satisfaction are adjacent
+ *  rows and are never separated (CLAUDE.md, Scoring). */
+interface Props {
+  only?: string[];
+}
+
+const { only } = Astro.props;
+const rows = only ? indicators.filter((i) => only.includes(i.key)) : indicators;
+---
+
+<div class="scroller">
+  <table>
+    <caption class="sr-only">
+      Reference-band thresholds by site: baseline, competent and excellent values for each indicator
+    </caption>
+    <thead>
+      <tr>
+        <th scope="col">Indicator</th>
+        {sites.map((s) => <th scope="col">{s.short}</th>)}
+      </tr>
+    </thead>
+    <tbody>
+      {
+        rows.map((ind) => (
+          <tr>
+            <th scope="row">
+              {ind.name}
+              {ind.key === "garden_water_satisfaction" && <span class="pair"> published beside water closure</span>}
+            </th>
+            {sites.map((s) => {
+              const b = s.bands[ind.key as keyof typeof s.bands];
+              return (
+                <td>
+                  <span class="lv">{pct(b.baseline)}</span>
+                  <span class="sep">/</span>
+                  <span class="lv">{pct(b.competent)}</span>
+                  <span class="sep">/</span>
+                  <span class="lv">{pct(b.excellent)}</span>
+                </td>
+              );
+            })}
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .scroller {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table {
+    min-width: 34rem;
+    margin: 0;
+  }
+
+  td {
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+
+  th[scope="row"] {
+    text-align: left;
+    font-weight: 500;
+  }
+
+  .pair {
+    display: block;
+    color: var(--at-text-muted);
+    font-size: 0.78rem;
+    font-weight: 400;
+  }
+
+  .sep {
+    padding: 0 0.2rem;
+    color: var(--at-text-muted);
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+</style>

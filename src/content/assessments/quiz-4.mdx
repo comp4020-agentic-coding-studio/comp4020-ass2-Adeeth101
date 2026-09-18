@@ -1,0 +1,85 @@
+---
+title: "Quiz 4: Storage, saturation and closing the balance"
+description:
+  Week 10 — why annual water balances mislead, where storage stops buying performance, and what is deliberately not banded
+week: 10
+due: 2027-05-13T12:00:00+10:00
+weight: 8
+marking:
+  mode: holistic
+  description:
+    Five conceptual multiple-choice questions on weeks 9 and 10, sat on paper in the studio. Marked right or wrong, with no partial credit and no numeric working required.
+related:
+  - sessions/week-10
+  - lectures/week-09
+  - lectures/week-10
+---
+
+import QuizQuestion from "../../components/QuizQuestion.astro";
+
+Covers weeks 9 and 10: storage sizing on a monthly balance, and routing every
+organic stream to a destination.
+
+## Practice questions
+
+These are the same kind of question as the quiz itself: conceptual, not numeric.
+Open the answer only after you have committed to one.
+
+<QuizQuestion
+  n={1}
+  question="A site collects nearly twice the household's annual water demand, yet its excellent reference design still imports water and overflows a large volume in the same year. What does that demonstrate?"
+  options={["The roof area was measured incorrectly", "The storage is undersized and should be increased until overflow stops", "An annual balance answers the wrong question when rainfall is strongly seasonal", "The household demand figure is too high for that climate"]}
+  correct={2}
+  why="Darwin receives 1.4 % of its annual rain in its driest four months. A year-long balance shows a surplus of 192 kL; the months show 245 kL overflowing in the wet and 48 kL carted in through the dry. The annual figure is not imprecise here, it is answering a question nobody asked."
+  wrong="Increasing storage is the intuitive fix, and it is the one the next question is about."
+/>
+
+<QuizQuestion
+  n={2}
+  question="What did the course find when it tested raising the excellent reference design's new-storage spend from $4,000 to $9,000?"
+  options={["Water closure improved roughly in proportion to the extra volume", "Water closure moved by at most 0.06, while the spend consumed a fifth of the whole allowance", "Overflow fell to zero at every site", "Garden water satisfaction improved but water closure did not"]}
+  correct={1}
+  why="Storage saturates. Beyond the volume the annual cycle can actually turn over, extra capacity sits empty in the dry season and full in the wet. The finding is why the reference recipe was changed and the bands recomputed: the earlier designs were buying capacity the wet-dry cycle could not use, and were $3,704 to $9,545 over budget as a result."
+  wrong="Proportionality is what a linear intuition predicts, and storage is one of the least linear things in the course."
+/>
+
+<QuizQuestion
+  n={3}
+  question="Why is waste-stream recovery assessed from mass balances rather than given per-site bands like the other indicators?"
+  options={["Because it is too easy to measure", "Because the screening model has no reference calculation for it, so a band would have nothing behind it", "Because it varies too little between sites to be worth banding", "Because it is not part of the capstone"]}
+  correct={1}
+  why="Every other indicator gets its thresholds from three constructed reference designs run through the model. There is no such reference calculation for waste-stream recovery, and publishing a band without one would be inventing a number and dressing it as a measurement. So the balances themselves are the evidence."
+  wrong="Ease of measurement would be an argument for banding it, not against."
+/>
+
+<QuizQuestion
+  n={4}
+  question="Your digester produces biogas. How does it affect your score in this course?"
+  options={["It raises food energy closure", "It is recorded but earns nothing; only the digestate's nutrients count", "It offsets your counted process energy load", "It is ignored entirely and need not be reported"]}
+  correct={1}
+  why="Biogas is energy, and energy is the boundary of part one. Crediting it here would let a design claim self-sufficiency this course has not asked it to demonstrate, and it belongs to the proposed sequel. Recording it still matters: an unrecorded output is the same error as an unrecorded import."
+  wrong="Offsetting the process load is the most tempting answer because it is what you would actually do in practice. It is also what would make the 5 kWh/day constraint meaningless."
+/>
+
+<QuizQuestion
+  n={5}
+  question="A student's dry-matter balance closes exactly, because the difference between inputs and outputs was entered as a residual line. What is wrong with that?"
+  options={["Nothing, provided the residual is small", "A residual records that mass is missing without saying what happened to it", "The balance should be done in wet mass instead", "Residual lines are only acceptable for nitrogen"]}
+  correct={1}
+  why="A loss term must name a process — respiration, volatilisation, leachate — and carry a stated assumption. A residual named only by its arithmetic is the gap where a forgotten stream hides, and forgotten streams are the most common way these balances fail."
+  wrong="A small residual is more dangerous than a large one, because nobody investigates it."
+/>
+
+## The mechanics
+
+Sat in the week 10 studio, at the start of the session, on paper. Twenty
+minutes, 5 multiple-choice questions, no calculators and no numeric working —
+if a question can be answered by arithmetic, it is not on this quiz.
+
+Worth **8 %**. Five quizzes at 8 % make up 40 % of the course, spread across weeks
+3, 5, 8, 10 and 12 so that keeping up is worth more than catching up.
+
+**This website does not collect or store any answers.** It is a static site with
+no server behind it. The practice questions above reveal their own answers in the
+page, for your use only; nothing you do here is recorded, marked or transmitted
+anywhere, and the graded quiz happens on paper in the room.

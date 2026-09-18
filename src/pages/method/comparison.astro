@@ -1,0 +1,267 @@
+---
+import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
+import { withBase } from "astro-theme-university/url";
+import Figure from "../../components/Figure.astro";
+import comparison from "../../data/comparison.json";
+import { sites, money, pct, constraints } from "../../lib/model";
+import { siteConfig } from "../../site-config";
+
+const SIDS = ["S1", "S2", "S3", "S4", "S5"] as const;
+type Sid = (typeof SIDS)[number];
+
+interface Step {
+  spend: number;
+  storage_kl: number;
+  water_closure: number;
+  garden_water_satisfaction: number;
+  imported_kl: number;
+  overflow_kl: number;
+  cost_total: number;
+  headroom: number;
+  fits: boolean;
+}
+
+const short: Record<string, string> = Object.fromEntries(sites.map((s) => [s.id, s.short]));
+const rows = comparison.rows as Record<Sid, Step[]>;
+const sum = comparison.summary as Record<Sid, { saturates_at: number; largest_affordable_spend: number }>;
+const at = (sid: Sid, spend: number): Step => rows[sid].find((r) => r.spend === spend)!;
+---
+
+<ContentLayout
+  title="Worked comparison: what does another dollar of storage buy?"
+  description="One design idea taken through all five sites. The same thousand dollars of rainwater storage does five different things, and at three sites it does nothing at all."
+  {...siteConfig}
+>
+  <p>{comparison.question}</p>
+
+  <p>
+    It is worth working through because the intuition is so strong and so often
+    wrong. A site that imports water is short of water; a tank holds water;
+    therefore a bigger tank fixes it. That reasoning is correct at exactly one of
+    these five sites.
+  </p>
+
+  <h2>Method</h2>
+  <p>{comparison.method}</p>
+  <p>
+    Everything else in the excellent reference design is held fixed. The only
+    variable is the money spent on tank shells, and the only outputs that move are
+    the ones a larger tank can move.
+  </p>
+
+  <h2>The result</h2>
+
+  <Figure
+    caption="Water closure at the excellent reference design as new-storage spend rises. The reference design sits at $4,000. Rows past each site's affordable limit are shown so the budget wall is visible, not hidden."
+    basis="model estimate"
+  >
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Storage spend</th>
+          {SIDS.map((s) => <th scope="col">{short[s]}</th>)}
+        </tr>
+      </thead>
+      <tbody>
+        {
+          comparison.steps.map((spend) => (
+            <tr class={spend === comparison.base_spend ? "base" : ""}>
+              <th scope="row">
+                {money(spend)}{spend === comparison.base_spend && <span class="tag">reference</span>}
+              </th>
+              {
+                SIDS.map((s) => {
+                  const r = at(s, spend);
+                  return (
+                    <td class={r.fits ? "" : "over"}>
+                      {pct(r.water_closure)}
+                      <span class="sub">{r.storage_kl} kL{!r.fits && " · over budget"}</span>
+                    </td>
+                  );
+                })
+              }
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </Figure>
+
+  <h2>Five sites, five different answers</h2>
+
+  <h3>Brisbane: storage is the right purchase, and it has a knee</h3>
+  <p>
+    The townhouse is the one site where the intuition holds. Going from{" "}
+    {money(2000)} to {money(5000)} lifts water closure from{" "}
+    {pct(at("S3", 2000).water_closure)} to {pct(at("S3", 5000).water_closure)},
+    cuts imports from {at("S3", 2000).imported_kl} kL to {at("S3", 5000).imported_kl} kL,
+    and eliminates overflow entirely. Brisbane's roof out-collects its household over
+    the year, so its shortfall really is a timing problem, and timing problems are
+    what tanks solve.
+  </p>
+  <p>
+    Then it stops. Above {money(sum.S3.saturates_at)} the curve is flat: there is no
+    more surplus left to catch. <strong>Spending past that point buys kilolitres that
+    are never full.</strong>
+  </p>
+
+  <h3>Canberra, Alice Springs and Adelaide: storage buys nothing</h3>
+  <p>
+    At three sites the water closure column does not move at all across the entire
+    range — {money(2000)} to {money(10000)}, and at Canberra that is 20 kL against
+    82 kL of tank, for an identical {pct(at("S1", 10000).water_closure)}.
+  </p>
+  <p>
+    The reason is that these sites are <strong>supply-limited, not storage-limited</strong>.
+    Canberra's roof yields about 142 kL a year and the household alone wants more
+    than that once the garden is ignored entirely. Adelaide collects 92 kL against a
+    219 kL domestic demand. Alice Springs collects 73 kL and its bore is capped at
+    100 kL. A tank cannot hold water that never fell on the roof, and every one of
+    these sites empties its tank every year no matter how large it is.
+  </p>
+  <p>
+    What would work at these three is different in each case: more catchment area,
+    lower domestic demand, or — at Adelaide, where rain and demand are out of phase
+    by six months — accepting that some imports are structural and designing the
+    garden around them.
+  </p>
+
+  <h3>Darwin: storage keeps paying, and the budget stops you</h3>
+  <p>
+    Darwin is the only site where the curve is still climbing at {money(10000)}:
+    water closure rises from {pct(at("S5", 2000).water_closure)} to{" "}
+    {pct(at("S5", 10000).water_closure)}, and garden water satisfaction from{" "}
+    {pct(at("S5", 2000).garden_water_satisfaction)} to{" "}
+    {pct(at("S5", 10000).garden_water_satisfaction)}. With 411 kL landing on the roof
+    there is always more to catch.
+  </p>
+  <p>
+    But look at the overflow column: even at 122 kL of tank, Darwin still throws away{" "}
+    {at("S5", 10000).overflow_kl} kL and still imports {at("S5", 10000).imported_kl} kL.
+    And the budget runs out first — {money(sum.S5.largest_affordable_spend)} is the most
+    Darwin can afford before the total passes {money(constraints.budget_aud)}.
+  </p>
+  <p>
+    <strong>Darwin's problem is not solvable by storage at this budget</strong>, and a design
+    that spends its whole allowance trying is worse than one that spends a third of it
+    and puts the rest into demand reduction.
+  </p>
+
+  <Figure
+    caption="What the step from the reference design to the largest affordable spend actually buys at each site."
+    basis="model estimate"
+  >
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Site</th>
+          <th scope="col">Largest affordable spend</th>
+          <th scope="col">Extra cost from the reference</th>
+          <th scope="col">Water closure gained</th>
+          <th scope="col">Garden gained</th>
+          <th scope="col">Verdict</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          SIDS.map((s) => {
+            const best = at(s, sum[s].largest_affordable_spend);
+            const base = at(s, comparison.base_spend);
+            const dw = best.water_closure - base.water_closure;
+            const dg = best.garden_water_satisfaction - base.garden_water_satisfaction;
+            return (
+              <tr>
+                <th scope="row">{short[s]}</th>
+                <td>{money(sum[s].largest_affordable_spend)}</td>
+                <td>{money(best.cost_total - base.cost_total)}</td>
+                <td>{dw > 0 ? `+${Math.round(dw * 100)} pp` : "none"}</td>
+                <td>{dg > 0 ? `+${Math.round(dg * 100)} pp` : "none"}</td>
+                <td class="verdict">
+                  {s === "S3" && "Buy it, up to the knee"}
+                  {s === "S5" && "Buy some; the budget binds before the benefit does"}
+                  {(s === "S1" || s === "S2" || s === "S4") && "Do not buy it; spend elsewhere"}
+                </td>
+              </tr>
+            );
+          })
+        }
+      </tbody>
+    </table>
+  </Figure>
+
+  <h2>Why this comparison is on the site at all</h2>
+  <p>
+    Because the course got it wrong. The reference designs used to spend{" "}
+    {money(9000)} on storage at every site, which is past the knee at four of the
+    five and unaffordable at all of them once establishment, first flush, treatment,
+    irrigation and contingency were priced. Costed against the full schedule, those
+    designs were {money(3704)} to {money(9545)} over the allowance.
+  </p>
+  <p>
+    The fix was to spend where the curve is still rising and stop where it is not,
+    which is the same judgement this page is asking you to make. The bands on the{" "}
+    <a href={withBase("/method/")}>method page</a> were recomputed afterwards.
+  </p>
+
+  <h3>What to take from it</h3>
+  <ul>
+    <li>
+      <strong>Find your own curve before you spend.</strong> Step your tank size and plot the
+      indicator against capacity. The shape tells you whether your site is
+      storage-limited or supply-limited, and they need opposite responses.
+    </li>
+    <li>
+      <strong>A flat curve is information, not a failure.</strong> Three of these sites say
+      plainly that the money belongs somewhere else.
+    </li>
+    <li>
+      <strong>Watch both water indicators.</strong> At Darwin, storage moves garden water
+      satisfaction more than it moves water closure. A site can be getting
+      meaningfully better at something the headline number barely registers.
+    </li>
+  </ul>
+</ContentLayout>
+
+<style>
+  table {
+    min-width: 34rem;
+  }
+
+  th[scope="row"] {
+    text-align: left;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  td {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .sub {
+    display: block;
+    color: var(--at-text-muted);
+    font-size: 0.78rem;
+  }
+
+  .over {
+    opacity: 0.5;
+  }
+
+  .base th,
+  .base td {
+    background: var(--at-accent-soft);
+  }
+
+  .tag {
+    display: block;
+    color: var(--at-primary);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .verdict {
+    font-variant-numeric: normal;
+    font-size: 0.9rem;
+  }
+</style>

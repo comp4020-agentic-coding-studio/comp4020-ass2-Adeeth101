@@ -1,0 +1,314 @@
+---
+import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
+import { withBase } from "astro-theme-university/url";
+import Figure from "../../components/Figure.astro";
+import { courseModel, constraints, sites, money, LEVELS } from "../../lib/model";
+import { siteConfig } from "../../site-config";
+
+const sch = courseModel.schedule;
+const rules = courseModel.schedule_rules;
+const eb = courseModel.energy_boundary;
+
+const tightestBudget = sites.reduce((a, b) =>
+  a.reference.excellent.cost_headroom < b.reference.excellent.cost_headroom ? a : b,
+);
+const tightestEnergy = sites.reduce((a, b) =>
+  a.reference.competent.energy_headroom_kwh_day < b.reference.competent.energy_headroom_kwh_day ? a : b,
+);
+const bill = sites[0].reference.excellent.bill;
+---
+
+<ContentLayout
+  title="Costing and energy"
+  description="The price schedule every design is costed from, the rules for turning a design into a bill of materials, and exactly which loads count against the daily energy allowance."
+  {...siteConfig}
+>
+  <p>
+    Two hard constraints govern every design in this course:{" "}
+    <strong>{money(constraints.budget_aud)}</strong> of new spend including a required{" "}
+    {(constraints.contingency * 100).toFixed(0)} % contingency, and{" "}
+    <strong>{constraints.energy_cap_kwh_day} kWh a day</strong> of process energy in the
+    peak month. Both are pass or fail, and both are checked before the marking
+    criteria are applied.
+  </p>
+
+  <h2>The price schedule</h2>
+  <p>
+    <strong>{money(constraints.budget_aud)} is a costing allowance, not a market
+    quotation.</strong> Assessment uses the schedule below whatever real prices are
+    doing, so that every design in the cohort is costed on the same basis. Lines
+    marked <em>indicative</em> come from a retail listing; lines marked <em>course
+    assumption</em> were set by the course.
+  </p>
+
+  <Figure
+    caption="The course price schedule. Checked against fetched Australian retail listings in September 2026; see the notes below for the lines that did not hold up well."
+    basis="indicative cost"
+  >
+    <table>
+      <thead>
+        <tr><th scope="col">Component</th><th scope="col">Course price</th><th scope="col">Basis</th></tr>
+      </thead>
+      <tbody>
+        {
+          sch.map((l) => (
+            <tr>
+              <th scope="row">{l.description}</th>
+              <td>{money(l.price)}</td>
+              <td>{l.basis === "indicative" ? "indicative" : "course assumption"}</td>
+            </tr>
+          ))
+        }
+        <tr>
+          <th scope="row">Contingency</th>
+          <td>{(constraints.contingency * 100).toFixed(0)} % of subtotal</td>
+          <td>course rule, required</td>
+        </tr>
+      </tbody>
+    </table>
+  </Figure>
+
+  <h3>Where the schedule is weakest</h3>
+  <ul>
+    <li>
+      <strong>Storage per kilolitre.</strong> ${sch.find((l) => l.key === "tank_shell_per_kl")?.price}/kL
+      holds at 22 to 30 kL, which is where the bill-of-materials rule buys. The real
+      curve is U-shaped — roughly $200 to $260/kL at 5 to 10 kL, and about $157/kL at
+      46 kL — so the figure understates both very small and very large tanks.
+    </li>
+    <li>
+      <strong>Aquaponics.</strong> {money(2500)} per 4 m² is optimistic: Australian kits
+      want roughly $3,400 for about 2.7 m². Kept as decided, and flagged as sitting at
+      the low end.
+    </li>
+    <li>
+      <strong>Installed greywater diversion.</strong> The hardware prices check out; the
+      installed figure rests on a search summary rather than a fetched supplier page. It
+      is the weakest line here.
+    </li>
+    <li>
+      <strong>Insect rearing unit.</strong> No Australian black soldier fly unit publishes
+      a price. A mealworm three-tier system is about $160. The {money(300)} figure is a
+      course assumption with little behind it.
+    </li>
+    <li>
+      <strong>Ultraviolet units.</strong> Australian retailers cite <strong>WaterMark</strong>,
+      not NSF/ANSI 55 Class A. Do not write a Class A claim into a design you have not
+      sourced.
+    </li>
+  </ul>
+
+  <h2>Turning a design into a bill</h2>
+  <p>These rules are course assumptions, published so that two people costing the same design get the same answer.</p>
+  <ul>
+    <li>New storage arrives in tanks of at most <strong>{rules.max_tank_kl} kL</strong>, so the per-tank establishment charge scales with tank count.</li>
+    <li>One first-flush diverter and leaf screen per <strong>{rules.roof_per_downpipe_m2} m²</strong> of connected roof.</li>
+    <li>Two pumps: one for domestic supply, one to move tank water to the garden. Both are counted energy loads.</li>
+    <li>
+      The aquaponics line bundles tank, pump and aeration. A second 4 m² bed on the same
+      system needs neither, so extra beds cost <strong>{money(rules.extra_bed_aud)}</strong> — the
+      bundle price less one pump line. <strong>This is the rule that stops a pump being paid
+      for twice</strong>, and it was added after an earlier costing did exactly that.
+    </li>
+    <li>Drip irrigation covers the whole production area, because the model irrigates the whole production area.</li>
+  </ul>
+
+  <h3>Priced in the schedule, not drawn in the reference designs</h3>
+  <p>
+    No recipe parameter and no counted load implies these, so charging them to a
+    threshold-setting design would inflate every threshold. You may choose them, and
+    you pay for them from the same allowance.
+  </p>
+  <ul>{rules.not_in_reference.map((t) => <li>{t}</li>)}</ul>
+
+  <h3>Not priced by the schedule at all</h3>
+  <p>Published so the allowance is not mistaken for a quotation. A real build carries these; this costing exercise does not.</p>
+  <ul>{rules.unpriced.map((t) => <li>{t}</li>)}</ul>
+
+  <h2>What the reference designs actually cost</h2>
+  <p>
+    Until September 2026 these designs were costed from five simplified prices with
+    no establishment, treatment, irrigation or contingency lines, which produced
+    totals of about $3,000, $14,100 and $22,000 to $25,000. Priced against the full
+    schedule, <strong>the excellent design came to $33,704 to $39,545 — over the
+    allowance at every one of the five sites.</strong>
+  </p>
+  <p>
+    Two recipe rows changed in response and nothing else: new-storage spend fell,
+    because the monthly tank balance saturates well below what the old recipe bought,
+    and the excellent design's added roof catchment fell from 25 % to 5 %, because it
+    was the most expensive water lever per point of closure. The thresholds on the{" "}
+    <a href={withBase("/method/")}>method page</a> were recomputed.
+  </p>
+
+  <Figure
+    caption="Reference-design totals including the required contingency, and the headroom each leaves against the allowance."
+    basis="indicative cost"
+  >
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Site</th>
+          {LEVELS.map((l) => <th scope="col">{l}</th>)}
+          <th scope="col">Excellent headroom</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          sites.map((s) => (
+            <tr>
+              <th scope="row">{s.short}</th>
+              {LEVELS.map((l) => <td>{money(s.reference[l].cost_total)}</td>)}
+              <td>{money(s.reference.excellent.cost_headroom)}</td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </Figure>
+
+  <p class="note">
+    At {tightestBudget.short} the excellent design clears the allowance by{" "}
+    {money(tightestBudget.reference.excellent.cost_headroom)}. That is inside the noise
+    of a screening model priced from retail listings. <strong>The published claim is that
+    the reference designs fit the allowance as this schedule prices them, not that a
+    real build would cost this.</strong> Treat your own design as untested if it lands
+    within a few thousand dollars of the cap.
+  </p>
+
+  <h3>One bill in full</h3>
+  <Figure
+    caption={`Bill of materials for the excellent reference design at ${sites[0].short}. The baseline and competent bills are the same list with the lines their recipe parameters do not switch on removed.`}
+    basis="indicative cost"
+  >
+    <table>
+      <thead><tr><th scope="col">Line</th><th scope="col">Quantity</th><th scope="col">Cost</th></tr></thead>
+      <tbody>
+        {
+          bill.map((r) => (
+            <tr>
+              <th scope="row">{r.line}</th>
+              <td>{r.qty} {r.unit}</td>
+              <td>{money(r.cost)}</td>
+            </tr>
+          ))
+        }
+        <tr><th scope="row">Subtotal</th><td /><td>{money(sites[0].reference.excellent.cost_subtotal)}</td></tr>
+        <tr><th scope="row">Contingency at {(constraints.contingency * 100).toFixed(0)} %</th><td /><td>{money(sites[0].reference.excellent.cost_contingency)}</td></tr>
+        <tr><th scope="row"><strong>Total</strong></th><td /><td><strong>{money(sites[0].reference.excellent.cost_total)}</strong></td></tr>
+      </tbody>
+    </table>
+  </Figure>
+
+  <h2>Energy: what counts, and what you must declare</h2>
+  <p>
+    The allowance covers <strong>every load that runs the food, water and waste
+    loop</strong>, reported as the peak-month average daily figure with the month named.
+    General household appliances, the fridge, cooking, lighting, space conditioning
+    and water heating for bathing and laundry are <strong>not</strong> counted: they belong
+    to the proposed sequel on energy and shelter.
+  </p>
+
+  <Figure caption="Counted loads the screening model computes for the reference designs." basis="model estimate">
+    <table>
+      <thead><tr><th scope="col">Group</th><th scope="col">Load</th><th scope="col">In the model</th></tr></thead>
+      <tbody>
+        {eb.modelled.map((l) => <tr><th scope="row">{l.group}</th><td>{l.load}</td><td>{l.status}</td></tr>)}
+      </tbody>
+    </table>
+  </Figure>
+
+  <p>
+    <strong>Uncertain loads are carried at their upper estimate.</strong> That rule applies to
+    you and it applies to the reference designs, which declare{" "}
+    {constraints.uncertain_load_allowance_kwh_day} kWh/day for counted loads the
+    screening model does not compute:
+  </p>
+
+  <Figure caption="Counted loads the model does not compute for the reference bill, carried at their upper estimate." basis="course assumption">
+    <table>
+      <thead><tr><th scope="col">Group</th><th scope="col">Load</th><th scope="col">Lower</th><th scope="col">Upper</th></tr></thead>
+      <tbody>
+        {
+          eb.uncertain.map((l) => (
+            <tr><th scope="row">{l.group}</th><td>{l.load}</td><td>{l.low.toFixed(2)}</td><td>{l.high.toFixed(2)} kWh/d</td></tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </Figure>
+
+  <Figure caption="Declared peak-month load of each reference design, including the uncertain-load allowance, against the 5 kWh/day cap." basis="model estimate">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Site</th>
+          {LEVELS.map((l) => <th scope="col">{l}</th>)}
+          <th scope="col">Tightest headroom</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          sites.map((s) => (
+            <tr>
+              <th scope="row">{s.short}</th>
+              {LEVELS.map((l) => <td>{s.reference[l].energy_declared_kwh_day.toFixed(2)}</td>)}
+              <td>
+                {Math.min(...LEVELS.map((l) => s.reference[l].energy_headroom_kwh_day)).toFixed(2)} kWh/d
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </Figure>
+
+  <h3>The systems the reference designs do not contain</h3>
+  <p>
+    Each of these brings its own counted loads, and the headroom above is what your
+    additions have to fit inside. Their combined upper estimate is{" "}
+    {eb.optional.reduce((a, l) => a + l.high, 0).toFixed(2)} kWh/day — more than{" "}
+    {tightestEnergy.short} has left at the competent design.
+  </p>
+
+  <Figure caption="Optional systems and their counted loads. None is in the reference bill." basis="course assumption">
+    <table>
+      <thead><tr><th scope="col">Group</th><th scope="col">Load</th><th scope="col">Lower</th><th scope="col">Upper</th></tr></thead>
+      <tbody>
+        {
+          eb.optional.map((l) => (
+            <tr><th scope="row">{l.group}</th><td>{l.load}</td><td>{l.low.toFixed(2)}</td><td>{l.high.toFixed(2)} kWh/d</td></tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </Figure>
+
+  <p>
+    For scale: a four-person Australian household uses roughly 21 kWh a day of
+    electricity in total. This allowance governs about a quarter of that, and only the
+    quarter that runs the loop.
+  </p>
+</ContentLayout>
+
+<style>
+  table {
+    min-width: 30rem;
+  }
+
+  th[scope="row"] {
+    text-align: left;
+    font-weight: 500;
+  }
+
+  td {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .note {
+    padding: 0.85rem 1rem;
+    border-left: 3px solid var(--at-primary);
+    background: var(--at-bg-alt);
+    font-size: 0.95rem;
+  }
+</style>

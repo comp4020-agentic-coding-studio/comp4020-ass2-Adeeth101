@@ -1,0 +1,271 @@
+---
+import Card from "astro-theme-university/components/Card.astro";
+import CardGrid from "astro-theme-university/components/CardGrid.astro";
+import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
+import { withBase } from "astro-theme-university/url";
+import BandTable from "../../components/BandTable.astro";
+import Figure from "../../components/Figure.astro";
+import { courseModel, indicators, sites, pct } from "../../lib/model";
+import { siteConfig } from "../../site-config";
+
+const recipe = courseModel.recipe;
+const sens = courseModel.sensitivity;
+const recipeRows: { label: string; key: keyof typeof recipe.baseline; fmt?: (v: unknown) => string }[] = [
+  { label: "Domestic demand (L/person/day)", key: "demand" },
+  { label: "Composting toilet", key: "composting_toilet", fmt: (v) => (v ? "yes" : "no") },
+  { label: "Share of greywater reused", key: "greywater", fmt: (v) => `${Number(v) * 100} %` },
+  { label: "Share of growable area in production", key: "production", fmt: (v) => `${Number(v) * 100} %` },
+  { label: "Yield vs 1,500 kcal/m²/yr reference", key: "yield_mult", fmt: (v) => `${v}×` },
+  { label: "Share of excreted N recovered", key: "n_recovery", fmt: (v) => `${Number(v) * 100} %` },
+  { label: "Aquaponic grow bed", key: "aquaponic_m2", fmt: (v) => (v ? `${v} m²` : "none") },
+  { label: "Added roof catchment", key: "extra_catchment", fmt: (v) => (v ? `+${Number(v) * 100} % of roof` : "none") },
+  { label: "New storage spend (tank shells)", key: "storage_budget", fmt: (v) => `$${Number(v).toLocaleString("en-AU")}` },
+];
+const LV = ["baseline", "competent", "excellent"] as const;
+
+const worstSpread = Object.entries(sens.spreads)
+  .map(([k, v]) => ({ key: k, ...v }))
+  .sort((a, b) => b.worst.spread - a.worst.spread);
+const nameOf = (k: string) => indicators.find((i) => i.key === k)?.name ?? k;
+---
+
+<ContentLayout
+  title="Method: indicators, bands and what they are not"
+  description="How this course turns a design into evidence: five capped indicators, per-site reference bands built from three constructed designs, and a clear statement of what the method does not establish."
+  {...siteConfig}
+>
+  <h2>What is measured</h2>
+  <p>
+    Five indicators, all capped at 100 %, all counted as <em>used</em> rather than
+    produced, and all net of imports. That last rule is the one that does the work:
+    a system running on bought-in feed or carted water scores as what it is.
+  </p>
+
+  <Figure caption="The five banded indicators and their definitions." basis="model estimate">
+    <table>
+      <thead><tr><th scope="col">Indicator</th><th scope="col">Definition</th></tr></thead>
+      <tbody>
+        {
+          indicators.map((i) => (
+            <tr>
+              <th scope="row">{i.name}</th>
+              <td>{i.definition}</td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </Figure>
+
+  <h3>Water closure never appears alone</h3>
+  <p>
+    Water closure is on-site water used divided by all water used. Water that is
+    never used enters neither term — so a design can post a very high closure
+    figure by leaving its garden dry. Alice Springs' excellent reference design
+    reaches {pct(sites[1].bands.water_closure.excellent)} water closure with{" "}
+    {pct(sites[1].bands.garden_water_satisfaction.excellent)} garden water
+    satisfaction. <strong>The two are published together everywhere, without
+    exception.</strong>
+  </p>
+
+  <h3>Waste-stream recovery is deliberately not banded</h3>
+  <p>
+    Every banded indicator takes its thresholds from three constructed reference
+    designs run through the model. There is no reference calculation for
+    waste-stream recovery, so a band for it would have nothing behind it. It is
+    assessed from your submitted mass balances against the rubric instead. Saying
+    so is better than inventing a number and calling it a measurement.
+  </p>
+
+  <h2>Reference bands, and what they borrow from NatHERS</h2>
+  <p>
+    NatHERS could not use one national energy target across Australian climates
+    because a single figure "would bias results", so it sets climate-specific star
+    bands. This course borrows the <em>idea</em> and states plainly that it is not
+    the method: NatHERS derives its bands from a population of housing
+    simulations, while these come from <strong>three constructed reference
+    designs</strong> — baseline, competent and excellent — run through the course's
+    screening model at each site.
+  </p>
+
+  <Figure caption="The four bands." basis="course assumption">
+    <table>
+      <thead><tr><th scope="col">Band</th><th scope="col">Meaning</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">1</th><td>Below the baseline reference design</td></tr>
+        <tr><th scope="row">2</th><td>Between baseline and competent</td></tr>
+        <tr><th scope="row">3</th><td>Between competent and excellent</td></tr>
+        <tr><th scope="row">4</th><td>At or beyond excellent</td></tr>
+      </tbody>
+    </table>
+  </Figure>
+
+  <h3>The reference recipe, identical at every site</h3>
+  <p>
+    One recipe, five climates. Everything that differs between sites' thresholds
+    comes from the climate and the site inventory, never from a different design
+    being used as the yardstick.
+  </p>
+
+  <Figure
+    caption="Reference-design recipe, version 5. Storage spend and added catchment changed in September 2026 after the designs were costed against the full price schedule; see the costing page."
+    basis="course assumption"
+  >
+    <table>
+      <thead>
+        <tr><th scope="col">Parameter</th><th scope="col">Baseline</th><th scope="col">Competent</th><th scope="col">Excellent</th></tr>
+      </thead>
+      <tbody>
+        {
+          recipeRows.map((r) => (
+            <tr>
+              <th scope="row">{r.label}</th>
+              {LV.map((l) => <td>{r.fmt ? r.fmt(recipe[l][r.key]) : String(recipe[l][r.key])}</td>)}
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </Figure>
+
+  <h3>Your site's thresholds</h3>
+  <p>Each cell reads baseline / competent / excellent.</p>
+
+  <Figure
+    caption="Reference-band thresholds by site. No excellent value reaches 100 % under this recipe, so band 4 is open at every site."
+    basis="model estimate"
+  >
+    <BandTable />
+  </Figure>
+
+  <p class="note">
+    <strong>Rounding.</strong> Bands are evaluated against the model's unrounded
+    reference values. The percentages above are a rounded <em>display</em> of those
+    values, not the thresholds themselves — a design at 5.51 % against a threshold
+    displayed as 5.5 % is above it.
+  </p>
+
+  <h2 id="how-stable-are-the-bands">How stable are the bands?</h2>
+  <p>
+    The three reference designs were re-run under eleven perturbations of the
+    model's most uncertain constants — reference yield at ±33 %, domestic demand at
+    120 and 180 L/person/day, runoff coefficient, crop coefficient, feed conversion
+    ratio and tank cost. For each, the question is where the <em>competent</em> design
+    lands inside its site's baseline-to-excellent band. If the method is fair,
+    that position should be similar at every site.
+  </p>
+
+  <Figure
+    caption="Worst-case spread of the competent design's band position across the five sites, by indicator. A spread of 0 would mean the competent design sits in exactly the same relative place at every site."
+    basis="model estimate"
+  >
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Indicator</th>
+          <th scope="col">Worst spread</th>
+          <th scope="col">Under which perturbation</th>
+          <th scope="col">Next worst</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          worstSpread.map((r) => (
+            <tr>
+              <th scope="row">{nameOf(r.key)}</th>
+              <td>{r.worst.spread}</td>
+              <td>{r.worst.perturbation}</td>
+              <td>{r.second_worst.spread}</td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </Figure>
+
+  <p>
+    Read that honestly. Food energy and protein are stable. <strong>Garden water
+    satisfaction is the least stable indicator in the set</strong>, and both it and
+    water closure have their worst case under the same perturbation, domestic
+    demand at 120 L/person/day. Excluding that one case, no indicator spreads by
+    more than 0.17.
+  </p>
+  <p>
+    Garden water satisfaction was only brought inside this test in September 2026.
+    Before then the stability claim covered four indicators and was quietly assumed
+    to extend to the fifth. It does not, and the figure above is what that
+    assumption was hiding.
+  </p>
+
+  <h3>What the bands do not establish</h3>
+  <ul>
+    <li>
+      <strong>They are not grades.</strong> A band is performance evidence inside the
+      marking criteria, contributing to <em>Calculations</em> and <em>Loop
+      integration</em>. Nothing converts a band into a mark.
+    </li>
+    <li>
+      <strong>They do not prove equal grading outcomes.</strong> The testing above shows
+      three constructed designs behaving consistently. It says nothing directly
+      about how real student designs, which vary in ways the model does not
+      represent, will distribute.
+    </li>
+    <li>
+      <strong>Narrow bands are noisy.</strong> Alice Springs' food energy band spans about
+      three percentage points end to end. That is why bands are ordinal — four
+      levels — rather than a continuous score.
+    </li>
+    <li>
+      <strong>They must be recomputed whenever a course constant changes.</strong> Household
+      demand, allowances, the price schedule, model coefficients or the reference
+      recipe: any of them, and every threshold on this page is republished.
+    </li>
+  </ul>
+
+  <h2>The screening model behind all of it</h2>
+  <p>
+    Monthly, transparent, and built only from published formulas so that a student
+    can reproduce any number by hand. It has no drought years, no pests, no soil
+    types and no labour. Water temperature is approximated by air temperature.
+    Food yield rests on a single reference figure of 1,500 kcal/m²/year inside a
+    published range of 500 to 3,000.
+  </p>
+  <p>
+    It is a screening model, not a validated engineering design, and its outputs
+    are not predictions of real yields. Everything it produces on this site is
+    labelled with its basis.
+  </p>
+
+  <CardGrid columns={2}>
+    <Card title="Costing and energy" href={withBase("/method/costing/")}>
+      <p>The price schedule, the bill-of-materials rules, and exactly which loads count against 5 kWh a day.</p>
+    </Card>
+    <Card title="Worked comparison" href={withBase("/method/comparison/")}>
+      <p>One design idea — an extra 20 kL of storage — taken through all five sites, with the answers it gets.</p>
+    </Card>
+    <Card title="Datasets" href={withBase("/method/datasets/")}>
+      <p>The synthetic troubleshooting data the assignments use, and what it is and is not.</p>
+    </Card>
+    <Card title="The five sites" href={withBase("/sites/")}>
+      <p>Parameters, inventory, and the strengths and constraints no indicator scores.</p>
+    </Card>
+  </CardGrid>
+</ContentLayout>
+
+<style>
+  table {
+    min-width: 30rem;
+  }
+
+  th[scope="row"] {
+    text-align: left;
+    font-weight: 500;
+  }
+
+  .note {
+    padding: 0.85rem 1rem;
+    border-left: 3px solid var(--at-primary);
+    background: var(--at-bg-alt);
+    font-size: 0.95rem;
+  }
+</style>

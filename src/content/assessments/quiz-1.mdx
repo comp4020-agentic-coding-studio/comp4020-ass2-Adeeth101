@@ -1,0 +1,85 @@
+---
+title: "Quiz 1: Loop thinking, water-limited yield and mycology"
+description:
+  Week 3 — the closure definition, the monthly water balance behind every yield figure, and what mushrooms actually contribute
+week: 3
+due: 2027-03-11T12:00:00+11:00
+weight: 8
+marking:
+  mode: holistic
+  description:
+    Five conceptual multiple-choice questions on weeks 1 to 3, sat on paper in the studio. Marked right or wrong, with no partial credit and no numeric working required.
+related:
+  - sessions/week-03
+  - lectures/week-01
+  - lectures/week-03
+---
+
+import QuizQuestion from "../../components/QuizQuestion.astro";
+
+Covers weeks 1 to 3: what crosses the fence line, the definition of closure this
+course scores, evapotranspiration and effective rain, and mycology.
+
+## Practice questions
+
+These are the same kind of question as the quiz itself: conceptual, not numeric.
+Open the answer only after you have committed to one.
+
+<QuizQuestion
+  n={1}
+  question="Why does this course put imported water and food in the denominator of a closure ratio, rather than simply excluding them?"
+  options={["Because imports are hard to measure, so including them is more conservative", "Because a ratio of production to demand can exceed 100 % and rewards growing what nobody eats", "Because it makes the five sites score more similarly", "Because the Bureau of Meteorology data is reported that way"]}
+  correct={1}
+  why="A production-to-demand ratio has two faults at once: it can pass 100 %, which rewards surplus rather than substitution, and it is blind to what was brought in. Counting what was actually used, with imports in the denominator, fixes both. Carting in water lowers your score instead of disappearing from the sum."
+  wrong="The first option sounds like good engineering practice, but conservatism is not the reason. The reason is that the alternative ratio measures the wrong thing."
+/>
+
+<QuizQuestion
+  n={2}
+  question="A student computes their garden's irrigation deficit using total monthly rainfall instead of effective rainfall. What happens to the rest of their design?"
+  options={["Nothing; the two are close enough at monthly resolution", "The deficit is overstated, so the tank is oversized and the budget is wasted", "The deficit is understated, so every downstream system is sized too small", "Only the yield figure changes; the water systems are unaffected"]}
+  correct={2}
+  why="Effective rain is always less than total rain: the FAO expression subtracts 25 mm in a wet month and 10 mm in a dry one, for runoff and deep percolation the crop never sees. Using total rain therefore credits the garden with water that did not reach the roots, understates the deficit, and every system sized from that deficit comes out too small."
+  wrong="Oversizing feels like the safer error to guess at, but the arithmetic runs the other way. Overstating rain understates need."
+/>
+
+<QuizQuestion
+  n={3}
+  question="What is the primary role of mushrooms in this course's loop?"
+  options={["A significant source of food energy", "A source of protein that closes the gap left by the garden", "A converter that turns low-value lignocellulose into a small amount of food and a large amount of soil input", "A way of disposing of spent insect frass"]}
+  correct={2}
+  why="Twenty kilograms of dry straw at 70 % biological efficiency yields about 14 kg of fresh oyster mushrooms — roughly 0.13 % of the household's annual energy and 0.7 % of its protein. What matters is the other output: about five kilograms of spent substrate per kilogram picked, at 2.65 % nitrogen on a dry basis, which is a genuinely useful soil input."
+  wrong="Protein is the tempting answer because mushrooms are often described as protein-rich by percentage. By percentage of a very light, very wet food."
+/>
+
+<QuizQuestion
+  n={4}
+  question="Why does the course forbid routing spent mushroom substrate to the insect unit as a primary feedstock?"
+  options={["It is prohibited under Australian feed rules", "Black soldier fly larvae convert it at about 1.46 %, so the arrow moves almost no mass", "The substrate is too dry for larvae to process", "It would compete with the compost bay for nitrogen"]}
+  correct={1}
+  why="The lignin the mushroom could not break down is also the part the larvae cannot use. Measured bioconversion on pure spent mushroom substrate is about 1.46 % — the arrow exists on a lot of diagrams and moves almost nothing. Up to about 25 % of a mixed larval feed does no harm, but as a feedstock on its own it is a dead end. Spent substrate belongs in compost and soil."
+  wrong="A legal prohibition is a plausible guess because the course does impose substrate rules elsewhere. Here the objection is purely biological."
+/>
+
+<QuizQuestion
+  n={5}
+  question="Why does the course report chill as a regional category rather than computing chill hours from its climate data?"
+  options={["Chill hours are not relevant to any of the five sites", "The Bureau of Meteorology does not publish the underlying temperatures", "Computing chill hours from monthly means gives answers that are wrong by a factor of two or more", "Chill requirements vary too much between cultivars to be useful"]}
+  correct={2}
+  why="Chill accumulates hourly, and a sine curve fitted to monthly means does not reproduce it. The method gives Canberra about 1,979 hours against the roughly 720 that regional guides report, and gives Brisbane zero against about 150. A number that wrong is worse than a category, so the course uses the category and labels its confidence."
+  wrong="Cultivar variation is real, and it is why chill categories are broad. But it is not why the computed number was discarded."
+/>
+
+## The mechanics
+
+Sat in the week 3 studio, at the start of the session, on paper. Twenty
+minutes, 5 multiple-choice questions, no calculators and no numeric working —
+if a question can be answered by arithmetic, it is not on this quiz.
+
+Worth **8 %**. Five quizzes at 8 % make up 40 % of the course, spread across weeks
+3, 5, 8, 10 and 12 so that keeping up is worth more than catching up.
+
+**This website does not collect or store any answers.** It is a static site with
+no server behind it. The practice questions above reveal their own answers in the
+page, for your use only; nothing you do here is recorded, marked or transmitted
+anywhere, and the graded quiz happens on paper in the room.

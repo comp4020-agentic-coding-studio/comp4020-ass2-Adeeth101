@@ -1,0 +1,85 @@
+---
+title: "Quiz 2: Insects, aquaponics and the limits of the loop"
+description:
+  Week 5 — bioconversion arithmetic, the feed-rate ratio, and telling a course design rule from a legal requirement
+week: 5
+due: 2027-03-25T12:00:00+11:00
+weight: 8
+marking:
+  mode: holistic
+  description:
+    Five conceptual multiple-choice questions on weeks 4 and 5, sat on paper in the studio. Marked right or wrong, with no partial credit and no numeric working required.
+related:
+  - sessions/week-05
+  - lectures/week-04
+  - lectures/week-05
+---
+
+import QuizQuestion from "../../components/QuizQuestion.astro";
+
+Covers weeks 4 and 5: insect farming and aquaponics, and the two places where a
+familiar diagram turns out not to survive being sized.
+
+## Practice questions
+
+These are the same kind of question as the quiz itself: conceptual, not numeric.
+Open the answer only after you have committed to one.
+
+<QuizQuestion
+  n={1}
+  question="At the warmest site in the course, with the household's entire plant-based scrap stream committed, roughly what share of a 4 m² aquaponic bed's feed can on-site larvae supply?"
+  options={["Almost all of it", "About half", "Under a fifth", "It depends entirely on the fish species"]}
+  correct={2}
+  why="Darwin, the best thermal site, reaches about 17 %. The chain is short and each step is lossy: 380 kg of food waste, 60 % of it plant-based under the course rule, 25 % dry matter, 20 % bioconversion. An 8 m² bed halves the share to about 8 %. The remaining feed is bought, and under the closure definition, fish grown on bought feed are bought fish."
+  wrong="Species choice changes the months the fish grow, and therefore the feed demand — but it does not change the supply side, which is what binds."
+/>
+
+<QuizQuestion
+  n={2}
+  question="Rearing insects indoors at about 20 °C gives a productive factor near 0.53 at any site. What is the trade?"
+  options={["Lower bioconversion efficiency in exchange for continuity", "A climate advantage is converted into a counted energy load", "It requires imported substrate rather than household scraps", "It voids the course's substrate rule"]}
+  correct={1}
+  why="Indoor rearing levels the five sites — Canberra's outdoor factor is 0.19 and Darwin's is 0.97, and indoors both sit near 0.53. Nothing about the biology changes; what changes is that heating appears in the counted-load list. That is the trade this course wants made explicitly rather than by accident."
+  wrong="Bioconversion efficiency is a property of the substrate and the larvae, not of where the bin sits."
+/>
+
+<QuizQuestion
+  n={3}
+  question="Which statement about Australian restricted-animal-material and swill rules is correct as they apply to a household aquaponic system?"
+  options={["They prohibit feeding insects reared on catering waste to any animal", "They bind pigs and ruminants, and say nothing about fish, aquaculture or insects", "They require insects used as feed to be heat-treated", "They apply only to commercial operations, not to households"]}
+  correct={1}
+  why="The prohibitions are specific: vertebrate-derived material must not be fed to ruminants, and mammal products must not be fed to pigs. Swill feeding is prohibited nationally and expressly extends to pet and hobby animals. None of it reaches fish, aquaculture or insects. The course's plant-based-substrate and heat-treatment rules are therefore *course design rules*, stricter than the law, adopted for a biosecurity reason."
+  wrong="'Commercial only' is wrong in the opposite direction: swill rules explicitly cover pet pigs and backyard poultry. The limit is which animal, not which scale."
+/>
+
+<QuizQuestion
+  n={4}
+  question="What does the FAO feed-rate ratio actually size?"
+  options={["The fish tank volume", "The grow-bed area, from the daily feed input", "The number of fish, from the tank volume", "The daily water top-up"]}
+  correct={1}
+  why="The ratio is grams of feed per square metre of grow bed per day — 40 to 50 for leafy greens and 50 to 80 for fruiting vegetables. Feed drives the nutrient supply, and the bed is sized to consume it. Tank volume is constrained separately by the 20 kg per 1,000 L stocking limit."
+  wrong="Sizing from the tank is the intuitive direction and the wrong one. The plants are the consumer of what the feed becomes."
+/>
+
+<QuizQuestion
+  n={5}
+  question="The model selects Murray cod for Canberra on temperature grounds, but an ACT household needs a licence to keep it. When the two special-protection species are removed and the model re-run, what happens to Canberra's bands?"
+  options={["Protein closure falls by about a seventh, matching the lost month", "Nothing measurable, because counted fish protein is limited by larvae supply rather than by thermal window", "Water closure changes, because the rotation affects tank top-up", "The bands cannot be recomputed without changing the reference recipe"]}
+  correct={1}
+  why="The rotation drops from seven months to six, so feed demand falls — but the larvae supply was already the binding constraint, so counted fish protein stays at 0.27 kg a year and protein closure stays at 8.9 % at the excellent design. The legal constraint costs nothing that is scored. You still have to design around it and say so."
+  wrong="Losing a seventh of the thermal window sounds like it should cost a seventh of the output, and it would if feed were the limit. It is not."
+/>
+
+## The mechanics
+
+Sat in the week 5 studio, at the start of the session, on paper. Twenty
+minutes, 5 multiple-choice questions, no calculators and no numeric working —
+if a question can be answered by arithmetic, it is not on this quiz.
+
+Worth **8 %**. Five quizzes at 8 % make up 40 % of the course, spread across weeks
+3, 5, 8, 10 and 12 so that keeping up is worth more than catching up.
+
+**This website does not collect or store any answers.** It is a static site with
+no server behind it. The practice questions above reveal their own answers in the
+page, for your use only; nothing you do here is recorded, marked or transmitted
+anywhere, and the graded quiz happens on paper in the room.

@@ -1,0 +1,85 @@
+---
+title: "Quiz 3: Preservation scope, roof yield and treatment performance"
+description:
+  Week 8 — what a tested recipe does and does not license, applying the runoff formula correctly, and reading log reductions
+week: 8
+due: 2027-04-29T12:00:00+10:00
+weight: 8
+marking:
+  mode: holistic
+  description:
+    Five conceptual multiple-choice questions on weeks 6 to 8, sat on paper in the studio. Marked right or wrong, with no partial credit and no numeric working required.
+related:
+  - sessions/week-08
+  - lectures/week-06
+  - lectures/week-08
+---
+
+import QuizQuestion from "../../components/QuizQuestion.astro";
+
+Covers weeks 6 to 8: fermentation's role and its limits, water sourcing, and
+treatment performance stated as numbers somebody else could check.
+
+## Practice questions
+
+These are the same kind of question as the quiz itself: conceptual, not numeric.
+Open the answer only after you have committed to one.
+
+<QuizQuestion
+  n={1}
+  question="What does fermentation contribute to the household's food energy closure?"
+  options={["A modest increase, from microbial biomass", "Nothing directly; it moves existing calories through time, with losses", "A large increase, because preserved food is more calorie-dense", "It is not counted, because the model has no reference calculation for it"]}
+  correct={1}
+  why="Preservation creates no calories. It moves a summer glut into a winter trough, losing some in trimming, in the ferment itself, and in what is not eaten. That is valuable — a garden that produces everything in March and nothing in August feeds nobody in August — but it belongs in the storage balance, not in the production term."
+  wrong="Calorie density rises because water leaves. The calories do not increase; the mass falls."
+/>
+
+<QuizQuestion
+  n={2}
+  question="A tested sauerkraut method specifies a salt percentage, a temperature range and a duration. Why does the course refuse to extend those numbers to other vegetables?"
+  options={["Other vegetables need more salt", "The numbers were validated together for one vegetable's sugars and buffering capacity", "Other vegetables are not safe to ferment", "The source is US guidance and Australian produce differs"]}
+  correct={1}
+  why="Salt concentration, the vegetable's own sugars and its buffering capacity were tested as a system, for cabbage. Another vegetable acidifies at a different rate from a different starting point with a different surface microbiota. The source itself says to use only recipes with tested proportions, and not to reduce the salt."
+  wrong="Jurisdiction is a real caveat and the course states it, but it is not the reason the numbers do not transfer. The reason is that they are properties of one validated system."
+/>
+
+<QuizQuestion
+  n={3}
+  question="What does a pH at or below 4.6 actually establish?"
+  options={["That a ferment is free of pathogens", "That Clostridium botulinum spores will not germinate in a sealed, shelf-stable product", "That fermentation is complete", "That the salt concentration was correct"]}
+  correct={1}
+  why="It is a boundary drawn in food law for acidified, sealed, shelf-stable products, below which C. botulinum spores do not germinate. It is not a general pathogen boundary: E. coli O157:H7, Salmonella and Listeria are unaffected by it. Treating it as a general guarantee is the error the course exists to prevent here."
+  wrong="'Free of pathogens' is what people remember the number to mean, which is exactly why it is worth being precise about what it covers."
+/>
+
+<QuizQuestion
+  n={4}
+  question="A student applies runoff = 0.8 × (rainfall − B) × roof area to their annual rainfall total rather than month by month. Which site does this distort most, and why?"
+  options={["Darwin, because its rainfall is the highest", "Brisbane, because its rain is the most intense", "Alice Springs, because months below the initial loss should contribute zero rather than a negative", "Canberra, because its rain is the most evenly distributed"]}
+  correct={2}
+  why="The B term is 2 mm per month, or 24 mm a year. Applied annually it is a single small subtraction; applied monthly, a month with 1 mm of rain contributes nothing at all. Dry sites have several such months, so an annual application silently credits them with water that never ran off. It also hides the seasonality that weeks 9's storage sizing depends on."
+  wrong="Darwin's total is the largest, so an error there feels biggest — but its months are almost all well above the initial loss, so the annual shortcut happens to be nearly right for the wrong reason."
+/>
+
+<QuizQuestion
+  n={5}
+  question="Why does the WHO household water treatment scheme rate bacteria, viruses and protozoa separately?"
+  options={["Because the three classes are measured in different laboratories", "Because a technology strong against one class can be ineffective against another", "Because viruses are always the hardest to remove", "Because protozoa are only a risk in surface water"]}
+  correct={1}
+  why="Barrier performance is pathogen-specific. Membrane pore size that reliably excludes protozoan cysts may pass viruses; UV doses effective against bacteria and viruses can be less so against some protozoa. A single overall figure would let a train claim adequacy it does not have against one whole class."
+  wrong="Viruses do carry the highest log requirement in the scheme, but 'always hardest' is not the reason for separating the classes. The reason is that different barriers fail against different ones."
+/>
+
+## The mechanics
+
+Sat in the week 8 studio, at the start of the session, on paper. Twenty
+minutes, 5 multiple-choice questions, no calculators and no numeric working —
+if a question can be answered by arithmetic, it is not on this quiz.
+
+Worth **8 %**. Five quizzes at 8 % make up 40 % of the course, spread across weeks
+3, 5, 8, 10 and 12 so that keeping up is worth more than catching up.
+
+**This website does not collect or store any answers.** It is a static site with
+no server behind it. The practice questions above reveal their own answers in the
+page, for your use only; nothing you do here is recorded, marked or transmitted
+anywhere, and the graded quiz happens on paper in the room.

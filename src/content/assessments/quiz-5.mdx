@@ -1,0 +1,85 @@
+---
+title: "Quiz 5: Nitrogen, jurisdiction and what a band means"
+description:
+  Week 12 — the uptake limit that caps every site, reading the rule that applies where you are, and the limits of the scoring method
+week: 12
+due: 2027-05-27T12:00:00+10:00
+weight: 8
+marking:
+  mode: holistic
+  description:
+    Five conceptual multiple-choice questions on weeks 11 and 12 and the integration material, sat on paper in the studio. Marked right or wrong, with no partial credit and no numeric working required.
+related:
+  - sessions/week-12
+  - lectures/week-11
+  - lectures/week-12
+---
+
+import QuizQuestion from "../../components/QuizQuestion.astro";
+
+Covers weeks 11 and 12: sanitation, the nitrogen balance, and what the reference
+bands are and are not.
+
+## Practice questions
+
+These are the same kind of question as the quiz itself: conceptual, not numeric.
+Open the answer only after you have committed to one.
+
+<QuizQuestion
+  n={1}
+  question="No site in this course absorbs even half of the household's excreted nitrogen on its own garden. What follows for a design?"
+  options={["Nitrogen recovery should be reduced so that supply matches uptake", "The surplus needs a named destination, and the design is marked on how it handles it", "The uptake limit should be raised for larger gardens", "The shortfall is a modelling artefact and can be disregarded"]}
+  correct={1}
+  why="Uptake caps at about 12 g of nitrogen per m² per year, so even Darwin's 500 m² absorbs only 44 % of 13.6 kg, and the Brisbane townhouse absorbs 11 %. Between 56 % and 89 % has to go somewhere — extended storage, alkaline treatment, export, or lower recovery in the first place. Choosing and costing that is the design problem."
+  wrong="Reducing recovery is one legitimate answer among several, but choosing it by default rather than by argument is not."
+/>
+
+<QuizQuestion
+  n={2}
+  question="Why does a Canberra household need roughly 75 % more composting-toilet chamber capacity than a Darwin household of the same size?"
+  options={["Colder conditions slow composting, so more material accumulates at once", "WHO's storage guidance requires 1.5 to 2 years below 20 °C against over 1 year above it", "Canberra households produce more excreta per person", "Frost prevents the chamber being emptied for part of the year"]}
+  correct={1}
+  why="It is a storage-time requirement, not a rate-of-decomposition calculation. Canberra's annual mean of 13.1 °C puts it in the 1.5 to 2 year band; Darwin's 27.7 °C puts it in the over-one-year band. The capacity difference is climate-driven and has nothing to do with how well either design is reasoned, which is why it is built into the reference designs so the bands absorb it."
+  wrong="Slower composting is a real effect and points the same direction, but the sizing rule is the pathogen die-off storage time, which is stated as a duration."
+/>
+
+<QuizQuestion
+  n={3}
+  question="The rule that untreated greywater must go subsurface, must never be stored and must exclude kitchen water is the law in how many of this course's five site jurisdictions?"
+  options={["All five", "Three", "One", "None"]}
+  correct={3}
+  why="All three elements together are New South Wales law, and none of the five sites is in New South Wales. Queensland permits surface irrigation and puts kitchen water inside the legal definition; the ACT has no greywater-specific regulation at all; NT and SA mandate subsurface but allow 24 hours' holding. The course adopts the strictest version as a design rule and says plainly that it is not the law where you are."
+  wrong="'All five' is what most people would answer before week 11, which is the entire point of running that session as a citation exercise."
+/>
+
+<QuizQuestion
+  n={4}
+  question="A design reports 97 % water closure. What must be reported beside it, and why?"
+  options={["Total roof area, to show the figure is achievable", "Garden water satisfaction, because closure can be raised by not watering the garden", "The import volume, because closure is capped at 100 %", "The storage volume, because closure depends on capacity"]}
+  correct={1}
+  why="Water closure is on-site water used divided by all water used. Water never used never enters either term, so a design that leaves its garden dry can post a very high closure figure. Alice Springs' excellent reference design reaches 97 % closure with 16 % garden water satisfaction. Published alone, the first number is an achievement; published together, the pair is a description."
+  wrong="Import volume is genuinely useful and is reported too, but it does not catch this particular way of scoring well by doing less."
+/>
+
+<QuizQuestion
+  n={5}
+  question="Which statement about the reference bands is correct?"
+  options={["A band 4 design has demonstrated a high distinction", "The bands guarantee that students at different sites are graded equally", "They are performance evidence inside the marking criteria, and the stability testing behind them is published with its limits", "They replace the marking criteria for the quantitative parts of the capstone"]}
+  correct={2}
+  why="The bands are ordinal, built from three constructed reference designs rather than a population of simulations, and they inform the calculations and integration criteria. Sensitivity testing shows the reference designs hold broadly similar relative positions across eleven perturbations — worst-case spread 0.38 for garden water satisfaction, the least stable indicator — but that does not prove equal grading outcomes for real student designs, and the course says so."
+  wrong="Equal grading outcomes is the claim it would be most convenient to make, and the one the testing does not support."
+/>
+
+## The mechanics
+
+Sat in the week 12 studio, at the start of the session, on paper. Twenty
+minutes, 5 multiple-choice questions, no calculators and no numeric working —
+if a question can be answered by arithmetic, it is not on this quiz.
+
+Worth **8 %**. Five quizzes at 8 % make up 40 % of the course, spread across weeks
+3, 5, 8, 10 and 12 so that keeping up is worth more than catching up.
+
+**This website does not collect or store any answers.** It is a static site with
+no server behind it. The practice questions above reveal their own answers in the
+page, for your use only; nothing you do here is recorded, marked or transmitted
+anywhere, and the graded quiz happens on paper in the room.
