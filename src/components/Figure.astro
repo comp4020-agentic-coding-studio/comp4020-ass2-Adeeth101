@@ -1,0 +1,77 @@
+---
+/** A diagram or table with its caption and, always, the basis of its numbers.
+ *  Every figure on this site says whether it is sourced, a course assumption,
+ *  an indicative cost, a model estimate or synthetic data — the harness rule
+ *  that a reader must be able to tell which numbers would survive a real site. */
+export type Basis = "sourced" | "course assumption" | "indicative cost" | "model estimate" | "synthetic data";
+
+interface Props {
+  caption: string;
+  basis: Basis;
+  source?: string;
+  id?: string;
+}
+
+const { caption, basis, source, id } = Astro.props;
+---
+
+<figure class="fig" id={id}>
+  <div class="fig-body"><slot /></div>
+  <figcaption>
+    <span class={`basis basis-${basis.replace(/ /g, "-")}`}>{basis}</span>
+    <span class="cap">{caption}{source && <span class="src"> {source}</span>}</span>
+  </figcaption>
+</figure>
+
+<style>
+  .fig {
+    margin: 2rem 0;
+    padding: 0;
+  }
+
+  .fig-body {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  figcaption {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: baseline;
+    margin-top: 0.6rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--at-divider);
+    font-size: var(--at-font-size-sm, 0.9rem);
+    color: var(--at-text-secondary);
+  }
+
+  .basis {
+    flex: none;
+    padding: 0.1rem 0.5rem;
+    border: 1px solid var(--at-border);
+    border-radius: 3px;
+    font-family: var(--at-font-mono);
+    font-size: 0.75em;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .basis-sourced {
+    border-color: var(--at-primary);
+    color: var(--at-primary);
+  }
+
+  .basis-synthetic-data {
+    border-style: dashed;
+  }
+
+  .cap {
+    flex: 1 1 14rem;
+  }
+
+  .src {
+    color: var(--at-text-muted);
+  }
+</style>

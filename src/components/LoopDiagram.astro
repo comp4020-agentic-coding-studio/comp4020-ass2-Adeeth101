@@ -1,0 +1,187 @@
+---
+/** The course's central diagram, drawn from the streams it actually teaches.
+ *  Inline SVG so it inherits the brand tokens and works in both colour schemes;
+ *  the dashed arrows are the imports and exports the loop cannot close, which
+ *  is the whole argument of the course and is never drawn as a closed circle. */
+interface Props {
+  /** Dim every stream except this one, for a week that is about one stream. */
+  highlight?: "food" | "water" | "waste" | "nutrient";
+  compact?: boolean;
+}
+
+const { highlight, compact = false } = Astro.props;
+const dim = (stream: string) => (highlight && highlight !== stream ? "dim" : "");
+
+const NODES: { id: string; x: number; y: number; label: string; sub: string }[] = [
+  { id: "roof", x: 90, y: 60, label: "Roof and bore", sub: "weeks 7, 9" },
+  { id: "store", x: 90, y: 180, label: "Storage and treatment", sub: "weeks 8, 9" },
+  { id: "house", x: 300, y: 180, label: "Household", sub: "4 people" },
+  { id: "garden", x: 510, y: 60, label: "Garden and orchard", sub: "week 2" },
+  { id: "bio", x: 510, y: 180, label: "Mushrooms, insects, fish", sub: "weeks 3–5" },
+  { id: "waste", x: 300, y: 300, label: "Compost and digester", sub: "week 10" },
+  { id: "san", x: 90, y: 300, label: "Toilet and greywater", sub: "week 11" },
+];
+
+const FLOWS: { from: string; to: string; stream: string; label: string; dash?: boolean }[] = [
+  { from: "roof", to: "store", stream: "water", label: "rain" },
+  { from: "store", to: "house", stream: "water", label: "potable" },
+  { from: "store", to: "garden", stream: "water", label: "irrigation" },
+  { from: "garden", to: "house", stream: "food", label: "produce" },
+  { from: "bio", to: "house", stream: "food", label: "protein" },
+  { from: "house", to: "waste", stream: "waste", label: "scraps" },
+  { from: "house", to: "san", stream: "waste", label: "excreta, greywater" },
+  { from: "waste", to: "bio", stream: "waste", label: "substrate" },
+  { from: "waste", to: "garden", stream: "nutrient", label: "compost" },
+  { from: "san", to: "garden", stream: "nutrient", label: "urine N, greywater" },
+];
+
+const W = 600;
+const H = 400;
+const NW = compact ? 120 : 140;
+const NH = 52;
+const byId = Object.fromEntries(NODES.map((n) => [n.id, n]));
+
+/** Edge-to-edge line between two node boxes, trimmed so the arrowhead lands on
+ *  the border rather than under the label. */
+function edge(a: { x: number; y: number }, b: { x: number; y: number }) {
+  const dx = b.x - a.x;
+  const dy = b.y - a.y;
+  const len = Math.hypot(dx, dy) || 1;
+  const trim = (n: { x: number; y: number }, sign: number) => {
+    const sx = Math.abs(dx) > 1 ? (NW / 2 + 6) / Math.abs(dx / len) : Infinity;
+    const sy = Math.abs(dy) > 1 ? (NH / 2 + 6) / Math.abs(dy / len) : Infinity;
+    const t = Math.min(sx, sy);
+    return { x: n.x + (sign * t * dx) / len, y: n.y + (sign * t * dy) / len };
+  };
+  return { s: trim(a, 1), e: trim(b, -1) };
+}
+---
+
+<div class="loop" role="group" aria-label="Flow diagram of the household loop">
+  <svg viewBox={`0 0 ${W} ${H}`} xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      {["food", "water", "waste", "nutrient"].map((s) => (
+        <marker
+          id={`arw-${s}`}
+          viewBox="0 0 10 10"
+          refX="9"
+          refY="5"
+          markerWidth="5"
+          markerHeight="5"
+          orient="auto-start-reverse"
+        >
+          <path d="M 0 0 L 10 5 L 0 10 z" class={`mk mk-${s}`} />
+        </marker>
+      ))}
+    </defs>
+
+    {
+      FLOWS.map((f) => {
+        const { s, e } = edge(byId[f.from], byId[f.to]);
+        const mx = (s.x + e.x) / 2;
+        const my = (s.y + e.y) / 2;
+        return (
+          <g class={`flow flow-${f.stream} ${dim(f.stream)}`}>
+            <line x1={s.x} y1={s.y} x2={e.x} y2={e.y} marker-end={`url(#arw-${f.stream})`} />
+            <text x={mx} y={my - 5} text-anchor="middle">{f.label}</text>
+          </g>
+        );
+      })
+    }
+
+    <g class="leak">
+      <line x1="300" y1="232" x2="300" y2="268" stroke-dasharray="6 5" />
+      <line x1="185" y1="345" x2="120" y2="372" stroke-dasharray="6 5" />
+      <text x="330" y="256" class="leak-label">imported feed and food</text>
+      <text x="112" y="388" class="leak-label">surplus N leaves the site</text>
+    </g>
+
+    {
+      NODES.map((n) => (
+        <g class="node">
+          <rect x={n.x - NW / 2} y={n.y - NH / 2} width={NW} height={NH} rx="5" />
+          <text x={n.x} y={n.y - 3} text-anchor="middle" class="node-label">{n.label}</text>
+          <text x={n.x} y={n.y + 15} text-anchor="middle" class="node-sub">{n.sub}</text>
+        </g>
+      ))
+    }
+  </svg>
+</div>
+
+<style>
+  .loop {
+    margin: 0;
+  }
+
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    font-family: var(--at-font-body);
+  }
+
+  .node rect {
+    fill: var(--at-bg-alt);
+    stroke: var(--at-border);
+    stroke-width: 1.5;
+  }
+
+  .node-label {
+    font-size: 13px;
+    fill: var(--at-text);
+  }
+
+  .node-sub {
+    font-size: 10.5px;
+    fill: var(--at-text-muted);
+  }
+
+  .flow line {
+    stroke-width: 2;
+    fill: none;
+  }
+
+  .flow text {
+    font-size: 10px;
+    fill: var(--at-text-muted);
+  }
+
+  .flow-water line,
+  .mk-water {
+    stroke: var(--at-primary);
+    fill: var(--at-primary);
+  }
+
+  .flow-food line,
+  .mk-food {
+    stroke: var(--at-secondary);
+    fill: var(--at-secondary);
+  }
+
+  .flow-waste line,
+  .mk-waste {
+    stroke: var(--at-tertiary);
+    fill: var(--at-tertiary);
+  }
+
+  .flow-nutrient line,
+  .mk-nutrient {
+    stroke: var(--at-secondary);
+    fill: var(--at-secondary);
+    stroke-dasharray: 2 3;
+  }
+
+  .dim {
+    opacity: 0.22;
+  }
+
+  .leak line {
+    stroke: var(--at-text-muted);
+    stroke-width: 2;
+  }
+
+  .leak-label {
+    font-size: 10.5px;
+    fill: var(--at-text-muted);
+  }
+</style>

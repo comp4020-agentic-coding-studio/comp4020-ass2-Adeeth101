@@ -2,48 +2,125 @@
 import Card from "astro-theme-university/components/Card.astro";
 import CardGrid from "astro-theme-university/components/CardGrid.astro";
 import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
-import heroImage from "../assets/images/hero-home.avif";
-import { courseMeta } from "../course-config";
+import Figure from "../components/Figure.astro";
+import LoopDiagram from "../components/LoopDiagram.astro";
+import { courseMeta, prerequisites, sequel } from "../course-config";
+import { midSemesterBreak, teachingEnds } from "../lib/calendar";
+import { constraints, sites, household } from "../lib/model";
+import { formatCourseDate } from "../lib/dates";
 import { sessionLabels, siteConfig } from "../site-config";
 
-// STARTER_CONTENT: replace the hero artwork and its alt text below, then
-// remove this comment.
+const worst = sites.reduce((a, b) =>
+  a.reference.excellent.cost_headroom < b.reference.excellent.cost_headroom ? a : b,
+);
 ---
 
 <ContentLayout
   title={`${courseMeta.code}: ${courseMeta.title}`}
   description={courseMeta.description}
-  heroImage={heroImage}
-  heroImageAlt="A lecture theatre reduced to flat gold and black shapes, rows of seats sweeping past the frame, in a two-ink risograph print"
   {...siteConfig}
 >
   <ul class="course-tags" aria-label="Course tags">
     {courseMeta.tags.map((tag) => <li>{tag}</li>)}
   </ul>
 
-  <!-- STARTER_CONTENT: replace the authored page below, then remove this comment. -->
+  <p class="claim">
+    A household is not self-sufficient because it produces everything. It is
+    self-sufficient when the output of one system is the input to another —
+    inside one plot, one budget and one energy allowance.
+  </p>
+
+  <p>
+    Growing a near-complete diet takes something like 372 m² of good ground per
+    adult. No suburban block has that, and no amount of design will conjure it.
+    So this course does not ask you to close the loop. It asks you to measure
+    <strong>how much of it you close, honestly counted</strong> — and to be
+    equally precise about what still has to come through the front gate.
+  </p>
+
+  <Figure
+    caption="The loop the course teaches, and the two places it leaks. Dashed arrows are the imports and exports no design on these five sites removes."
+    basis="model estimate"
+  >
+    <LoopDiagram />
+  </Figure>
+
   <h2>What you will do</h2>
   <p>
-    Say what a student spends their time on — the making, reading, arguing or
-    measuring that fills the weeks. Name the artefact they walk out with.
+    You take one of five preset sites — a household of {household.occupants} on a
+    real block, with real Bureau of Meteorology climate behind it — and design
+    its food, water and waste systems over twelve weeks. Each week sizes one
+    subsystem with a named method you can reproduce by hand, and hands you back a
+    piece of the whole. By week 12 you hold a site master plan with mass balances
+    that close, a bill of materials priced from a published schedule, and a list
+    of the loads you were not certain about.
+  </p>
+  <p>
+    Two numbers bound every decision: <strong>${constraints.budget_aud.toLocaleString("en-AU")}</strong> of
+    new spend including a required {(constraints.contingency * 100).toFixed(0)} %
+    contingency, and <strong>{constraints.energy_cap_kwh_day} kWh a day</strong> of
+    process energy in the peak month, with uncertain loads counted at their upper
+    estimate. Both are hard. The excellent reference design at the tightest site
+    clears the budget by {`$${worst.reference.excellent.cost_headroom.toLocaleString("en-AU")}`},
+    which tells you how much room there is to be wrong.
+  </p>
+
+  <h2>What you will not do</h2>
+  <p>
+    You will not build, operate, plumb, eat from or drink from anything. This is
+    a design course, assessed on drawings, calculations and justified
+    assumptions. Where the course sets a rule stricter than the law in your
+    jurisdiction — and it often does — it says so, and says why.
+  </p>
+  <p>
+    Energy and shelter are out of scope. Biogas is recorded and not credited;
+    only the digestate's nutrients count. Those belong to <strong>{sequel.code} — {sequel.title}</strong>,
+    a {sequel.status} that adds {sequel.adds}.
   </p>
 
   <h2>Who it is for</h2>
   <p>
-    Say who this is aimed at and what they need to already know. Be specific
-    enough that someone can rule themselves in or out without emailing you.
+    Fourth-year engineering and environmental-science students who want a design
+    problem with a real constraint set rather than an open brief. You should
+    arrive with:
+  </p>
+  <ul>
+    {prerequisites.map((p) => <li>{p}</li>)}
+  </ul>
+  <p>
+    If you have never sized anything against a monthly water balance, you will be
+    fine. If you are looking for a course that concludes households can be
+    self-sufficient, you will be disappointed by week 2.
+  </p>
+
+  <h2>The semester</h2>
+  <p>
+    Twelve teaching weeks from {formatCourseDate(courseMeta.startDate)} to{" "}
+    {formatCourseDate(teachingEnds)}, with a two-week mid-semester break from{" "}
+    {formatCourseDate(midSemesterBreak.from)}. The capstone falls in the
+    assessment period afterwards, which is why the course record runs to{" "}
+    {formatCourseDate(courseMeta.endDate)}.
   </p>
 
   <h2>Where to go next</h2>
   <CardGrid columns={2}>
+    <Card title="The five sites" href="/sites/">
+      <p>Canberra, Alice Springs, Brisbane, Adelaide and Darwin — parameters, inventory, and the strengths and constraints the model cannot score.</p>
+    </Card>
+    <Card title="Method" href="/method/">
+      <p>The indicators, the reference bands and what they are and are not: performance evidence inside a rubric, never an automatic grade.</p>
+    </Card>
+    <Card title="Lectures" href="/lectures/">
+      <p>Twelve weeks, each with one engineering question, one quantitative method and one worked example.</p>
+    </Card>
     <Card title={sessionLabels.plural} href="/sessions/">
-      <p>The weekly schedule and what happens in each teaching session.</p>
+      <p>What you bring to each studio, what happens in the room, and what leaves it changed.</p>
     </Card>
     <Card title="Assessment" href="/assessments/">
-      <p>What is marked, what it is worth, and when it is due.</p>
+      <p>Five conceptual quizzes, the Food Loop Design and the capstone master plan.</p>
     </Card>
-    <Card title="People" href="/people/">
-      <p>Who teaches the course and how to reach them.</p>
+    <Card title="Costing and energy" href="/method/costing/">
+      <p>The price schedule every design is costed from, and exactly which loads count against the daily allowance.</p>
     </Card>
   </CardGrid>
 </ContentLayout>
@@ -64,5 +141,13 @@ import { sessionLabels, siteConfig } from "../site-config";
     color: var(--at-text-secondary);
     background: var(--at-bg-alt);
     font-size: 0.9rem;
+  }
+
+  .claim {
+    margin: 0 0 1.5rem;
+    padding-left: 1.1rem;
+    border-left: 3px solid var(--at-primary);
+    font-size: 1.2rem;
+    line-height: 1.55;
   }
 </style>

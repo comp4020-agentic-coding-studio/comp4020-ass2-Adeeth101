@@ -1,0 +1,139 @@
+---
+import { sites } from "../lib/model";
+
+/** The five preset sites, each with the strengths and constraints the model
+ *  cannot score. Two of those matter most: Canberra is easiest on nothing the
+ *  model measures and the Brisbane townhouse is hardest on nothing, so their
+ *  real character lives only in this prose (CLAUDE.md, Site coverage). */
+interface Props {
+  only?: string[];
+  headingLevel?: "h2" | "h3";
+}
+
+const { only, headingLevel = "h3" } = Astro.props;
+const shown = only ? sites.filter((s) => only.includes(s.id)) : sites;
+const Heading = headingLevel;
+---
+
+<div class="cards">
+  {
+    shown.map((s) => (
+      <article class="card">
+        <Heading id={`site-${s.id.toLowerCase()}`}>
+          <span class="sid">{s.id}</span> {s.short}
+        </Heading>
+        <p class="place">{s.name} · {s.place}</p>
+
+        <dl class="params">
+          <div><dt>Dwelling</dt><dd>{s.dwelling}</dd></div>
+          <div><dt>Plot</dt><dd>{s.plot_m2.toLocaleString("en-AU")} m²</dd></div>
+          <div>
+            <dt>Growing area</dt>
+            <dd>
+              {s.growable_m2} m²{s.shared_growing_m2 > 0 && ` + ${s.shared_growing_m2} m² shared`}
+            </dd>
+          </div>
+          <div><dt>Roof</dt><dd>{s.roof_m2} m²</dd></div>
+          <div><dt>Existing storage</dt><dd>{s.existing_storage_kl} kL</dd></div>
+          {s.other_water_kl_year > 0 && (
+            <div><dt>Bore allocation</dt><dd>{s.other_water_kl_year} kL/yr, capped</dd></div>
+          )}
+          <div><dt>Rain</dt><dd>{s.climate.annual_rain_mm} mm/yr</dd></div>
+          <div><dt>P/ETo</dt><dd>{s.climate.aridity_p_over_eto}</dd></div>
+        </dl>
+
+        <p class="lbl">Strengths</p>
+        <ul>{s.strengths.map((t) => <li>{t}</li>)}</ul>
+        <p class="lbl">Constraints</p>
+        <ul>{s.constraints.map((t) => <li>{t}</li>)}</ul>
+        <p class="station">
+          Climate from Bureau of Meteorology station {s.station}, {s.station_name}, all years of record.
+        </p>
+      </article>
+    ))
+  }
+</div>
+
+<style>
+  .cards {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    margin: 1.5rem 0 2rem;
+  }
+
+  .card {
+    padding: 1.25rem 1.35rem 1.1rem;
+    border: 1px solid var(--at-border);
+    border-radius: var(--at-border-radius, 4px);
+    background: var(--at-bg-alt);
+  }
+
+  .card :global(h2),
+  .card :global(h3) {
+    margin: 0;
+    font-size: 1.3rem;
+  }
+
+  .sid {
+    font-family: var(--at-font-mono);
+    font-size: 0.75em;
+    color: var(--at-text-muted);
+  }
+
+  .place {
+    margin: 0.15rem 0 0.9rem;
+    color: var(--at-text-secondary);
+    font-size: 0.92rem;
+  }
+
+  .params {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+    gap: 0.45rem 1rem;
+    margin: 0 0 1rem;
+    padding: 0.8rem 0;
+    border-block: 1px solid var(--at-divider);
+  }
+
+  .params div {
+    min-width: 0;
+  }
+
+  dt {
+    color: var(--at-text-muted);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  dd {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  .lbl {
+    margin: 0.85rem 0 0.25rem;
+    color: var(--at-primary);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .card ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.93rem;
+  }
+
+  .card li {
+    margin-bottom: 0.35rem;
+  }
+
+  .station {
+    margin: 1rem 0 0;
+    color: var(--at-text-muted);
+    font-size: 0.8rem;
+  }
+</style>
