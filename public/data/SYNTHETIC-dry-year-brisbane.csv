@@ -1,0 +1,14 @@
+"# SYNTHETIC DATA - derived from BoM station 040214 statistics, not an observed year. SLOP4761."
+month,mean_year_rain_mm,dry_year_rain_mm
+Jan,159.6,106.9
+Feb,158.3,111.4
+Mar,140.7,79.5
+Apr,92.5,71.8
+May,73.7,42.0
+Jun,67.8,22.0
+Jul,56.5,25.2
+Aug,45.9,12.8
+Sep,45.7,19.8
+Oct,75.4,39.0
+Nov,97.0,61.9
+Dec,133.3,99.0

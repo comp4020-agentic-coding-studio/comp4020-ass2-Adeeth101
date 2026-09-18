@@ -1,0 +1,161 @@
+---
+import datasets from "../data/datasets.json";
+
+/** Four small multiples over a shared 60-day axis.
+ *
+ *  Why small multiples and not one chart with four lines: the Slop palette is a
+ *  two-ink brand built from a single hue, and a categorical palette drawn from it
+ *  cannot separate four series well enough to read — the validator puts adjacent
+ *  pairs below the normal-vision floor. Four single-series panels need no
+ *  categorical palette and no legend at all, and they happen to suit the data:
+ *  what matters here is the shape of each curve and the order the shapes arrive
+ *  in, not a comparison of magnitudes that share no units.
+ *
+ *  Ammonia, nitrite and nitrate share mg/L and share a scale. pH gets its own
+ *  panel rather than a second y-axis, because a dual-axis chart invites a
+ *  correlation the data has not earned.
+ */
+const rows = datasets.aquaponic_log.rows;
+const W = 640;
+const PH = 88; // panel height
+const GAP = 34;
+const L = 46;
+const R = 12;
+const T = 16;
+
+const PANELS = [
+  { key: "ammonia_mg_l", label: "Ammonia", unit: "mg/L", max: 4.5 },
+  { key: "nitrite_mg_l", label: "Nitrite", unit: "mg/L", max: 7 },
+  { key: "nitrate_mg_l", label: "Nitrate", unit: "mg/L", max: 70 },
+  { key: "ph", label: "pH", unit: "", max: 7.4, min: 5.9 },
+] as const;
+
+const H = T + PANELS.length * (PH + GAP);
+const x = (day: number) => L + ((day - 1) / 59) * (W - L - R);
+const FAULT_FROM = x(25);
+const FAULT_TO = x(46);
+---
+
+<figure class="chart">
+  <svg viewBox={`0 0 ${W} ${H}`} xmlns="http://www.w3.org/2000/svg" role="img"
+    aria-label="Four panels over sixty days: ammonia, nitrite and nitrate in milligrams per litre, and pH. Ammonia peaks near day eight, nitrite near day sixteen, both fall by day twenty-four, then nitrite rises again from day twenty-five to day forty-five while pH falls, before both recover.">
+    {
+      PANELS.map((p, i) => {
+        const top = T + i * (PH + GAP);
+        const lo = "min" in p ? (p.min as number) : 0;
+        const y = (v: number) => top + PH - ((v - lo) / (p.max - lo)) * PH;
+        const pts = rows.map((r) => `${x(r.day).toFixed(1)},${y(r[p.key as keyof typeof r] as number).toFixed(1)}`);
+        const ticks = [lo, lo + (p.max - lo) / 2, p.max];
+        return (
+          <g>
+            <rect x={FAULT_FROM} y={top} width={FAULT_TO - FAULT_FROM} height={PH} class="fault" />
+            {ticks.map((t) => (
+              <g>
+                <line x1={L} y1={y(t)} x2={W - R} y2={y(t)} class="grid" />
+                <text x={L - 7} y={y(t) + 3.5} text-anchor="end" class="tick">
+                  {p.key === "ph" ? t.toFixed(1) : Math.round(t)}
+                </text>
+              </g>
+            ))}
+            <text x={L} y={top - 5} class="panel-title">
+              {p.label}{p.unit && <tspan class="unit"> ({p.unit})</tspan>}
+            </text>
+            <polyline points={pts.join(" ")} class="series" />
+            {rows.map((r) => (
+              <circle cx={x(r.day)} cy={y(r[p.key as keyof typeof r] as number)} r="7" class="hit">
+                <title>
+                  Day {r.day} · {p.label} {r[p.key as keyof typeof r]}{p.unit ? ` ${p.unit}` : ""}
+                </title>
+              </circle>
+            ))}
+          </g>
+        );
+      })
+    }
+
+    <g class="axis">
+      {[1, 10, 20, 25, 30, 40, 46, 50, 60].map((d) => (
+        <text x={x(d)} y={H - 6} text-anchor="middle" class="tick">{d}</text>
+      ))}
+      <text x={(L + W - R) / 2} y={H - 20} text-anchor="middle" class="axis-label">Day</text>
+    </g>
+
+    <g class="ann">
+      <line x1={FAULT_TO} y1={T - 8} x2={FAULT_TO} y2={H - 34} class="marker" />
+      <text x={FAULT_TO - 5} y={T - 10} text-anchor="end" class="ann-text">buffer added, day 46</text>
+      <text x={FAULT_FROM + 5} y={T - 10} class="ann-text">fault window</text>
+    </g>
+  </svg>
+</figure>
+
+<style>
+  .chart {
+    margin: 0;
+  }
+
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    font-family: var(--at-font-body);
+  }
+
+  .series {
+    fill: none;
+    stroke: var(--at-primary);
+    stroke-width: 2;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+
+  .grid {
+    stroke: var(--at-divider);
+    stroke-width: 1;
+  }
+
+  .fault {
+    fill: var(--at-accent-soft);
+  }
+
+  .tick {
+    fill: var(--at-text-muted);
+    font-size: 10px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .panel-title {
+    fill: var(--at-text);
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .unit {
+    fill: var(--at-text-muted);
+    font-weight: 400;
+  }
+
+  .axis-label {
+    fill: var(--at-text-secondary);
+    font-size: 11px;
+  }
+
+  .marker {
+    stroke: var(--at-tertiary);
+    stroke-width: 1.5;
+    stroke-dasharray: 4 4;
+  }
+
+  .ann-text {
+    fill: var(--at-text-muted);
+    font-size: 10px;
+  }
+
+  .hit {
+    fill: transparent;
+  }
+
+  .hit:hover {
+    fill: var(--at-primary);
+    fill-opacity: 0.25;
+  }
+</style>

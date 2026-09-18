@@ -1,0 +1,109 @@
+---
+import datasets from "../data/datasets.json";
+
+/** Monthly rainfall for one site: the synthetic dry year as bars, with the
+ *  long-record mean as a reference tick above each bar.
+ *
+ *  One filled series plus a reference marker, rather than two filled series:
+ *  the question is how far below normal each month falls, and a reference line
+ *  answers it directly. It also avoids asking a single-hue brand palette to
+ *  separate two categorical fills, which it cannot do well.
+ */
+interface Props {
+  site: "S1" | "S2" | "S3" | "S4" | "S5";
+}
+
+const { site } = Astro.props;
+const d = datasets.drought_years.sites[site];
+const months = datasets.drought_years.months;
+
+const W = 640;
+const H = 220;
+const L = 44;
+const R = 10;
+const T = 14;
+const B = 34;
+const max = Math.max(...d.mean_year_mm) * 1.05;
+const bw = (W - L - R) / 12;
+const y = (v: number) => T + (H - T - B) * (1 - v / max);
+const ticks = [0, max / 2, max].map((t) => Math.round(t / 10) * 10);
+---
+
+<figure class="chart">
+  <svg viewBox={`0 0 ${W} ${H}`} xmlns="http://www.w3.org/2000/svg" role="img"
+    aria-label={`Monthly rainfall at ${d.site}: bars show the synthetic dry year, ticks show the long-record mean. The dry year totals ${d.dry_annual_mm} millimetres against a mean of ${d.mean_annual_mm}.`}>
+    {
+      ticks.map((t) => (
+        <g>
+          <line x1={L} y1={y(t)} x2={W - R} y2={y(t)} class="grid" />
+          <text x={L - 7} y={y(t) + 3.5} text-anchor="end" class="tick">{t}</text>
+        </g>
+      ))
+    }
+    <text x={12} y={T + 4} class="axis-label">mm</text>
+
+    {
+      months.map((m, i) => {
+        const bx = L + i * bw + 3;
+        const bwid = bw - 6;
+        const dv = d.dry_year_mm[i];
+        const mv = d.mean_year_mm[i];
+        return (
+          <g>
+            <rect x={bx} y={y(dv)} width={bwid} height={Math.max(1, H - B - y(dv))} rx="3" class="bar">
+              <title>{m}: dry year {dv} mm, long-record mean {mv} mm</title>
+            </rect>
+            <line x1={bx - 1.5} y1={y(mv)} x2={bx + bwid + 1.5} y2={y(mv)} class="ref" />
+            <text x={bx + bwid / 2} y={H - 18} text-anchor="middle" class="tick">{m}</text>
+          </g>
+        );
+      })
+    }
+    <text x={W - R} y={H - 3} text-anchor="end" class="key">
+      bars: dry year · ticks: long-record mean
+    </text>
+  </svg>
+</figure>
+
+<style>
+  .chart {
+    margin: 0;
+  }
+
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    font-family: var(--at-font-body);
+  }
+
+  .bar {
+    fill: var(--at-primary);
+  }
+
+  .bar:hover {
+    fill: var(--at-secondary);
+  }
+
+  .ref {
+    stroke: var(--at-text);
+    stroke-width: 2;
+  }
+
+  .grid {
+    stroke: var(--at-divider);
+    stroke-width: 1;
+  }
+
+  .tick {
+    fill: var(--at-text-muted);
+    font-size: 10px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .axis-label,
+  .key {
+    fill: var(--at-text-secondary);
+    font-size: 10px;
+  }
+</style>
