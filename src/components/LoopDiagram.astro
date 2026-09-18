@@ -116,6 +116,9 @@ function edge(a: { x: number; y: number }, b: { x: number; y: number }) {
   svg {
     display: block;
     width: 100%;
+    /* Below this the labels shrink past legibility, so the figure scrolls
+       instead of shrinking: the node labels stop being readable below this. */
+    min-width: 520px;
     height: auto;
     font-family: var(--at-font-body);
   }

@@ -1,49 +1,71 @@
 ---
 import { sites, indicators, pct } from "../lib/model";
 
+/** The same rounding as `pct`, without the unit: the caption carries it once
+ *  rather than every cell carrying it three times, which is what pushed this
+ *  table past the desktop content column. */
+const num = (v: number): string => pct(v).replace(' %', '');
+
 /** Per-site band thresholds. Each cell is baseline / competent / excellent, so
  *  band 1 is below the first figure, 2 and 3 are the intervals, and 4 is at or
- *  beyond the third. Water closure and garden water satisfaction are adjacent
- *  rows and are never separated (CLAUDE.md, Scoring). */
-interface Props {
-  only?: string[];
-}
-
-const { only } = Astro.props;
-const rows = only ? indicators.filter((i) => only.includes(i.key)) : indicators;
+ *  beyond the third.
+ *
+ *  Sites are rows and indicators are columns, which is both how a student reads
+ *  it — find your site, read across — and the orientation that fits a desktop
+ *  content column. The other way round the table needed 1,208 px in an 864 px
+ *  column and scrolled sideways at the desktop marking viewport.
+ *
+ *  Water closure and garden water satisfaction are adjacent columns and are never
+ *  separated (CLAUDE.md, Scoring). */
+const SHORT: Record<string, string> = {
+  water_closure: "Water closure",
+  garden_water_satisfaction: "Garden water satisfaction",
+  food_kcal_closure: "Food energy closure",
+  protein_closure: "Protein closure",
+  nutrient_closure: "Nutrient closure",
+};
 ---
 
 <div class="scroller">
   <table>
     <caption class="sr-only">
-      Reference-band thresholds by site: baseline, competent and excellent values for each indicator
+      Reference-band thresholds as percentages: each cell gives the baseline, competent
+      and excellent reference-design values for that site and indicator
     </caption>
     <thead>
       <tr>
-        <th scope="col">Indicator</th>
-        {sites.map((s) => <th scope="col">{s.short}</th>)}
+        <th scope="col">Site</th>
+        {
+          indicators.map((ind) => (
+            <th scope="col">
+              {SHORT[ind.key] ?? ind.name}
+              {ind.key === "garden_water_satisfaction" && (
+                <span class="pair">always beside water closure</span>
+              )}
+            </th>
+          ))
+        }
       </tr>
     </thead>
     <tbody>
       {
-        rows.map((ind) => (
+        sites.map((s) => (
           <tr>
             <th scope="row">
-              {ind.name}
-              {ind.key === "garden_water_satisfaction" && <span class="pair"> published beside water closure</span>}
+              {s.short}
+              <span class="sid">{s.id}</span>
             </th>
-            {sites.map((s) => {
-              const b = s.bands[ind.key as keyof typeof s.bands];
-              return (
-                <td>
-                  <span class="lv">{pct(b.baseline)}</span>
-                  <span class="sep">/</span>
-                  <span class="lv">{pct(b.competent)}</span>
-                  <span class="sep">/</span>
-                  <span class="lv">{pct(b.excellent)}</span>
-                </td>
-              );
-            })}
+            {
+              indicators.map((ind) => {
+                const b = s.bands[ind.key as keyof typeof s.bands];
+                return (
+                  <td>
+                    {num(b.baseline)}<span class="sep">/</span>{num(b.competent)}<span
+                      class="sep">/</span>{num(b.excellent)}
+                  </td>
+                );
+              })
+            }
           </tr>
         ))
       }
@@ -58,29 +80,46 @@ const rows = only ? indicators.filter((i) => only.includes(i.key)) : indicators;
   }
 
   table {
-    min-width: 34rem;
+    min-width: 32rem;
     margin: 0;
   }
 
-  td {
-    white-space: nowrap;
-    font-variant-numeric: tabular-nums;
+  th[scope="col"] {
+    vertical-align: bottom;
+    font-size: 0.86rem;
+    line-height: 1.25;
   }
 
   th[scope="row"] {
     text-align: left;
-    font-weight: 500;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .sid {
+    display: block;
+    color: var(--at-text-muted);
+    font-family: var(--at-font-mono);
+    font-size: 0.72rem;
+    font-weight: 400;
+  }
+
+  td {
+    white-space: nowrap;
+    font-size: 0.88rem;
+    font-variant-numeric: tabular-nums;
   }
 
   .pair {
     display: block;
-    color: var(--at-text-muted);
-    font-size: 0.78rem;
+    color: var(--at-on-primary);
+    font-size: 0.72rem;
     font-weight: 400;
+    opacity: 0.8;
   }
 
   .sep {
-    padding: 0 0.2rem;
+    padding: 0 0.15rem;
     color: var(--at-text-muted);
   }
 

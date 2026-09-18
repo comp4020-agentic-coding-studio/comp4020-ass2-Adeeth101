@@ -32,6 +32,7 @@ const nameOf = (k: string) => indicators.find((i) => i.key === k)?.name ?? k;
 <ContentLayout
   title="Method: indicators, bands and what they are not"
   description="How this course turns a design into evidence: five capped indicators, per-site reference bands built from three constructed designs, and a clear statement of what the method does not establish."
+  wide
   {...siteConfig}
 >
   <h2>What is measured</h2>
@@ -129,10 +130,12 @@ const nameOf = (k: string) => indicators.find((i) => i.key === k)?.name ?? k;
   </Figure>
 
   <h3>Your site's thresholds</h3>
-  <p>Each cell reads baseline / competent / excellent.</p>
+  <p>
+    Each cell reads <strong>baseline / competent / excellent</strong>, as percentages.
+  </p>
 
   <Figure
-    caption="Reference-band thresholds by site. No excellent value reaches 100 % under this recipe, so band 4 is open at every site."
+    caption="Reference-band thresholds by site, in per cent. No excellent value reaches 100 % under this recipe, so band 4 is open at every site."
     basis="model estimate"
   >
     <BandTable />
@@ -253,10 +256,6 @@ const nameOf = (k: string) => indicators.find((i) => i.key === k)?.name ?? k;
 </ContentLayout>
 
 <style>
-  table {
-    min-width: 30rem;
-  }
-
   th[scope="row"] {
     text-align: left;
     font-weight: 500;

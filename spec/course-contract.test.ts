@@ -369,13 +369,17 @@ describe("bands", () => {
 
   it("publishes the thresholds the model produced, not retyped numbers", () => {
     const rendered = text(page("method"));
-    const pct = (v: number) => (v < 0.1 ? `${(v * 100).toFixed(1)} %` : `${Math.round(v * 100)} %`);
+    // The table drops the per cent sign (the caption carries it once), so the
+    // published triple is "baseline / competent / excellent" as bare numbers.
+    const num = (v: number) => (v < 0.1 ? (v * 100).toFixed(1) : String(Math.round(v * 100)));
     for (const s of model.sites) {
-      for (const l of LEVELS) {
+      for (const key of ["water_closure", "garden_water_satisfaction", "nutrient_closure"] as const) {
+        const b = s.bands[key];
+        const triple = `${num(b.baseline)} / ${num(b.competent)} / ${num(b.excellent)}`;
         expect(
-          rendered,
-          `${s.id} water closure ${l} (${pct(s.bands.water_closure[l])}) is not on the method page`,
-        ).toContain(pct(s.bands.water_closure[l]));
+          rendered.replace(/\s+/g, " "),
+          `${s.id} ${key} (${triple}) is not on the method page`,
+        ).toContain(triple);
       }
     }
   });

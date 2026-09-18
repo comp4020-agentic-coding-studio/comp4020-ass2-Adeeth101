@@ -96,6 +96,9 @@ const FAULT_TO = x(46);
   svg {
     display: block;
     width: 100%;
+    /* Below this the labels shrink past legibility, so the figure scrolls
+       instead of shrinking: four panels of 60 days need this much width to read. */
+    min-width: 560px;
     height: auto;
     font-family: var(--at-font-body);
   }

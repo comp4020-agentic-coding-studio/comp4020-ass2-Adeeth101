@@ -23,6 +23,7 @@ const sample = log.rows.filter((r) => [1, 8, 16, 24, 25, 30, 38, 45, 46, 53, 60]
 <ContentLayout
   title="Datasets"
   description="The troubleshooting data the assignments are marked against. All of it is synthetic, all of it is labelled, and this page says exactly how each set was made."
+  wide
   {...siteConfig}
 >
   <p class="warn">
@@ -155,7 +156,7 @@ const sample = log.rows.filter((r) => [1, 8, 16, 24, 25, 30, 38, 45, 46, 53, 60]
   <h2>Reproducing these files</h2>
   <p>
     Both sets are generated deterministically from a fixed seed, so the same run
-    produces the same files. The generator is
+    produces the same files. The generator is{" "}
     <code>research/model/make_datasets.py</code> in this site's repository, and the
     climate statistics it derives from are the Bureau of Meteorology long-record
     monthly tables for each site's station.
@@ -163,10 +164,6 @@ const sample = log.rows.filter((r) => [1, 8, 16, 24, 25, 30, 38, 45, 46, 53, 60]
 </ContentLayout>
 
 <style>
-  table {
-    min-width: 34rem;
-  }
-
   td {
     font-variant-numeric: tabular-nums;
   }

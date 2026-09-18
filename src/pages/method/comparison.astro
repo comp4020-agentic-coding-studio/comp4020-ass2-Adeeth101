@@ -30,6 +30,7 @@ const at = (sid: Sid, spend: number): Step => rows[sid].find((r) => r.spend === 
 <ContentLayout
   title="Worked comparison: what does another dollar of storage buy?"
   description="One design idea taken through all five sites. The same thousand dollars of rainwater storage does five different things, and at three sites it does nothing at all."
+  wide
   {...siteConfig}
 >
   <p>{comparison.question}</p>
@@ -223,10 +224,6 @@ const at = (sid: Sid, spend: number): Step => rows[sid].find((r) => r.spend === 
 </ContentLayout>
 
 <style>
-  table {
-    min-width: 34rem;
-  }
-
   th[scope="row"] {
     text-align: left;
     font-weight: 500;
