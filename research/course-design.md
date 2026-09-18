@@ -154,14 +154,27 @@ All are capped at 100 %, counted as used rather than produced, and net of import
 
 - **Energy:** peak-month counted process energy ≤5 kWh/d (§2.1), with uncertain loads at their upper estimate.
 - **Budget:** new spend ≤$30,000 from the course price schedule (§2.2), including the 10 % contingency.
-- **Safety and legal compliance:**
-  - excreta storage per WHO temperature bands [S09]
-  - greywater: subsurface only, no storage, no kitchen water [S10]
-  - composting pasteurisation [S35]
-  - fermentation: 2–2.5 % salt, pH ≤4.6 [S36]
-  - drinking-water treatment claims stated as log reductions [S40]
-  - insects fed to animals: plant-based substrates only, heat-treated [S29]
-  - legal fish species only; tilapia is a declared noxious fish [S18]
+- **Safety and compliance.** Rewritten 2026-09-18 after verification (`verification-log.md`).
+  Every row below is a **course design rule**. Several are stricter than the law at some or
+  all of the five sites, and the site says so rather than presenting a rule as a requirement.
+  A design must also state the approval pathway in **its own** jurisdiction.
+
+  | Course design rule | What the law actually is | Where |
+  |---|---|---|
+  | Greywater: subsurface at ≥100 mm, no storage, no kitchen water | This is **NSW** law, and none of the five sites is in NSW. QLD permits surface irrigation and includes kitchen water in the definition; the ACT has no greywater-specific regulation at all; NT and SA mandate subsurface but allow 24 hours' holding | V3 [S10][S10a]–[S10d] |
+  | Dry excreta stored 1.5–2 years below 20 °C, over 1 year above; urine 1 month for processed crops, 6 months for all crops | WHO figures confirmed exactly. But WHO also says that for "individual one family system … no storage is needed", so the course is deliberately conservative | V7 [S09] |
+  | Hot compost reaches ≥55 °C for 3 days after each of 3 turns, or 15 days after each of 5 turns for food and manure feedstocks | A **commercial windrow** standard (AS 4454, read via SA EPA). No household anywhere is bound by it. The course uses it as the performance target a bay is designed against | V6 [S35] |
+  | Fermentation follows **one named, cited recipe with its own conditions** | NCHFP sauerkraut: ≈2.25 % salt, 21–24 °C, 3–4 weeks, **no pH figure stated**. pH 4.6 is the *C. botulinum* boundary for sealed shelf-stable product, not a general guarantee, and does not transfer to other vegetables. No Australian home-fermentation standard exists | V8 [S36][S36a][S36b] |
+  | Insect substrates are plant-based; larvae are heat-treated before feeding; meat, dairy and fish sludge go to compost or a digester | Restricted-animal-material and swill law binds **pigs and ruminants**, not a household's own fish. No Australian regulator publishes the insect-feed rule the draft cited | V5 [S29][S29a] |
+  | Drinking-water treatment claims are stated as log reductions by pathogen class | WHO's household water treatment scheme is a performance framework, not an Australian requirement. Australian retailers cite **WaterMark**, not NSF/ANSI 55 Class A | V9 [S40] |
+  | Fish: a legal species, kept under the approval its own jurisdiction requires | Tilapia is restricted noxious matter; the keeping offence is **500 penalty units** under s 45 *Biosecurity Act 2014* (Qld), about $86,350, **not the $220,000 the draft carried**. **Silver perch and Murray cod need an ACT licence** (special protection status under the *Nature Conservation Act 2014*), and every live fish entering the ACT needs one under s 76 *Fisheries Act 2000*. QLD, SA and NT define aquaculture around sale, so a household system needs no aquaculture licence there | V10 [S18]–[S20] |
+
+  **The screening model is blind to all of this.** It picks each site's fish rotation on
+  temperature alone, and at Canberra it returns Murray cod — the one species an ACT household
+  may not keep without a licence. Removing the two special-protection species leaves *jade
+  perch + rainbow trout*, six months instead of seven, and **the Canberra bands do not move**:
+  counted fish protein stays at 0.27 kg/year because it is limited by the on-site larvae
+  supply, not by the thermal window. Week 5 teaches exactly that.
 
 ### 4.3 Climate-normalised reference bands inspired by NatHERS
 
@@ -302,12 +315,23 @@ Band positions are **performance evidence** within "calculations" and "loop inte
 
 Every figure marked medium or low confidence in `sources.md` must be verified against a primary source. If it cannot be upgraded, the site must label it **"course assumption"** or **"indicative value"** rather than presenting it as settled fact.
 
-**Priority checks:**
-1. Domestic water demand, 150 L/person/day [S06] (find it on a Your Home page, or relabel as a course assumption).
-2. Prices [S31–S34] and every course-assumption price in §2.2.
-3. Greywater requirements [S10] (primary NSW Health / Water NSW text).
-4. Fish temperature bands [S19][S20] (primary DPI or Business Queensland pages; Murray cod and jade perch currently rest on industry sources).
-5. Mushroom assumptions [S23][S23b][S23d] (species fruiting ranges, biological efficiency, spent-substrate mass).
+**Status: done 2026-09-18.** All five priority checks were carried out and are recorded in
+`verification-log.md` (V1–V10), which is the authority. Outcomes:
+
+1. **150 L/person/day** — not on any Your Home page. Relabelled a **course assumption** at the
+   midpoint of enHealth's sourced 100–200 L/person/day indoor range (V1).
+2. **Prices** — thirteen schedule lines checked against fetched Australian listings. $130/kL
+   is supported at 22–30 kL, which is where the bill-of-materials rule buys; the aquaponics
+   line is optimistic; the insect unit is weak; the installed greywater figure is the weakest
+   in the schedule (V9).
+3. **Greywater** — the draft's rule was NSW law applied to five non-NSW sites. Now a course
+   design rule with a five-jurisdiction comparison (V3).
+4. **Fish** — the tilapia penalty figure was wrong, and the ACT licence requirement for
+   silver perch and Murray cod had been missed entirely (V10).
+5. **Mushrooms** — **not re-verified.** [S23], [S23b] and [S23d] still rest on search
+   summaries of commercial and academic sources. Mushroom output is not scored by any banded
+   indicator, so nothing downstream of a band depends on them, but week 3's yield figures
+   carry their confidence labels and the site says they are unverified.
 
 **Also medium/low:** S14, S15, S17, S21, S22b, S24, S26, S27, S28, S41, S49.
 
