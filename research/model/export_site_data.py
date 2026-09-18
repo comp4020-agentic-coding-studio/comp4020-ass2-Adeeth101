@@ -147,7 +147,7 @@ def main():
 
     data = {
         "generated_by": "research/model/export_site_data.py",
-        "recipe_version": "v5",
+        "recipe_version": "v6",
         "preset_version": "v4",
         "household": {
             "occupants": "two adults and two children aged 9 to 13",

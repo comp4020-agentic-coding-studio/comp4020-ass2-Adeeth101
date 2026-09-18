@@ -139,6 +139,15 @@ class Site:
 
 # Reference designs used to set per-site bands (the NatHERS star-band idea [S30]).
 #
+# Recipe v6 (2026-09-18, second draft). The five homes are now FIXED EXISTING
+# PROPERTIES: a design may connect more of the roof that is already there, but it
+# may not build new catchment. `extra_catchment` is therefore 0 at every level and
+# the option is gone from the course. Removing it lowers the excellent design's
+# water closure by 1-2 points at four sites and frees $561-$1,155 of the
+# allowance (catchment line, one fewer first-flush diverter at two sites, and
+# contingency). The reference designs are retained only as DIAGNOSTIC bands; no
+# assessment grades proximity to them.
+#
 # Recipe v5 (2026-09-18). v4 used storage_budget 3000/6000/9000 and extra_catchment
 # 0/0/0.25. Re-costing the v4 designs against the full course price schedule
 # (reference_costs.py) put the excellent design $3,704-$9,545 over the $30,000
@@ -159,7 +168,7 @@ LEVELS = {
     "competent": dict(demand=150, composting_toilet=True, greywater=0.5, production=0.8, yield_mult=1.0,
                       n_recovery=0.6, aquaponic_m2=4, extra_catchment=0.0, storage_budget=3500),
     "excellent": dict(demand=130, composting_toilet=True, greywater=0.9, production=1.0, yield_mult=1.2,
-                      n_recovery=0.8, aquaponic_m2=8, extra_catchment=0.05, storage_budget=4000),
+                      n_recovery=0.8, aquaponic_m2=8, extra_catchment=0.0, storage_budget=4000),
 }
 # Simplified component costs (AUD) kept so the iteration-1..3 snapshots stay reproducible.
 # `indicative_cost` below is SUPERSEDED for every published figure: it omits establishment,

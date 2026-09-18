@@ -210,11 +210,11 @@
      "headroom_kwh_day": 0.99
     },
     "excellent": {
-     "modelled_kwh_day": 3.3,
+     "modelled_kwh_day": 3.28,
      "uncertain_upper_kwh_day": 0.65,
-     "declared_peak_kwh_day": 3.95,
+     "declared_peak_kwh_day": 3.93,
      "fits": true,
-     "headroom_kwh_day": 1.05
+     "headroom_kwh_day": 1.07
     }
    },
    "S2": {
@@ -233,11 +233,11 @@
      "headroom_kwh_day": 1.38
     },
     "excellent": {
-     "modelled_kwh_day": 2.91,
+     "modelled_kwh_day": 2.9,
      "uncertain_upper_kwh_day": 0.65,
-     "declared_peak_kwh_day": 3.56,
+     "declared_peak_kwh_day": 3.55,
      "fits": true,
-     "headroom_kwh_day": 1.44
+     "headroom_kwh_day": 1.45
     }
    },
    "S3": {
@@ -523,15 +523,9 @@
      ],
      [
       "First-flush diverter and leaf screen",
-      5,
+      4,
       "downpipe",
-      750
-     ],
-     [
-      "Additional roof catchment",
-      15,
-      "m2",
-      900
+      600
      ],
      [
       "Pressure pump (domestic supply)",
@@ -600,23 +594,23 @@
       3600
      ]
     ],
-    "subtotal": 25850,
-    "contingency": 2585,
-    "total": 28435,
+    "subtotal": 24800,
+    "contingency": 2480,
+    "total": 27280,
     "fits": true,
-    "headroom": 1565,
+    "headroom": 2720,
     "indicators": {
-     "water_closure": 0.94,
-     "imported_kl": 16,
+     "water_closure": 0.92,
+     "imported_kl": 20,
      "overflow_kl": 0,
      "storage_kl": 36,
      "garden_water_satisfaction": 0.2,
-     "food_kcal_closure": 0.055,
-     "protein_closure": 0.089,
+     "food_kcal_closure": 0.054,
+     "protein_closure": 0.088,
      "nutrient_closure": 0.14,
      "production_area_m2": 450,
-     "peak_energy_kwh_day": 3.3,
-     "indicative_cost": 15500,
+     "peak_energy_kwh_day": 3.28,
+     "indicative_cost": 14600,
      "insect_share_of_fish_feed": 0.08,
      "fish_protein_kg_counted": 0.27,
      "bio_window": 0.51
@@ -839,12 +833,6 @@
       750
      ],
      [
-      "Additional roof catchment",
-      18,
-      "m2",
-      1050
-     ],
-     [
       "Pressure pump (domestic supply)",
       1,
       "ea",
@@ -911,23 +899,23 @@
       3200
      ]
     ],
-    "subtotal": 25600,
-    "contingency": 2560,
-    "total": 28160,
+    "subtotal": 24550,
+    "contingency": 2455,
+    "total": 27005,
     "fits": true,
-    "headroom": 1840,
+    "headroom": 2995,
     "indicators": {
-     "water_closure": 0.97,
-     "imported_kl": 8,
+     "water_closure": 0.96,
+     "imported_kl": 9,
      "overflow_kl": 0,
      "storage_kl": 53,
      "garden_water_satisfaction": 0.16,
-     "food_kcal_closure": 0.029,
+     "food_kcal_closure": 0.028,
      "protein_closure": 0.049,
      "nutrient_closure": 0.06,
      "production_area_m2": 400,
-     "peak_energy_kwh_day": 2.91,
-     "indicative_cost": 15650,
+     "peak_energy_kwh_day": 2.9,
+     "indicative_cost": 14600,
      "insect_share_of_fish_feed": 0.05,
      "fish_protein_kg_counted": 0.29,
      "bio_window": 0.83
@@ -1150,12 +1138,6 @@
       450
      ],
      [
-      "Additional roof catchment",
-      8,
-      "m2",
-      510
-     ],
-     [
       "Pressure pump (domestic supply)",
       1,
       "ea",
@@ -1222,23 +1204,23 @@
       1040
      ]
     ],
-    "subtotal": 22600,
-    "contingency": 2260,
-    "total": 24860,
+    "subtotal": 22090,
+    "contingency": 2209,
+    "total": 24299,
     "fits": true,
-    "headroom": 5140,
+    "headroom": 5701,
     "indicators": {
-     "water_closure": 0.96,
-     "imported_kl": 10,
-     "overflow_kl": 8,
+     "water_closure": 0.95,
+     "imported_kl": 12,
+     "overflow_kl": 4,
      "storage_kl": 34,
-     "garden_water_satisfaction": 0.81,
-     "food_kcal_closure": 0.061,
-     "protein_closure": 0.099,
+     "garden_water_satisfaction": 0.79,
+     "food_kcal_closure": 0.06,
+     "protein_closure": 0.098,
      "nutrient_closure": 0.1,
      "production_area_m2": 130,
      "peak_energy_kwh_day": 2.78,
-     "indicative_cost": 15110,
+     "indicative_cost": 14600,
      "insect_share_of_fish_feed": 0.05,
      "fish_protein_kg_counted": 0.29,
      "bio_window": 0.86
@@ -1461,12 +1443,6 @@
       600
      ],
      [
-      "Additional roof catchment",
-      12,
-      "m2",
-      690
-     ],
-     [
       "Pressure pump (domestic supply)",
       1,
       "ea",
@@ -1533,14 +1509,14 @@
       2000
      ]
     ],
-    "subtotal": 23890,
-    "contingency": 2389,
-    "total": 26279,
+    "subtotal": 23200,
+    "contingency": 2320,
+    "total": 25520,
     "fits": true,
-    "headroom": 3721,
+    "headroom": 4480,
     "indicators": {
-     "water_closure": 0.72,
-     "imported_kl": 61,
+     "water_closure": 0.7,
+     "imported_kl": 66,
      "overflow_kl": 0,
      "storage_kl": 36,
      "garden_water_satisfaction": 0.27,
@@ -1549,7 +1525,7 @@
      "nutrient_closure": 0.12,
      "production_area_m2": 250,
      "peak_energy_kwh_day": 2.71,
-     "indicative_cost": 15290,
+     "indicative_cost": 14600,
      "insect_share_of_fish_feed": 0.05,
      "fish_protein_kg_counted": 0.27,
      "bio_window": 0.78
@@ -1767,15 +1743,9 @@
      ],
      [
       "First-flush diverter and leaf screen",
-      5,
+      4,
       "downpipe",
-      750
-     ],
-     [
-      "Additional roof catchment",
-      15,
-      "m2",
-      900
+      600
      ],
      [
       "Pressure pump (domestic supply)",
@@ -1844,15 +1814,15 @@
       4000
      ]
     ],
-    "subtotal": 26250,
-    "contingency": 2625,
-    "total": 28875,
+    "subtotal": 25200,
+    "contingency": 2520,
+    "total": 27720,
     "fits": true,
-    "headroom": 1125,
+    "headroom": 2280,
     "indicators": {
      "water_closure": 0.83,
-     "imported_kl": 48,
-     "overflow_kl": 245,
+     "imported_kl": 49,
+     "overflow_kl": 226,
      "storage_kl": 76,
      "garden_water_satisfaction": 0.31,
      "food_kcal_closure": 0.154,
@@ -1860,7 +1830,7 @@
      "nutrient_closure": 0.27,
      "production_area_m2": 500,
      "peak_energy_kwh_day": 3.34,
-     "indicative_cost": 15500,
+     "indicative_cost": 14600,
      "insect_share_of_fish_feed": 0.08,
      "fish_protein_kg_counted": 0.49,
      "bio_window": 0.99

@@ -144,8 +144,8 @@
      "bio_window": 0.51
     },
     "excellent": {
-     "water_closure": 0.71,
-     "imported_kl": 68,
+     "water_closure": 0.69,
+     "imported_kl": 73,
      "overflow_kl": 0,
      "storage_kl": 31,
      "garden_water_satisfaction": 0.28,
@@ -154,7 +154,7 @@
      "nutrient_closure": 0.11,
      "production_area_m2": 300,
      "peak_energy_kwh_day": 3.23,
-     "indicative_cost": 15140,
+     "indicative_cost": 14600,
      "insect_share_of_fish_feed": 0.08,
      "fish_protein_kg_counted": 0.27,
      "bio_window": 0.51
@@ -305,8 +305,8 @@
      "bio_window": 0.83
     },
     "excellent": {
-     "water_closure": 0.53,
-     "imported_kl": 110,
+     "water_closure": 0.52,
+     "imported_kl": 112,
      "overflow_kl": 0,
      "storage_kl": 31,
      "garden_water_satisfaction": 0.02,
@@ -315,7 +315,7 @@
      "nutrient_closure": 0.09,
      "production_area_m2": 2000,
      "peak_energy_kwh_day": 2.71,
-     "indicative_cost": 15260,
+     "indicative_cost": 14600,
      "insect_share_of_fish_feed": 0.05,
      "fish_protein_kg_counted": 0.29,
      "bio_window": 0.83
@@ -466,17 +466,17 @@
      "bio_window": 0.86
     },
     "excellent": {
-     "water_closure": 0.88,
-     "imported_kl": 32,
+     "water_closure": 0.86,
+     "imported_kl": 35,
      "overflow_kl": 0,
      "storage_kl": 31,
-     "garden_water_satisfaction": 0.4,
-     "food_kcal_closure": 0.141,
-     "protein_closure": 0.223,
+     "garden_water_satisfaction": 0.38,
+     "food_kcal_closure": 0.14,
+     "protein_closure": 0.221,
      "nutrient_closure": 0.24,
      "production_area_m2": 400,
-     "peak_energy_kwh_day": 2.89,
-     "indicative_cost": 15080,
+     "peak_energy_kwh_day": 2.86,
+     "indicative_cost": 14600,
      "insect_share_of_fish_feed": 0.05,
      "fish_protein_kg_counted": 0.29,
      "bio_window": 0.86
@@ -627,8 +627,8 @@
      "bio_window": 0.78
     },
     "excellent": {
-     "water_closure": 0.47,
-     "imported_kl": 112,
+     "water_closure": 0.46,
+     "imported_kl": 114,
      "overflow_kl": 0,
      "storage_kl": 31,
      "garden_water_satisfaction": 0.68,
@@ -637,7 +637,7 @@
      "nutrient_closure": 0.06,
      "production_area_m2": 80,
      "peak_energy_kwh_day": 2.71,
-     "indicative_cost": 14930,
+     "indicative_cost": 14600,
      "insect_share_of_fish_feed": 0.05,
      "fish_protein_kg_counted": 0.27,
      "bio_window": 0.78
@@ -788,17 +788,17 @@
      "bio_window": 0.54
     },
     "excellent": {
-     "water_closure": 0.83,
-     "imported_kl": 42,
+     "water_closure": 0.81,
+     "imported_kl": 45,
      "overflow_kl": 0,
      "storage_kl": 31,
      "garden_water_satisfaction": 0.06,
-     "food_kcal_closure": 0.173,
-     "protein_closure": 0.273,
+     "food_kcal_closure": 0.172,
+     "protein_closure": 0.271,
      "nutrient_closure": 0.42,
      "production_area_m2": 1500,
-     "peak_energy_kwh_day": 3.22,
-     "indicative_cost": 15200,
+     "peak_energy_kwh_day": 3.2,
+     "indicative_cost": 14600,
      "insect_share_of_fish_feed": 0.07,
      "fish_protein_kg_counted": 0.27,
      "bio_window": 0.54
@@ -868,33 +868,33 @@
    ],
    "headroom": {
     "S1": {
-     "water_closure": 0.32,
+     "water_closure": 0.3,
      "food_kcal_closure": 0.04,
      "protein_closure": 0.06,
      "nutrient_closure": 0.08
     },
     "S2": {
-     "water_closure": 0.32,
+     "water_closure": 0.31,
      "food_kcal_closure": 0.03,
      "protein_closure": 0.06,
      "nutrient_closure": 0.07
     },
     "S3": {
-     "water_closure": 0.24,
+     "water_closure": 0.22,
      "food_kcal_closure": 0.11,
      "protein_closure": 0.17,
      "nutrient_closure": 0.15
     },
     "S4": {
-     "water_closure": 0.27,
+     "water_closure": 0.26,
      "food_kcal_closure": 0.03,
      "protein_closure": 0.05,
      "nutrient_closure": 0.05
     },
     "S5": {
-     "water_closure": 0.29,
+     "water_closure": 0.27,
      "food_kcal_closure": 0.12,
-     "protein_closure": 0.2,
+     "protein_closure": 0.19,
      "nutrient_closure": 0.24
     }
    },
@@ -1052,8 +1052,8 @@
      "bio_window": 0.51
     },
     "excellent": {
-     "water_closure": 0.86,
-     "imported_kl": 34,
+     "water_closure": 0.83,
+     "imported_kl": 40,
      "overflow_kl": 0,
      "storage_kl": 31,
      "garden_water_satisfaction": 0.28,
@@ -1061,8 +1061,8 @@
      "protein_closure": 0.07,
      "nutrient_closure": 0.11,
      "production_area_m2": 300,
-     "peak_energy_kwh_day": 3.24,
-     "indicative_cost": 15350,
+     "peak_energy_kwh_day": 3.23,
+     "indicative_cost": 14600,
      "insect_share_of_fish_feed": 0.08,
      "fish_protein_kg_counted": 0.27,
      "bio_window": 0.51
@@ -1218,12 +1218,12 @@
      "overflow_kl": 0,
      "storage_kl": 31,
      "garden_water_satisfaction": 0.17,
-     "food_kcal_closure": 0.046,
-     "protein_closure": 0.076,
+     "food_kcal_closure": 0.045,
+     "protein_closure": 0.074,
      "nutrient_closure": 0.1,
      "production_area_m2": 600,
-     "peak_energy_kwh_day": 3.1,
-     "indicative_cost": 15950,
+     "peak_energy_kwh_day": 3.08,
+     "indicative_cost": 14600,
      "insect_share_of_fish_feed": 0.05,
      "fish_protein_kg_counted": 0.29,
      "bio_window": 0.83
@@ -1374,17 +1374,17 @@
      "bio_window": 0.86
     },
     "excellent": {
-     "water_closure": 0.97,
-     "imported_kl": 10,
-     "overflow_kl": 25,
+     "water_closure": 0.96,
+     "imported_kl": 12,
+     "overflow_kl": 19,
      "storage_kl": 31,
-     "garden_water_satisfaction": 0.58,
-     "food_kcal_closure": 0.141,
-     "protein_closure": 0.222,
+     "garden_water_satisfaction": 0.56,
+     "food_kcal_closure": 0.14,
+     "protein_closure": 0.221,
      "nutrient_closure": 0.24,
      "production_area_m2": 350,
-     "peak_energy_kwh_day": 3.01,
-     "indicative_cost": 15320,
+     "peak_energy_kwh_day": 2.98,
+     "indicative_cost": 14600,
      "insect_share_of_fish_feed": 0.05,
      "fish_protein_kg_counted": 0.29,
      "bio_window": 0.86
@@ -1535,8 +1535,8 @@
      "bio_window": 0.78
     },
     "excellent": {
-     "water_closure": 0.53,
-     "imported_kl": 99,
+     "water_closure": 0.52,
+     "imported_kl": 102,
      "overflow_kl": 0,
      "storage_kl": 31,
      "garden_water_satisfaction": 0.62,
@@ -1545,7 +1545,7 @@
      "nutrient_closure": 0.06,
      "production_area_m2": 90,
      "peak_energy_kwh_day": 2.71,
-     "indicative_cost": 15020,
+     "indicative_cost": 14600,
      "insect_share_of_fish_feed": 0.05,
      "fish_protein_kg_counted": 0.27,
      "bio_window": 0.78
@@ -1698,15 +1698,15 @@
     "excellent": {
      "water_closure": 0.78,
      "imported_kl": 56,
-     "overflow_kl": 359,
+     "overflow_kl": 336,
      "storage_kl": 31,
      "garden_water_satisfaction": 0.19,
      "food_kcal_closure": 0.164,
-     "protein_closure": 0.262,
+     "protein_closure": 0.261,
      "nutrient_closure": 0.29,
      "production_area_m2": 600,
      "peak_energy_kwh_day": 3.13,
-     "indicative_cost": 15650,
+     "indicative_cost": 14600,
      "insect_share_of_fish_feed": 0.08,
      "fish_protein_kg_counted": 0.49,
      "bio_window": 0.99
@@ -1776,7 +1776,7 @@
    ],
    "headroom": {
     "S1": {
-     "water_closure": 0.32,
+     "water_closure": 0.29,
      "food_kcal_closure": 0.04,
      "protein_closure": 0.06,
      "nutrient_closure": 0.08
@@ -1788,13 +1788,13 @@
      "nutrient_closure": 0.09
     },
     "S3": {
-     "water_closure": 0.15,
+     "water_closure": 0.14,
      "food_kcal_closure": 0.11,
      "protein_closure": 0.17,
      "nutrient_closure": 0.16
     },
     "S4": {
-     "water_closure": 0.27,
+     "water_closure": 0.26,
      "food_kcal_closure": 0.03,
      "protein_closure": 0.05,
      "nutrient_closure": 0.05
@@ -1960,8 +1960,8 @@
      "bio_window": 0.51
     },
     "excellent": {
-     "water_closure": 0.86,
-     "imported_kl": 34,
+     "water_closure": 0.83,
+     "imported_kl": 40,
      "overflow_kl": 0,
      "storage_kl": 31,
      "garden_water_satisfaction": 0.28,
@@ -1969,8 +1969,8 @@
      "protein_closure": 0.07,
      "nutrient_closure": 0.11,
      "production_area_m2": 300,
-     "peak_energy_kwh_day": 3.24,
-     "indicative_cost": 15350,
+     "peak_energy_kwh_day": 3.23,
+     "indicative_cost": 14600,
      "insect_share_of_fish_feed": 0.08,
      "fish_protein_kg_counted": 0.27,
      "bio_window": 0.51
@@ -2126,12 +2126,12 @@
      "overflow_kl": 0,
      "storage_kl": 31,
      "garden_water_satisfaction": 0.17,
-     "food_kcal_closure": 0.046,
-     "protein_closure": 0.076,
+     "food_kcal_closure": 0.045,
+     "protein_closure": 0.074,
      "nutrient_closure": 0.1,
      "production_area_m2": 600,
-     "peak_energy_kwh_day": 3.1,
-     "indicative_cost": 15950,
+     "peak_energy_kwh_day": 3.08,
+     "indicative_cost": 14600,
      "insect_share_of_fish_feed": 0.05,
      "fish_protein_kg_counted": 0.29,
      "bio_window": 0.83
@@ -2282,9 +2282,9 @@
      "bio_window": 0.86
     },
     "excellent": {
-     "water_closure": 0.9,
-     "imported_kl": 20,
-     "overflow_kl": 4,
+     "water_closure": 0.89,
+     "imported_kl": 24,
+     "overflow_kl": 0,
      "storage_kl": 31,
      "garden_water_satisfaction": 0.92,
      "food_kcal_closure": 0.044,
@@ -2292,7 +2292,7 @@
      "nutrient_closure": 0.08,
      "production_area_m2": 90,
      "peak_energy_kwh_day": 2.71,
-     "indicative_cost": 15050,
+     "indicative_cost": 14600,
      "insect_share_of_fish_feed": 0.05,
      "fish_protein_kg_counted": 0.29,
      "bio_window": 0.86
@@ -2443,8 +2443,8 @@
      "bio_window": 0.78
     },
     "excellent": {
-     "water_closure": 0.76,
-     "imported_kl": 53,
+     "water_closure": 0.74,
+     "imported_kl": 58,
      "overflow_kl": 0,
      "storage_kl": 31,
      "garden_water_satisfaction": 0.23,
@@ -2452,8 +2452,8 @@
      "protein_closure": 0.108,
      "nutrient_closure": 0.13,
      "production_area_m2": 300,
-     "peak_energy_kwh_day": 2.73,
-     "indicative_cost": 15350,
+     "peak_energy_kwh_day": 2.71,
+     "indicative_cost": 14600,
      "insect_share_of_fish_feed": 0.05,
      "fish_protein_kg_counted": 0.27,
      "bio_window": 0.78
@@ -2606,15 +2606,15 @@
     "excellent": {
      "water_closure": 0.78,
      "imported_kl": 56,
-     "overflow_kl": 359,
+     "overflow_kl": 336,
      "storage_kl": 31,
      "garden_water_satisfaction": 0.19,
      "food_kcal_closure": 0.164,
-     "protein_closure": 0.262,
+     "protein_closure": 0.261,
      "nutrient_closure": 0.29,
      "production_area_m2": 600,
      "peak_energy_kwh_day": 3.13,
-     "indicative_cost": 15650,
+     "indicative_cost": 14600,
      "insect_share_of_fish_feed": 0.08,
      "fish_protein_kg_counted": 0.49,
      "bio_window": 0.99
@@ -2679,7 +2679,7 @@
    "dominated": [],
    "headroom": {
     "S1": {
-     "water_closure": 0.32,
+     "water_closure": 0.29,
      "food_kcal_closure": 0.04,
      "protein_closure": 0.06,
      "nutrient_closure": 0.08
@@ -2691,13 +2691,13 @@
      "nutrient_closure": 0.09
     },
     "S3": {
-     "water_closure": 0.29,
+     "water_closure": 0.28,
      "food_kcal_closure": 0.04,
      "protein_closure": 0.06,
      "nutrient_closure": 0.06
     },
     "S4": {
-     "water_closure": 0.3,
+     "water_closure": 0.28,
      "food_kcal_closure": 0.05,
      "protein_closure": 0.09,
      "nutrient_closure": 0.09
@@ -2863,8 +2863,8 @@
      "bio_window": 0.51
     },
     "excellent": {
-     "water_closure": 0.86,
-     "imported_kl": 34,
+     "water_closure": 0.83,
+     "imported_kl": 40,
      "overflow_kl": 0,
      "storage_kl": 36,
      "garden_water_satisfaction": 0.28,
@@ -2872,8 +2872,8 @@
      "protein_closure": 0.07,
      "nutrient_closure": 0.11,
      "production_area_m2": 300,
-     "peak_energy_kwh_day": 3.24,
-     "indicative_cost": 15350,
+     "peak_energy_kwh_day": 3.23,
+     "indicative_cost": 14600,
      "insect_share_of_fish_feed": 0.08,
      "fish_protein_kg_counted": 0.27,
      "bio_window": 0.51
@@ -3025,16 +3025,16 @@
     },
     "excellent": {
      "water_closure": 0.98,
-     "imported_kl": 5,
+     "imported_kl": 6,
      "overflow_kl": 0,
      "storage_kl": 53,
      "garden_water_satisfaction": 0.12,
-     "food_kcal_closure": 0.034,
-     "protein_closure": 0.057,
-     "nutrient_closure": 0.08,
+     "food_kcal_closure": 0.033,
+     "protein_closure": 0.056,
+     "nutrient_closure": 0.07,
      "production_area_m2": 600,
-     "peak_energy_kwh_day": 3.0,
-     "indicative_cost": 15950,
+     "peak_energy_kwh_day": 2.98,
+     "indicative_cost": 14600,
      "insect_share_of_fish_feed": 0.05,
      "fish_protein_kg_counted": 0.29,
      "bio_window": 0.83
@@ -3185,17 +3185,17 @@
      "bio_window": 0.86
     },
     "excellent": {
-     "water_closure": 0.91,
-     "imported_kl": 20,
+     "water_closure": 0.89,
+     "imported_kl": 26,
      "overflow_kl": 0,
      "storage_kl": 34,
-     "garden_water_satisfaction": 0.74,
-     "food_kcal_closure": 0.068,
+     "garden_water_satisfaction": 0.73,
+     "food_kcal_closure": 0.067,
      "protein_closure": 0.109,
      "nutrient_closure": 0.12,
      "production_area_m2": 150,
-     "peak_energy_kwh_day": 2.78,
-     "indicative_cost": 15050,
+     "peak_energy_kwh_day": 2.76,
+     "indicative_cost": 14600,
      "insect_share_of_fish_feed": 0.05,
      "fish_protein_kg_counted": 0.29,
      "bio_window": 0.86
@@ -3346,8 +3346,8 @@
      "bio_window": 0.78
     },
     "excellent": {
-     "water_closure": 0.76,
-     "imported_kl": 53,
+     "water_closure": 0.74,
+     "imported_kl": 58,
      "overflow_kl": 0,
      "storage_kl": 36,
      "garden_water_satisfaction": 0.23,
@@ -3355,8 +3355,8 @@
      "protein_closure": 0.108,
      "nutrient_closure": 0.13,
      "production_area_m2": 300,
-     "peak_energy_kwh_day": 2.73,
-     "indicative_cost": 15350,
+     "peak_energy_kwh_day": 2.71,
+     "indicative_cost": 14600,
      "insect_share_of_fish_feed": 0.05,
      "fish_protein_kg_counted": 0.27,
      "bio_window": 0.78
@@ -3509,15 +3509,15 @@
     "excellent": {
      "water_closure": 0.84,
      "imported_kl": 48,
-     "overflow_kl": 308,
+     "overflow_kl": 285,
      "storage_kl": 76,
      "garden_water_satisfaction": 0.27,
-     "food_kcal_closure": 0.179,
+     "food_kcal_closure": 0.178,
      "protein_closure": 0.284,
      "nutrient_closure": 0.31,
      "production_area_m2": 600,
      "peak_energy_kwh_day": 3.49,
-     "indicative_cost": 15650,
+     "indicative_cost": 14600,
      "insect_share_of_fish_feed": 0.08,
      "fish_protein_kg_counted": 0.49,
      "bio_window": 0.99
@@ -3587,7 +3587,7 @@
    ],
    "headroom": {
     "S1": {
-     "water_closure": 0.32,
+     "water_closure": 0.29,
      "food_kcal_closure": 0.04,
      "protein_closure": 0.06,
      "nutrient_closure": 0.08
@@ -3596,16 +3596,16 @@
      "water_closure": 0.15,
      "food_kcal_closure": 0.03,
      "protein_closure": 0.05,
-     "nutrient_closure": 0.07
+     "nutrient_closure": 0.06
     },
     "S3": {
-     "water_closure": 0.3,
-     "food_kcal_closure": 0.06,
+     "water_closure": 0.28,
+     "food_kcal_closure": 0.05,
      "protein_closure": 0.09,
      "nutrient_closure": 0.09
     },
     "S4": {
-     "water_closure": 0.3,
+     "water_closure": 0.28,
      "food_kcal_closure": 0.05,
      "protein_closure": 0.09,
      "nutrient_closure": 0.09
@@ -3771,17 +3771,17 @@
      "bio_window": 0.51
     },
     "excellent": {
-     "water_closure": 0.94,
-     "imported_kl": 16,
+     "water_closure": 0.92,
+     "imported_kl": 20,
      "overflow_kl": 0,
      "storage_kl": 36,
      "garden_water_satisfaction": 0.2,
-     "food_kcal_closure": 0.055,
-     "protein_closure": 0.089,
+     "food_kcal_closure": 0.054,
+     "protein_closure": 0.088,
      "nutrient_closure": 0.14,
      "production_area_m2": 450,
-     "peak_energy_kwh_day": 3.3,
-     "indicative_cost": 15500,
+     "peak_energy_kwh_day": 3.28,
+     "indicative_cost": 14600,
      "insect_share_of_fish_feed": 0.08,
      "fish_protein_kg_counted": 0.27,
      "bio_window": 0.51
@@ -3932,17 +3932,17 @@
      "bio_window": 0.83
     },
     "excellent": {
-     "water_closure": 0.97,
-     "imported_kl": 8,
+     "water_closure": 0.96,
+     "imported_kl": 9,
      "overflow_kl": 0,
      "storage_kl": 53,
      "garden_water_satisfaction": 0.16,
-     "food_kcal_closure": 0.029,
+     "food_kcal_closure": 0.028,
      "protein_closure": 0.049,
      "nutrient_closure": 0.06,
      "production_area_m2": 400,
-     "peak_energy_kwh_day": 2.91,
-     "indicative_cost": 15650,
+     "peak_energy_kwh_day": 2.9,
+     "indicative_cost": 14600,
      "insect_share_of_fish_feed": 0.05,
      "fish_protein_kg_counted": 0.29,
      "bio_window": 0.83
@@ -4093,17 +4093,17 @@
      "bio_window": 0.86
     },
     "excellent": {
-     "water_closure": 0.96,
-     "imported_kl": 10,
-     "overflow_kl": 8,
+     "water_closure": 0.95,
+     "imported_kl": 12,
+     "overflow_kl": 4,
      "storage_kl": 34,
-     "garden_water_satisfaction": 0.81,
-     "food_kcal_closure": 0.061,
-     "protein_closure": 0.099,
+     "garden_water_satisfaction": 0.79,
+     "food_kcal_closure": 0.06,
+     "protein_closure": 0.098,
      "nutrient_closure": 0.1,
      "production_area_m2": 130,
      "peak_energy_kwh_day": 2.78,
-     "indicative_cost": 15110,
+     "indicative_cost": 14600,
      "insect_share_of_fish_feed": 0.05,
      "fish_protein_kg_counted": 0.29,
      "bio_window": 0.86
@@ -4254,8 +4254,8 @@
      "bio_window": 0.78
     },
     "excellent": {
-     "water_closure": 0.72,
-     "imported_kl": 61,
+     "water_closure": 0.7,
+     "imported_kl": 66,
      "overflow_kl": 0,
      "storage_kl": 36,
      "garden_water_satisfaction": 0.27,
@@ -4264,7 +4264,7 @@
      "nutrient_closure": 0.12,
      "production_area_m2": 250,
      "peak_energy_kwh_day": 2.71,
-     "indicative_cost": 15290,
+     "indicative_cost": 14600,
      "insect_share_of_fish_feed": 0.05,
      "fish_protein_kg_counted": 0.27,
      "bio_window": 0.78
@@ -4416,8 +4416,8 @@
     },
     "excellent": {
      "water_closure": 0.83,
-     "imported_kl": 48,
-     "overflow_kl": 245,
+     "imported_kl": 49,
+     "overflow_kl": 226,
      "storage_kl": 76,
      "garden_water_satisfaction": 0.31,
      "food_kcal_closure": 0.154,
@@ -4425,7 +4425,7 @@
      "nutrient_closure": 0.27,
      "production_area_m2": 500,
      "peak_energy_kwh_day": 3.34,
-     "indicative_cost": 15500,
+     "indicative_cost": 14600,
      "insect_share_of_fish_feed": 0.08,
      "fish_protein_kg_counted": 0.49,
      "bio_window": 0.99
@@ -4490,25 +4490,25 @@
    "dominated": [],
    "headroom": {
     "S1": {
-     "water_closure": 0.29,
+     "water_closure": 0.27,
      "food_kcal_closure": 0.04,
      "protein_closure": 0.07,
      "nutrient_closure": 0.1
     },
     "S2": {
-     "water_closure": 0.19,
+     "water_closure": 0.18,
      "food_kcal_closure": 0.03,
      "protein_closure": 0.05,
      "nutrient_closure": 0.05
     },
     "S3": {
-     "water_closure": 0.28,
+     "water_closure": 0.27,
      "food_kcal_closure": 0.05,
      "protein_closure": 0.08,
      "nutrient_closure": 0.07
     },
     "S4": {
-     "water_closure": 0.3,
+     "water_closure": 0.28,
      "food_kcal_closure": 0.05,
      "protein_closure": 0.08,
      "nutrient_closure": 0.09

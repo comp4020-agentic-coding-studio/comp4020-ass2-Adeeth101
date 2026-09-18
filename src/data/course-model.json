@@ -1,6 +1,6 @@
 {
  "generated_by": "research/model/export_site_data.py",
- "recipe_version": "v5",
+ "recipe_version": "v6",
  "preset_version": "v4",
  "household": {
   "occupants": "two adults and two children aged 9 to 13",
@@ -75,7 +75,7 @@
    "yield_mult": 1.2,
    "n_recovery": 0.8,
    "aquaponic_m2": 8,
-   "extra_catchment": 0.05,
+   "extra_catchment": 0.0,
    "storage_budget": 4000
   }
  },
@@ -310,7 +310,7 @@
     },
     "second_worst": {
      "perturbation": "tank $200/kL",
-     "spread": 0.15
+     "spread": 0.12
     },
     "all": [
      {
@@ -319,119 +319,19 @@
      },
      {
       "perturbation": "tank $200/kL",
-      "spread": 0.15
-     },
-     {
-      "perturbation": "runoff A 0.85",
-      "spread": 0.14
-     },
-     {
-      "perturbation": "demand 180 L/p/d",
-      "spread": 0.12
-     },
-     {
-      "perturbation": "Kc 1.05",
       "spread": 0.12
      },
      {
       "perturbation": "Kc 0.85",
-      "spread": 0.08
-     },
-     {
-      "perturbation": "central",
-      "spread": 0.05
-     },
-     {
-      "perturbation": "yield -33%",
-      "spread": 0.05
-     },
-     {
-      "perturbation": "yield +33%",
-      "spread": 0.05
-     },
-     {
-      "perturbation": "FCR 1.5",
-      "spread": 0.05
-     },
-     {
-      "perturbation": "FCR 2.5",
-      "spread": 0.05
-     }
-    ]
-   },
-   "garden_water_satisfaction": {
-    "worst": {
-     "perturbation": "demand 120 L/p/d",
-     "spread": 0.38
-    },
-    "second_worst": {
-     "perturbation": "Kc 1.05",
-     "spread": 0.17
-    },
-    "all": [
-     {
-      "perturbation": "demand 120 L/p/d",
-      "spread": 0.38
-     },
-     {
-      "perturbation": "Kc 1.05",
-      "spread": 0.17
-     },
-     {
-      "perturbation": "tank $200/kL",
-      "spread": 0.17
-     },
-     {
-      "perturbation": "demand 180 L/p/d",
-      "spread": 0.16
+      "spread": 0.11
      },
      {
       "perturbation": "runoff A 0.85",
-      "spread": 0.16
+      "spread": 0.1
      },
      {
-      "perturbation": "central",
-      "spread": 0.13
-     },
-     {
-      "perturbation": "yield -33%",
-      "spread": 0.13
-     },
-     {
-      "perturbation": "yield +33%",
-      "spread": 0.13
-     },
-     {
-      "perturbation": "Kc 0.85",
-      "spread": 0.13
-     },
-     {
-      "perturbation": "FCR 1.5",
-      "spread": 0.13
-     },
-     {
-      "perturbation": "FCR 2.5",
-      "spread": 0.13
-     }
-    ]
-   },
-   "food_kcal_closure": {
-    "worst": {
-     "perturbation": "yield -33%",
-     "spread": 0.07
-    },
-    "second_worst": {
-     "perturbation": "tank $200/kL",
-     "spread": 0.07
-    },
-    "all": [
-     {
-      "perturbation": "yield -33%",
-      "spread": 0.07
-     },
-     {
-      "perturbation": "tank $200/kL",
-      "spread": 0.07
+      "perturbation": "Kc 1.05",
+      "spread": 0.1
      },
      {
       "perturbation": "demand 180 L/p/d",
@@ -439,30 +339,130 @@
      },
      {
       "perturbation": "central",
-      "spread": 0.05
+      "spread": 0.02
+     },
+     {
+      "perturbation": "yield -33%",
+      "spread": 0.02
      },
      {
       "perturbation": "yield +33%",
+      "spread": 0.02
+     },
+     {
+      "perturbation": "FCR 1.5",
+      "spread": 0.02
+     },
+     {
+      "perturbation": "FCR 2.5",
+      "spread": 0.02
+     }
+    ]
+   },
+   "garden_water_satisfaction": {
+    "worst": {
+     "perturbation": "demand 120 L/p/d",
+     "spread": 0.34
+    },
+    "second_worst": {
+     "perturbation": "Kc 1.05",
+     "spread": 0.2
+    },
+    "all": [
+     {
+      "perturbation": "demand 120 L/p/d",
+      "spread": 0.34
+     },
+     {
+      "perturbation": "Kc 1.05",
+      "spread": 0.2
+     },
+     {
+      "perturbation": "tank $200/kL",
+      "spread": 0.18
+     },
+     {
+      "perturbation": "central",
+      "spread": 0.16
+     },
+     {
+      "perturbation": "yield -33%",
+      "spread": 0.16
+     },
+     {
+      "perturbation": "yield +33%",
+      "spread": 0.16
+     },
+     {
+      "perturbation": "FCR 1.5",
+      "spread": 0.16
+     },
+     {
+      "perturbation": "FCR 2.5",
+      "spread": 0.16
+     },
+     {
+      "perturbation": "Kc 0.85",
+      "spread": 0.15
+     },
+     {
+      "perturbation": "demand 180 L/p/d",
+      "spread": 0.13
+     },
+     {
+      "perturbation": "runoff A 0.85",
+      "spread": 0.13
+     }
+    ]
+   },
+   "food_kcal_closure": {
+    "worst": {
+     "perturbation": "tank $200/kL",
+     "spread": 0.07
+    },
+    "second_worst": {
+     "perturbation": "central",
+     "spread": 0.06
+    },
+    "all": [
+     {
+      "perturbation": "tank $200/kL",
+      "spread": 0.07
+     },
+     {
+      "perturbation": "central",
+      "spread": 0.06
+     },
+     {
+      "perturbation": "yield -33%",
+      "spread": 0.06
+     },
+     {
+      "perturbation": "yield +33%",
+      "spread": 0.06
+     },
+     {
+      "perturbation": "demand 180 L/p/d",
+      "spread": 0.06
+     },
+     {
+      "perturbation": "FCR 1.5",
+      "spread": 0.06
+     },
+     {
+      "perturbation": "FCR 2.5",
+      "spread": 0.06
+     },
+     {
+      "perturbation": "runoff A 0.85",
+      "spread": 0.05
+     },
+     {
+      "perturbation": "Kc 0.85",
       "spread": 0.05
      },
      {
       "perturbation": "demand 120 L/p/d",
-      "spread": 0.05
-     },
-     {
-      "perturbation": "FCR 1.5",
-      "spread": 0.05
-     },
-     {
-      "perturbation": "FCR 2.5",
-      "spread": 0.05
-     },
-     {
-      "perturbation": "runoff A 0.85",
-      "spread": 0.04
-     },
-     {
-      "perturbation": "Kc 0.85",
       "spread": 0.04
      },
      {
@@ -477,7 +477,7 @@
      "spread": 0.06
     },
     "second_worst": {
-     "perturbation": "FCR 1.5",
+     "perturbation": "Kc 1.05",
      "spread": 0.06
     },
     "all": [
@@ -486,11 +486,11 @@
       "spread": 0.06
      },
      {
-      "perturbation": "FCR 1.5",
+      "perturbation": "Kc 1.05",
       "spread": 0.06
      },
      {
-      "perturbation": "FCR 2.5",
+      "perturbation": "FCR 1.5",
       "spread": 0.06
      },
      {
@@ -506,6 +506,10 @@
       "spread": 0.05
      },
      {
+      "perturbation": "yield +33%",
+      "spread": 0.05
+     },
+     {
       "perturbation": "runoff A 0.85",
       "spread": 0.05
      },
@@ -514,33 +518,25 @@
       "spread": 0.05
      },
      {
-      "perturbation": "Kc 1.05",
+      "perturbation": "FCR 2.5",
       "spread": 0.05
      },
      {
-      "perturbation": "yield +33%",
-      "spread": 0.04
-     },
-     {
       "perturbation": "demand 120 L/p/d",
-      "spread": 0.03
+      "spread": 0.02
      }
     ]
    },
    "nutrient_closure": {
     "worst": {
-     "perturbation": "runoff A 0.85",
-     "spread": 0.17
-    },
-    "second_worst": {
      "perturbation": "Kc 1.05",
      "spread": 0.15
     },
+    "second_worst": {
+     "perturbation": "central",
+     "spread": 0.14
+    },
     "all": [
-     {
-      "perturbation": "runoff A 0.85",
-      "spread": 0.17
-     },
      {
       "perturbation": "Kc 1.05",
       "spread": 0.15
@@ -576,6 +572,10 @@
      {
       "perturbation": "tank $200/kL",
       "spread": 0.11
+     },
+     {
+      "perturbation": "runoff A 0.85",
+      "spread": 0.1
      },
      {
       "perturbation": "Kc 0.85",
@@ -710,7 +710,7 @@
     "water_closure": {
      "baseline": 0.65,
      "competent": 0.81,
-     "excellent": 0.94
+     "excellent": 0.92
     },
     "garden_water_satisfaction": {
      "baseline": 0.0,
@@ -720,12 +720,12 @@
     "food_kcal_closure": {
      "baseline": 0.01,
      "competent": 0.033,
-     "excellent": 0.055
+     "excellent": 0.054
     },
     "protein_closure": {
      "baseline": 0.016,
      "competent": 0.055,
-     "excellent": 0.089
+     "excellent": 0.088
     },
     "nutrient_closure": {
      "baseline": 0.04,
@@ -917,10 +917,10 @@
      "fish_protein_kg_counted": 0.27
     },
     "excellent": {
-     "cost_subtotal": 25850,
-     "cost_contingency": 2585,
-     "cost_total": 28435,
-     "cost_headroom": 1565,
+     "cost_subtotal": 24800,
+     "cost_contingency": 2480,
+     "cost_total": 27280,
+     "cost_headroom": 2720,
      "fits_budget": true,
      "bill": [
       {
@@ -937,15 +937,9 @@
       },
       {
        "line": "First-flush diverter and leaf screen",
-       "qty": 5,
+       "qty": 4,
        "unit": "downpipe",
-       "cost": 750
-      },
-      {
-       "line": "Additional roof catchment",
-       "qty": 15,
-       "unit": "m2",
-       "cost": 900
+       "cost": 600
       },
       {
        "line": "Pressure pump (domestic supply)",
@@ -1014,12 +1008,12 @@
        "cost": 3600
       }
      ],
-     "energy_modelled_kwh_day": 3.3,
-     "energy_declared_kwh_day": 3.95,
-     "energy_headroom_kwh_day": 1.05,
+     "energy_modelled_kwh_day": 3.28,
+     "energy_declared_kwh_day": 3.93,
+     "energy_headroom_kwh_day": 1.07,
      "fits_energy": true,
      "storage_kl": 36,
-     "imported_kl": 16,
+     "imported_kl": 20,
      "overflow_kl": 0,
      "production_area_m2": 450,
      "insect_share_of_fish_feed": 0.08,
@@ -1144,7 +1138,7 @@
     "water_closure": {
      "baseline": 0.78,
      "competent": 0.89,
-     "excellent": 0.97
+     "excellent": 0.96
     },
     "garden_water_satisfaction": {
      "baseline": 0.01,
@@ -1154,7 +1148,7 @@
     "food_kcal_closure": {
      "baseline": 0.002,
      "competent": 0.016,
-     "excellent": 0.029
+     "excellent": 0.028
     },
     "protein_closure": {
      "baseline": 0.002,
@@ -1351,10 +1345,10 @@
      "fish_protein_kg_counted": 0.29
     },
     "excellent": {
-     "cost_subtotal": 25600,
-     "cost_contingency": 2560,
-     "cost_total": 28160,
-     "cost_headroom": 1840,
+     "cost_subtotal": 24550,
+     "cost_contingency": 2455,
+     "cost_total": 27005,
+     "cost_headroom": 2995,
      "fits_budget": true,
      "bill": [
       {
@@ -1374,12 +1368,6 @@
        "qty": 5,
        "unit": "downpipe",
        "cost": 750
-      },
-      {
-       "line": "Additional roof catchment",
-       "qty": 18,
-       "unit": "m2",
-       "cost": 1050
       },
       {
        "line": "Pressure pump (domestic supply)",
@@ -1448,12 +1436,12 @@
        "cost": 3200
       }
      ],
-     "energy_modelled_kwh_day": 2.91,
-     "energy_declared_kwh_day": 3.56,
-     "energy_headroom_kwh_day": 1.44,
+     "energy_modelled_kwh_day": 2.9,
+     "energy_declared_kwh_day": 3.55,
+     "energy_headroom_kwh_day": 1.45,
      "fits_energy": true,
      "storage_kl": 53,
-     "imported_kl": 8,
+     "imported_kl": 9,
      "overflow_kl": 0,
      "production_area_m2": 400,
      "insect_share_of_fish_feed": 0.05,
@@ -1578,22 +1566,22 @@
     "water_closure": {
      "baseline": 0.68,
      "competent": 0.84,
-     "excellent": 0.96
+     "excellent": 0.95
     },
     "garden_water_satisfaction": {
      "baseline": 0.15,
      "competent": 0.72,
-     "excellent": 0.81
+     "excellent": 0.79
     },
     "food_kcal_closure": {
      "baseline": 0.012,
      "competent": 0.039,
-     "excellent": 0.061
+     "excellent": 0.06
     },
     "protein_closure": {
      "baseline": 0.018,
      "competent": 0.064,
-     "excellent": 0.099
+     "excellent": 0.098
     },
     "nutrient_closure": {
      "baseline": 0.03,
@@ -1785,10 +1773,10 @@
      "fish_protein_kg_counted": 0.29
     },
     "excellent": {
-     "cost_subtotal": 22600,
-     "cost_contingency": 2260,
-     "cost_total": 24860,
-     "cost_headroom": 5140,
+     "cost_subtotal": 22090,
+     "cost_contingency": 2209,
+     "cost_total": 24299,
+     "cost_headroom": 5701,
      "fits_budget": true,
      "bill": [
       {
@@ -1808,12 +1796,6 @@
        "qty": 3,
        "unit": "downpipe",
        "cost": 450
-      },
-      {
-       "line": "Additional roof catchment",
-       "qty": 8,
-       "unit": "m2",
-       "cost": 510
       },
       {
        "line": "Pressure pump (domestic supply)",
@@ -1887,8 +1869,8 @@
      "energy_headroom_kwh_day": 1.57,
      "fits_energy": true,
      "storage_kl": 34,
-     "imported_kl": 10,
-     "overflow_kl": 8,
+     "imported_kl": 12,
+     "overflow_kl": 4,
      "production_area_m2": 130,
      "insect_share_of_fish_feed": 0.05,
      "fish_protein_kg_counted": 0.29
@@ -2011,7 +1993,7 @@
     "water_closure": {
      "baseline": 0.42,
      "competent": 0.59,
-     "excellent": 0.72
+     "excellent": 0.7
     },
     "garden_water_satisfaction": {
      "baseline": 0.0,
@@ -2218,10 +2200,10 @@
      "fish_protein_kg_counted": 0.27
     },
     "excellent": {
-     "cost_subtotal": 23890,
-     "cost_contingency": 2389,
-     "cost_total": 26279,
-     "cost_headroom": 3721,
+     "cost_subtotal": 23200,
+     "cost_contingency": 2320,
+     "cost_total": 25520,
+     "cost_headroom": 4480,
      "fits_budget": true,
      "bill": [
       {
@@ -2241,12 +2223,6 @@
        "qty": 4,
        "unit": "downpipe",
        "cost": 600
-      },
-      {
-       "line": "Additional roof catchment",
-       "qty": 12,
-       "unit": "m2",
-       "cost": 690
       },
       {
        "line": "Pressure pump (domestic supply)",
@@ -2320,7 +2296,7 @@
      "energy_headroom_kwh_day": 1.64,
      "fits_energy": true,
      "storage_kl": 36,
-     "imported_kl": 61,
+     "imported_kl": 66,
      "overflow_kl": 0,
      "production_area_m2": 250,
      "insect_share_of_fish_feed": 0.05,
@@ -2650,10 +2626,10 @@
      "fish_protein_kg_counted": 0.49
     },
     "excellent": {
-     "cost_subtotal": 26250,
-     "cost_contingency": 2625,
-     "cost_total": 28875,
-     "cost_headroom": 1125,
+     "cost_subtotal": 25200,
+     "cost_contingency": 2520,
+     "cost_total": 27720,
+     "cost_headroom": 2280,
      "fits_budget": true,
      "bill": [
       {
@@ -2670,15 +2646,9 @@
       },
       {
        "line": "First-flush diverter and leaf screen",
-       "qty": 5,
+       "qty": 4,
        "unit": "downpipe",
-       "cost": 750
-      },
-      {
-       "line": "Additional roof catchment",
-       "qty": 15,
-       "unit": "m2",
-       "cost": 900
+       "cost": 600
       },
       {
        "line": "Pressure pump (domestic supply)",
@@ -2752,8 +2722,8 @@
      "energy_headroom_kwh_day": 1.01,
      "fits_energy": true,
      "storage_kl": 76,
-     "imported_kl": 48,
-     "overflow_kl": 245,
+     "imported_kl": 49,
+     "overflow_kl": 226,
      "production_area_m2": 500,
      "insect_share_of_fish_feed": 0.08,
      "fish_protein_kg_counted": 0.49

@@ -2,17 +2,17 @@
  "central": {
   "S1": {
    "band_width": {
-    "water_closure": 0.29,
+    "water_closure": 0.27,
     "garden_water_satisfaction": 0.2,
-    "food_kcal_closure": 0.045,
-    "protein_closure": 0.073,
+    "food_kcal_closure": 0.044,
+    "protein_closure": 0.072,
     "nutrient_closure": 0.1
    },
    "competent_position": {
-    "water_closure": 0.55,
+    "water_closure": 0.59,
     "garden_water_satisfaction": 0.75,
-    "food_kcal_closure": 0.51,
-    "protein_closure": 0.53,
+    "food_kcal_closure": 0.52,
+    "protein_closure": 0.54,
     "nutrient_closure": 0.6
    },
    "competent_raw": {
@@ -22,20 +22,20 @@
     "protein_closure": 0.055,
     "nutrient_closure": 0.1
    },
-   "peak_kwh_excellent": 3.3
+   "peak_kwh_excellent": 3.28
   },
   "S2": {
    "band_width": {
-    "water_closure": 0.19,
+    "water_closure": 0.18,
     "garden_water_satisfaction": 0.15,
-    "food_kcal_closure": 0.027,
+    "food_kcal_closure": 0.026,
     "protein_closure": 0.047,
     "nutrient_closure": 0.05
    },
    "competent_position": {
-    "water_closure": 0.58,
+    "water_closure": 0.61,
     "garden_water_satisfaction": 0.73,
-    "food_kcal_closure": 0.52,
+    "food_kcal_closure": 0.54,
     "protein_closure": 0.55,
     "nutrient_closure": 0.6
    },
@@ -46,20 +46,20 @@
     "protein_closure": 0.028,
     "nutrient_closure": 0.04
    },
-   "peak_kwh_excellent": 2.91
+   "peak_kwh_excellent": 2.9
   },
   "S3": {
    "band_width": {
-    "water_closure": 0.28,
-    "garden_water_satisfaction": 0.66,
-    "food_kcal_closure": 0.049,
-    "protein_closure": 0.081,
+    "water_closure": 0.27,
+    "garden_water_satisfaction": 0.64,
+    "food_kcal_closure": 0.048,
+    "protein_closure": 0.08,
     "nutrient_closure": 0.07
    },
    "competent_position": {
-    "water_closure": 0.57,
-    "garden_water_satisfaction": 0.86,
-    "food_kcal_closure": 0.55,
+    "water_closure": 0.59,
+    "garden_water_satisfaction": 0.89,
+    "food_kcal_closure": 0.56,
     "protein_closure": 0.57,
     "nutrient_closure": 0.71
    },
@@ -74,14 +74,14 @@
   },
   "S4": {
    "band_width": {
-    "water_closure": 0.3,
+    "water_closure": 0.28,
     "garden_water_satisfaction": 0.27,
     "food_kcal_closure": 0.048,
     "protein_closure": 0.08,
     "nutrient_closure": 0.09
    },
    "competent_position": {
-    "water_closure": 0.57,
+    "water_closure": 0.61,
     "garden_water_satisfaction": 0.85,
     "food_kcal_closure": 0.54,
     "protein_closure": 0.56,
@@ -124,17 +124,17 @@
  "yield -33%": {
   "S1": {
    "band_width": {
-    "water_closure": 0.29,
+    "water_closure": 0.27,
     "garden_water_satisfaction": 0.2,
-    "food_kcal_closure": 0.03,
-    "protein_closure": 0.05,
+    "food_kcal_closure": 0.029,
+    "protein_closure": 0.049,
     "nutrient_closure": 0.1
    },
    "competent_position": {
-    "water_closure": 0.55,
+    "water_closure": 0.59,
     "garden_water_satisfaction": 0.75,
-    "food_kcal_closure": 0.5,
-    "protein_closure": 0.54,
+    "food_kcal_closure": 0.52,
+    "protein_closure": 0.55,
     "nutrient_closure": 0.6
    },
    "competent_raw": {
@@ -144,18 +144,18 @@
     "protein_closure": 0.038,
     "nutrient_closure": 0.1
    },
-   "peak_kwh_excellent": 3.3
+   "peak_kwh_excellent": 3.28
   },
   "S2": {
    "band_width": {
-    "water_closure": 0.19,
+    "water_closure": 0.18,
     "garden_water_satisfaction": 0.15,
     "food_kcal_closure": 0.018,
     "protein_closure": 0.032,
     "nutrient_closure": 0.05
    },
    "competent_position": {
-    "water_closure": 0.58,
+    "water_closure": 0.61,
     "garden_water_satisfaction": 0.73,
     "food_kcal_closure": 0.5,
     "protein_closure": 0.56,
@@ -168,20 +168,20 @@
     "protein_closure": 0.02,
     "nutrient_closure": 0.04
    },
-   "peak_kwh_excellent": 2.91
+   "peak_kwh_excellent": 2.9
   },
   "S3": {
    "band_width": {
-    "water_closure": 0.28,
-    "garden_water_satisfaction": 0.66,
-    "food_kcal_closure": 0.033,
+    "water_closure": 0.27,
+    "garden_water_satisfaction": 0.64,
+    "food_kcal_closure": 0.032,
     "protein_closure": 0.055,
     "nutrient_closure": 0.07
    },
    "competent_position": {
-    "water_closure": 0.57,
-    "garden_water_satisfaction": 0.86,
-    "food_kcal_closure": 0.55,
+    "water_closure": 0.59,
+    "garden_water_satisfaction": 0.89,
+    "food_kcal_closure": 0.56,
     "protein_closure": 0.58,
     "nutrient_closure": 0.71
    },
@@ -196,14 +196,14 @@
   },
   "S4": {
    "band_width": {
-    "water_closure": 0.3,
+    "water_closure": 0.28,
     "garden_water_satisfaction": 0.27,
     "food_kcal_closure": 0.032,
     "protein_closure": 0.054,
     "nutrient_closure": 0.09
    },
    "competent_position": {
-    "water_closure": 0.57,
+    "water_closure": 0.61,
     "garden_water_satisfaction": 0.85,
     "food_kcal_closure": 0.56,
     "protein_closure": 0.57,
@@ -222,14 +222,14 @@
    "band_width": {
     "water_closure": 0.1,
     "garden_water_satisfaction": 0.08,
-    "food_kcal_closure": 0.071,
+    "food_kcal_closure": 0.07,
     "protein_closure": 0.116,
     "nutrient_closure": 0.14
    },
    "competent_position": {
     "water_closure": 0.6,
     "garden_water_satisfaction": 0.75,
-    "food_kcal_closure": 0.49,
+    "food_kcal_closure": 0.5,
     "protein_closure": 0.53,
     "nutrient_closure": 0.57
    },
@@ -246,17 +246,17 @@
  "yield +33%": {
   "S1": {
    "band_width": {
-    "water_closure": 0.29,
+    "water_closure": 0.27,
     "garden_water_satisfaction": 0.2,
-    "food_kcal_closure": 0.059,
-    "protein_closure": 0.096,
+    "food_kcal_closure": 0.058,
+    "protein_closure": 0.094,
     "nutrient_closure": 0.1
    },
    "competent_position": {
-    "water_closure": 0.55,
+    "water_closure": 0.59,
     "garden_water_satisfaction": 0.75,
-    "food_kcal_closure": 0.51,
-    "protein_closure": 0.52,
+    "food_kcal_closure": 0.52,
+    "protein_closure": 0.53,
     "nutrient_closure": 0.6
    },
    "competent_raw": {
@@ -266,21 +266,21 @@
     "protein_closure": 0.072,
     "nutrient_closure": 0.1
    },
-   "peak_kwh_excellent": 3.3
+   "peak_kwh_excellent": 3.28
   },
   "S2": {
    "band_width": {
-    "water_closure": 0.19,
+    "water_closure": 0.18,
     "garden_water_satisfaction": 0.15,
     "food_kcal_closure": 0.036,
-    "protein_closure": 0.061,
+    "protein_closure": 0.06,
     "nutrient_closure": 0.05
    },
    "competent_position": {
-    "water_closure": 0.58,
+    "water_closure": 0.61,
     "garden_water_satisfaction": 0.73,
     "food_kcal_closure": 0.53,
-    "protein_closure": 0.56,
+    "protein_closure": 0.57,
     "nutrient_closure": 0.6
    },
    "competent_raw": {
@@ -290,21 +290,21 @@
     "protein_closure": 0.037,
     "nutrient_closure": 0.04
    },
-   "peak_kwh_excellent": 2.91
+   "peak_kwh_excellent": 2.9
   },
   "S3": {
    "band_width": {
-    "water_closure": 0.28,
-    "garden_water_satisfaction": 0.66,
-    "food_kcal_closure": 0.065,
-    "protein_closure": 0.105,
+    "water_closure": 0.27,
+    "garden_water_satisfaction": 0.64,
+    "food_kcal_closure": 0.064,
+    "protein_closure": 0.104,
     "nutrient_closure": 0.07
    },
    "competent_position": {
-    "water_closure": 0.57,
-    "garden_water_satisfaction": 0.86,
-    "food_kcal_closure": 0.55,
-    "protein_closure": 0.56,
+    "water_closure": 0.59,
+    "garden_water_satisfaction": 0.89,
+    "food_kcal_closure": 0.56,
+    "protein_closure": 0.57,
     "nutrient_closure": 0.71
    },
    "competent_raw": {
@@ -318,14 +318,14 @@
   },
   "S4": {
    "band_width": {
-    "water_closure": 0.3,
+    "water_closure": 0.28,
     "garden_water_satisfaction": 0.27,
     "food_kcal_closure": 0.065,
     "protein_closure": 0.104,
     "nutrient_closure": 0.09
    },
    "competent_position": {
-    "water_closure": 0.57,
+    "water_closure": 0.61,
     "garden_water_satisfaction": 0.85,
     "food_kcal_closure": 0.54,
     "protein_closure": 0.56,
@@ -345,7 +345,7 @@
     "water_closure": 0.1,
     "garden_water_satisfaction": 0.08,
     "food_kcal_closure": 0.141,
-    "protein_closure": 0.227,
+    "protein_closure": 0.226,
     "nutrient_closure": 0.14
    },
    "competent_position": {
@@ -369,17 +369,17 @@
   "S1": {
    "band_width": {
     "water_closure": 0.19,
-    "garden_water_satisfaction": 0.22,
-    "food_kcal_closure": 0.046,
-    "protein_closure": 0.077,
-    "nutrient_closure": 0.11
+    "garden_water_satisfaction": 0.2,
+    "food_kcal_closure": 0.044,
+    "protein_closure": 0.074,
+    "nutrient_closure": 0.1
    },
    "competent_position": {
     "water_closure": 0.74,
-    "garden_water_satisfaction": 0.68,
-    "food_kcal_closure": 0.46,
-    "protein_closure": 0.49,
-    "nutrient_closure": 0.55
+    "garden_water_satisfaction": 0.75,
+    "food_kcal_closure": 0.48,
+    "protein_closure": 0.51,
+    "nutrient_closure": 0.6
    },
    "competent_raw": {
     "water_closure": 0.95,
@@ -388,21 +388,21 @@
     "protein_closure": 0.054,
     "nutrient_closure": 0.1
    },
-   "peak_kwh_excellent": 3.19
+   "peak_kwh_excellent": 3.18
   },
   "S2": {
    "band_width": {
     "water_closure": 0.1,
-    "garden_water_satisfaction": 0.13,
-    "food_kcal_closure": 0.029,
-    "protein_closure": 0.05,
+    "garden_water_satisfaction": 0.12,
+    "food_kcal_closure": 0.028,
+    "protein_closure": 0.048,
     "nutrient_closure": 0.06
    },
    "competent_position": {
     "water_closure": 0.8,
-    "garden_water_satisfaction": 0.69,
-    "food_kcal_closure": 0.45,
-    "protein_closure": 0.5,
+    "garden_water_satisfaction": 0.75,
+    "food_kcal_closure": 0.46,
+    "protein_closure": 0.52,
     "nutrient_closure": 0.5
    },
    "competent_raw": {
@@ -412,21 +412,21 @@
     "protein_closure": 0.029,
     "nutrient_closure": 0.04
    },
-   "peak_kwh_excellent": 2.81
+   "peak_kwh_excellent": 2.8
   },
   "S3": {
    "band_width": {
     "water_closure": 0.2,
-    "garden_water_satisfaction": 0.66,
-    "food_kcal_closure": 0.052,
-    "protein_closure": 0.084,
+    "garden_water_satisfaction": 0.62,
+    "food_kcal_closure": 0.051,
+    "protein_closure": 0.083,
     "nutrient_closure": 0.08
    },
    "competent_position": {
     "water_closure": 0.8,
-    "garden_water_satisfaction": 0.62,
-    "food_kcal_closure": 0.48,
-    "protein_closure": 0.5,
+    "garden_water_satisfaction": 0.66,
+    "food_kcal_closure": 0.49,
+    "protein_closure": 0.51,
     "nutrient_closure": 0.62
    },
    "competent_raw": {
@@ -440,17 +440,17 @@
   },
   "S4": {
    "band_width": {
-    "water_closure": 0.31,
-    "garden_water_satisfaction": 0.25,
-    "food_kcal_closure": 0.048,
-    "protein_closure": 0.079,
+    "water_closure": 0.29,
+    "garden_water_satisfaction": 0.24,
+    "food_kcal_closure": 0.047,
+    "protein_closure": 0.077,
     "nutrient_closure": 0.08
    },
    "competent_position": {
-    "water_closure": 0.58,
-    "garden_water_satisfaction": 0.72,
-    "food_kcal_closure": 0.48,
-    "protein_closure": 0.52,
+    "water_closure": 0.62,
+    "garden_water_satisfaction": 0.75,
+    "food_kcal_closure": 0.49,
+    "protein_closure": 0.53,
     "nutrient_closure": 0.62
    },
    "competent_raw": {
@@ -460,7 +460,7 @@
     "protein_closure": 0.057,
     "nutrient_closure": 0.08
    },
-   "peak_kwh_excellent": 2.74
+   "peak_kwh_excellent": 2.69
   },
   "S5": {
    "band_width": {
@@ -490,14 +490,14 @@
  "demand 180 L/p/d": {
   "S1": {
    "band_width": {
-    "water_closure": 0.29,
+    "water_closure": 0.26,
     "garden_water_satisfaction": 0.24,
     "food_kcal_closure": 0.049,
     "protein_closure": 0.08,
     "nutrient_closure": 0.11
    },
    "competent_position": {
-    "water_closure": 0.55,
+    "water_closure": 0.62,
     "garden_water_satisfaction": 0.79,
     "food_kcal_closure": 0.53,
     "protein_closure": 0.54,
@@ -514,17 +514,17 @@
   },
   "S2": {
    "band_width": {
-    "water_closure": 0.23,
-    "garden_water_satisfaction": 0.17,
+    "water_closure": 0.22,
+    "garden_water_satisfaction": 0.16,
     "food_kcal_closure": 0.031,
-    "protein_closure": 0.053,
+    "protein_closure": 0.052,
     "nutrient_closure": 0.07
    },
    "competent_position": {
-    "water_closure": 0.61,
-    "garden_water_satisfaction": 0.71,
+    "water_closure": 0.64,
+    "garden_water_satisfaction": 0.75,
     "food_kcal_closure": 0.52,
-    "protein_closure": 0.55,
+    "protein_closure": 0.56,
     "nutrient_closure": 0.71
    },
    "competent_raw": {
@@ -534,19 +534,19 @@
     "protein_closure": 0.031,
     "nutrient_closure": 0.05
    },
-   "peak_kwh_excellent": 3.02
+   "peak_kwh_excellent": 3.0
   },
   "S3": {
    "band_width": {
-    "water_closure": 0.27,
-    "garden_water_satisfaction": 0.85,
+    "water_closure": 0.24,
+    "garden_water_satisfaction": 0.84,
     "food_kcal_closure": 0.052,
     "protein_closure": 0.085,
     "nutrient_closure": 0.08
    },
    "competent_position": {
-    "water_closure": 0.52,
-    "garden_water_satisfaction": 0.87,
+    "water_closure": 0.58,
+    "garden_water_satisfaction": 0.88,
     "food_kcal_closure": 0.56,
     "protein_closure": 0.58,
     "nutrient_closure": 0.62
@@ -558,18 +558,18 @@
     "protein_closure": 0.066,
     "nutrient_closure": 0.08
    },
-   "peak_kwh_excellent": 2.92
+   "peak_kwh_excellent": 2.91
   },
   "S4": {
    "band_width": {
-    "water_closure": 0.28,
+    "water_closure": 0.26,
     "garden_water_satisfaction": 0.33,
     "food_kcal_closure": 0.053,
     "protein_closure": 0.088,
     "nutrient_closure": 0.1
    },
    "competent_position": {
-    "water_closure": 0.57,
+    "water_closure": 0.62,
     "garden_water_satisfaction": 0.82,
     "food_kcal_closure": 0.55,
     "protein_closure": 0.56,
@@ -612,18 +612,18 @@
  "runoff A 0.85": {
   "S1": {
    "band_width": {
-    "water_closure": 0.27,
-    "garden_water_satisfaction": 0.21,
-    "food_kcal_closure": 0.046,
-    "protein_closure": 0.075,
-    "nutrient_closure": 0.11
+    "water_closure": 0.25,
+    "garden_water_satisfaction": 0.2,
+    "food_kcal_closure": 0.045,
+    "protein_closure": 0.074,
+    "nutrient_closure": 0.1
    },
    "competent_position": {
-    "water_closure": 0.59,
-    "garden_water_satisfaction": 0.71,
-    "food_kcal_closure": 0.5,
-    "protein_closure": 0.52,
-    "nutrient_closure": 0.55
+    "water_closure": 0.64,
+    "garden_water_satisfaction": 0.75,
+    "food_kcal_closure": 0.51,
+    "protein_closure": 0.53,
+    "nutrient_closure": 0.6
    },
    "competent_raw": {
     "water_closure": 0.85,
@@ -632,22 +632,22 @@
     "protein_closure": 0.055,
     "nutrient_closure": 0.1
    },
-   "peak_kwh_excellent": 3.32
+   "peak_kwh_excellent": 3.3
   },
   "S2": {
    "band_width": {
     "water_closure": 0.18,
     "garden_water_satisfaction": 0.14,
-    "food_kcal_closure": 0.028,
-    "protein_closure": 0.047,
-    "nutrient_closure": 0.06
+    "food_kcal_closure": 0.027,
+    "protein_closure": 0.046,
+    "nutrient_closure": 0.05
    },
    "competent_position": {
     "water_closure": 0.61,
     "garden_water_satisfaction": 0.79,
-    "food_kcal_closure": 0.5,
-    "protein_closure": 0.55,
-    "nutrient_closure": 0.5
+    "food_kcal_closure": 0.52,
+    "protein_closure": 0.57,
+    "nutrient_closure": 0.6
    },
    "competent_raw": {
     "water_closure": 0.9,
@@ -656,20 +656,20 @@
     "protein_closure": 0.029,
     "nutrient_closure": 0.04
    },
-   "peak_kwh_excellent": 2.93
+   "peak_kwh_excellent": 2.92
   },
   "S3": {
    "band_width": {
-    "water_closure": 0.25,
-    "garden_water_satisfaction": 0.67,
-    "food_kcal_closure": 0.05,
-    "protein_closure": 0.081,
+    "water_closure": 0.24,
+    "garden_water_satisfaction": 0.66,
+    "food_kcal_closure": 0.049,
+    "protein_closure": 0.08,
     "nutrient_closure": 0.08
    },
    "competent_position": {
-    "water_closure": 0.56,
-    "garden_water_satisfaction": 0.87,
-    "food_kcal_closure": 0.54,
+    "water_closure": 0.58,
+    "garden_water_satisfaction": 0.88,
+    "food_kcal_closure": 0.55,
     "protein_closure": 0.57,
     "nutrient_closure": 0.62
    },
@@ -684,14 +684,14 @@
   },
   "S4": {
    "band_width": {
-    "water_closure": 0.3,
+    "water_closure": 0.28,
     "garden_water_satisfaction": 0.27,
     "food_kcal_closure": 0.048,
     "protein_closure": 0.08,
     "nutrient_closure": 0.09
    },
    "competent_position": {
-    "water_closure": 0.53,
+    "water_closure": 0.57,
     "garden_water_satisfaction": 0.85,
     "food_kcal_closure": 0.54,
     "protein_closure": 0.56,
@@ -711,7 +711,7 @@
     "water_closure": 0.09,
     "garden_water_satisfaction": 0.08,
     "food_kcal_closure": 0.106,
-    "protein_closure": 0.173,
+    "protein_closure": 0.172,
     "nutrient_closure": 0.14
    },
    "competent_position": {
@@ -734,17 +734,17 @@
  "Kc 0.85": {
   "S1": {
    "band_width": {
-    "water_closure": 0.29,
+    "water_closure": 0.27,
     "garden_water_satisfaction": 0.23,
-    "food_kcal_closure": 0.05,
-    "protein_closure": 0.081,
+    "food_kcal_closure": 0.049,
+    "protein_closure": 0.08,
     "nutrient_closure": 0.11
    },
    "competent_position": {
-    "water_closure": 0.55,
+    "water_closure": 0.59,
     "garden_water_satisfaction": 0.78,
-    "food_kcal_closure": 0.5,
-    "protein_closure": 0.53,
+    "food_kcal_closure": 0.51,
+    "protein_closure": 0.54,
     "nutrient_closure": 0.64
    },
    "competent_raw": {
@@ -754,19 +754,19 @@
     "protein_closure": 0.061,
     "nutrient_closure": 0.12
    },
-   "peak_kwh_excellent": 3.3
+   "peak_kwh_excellent": 3.28
   },
   "S2": {
    "band_width": {
-    "water_closure": 0.19,
-    "garden_water_satisfaction": 0.17,
+    "water_closure": 0.18,
+    "garden_water_satisfaction": 0.16,
     "food_kcal_closure": 0.03,
     "protein_closure": 0.051,
     "nutrient_closure": 0.06
    },
    "competent_position": {
-    "water_closure": 0.58,
-    "garden_water_satisfaction": 0.76,
+    "water_closure": 0.61,
+    "garden_water_satisfaction": 0.81,
     "food_kcal_closure": 0.5,
     "protein_closure": 0.55,
     "nutrient_closure": 0.67
@@ -778,20 +778,20 @@
     "protein_closure": 0.031,
     "nutrient_closure": 0.05
    },
-   "peak_kwh_excellent": 2.91
+   "peak_kwh_excellent": 2.9
   },
   "S3": {
    "band_width": {
-    "water_closure": 0.27,
-    "garden_water_satisfaction": 0.74,
-    "food_kcal_closure": 0.05,
+    "water_closure": 0.25,
+    "garden_water_satisfaction": 0.72,
+    "food_kcal_closure": 0.049,
     "protein_closure": 0.081,
     "nutrient_closure": 0.08
    },
    "competent_position": {
-    "water_closure": 0.52,
-    "garden_water_satisfaction": 0.88,
-    "food_kcal_closure": 0.54,
+    "water_closure": 0.56,
+    "garden_water_satisfaction": 0.9,
+    "food_kcal_closure": 0.55,
     "protein_closure": 0.57,
     "nutrient_closure": 0.62
    },
@@ -806,14 +806,14 @@
   },
   "S4": {
    "band_width": {
-    "water_closure": 0.3,
+    "water_closure": 0.28,
     "garden_water_satisfaction": 0.29,
     "food_kcal_closure": 0.05,
     "protein_closure": 0.083,
     "nutrient_closure": 0.09
    },
    "competent_position": {
-    "water_closure": 0.53,
+    "water_closure": 0.57,
     "garden_water_satisfaction": 0.86,
     "food_kcal_closure": 0.54,
     "protein_closure": 0.57,
@@ -830,14 +830,14 @@
   },
   "S5": {
    "band_width": {
-    "water_closure": 0.1,
+    "water_closure": 0.09,
     "garden_water_satisfaction": 0.08,
     "food_kcal_closure": 0.11,
     "protein_closure": 0.178,
     "nutrient_closure": 0.15
    },
    "competent_position": {
-    "water_closure": 0.6,
+    "water_closure": 0.67,
     "garden_water_satisfaction": 0.75,
     "food_kcal_closure": 0.5,
     "protein_closure": 0.52,
@@ -850,23 +850,23 @@
     "protein_closure": 0.169,
     "nutrient_closure": 0.22
    },
-   "peak_kwh_excellent": 3.47
+   "peak_kwh_excellent": 3.46
   }
  },
  "Kc 1.05": {
   "S1": {
    "band_width": {
-    "water_closure": 0.29,
-    "garden_water_satisfaction": 0.18,
-    "food_kcal_closure": 0.041,
-    "protein_closure": 0.066,
+    "water_closure": 0.27,
+    "garden_water_satisfaction": 0.17,
+    "food_kcal_closure": 0.04,
+    "protein_closure": 0.065,
     "nutrient_closure": 0.09
    },
    "competent_position": {
-    "water_closure": 0.55,
-    "garden_water_satisfaction": 0.78,
-    "food_kcal_closure": 0.51,
-    "protein_closure": 0.53,
+    "water_closure": 0.59,
+    "garden_water_satisfaction": 0.82,
+    "food_kcal_closure": 0.52,
+    "protein_closure": 0.54,
     "nutrient_closure": 0.56
    },
    "competent_raw": {
@@ -876,21 +876,21 @@
     "protein_closure": 0.05,
     "nutrient_closure": 0.09
    },
-   "peak_kwh_excellent": 3.3
+   "peak_kwh_excellent": 3.28
   },
   "S2": {
    "band_width": {
-    "water_closure": 0.19,
+    "water_closure": 0.18,
     "garden_water_satisfaction": 0.13,
     "food_kcal_closure": 0.025,
-    "protein_closure": 0.043,
+    "protein_closure": 0.042,
     "nutrient_closure": 0.06
    },
    "competent_position": {
-    "water_closure": 0.58,
+    "water_closure": 0.61,
     "garden_water_satisfaction": 0.77,
     "food_kcal_closure": 0.52,
-    "protein_closure": 0.56,
+    "protein_closure": 0.57,
     "nutrient_closure": 0.67
    },
    "competent_raw": {
@@ -900,21 +900,21 @@
     "protein_closure": 0.026,
     "nutrient_closure": 0.04
    },
-   "peak_kwh_excellent": 2.91
+   "peak_kwh_excellent": 2.9
   },
   "S3": {
    "band_width": {
-    "water_closure": 0.29,
-    "garden_water_satisfaction": 0.63,
+    "water_closure": 0.28,
+    "garden_water_satisfaction": 0.61,
     "food_kcal_closure": 0.048,
-    "protein_closure": 0.079,
+    "protein_closure": 0.078,
     "nutrient_closure": 0.07
    },
    "competent_position": {
-    "water_closure": 0.55,
-    "garden_water_satisfaction": 0.84,
+    "water_closure": 0.57,
+    "garden_water_satisfaction": 0.87,
     "food_kcal_closure": 0.54,
-    "protein_closure": 0.57,
+    "protein_closure": 0.58,
     "nutrient_closure": 0.71
    },
    "competent_raw": {
@@ -924,18 +924,18 @@
     "protein_closure": 0.062,
     "nutrient_closure": 0.08
    },
-   "peak_kwh_excellent": 2.82
+   "peak_kwh_excellent": 2.81
   },
   "S4": {
    "band_width": {
-    "water_closure": 0.31,
+    "water_closure": 0.29,
     "garden_water_satisfaction": 0.25,
     "food_kcal_closure": 0.046,
     "protein_closure": 0.076,
     "nutrient_closure": 0.08
    },
    "competent_position": {
-    "water_closure": 0.55,
+    "water_closure": 0.59,
     "garden_water_satisfaction": 0.84,
     "food_kcal_closure": 0.54,
     "protein_closure": 0.57,
@@ -955,7 +955,7 @@
     "water_closure": 0.09,
     "garden_water_satisfaction": 0.06,
     "food_kcal_closure": 0.101,
-    "protein_closure": 0.165,
+    "protein_closure": 0.164,
     "nutrient_closure": 0.14
    },
    "competent_position": {
@@ -978,17 +978,17 @@
  "FCR 1.5": {
   "S1": {
    "band_width": {
-    "water_closure": 0.29,
+    "water_closure": 0.27,
     "garden_water_satisfaction": 0.2,
-    "food_kcal_closure": 0.045,
-    "protein_closure": 0.075,
+    "food_kcal_closure": 0.044,
+    "protein_closure": 0.073,
     "nutrient_closure": 0.1
    },
    "competent_position": {
-    "water_closure": 0.55,
+    "water_closure": 0.59,
     "garden_water_satisfaction": 0.75,
-    "food_kcal_closure": 0.51,
-    "protein_closure": 0.53,
+    "food_kcal_closure": 0.52,
+    "protein_closure": 0.55,
     "nutrient_closure": 0.6
    },
    "competent_raw": {
@@ -998,21 +998,21 @@
     "protein_closure": 0.056,
     "nutrient_closure": 0.1
    },
-   "peak_kwh_excellent": 3.3
+   "peak_kwh_excellent": 3.28
   },
   "S2": {
    "band_width": {
-    "water_closure": 0.19,
+    "water_closure": 0.18,
     "garden_water_satisfaction": 0.15,
-    "food_kcal_closure": 0.027,
-    "protein_closure": 0.049,
+    "food_kcal_closure": 0.026,
+    "protein_closure": 0.048,
     "nutrient_closure": 0.05
    },
    "competent_position": {
-    "water_closure": 0.58,
+    "water_closure": 0.61,
     "garden_water_satisfaction": 0.73,
-    "food_kcal_closure": 0.52,
-    "protein_closure": 0.57,
+    "food_kcal_closure": 0.54,
+    "protein_closure": 0.58,
     "nutrient_closure": 0.6
    },
    "competent_raw": {
@@ -1022,20 +1022,20 @@
     "protein_closure": 0.03,
     "nutrient_closure": 0.04
    },
-   "peak_kwh_excellent": 2.91
+   "peak_kwh_excellent": 2.9
   },
   "S3": {
    "band_width": {
-    "water_closure": 0.28,
-    "garden_water_satisfaction": 0.66,
-    "food_kcal_closure": 0.049,
-    "protein_closure": 0.082,
+    "water_closure": 0.27,
+    "garden_water_satisfaction": 0.64,
+    "food_kcal_closure": 0.048,
+    "protein_closure": 0.081,
     "nutrient_closure": 0.07
    },
    "competent_position": {
-    "water_closure": 0.57,
-    "garden_water_satisfaction": 0.86,
-    "food_kcal_closure": 0.55,
+    "water_closure": 0.59,
+    "garden_water_satisfaction": 0.89,
+    "food_kcal_closure": 0.56,
     "protein_closure": 0.59,
     "nutrient_closure": 0.71
    },
@@ -1050,14 +1050,14 @@
   },
   "S4": {
    "band_width": {
-    "water_closure": 0.3,
+    "water_closure": 0.28,
     "garden_water_satisfaction": 0.27,
     "food_kcal_closure": 0.048,
     "protein_closure": 0.081,
     "nutrient_closure": 0.09
    },
    "competent_position": {
-    "water_closure": 0.57,
+    "water_closure": 0.61,
     "garden_water_satisfaction": 0.85,
     "food_kcal_closure": 0.54,
     "protein_closure": 0.58,
@@ -1100,17 +1100,17 @@
  "FCR 2.5": {
   "S1": {
    "band_width": {
-    "water_closure": 0.29,
+    "water_closure": 0.27,
     "garden_water_satisfaction": 0.2,
-    "food_kcal_closure": 0.045,
-    "protein_closure": 0.073,
+    "food_kcal_closure": 0.044,
+    "protein_closure": 0.071,
     "nutrient_closure": 0.1
    },
    "competent_position": {
-    "water_closure": 0.55,
+    "water_closure": 0.59,
     "garden_water_satisfaction": 0.75,
-    "food_kcal_closure": 0.51,
-    "protein_closure": 0.52,
+    "food_kcal_closure": 0.52,
+    "protein_closure": 0.54,
     "nutrient_closure": 0.6
    },
    "competent_raw": {
@@ -1120,20 +1120,20 @@
     "protein_closure": 0.054,
     "nutrient_closure": 0.1
    },
-   "peak_kwh_excellent": 3.3
+   "peak_kwh_excellent": 3.28
   },
   "S2": {
    "band_width": {
-    "water_closure": 0.19,
+    "water_closure": 0.18,
     "garden_water_satisfaction": 0.15,
-    "food_kcal_closure": 0.027,
+    "food_kcal_closure": 0.026,
     "protein_closure": 0.046,
     "nutrient_closure": 0.05
    },
    "competent_position": {
-    "water_closure": 0.58,
+    "water_closure": 0.61,
     "garden_water_satisfaction": 0.73,
-    "food_kcal_closure": 0.52,
+    "food_kcal_closure": 0.54,
     "protein_closure": 0.57,
     "nutrient_closure": 0.6
    },
@@ -1144,21 +1144,21 @@
     "protein_closure": 0.028,
     "nutrient_closure": 0.04
    },
-   "peak_kwh_excellent": 2.91
+   "peak_kwh_excellent": 2.9
   },
   "S3": {
    "band_width": {
-    "water_closure": 0.28,
-    "garden_water_satisfaction": 0.66,
-    "food_kcal_closure": 0.049,
-    "protein_closure": 0.08,
+    "water_closure": 0.27,
+    "garden_water_satisfaction": 0.64,
+    "food_kcal_closure": 0.048,
+    "protein_closure": 0.079,
     "nutrient_closure": 0.07
    },
    "competent_position": {
-    "water_closure": 0.57,
-    "garden_water_satisfaction": 0.86,
-    "food_kcal_closure": 0.55,
-    "protein_closure": 0.56,
+    "water_closure": 0.59,
+    "garden_water_satisfaction": 0.89,
+    "food_kcal_closure": 0.56,
+    "protein_closure": 0.57,
     "nutrient_closure": 0.71
    },
    "competent_raw": {
@@ -1172,14 +1172,14 @@
   },
   "S4": {
    "band_width": {
-    "water_closure": 0.3,
+    "water_closure": 0.28,
     "garden_water_satisfaction": 0.27,
     "food_kcal_closure": 0.048,
     "protein_closure": 0.079,
     "nutrient_closure": 0.09
    },
    "competent_position": {
-    "water_closure": 0.57,
+    "water_closure": 0.61,
     "garden_water_satisfaction": 0.85,
     "food_kcal_closure": 0.54,
     "protein_closure": 0.57,
@@ -1199,14 +1199,14 @@
     "water_closure": 0.1,
     "garden_water_satisfaction": 0.08,
     "food_kcal_closure": 0.106,
-    "protein_closure": 0.171,
+    "protein_closure": 0.17,
     "nutrient_closure": 0.14
    },
    "competent_position": {
     "water_closure": 0.6,
     "garden_water_satisfaction": 0.75,
     "food_kcal_closure": 0.5,
-    "protein_closure": 0.51,
+    "protein_closure": 0.52,
     "nutrient_closure": 0.57
    },
    "competent_raw": {
@@ -1222,17 +1222,17 @@
  "tank $200/kL": {
   "S1": {
    "band_width": {
-    "water_closure": 0.29,
+    "water_closure": 0.27,
     "garden_water_satisfaction": 0.2,
-    "food_kcal_closure": 0.045,
-    "protein_closure": 0.073,
+    "food_kcal_closure": 0.044,
+    "protein_closure": 0.072,
     "nutrient_closure": 0.1
    },
    "competent_position": {
-    "water_closure": 0.55,
+    "water_closure": 0.59,
     "garden_water_satisfaction": 0.75,
-    "food_kcal_closure": 0.51,
-    "protein_closure": 0.53,
+    "food_kcal_closure": 0.52,
+    "protein_closure": 0.54,
     "nutrient_closure": 0.6
    },
    "competent_raw": {
@@ -1242,20 +1242,20 @@
     "protein_closure": 0.055,
     "nutrient_closure": 0.1
    },
-   "peak_kwh_excellent": 3.3
+   "peak_kwh_excellent": 3.28
   },
   "S2": {
    "band_width": {
-    "water_closure": 0.19,
+    "water_closure": 0.18,
     "garden_water_satisfaction": 0.15,
-    "food_kcal_closure": 0.027,
+    "food_kcal_closure": 0.026,
     "protein_closure": 0.047,
     "nutrient_closure": 0.05
    },
    "competent_position": {
-    "water_closure": 0.58,
+    "water_closure": 0.61,
     "garden_water_satisfaction": 0.73,
-    "food_kcal_closure": 0.52,
+    "food_kcal_closure": 0.54,
     "protein_closure": 0.55,
     "nutrient_closure": 0.6
    },
@@ -1266,19 +1266,19 @@
     "protein_closure": 0.028,
     "nutrient_closure": 0.04
    },
-   "peak_kwh_excellent": 2.91
+   "peak_kwh_excellent": 2.9
   },
   "S3": {
    "band_width": {
-    "water_closure": 0.25,
-    "garden_water_satisfaction": 0.77,
+    "water_closure": 0.24,
+    "garden_water_satisfaction": 0.76,
     "food_kcal_closure": 0.049,
     "protein_closure": 0.081,
     "nutrient_closure": 0.07
    },
    "competent_position": {
-    "water_closure": 0.56,
-    "garden_water_satisfaction": 0.9,
+    "water_closure": 0.58,
+    "garden_water_satisfaction": 0.91,
     "food_kcal_closure": 0.57,
     "protein_closure": 0.58,
     "nutrient_closure": 0.71
@@ -1294,14 +1294,14 @@
   },
   "S4": {
    "band_width": {
-    "water_closure": 0.3,
+    "water_closure": 0.28,
     "garden_water_satisfaction": 0.27,
     "food_kcal_closure": 0.048,
     "protein_closure": 0.08,
     "nutrient_closure": 0.09
    },
    "competent_position": {
-    "water_closure": 0.57,
+    "water_closure": 0.61,
     "garden_water_satisfaction": 0.85,
     "food_kcal_closure": 0.54,
     "protein_closure": 0.56,
