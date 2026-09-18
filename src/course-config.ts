@@ -40,23 +40,44 @@ export const slopCourseMetaSchema = z
 
 // The single source of truth for the course record. The generated homepage,
 // navigation label and /api/index.json all read this object.
-// Replace every placeholder value, but keep the shape: the catalogue ingests
-// this API contract when the course is published.
 //
-// The code's last three digits were assigned to this repo when it was
-// provisioned, and no other course in the cohort has them. Change the first
-// digit to your course's level (and `level` to match); keep the other three.
-// STARTER_CONTENT: replace this course record, then remove this comment.
+// Dates: teaching runs 22 February to 28 May 2027 (twelve weeks, with a
+// two-week mid-semester break from 29 March). `endDate` runs to 18 June
+// because the capstone falls in the assessment period, and the course record's
+// range has to contain every dated thing the course owns. `src/lib/calendar.ts`
+// derives every week's dates from `startDate` so no page carries a typed date.
 export const courseMeta = slopCourseMetaSchema.parse({
-  code: "SLOP1761",
-  title: "Course Title Goes Here",
+  code: "SLOP4761",
+  title: "Designing the Closed-Loop Household I: Food, Water and Waste",
   session: "Semester 1",
   year: 2027,
-  level: 1,
+  level: 4,
   startDate: "2027-02-22",
-  endDate: "2027-05-28",
+  endDate: "2027-06-18",
   description:
-    "One concise paragraph explaining what this course is, who it is for, " +
-    "and why somebody would choose to spend a semester taking it.",
-  tags: ["replace me"],
+    "A household is not self-sufficient because it produces everything. It is " +
+    "self-sufficient when the output of one system is the input to another. Twelve " +
+    "weeks measuring how much of a food, water and waste loop one plot can honestly " +
+    "close, on a fixed budget and energy allowance.",
+  tags: ["closed-loop design", "water and sanitation", "food systems"],
 }) satisfies CourseMetaInput;
+
+/** The proposed sequel. Part I stops at the boundary of energy and shelter, and
+ *  several pages need to say so in the same words, so the reference lives here.
+ *  It is a proposal, not a catalogue entry: there is no page to link to. */
+export const sequel = {
+  code: "SLOP4762",
+  title: "Designing the Closed-Loop Household II: Energy and Shelter",
+  status: "proposed follow-on course",
+  adds: "energy physics and introductory thermodynamics to the prerequisites",
+} as const;
+
+/** The prerequisites, worded identically wherever they appear. */
+export const prerequisites = [
+  "Introductory microbiology",
+  "Soil science or plant biology",
+  "Introductory chemistry",
+  "An introductory environmental course",
+  "Engineering design principles",
+  "Some CAD and modelling experience",
+] as const;

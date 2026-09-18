@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8a5c13"/>
+    </marker>
+    <marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6b6154"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="630" fill="#fefcf9"/>
+  <rect x="0" y="0" width="1200" height="14" fill="#b97d1c"/>
+  <rect x="640" y="0" width="560" height="630" fill="#f7f1e6" opacity="0.55"/>
+
+  <text x="72" y="140" font-family="Georgia, serif" font-size="30" fill="#8a5c13" letter-spacing="3">SLOP4761</text>
+  <text x="72" y="216" font-family="Georgia, serif" font-size="52" fill="#2e2822">Designing the</text>
+  <text x="72" y="278" font-family="Georgia, serif" font-size="52" fill="#2e2822">Closed-Loop Household I</text>
+  <text x="72" y="336" font-family="Georgia, serif" font-size="34" fill="#b97d1c">Food, Water and Waste</text>
+
+  <line x1="72" y1="382" x2="536" y2="382" stroke="#b97d1c" stroke-width="3"/>
+  <text x="72" y="432" font-family="Georgia, serif" font-size="25" fill="#2e2822">One plot. $30,000. 5 kWh a day.</text>
+  <text x="72" y="474" font-family="Georgia, serif" font-size="25" fill="#6b6154">How much of the loop closes,</text>
+  <text x="72" y="510" font-family="Georgia, serif" font-size="25" fill="#6b6154">honestly counted?</text>
+  <text x="72" y="566" font-family="Georgia, serif" font-size="20" fill="#6b6154">Slop University &#183; Semester 1, 2027</text>
+
+  <g>
+    <path d="M 905.0 155.0 Q 981.0 240.7 1100.0 275.9"
+      fill="none" stroke="#b97d1c" stroke-width="7" stroke-linecap="round"
+      marker-end="url(#a)" opacity="0.92"/>
+    <path d="M 1100.0 275.9 Q 1028.0 364.1 1025.5 471.6"
+      fill="none" stroke="#8a5c13" stroke-width="7" stroke-linecap="round"
+      marker-end="url(#a)" opacity="0.92"/>
+    <path d="M 1025.5 471.6 Q 905.0 440.4 784.5 471.6"
+      fill="none" stroke="#b97d1c" stroke-width="7" stroke-linecap="round"
+      marker-end="url(#a)" opacity="0.92"/>
+    <path d="M 784.5 471.6 Q 782.0 364.1 710.0 275.9"
+      fill="none" stroke="#8a5c13" stroke-width="7" stroke-linecap="round"
+      marker-end="url(#a)" opacity="0.92"/>
+    <path d="M 710.0 275.9 Q 829.0 240.7 905.0 155.0"
+      fill="none" stroke="#b97d1c" stroke-width="7" stroke-linecap="round"
+      marker-end="url(#a)" opacity="0.92"/>
+    <g>
+      <path d="M 945 539 l 92 46" stroke="#6b6154" stroke-width="6"
+        stroke-dasharray="11 9" stroke-linecap="round" marker-end="url(#g)"/>
+      <text x="1051" y="601" text-anchor="middle" font-family="Georgia, serif"
+        font-size="19" fill="#6b6154">imports</text>
+    </g>
+    <g><circle cx="905.0" cy="155.0" r="46" fill="#fefcf9" stroke="#b97d1c" stroke-width="4"/>
+      <text x="905.0" y="161.0" text-anchor="middle"
+        font-family="Georgia, serif" font-size="20" fill="#2e2822">Garden</text></g>
+    <g><circle cx="1100.0" cy="275.9" r="46" fill="#fefcf9" stroke="#b97d1c" stroke-width="4"/>
+      <text x="1100.0" y="281.9" text-anchor="middle"
+        font-family="Georgia, serif" font-size="20" fill="#2e2822">Kitchen</text></g>
+    <g><circle cx="1025.5" cy="471.6" r="46" fill="#fefcf9" stroke="#b97d1c" stroke-width="4"/>
+      <text x="1025.5" y="477.6" text-anchor="middle"
+        font-family="Georgia, serif" font-size="20" fill="#2e2822">Waste</text></g>
+    <g><circle cx="784.5" cy="471.6" r="46" fill="#fefcf9" stroke="#b97d1c" stroke-width="4"/>
+      <text x="784.5" y="477.6" text-anchor="middle"
+        font-family="Georgia, serif" font-size="20" fill="#2e2822">Nutrients</text></g>
+    <g><circle cx="710.0" cy="275.9" r="46" fill="#fefcf9" stroke="#b97d1c" stroke-width="4"/>
+      <text x="710.0" y="281.9" text-anchor="middle"
+        font-family="Georgia, serif" font-size="20" fill="#2e2822">Water</text></g>
+  </g>
+</svg>
