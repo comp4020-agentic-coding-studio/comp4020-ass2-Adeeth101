@@ -1,351 +1,306 @@
-# Course design: decided (v4)
+# Course design: decided (v5, second draft)
 
-Planning design for SLOP4761, with every decision the student made on 2026-09-17 applied. It rests on four critique iterations (`critique-log.md`), `findings.md` and `sources.md`. Nothing has been sent to the builder agent yet.
+The contract for SLOP4761 after the review of the first draft. It supersedes v4 wherever
+the two conflict; §0 lists every first-draft requirement this revision changes. The
+evidence base (`findings.md`, `sources.md`, `verification-log.md`, `critique-log.md`)
+still stands except where noted, and the screening model behind the first draft is kept
+for the diagnostic reference bands.
+
+## 0. What the second draft changes
+
+| First-draft requirement (v4) | Second draft (v5) | Why |
+|---|---|---|
+| Students design a closed-loop household on a preset site; the deliverable is a site master plan | Students are graduate engineering consultants. A1 designs a year-long **measurement programme**; A2 turns a supplied specialist dossier into a **high-level investment proposal** for a homeowner's loan application | An engineering optimisation course told through one consultancy case, with measurement before design |
+| Five preset sites, **or a custom site** approved by week 3 | **Five fixed existing homes only.** Custom sites are removed everywhere | Equal dossier completeness and marking comparability; no land substitution |
+| Excellent reference design added +5 % roof catchment | **No new catchment.** A design may connect more of the roof that already exists (recipe v6) | Fixed existing properties |
+| Assessment leaned on closure indicators and reference bands | Lowest-cost option that meets the **client's priority service targets**, then a justified case for any extra spending. Bands kept as **diagnostics only** | A constrained, multi-objective decision; no single score captures client values |
+| "Everyone needs 372 m² to grow a near-complete diet"; "the largest site has 500 m²" | Removed. Ecology Action's figures are taught in week 9 with their diet, yield, soil and skill assumptions, and the document's own two estimates (V11). 500 m² is the largest designated growing area; the largest whole plot is 2 ha | Method-specific estimates are not a universal minimum |
+| Week order by subsystem (perennials, mycology, insects, …); lead sites Canberra 2/11, Brisbane 3/8, Darwin 4/9, Adelaide 5/6, Alice Springs 7/10 | Measurement weeks 1–6, specialist handover week 7, design weeks 8–12; lead sites Canberra 2/7, Alice Springs 3/8, Brisbane 4/9, Adelaide 5/10, Darwin 6/11 (§7) | A1 needs measurement method before week 7; biological detail is revisited in week 9 |
+| A1 "Food Loop Design"; capstone "Site-Specific Off-Grid Master Plan"; one shared rubric | A1 "Year-long Measurement Programme"; A2 "Household Resilience Investment Proposal"; separate rubrics (§8) | The deliverables changed |
+| Prerequisites led with microbiology, soil science and chemistry | Engineering design, mass and energy balances, introductory statistics and measurement, spreadsheet modelling, basic CAD; environmental or biological study helpful | The course teaches the biology it needs |
+| Two decks | Twelve decks, one per lecture, 8–12 teaching slides each | Every lecture needs its slides |
+| One worked cross-site comparison of storage spend on the reference design | A worked optimisation on the **Wattle Street practice house** with invented round-number data | Worked examples must not solve an assessed home |
+| Site cards and a parameter table | Per-home **Release A** intake dossier with scaled plans and **Release B** specialist findings with CSVs and a data dictionary | Consultancy narrative; A2 independent of A1 quality |
+
+Everything not listed keeps its v4 decision: the identity, the household convention, the
+safety and compliance table (§6.3), the energy boundary, the price schedule's original lines,
+the five climates and the preset plot, growing and roof parameters (within the §4 rounding
+tolerance), quiz weeks, and no oral assessment.
 
 ## 1. Identity
 
 | Item | Decision |
 |---|---|
-| Code | **SLOP4761** (the repo fixed the last three digits; level 4) |
-| Title | **Designing the Closed-Loop Household I: Food, Water and Waste** |
-| Level | 4xxx undergraduate, engineering |
-| Prerequisites | Introductory microbiology; soil science or plant biology; introductory chemistry; an introductory environmental course; engineering design principles; some CAD and modelling experience |
-| Follow-on course | **SLOP4762 — Designing the Closed-Loop Household II: Energy and Shelter** (adds energy physics and introductory thermodynamics as prerequisites) |
-| Sequel mentions | Home page, prerequisites, week 1 (out of scope), week 12 (bridge) |
-| Tone | Sincere engineering course |
+| Code and title | **SLOP4761 — Designing the Closed-Loop Household I: Food, Water and Waste**, level 4 |
+| Follow-on | **SLOP4762 — Designing the Closed-Loop Household II: Energy and Shelter**, a proposed follow-on course, never linked |
+| Prerequisites | Prior engineering design; mass and energy balances; introductory statistics and measurement; spreadsheet modelling; basic CAD. Prior environmental or biological study is helpful; the course teaches the biology it uses |
+| Tone | A sincere engineering course. Fiction is labelled once, on its introductory pages, not on every paragraph |
 
-**Argument (working wording):** *A household isn't self-sufficient because it produces everything. It's self-sufficient when every output of one system is the input to another, within a fixed plot, budget and energy allowance.*
+## 2. The consultancy case (teaching fiction)
 
-On a real plot, full food self-sufficiency is out of reach (~372 m² per adult [S14]). The course therefore measures **how much of the loop you close, honestly counted**.
+- **Household Resilience Loan Programme**: a fictional government programme that lends to
+  homeowners for self-sufficiency retrofits. Applicants need a credible engineering
+  proposal. No real policy, lender, endorsement or link is invented.
+- **Common Ground Engineering**: the fictional consultancy. Students are graduate engineers
+  working under a senior reviewer (the teaching staff in role).
+- **Programme rules used as course rules**: implementation cost at most **$30,000**
+  including a 10 % contingency; **5 kWh/day** peak-month process energy; a separate common
+  **$1,500 measurement allowance** for equipment and services, with consultant labour
+  scheduled in hours and not charged. Borrowing more raises the application's exposure
+  within this fictional scheme and needs a stronger alternatives case; the course does not
+  teach that principal alone determines real credit risk. No income underwriting, interest
+  rate, credit score or financial advice.
+- **The deliverable is not a loan approval or a construction-certified design.** A2 is the
+  technical annex and executive recommendation for an application.
+- **Narrative**: client intake (week 1) → measurement proposal (weeks 2–6, A1 due week 7)
+  → a jump of twelve fictional months → specialist handover (week 7) → engineering proposal
+  (weeks 8–12, A2 in the exam period). Students do not collect real data.
 
-## 2. Fixed for every student
+## 3. Fixed household and reference data
 
-| Item | Value | Status |
+Unchanged from v4: two adults and two children aged 9 to 13; 40.0 MJ/day food energy
+[S03]; 185 g/day protein [S04]; 150 L/person/day domestic water as a course assumption
+at the midpoint of enHealth's 100–200 L range (V1); 13.6 kg N/year excreted [S05].
+
+New in v5, all course assumptions published on the method page:
+
+- **End-use split** of 150 L/person/day: toilet 22, showers and basins 55, laundry 28,
+  kitchen and drinking 30, other 15. It reproduces Beal and Stewart's toilet figure and a
+  bathroom-plus-laundry greywater share of 0.55 [S26][S09]. Kitchen water is never greywater
+  (course design rule, V3).
+- **Irrigation**: gross need = area × max(0, Kc·ETo − Pe) ÷ application efficiency; drip
+  0.90, sprinkler 0.75 [S12a]. No irrigation is scheduled in a month with mean temperature
+  below 10 °C.
+- **Crop mixes** for added area: leafy (350 kcal/m²/yr at a full season), mixed vegetables
+  (900), staples and perennials (1,500), inside the measured Australian home-garden range
+  [S13][S52]; each carries a protein density, Kc, perennial share and labour rate.
+- **Modules**: compost bays, composting toilet with urine diversion, insect unit, mushroom
+  chamber, aquaponics, digester. Each has capital from the schedule, steady and upper
+  energy, heating below a temperature, hours a year, attendance interval, whether it can be
+  paused for an absence, and consumables.
+- **Pumping** 1.5 kWh/kL for pressure supply and 0.7 kWh/kL at garden flows [S21]; bore
+  0.8 and greywater 0.3 kWh/kL (course assumptions); electricity $0.33/kWh.
+
+## 4. The five fixed homes
+
+| Home | Client (fictional) | Climate station | Plot | Designated growing area | Roof plan area | Existing storage |
+|---|---|---|---|---|---|---|
+| Canberra | Taylor | 070014 | 800 m² | 443 m² (preset 450) | 296 m² (preset 300) | 5 kL |
+| Alice Springs | Nguyen | 015590 | 2 ha parcel, 50 × 40 m working area | 408 m² (400) | 351 m² (350) | 22 kL + 100 kL/yr bore |
+| Brisbane | Patel | 040214 | 300 m² lot + 40 m² common-property allocation | 88 m² (90) + 40 m² | 168 m² (170) | 3 kL |
+| Adelaide | Rossi | 023000 | 700 m² | 261 m² (250) | 229 m² (230) | 5 kL |
+| Darwin | Williams | 014015 | 1 ha parcel, 60 × 40 m working area | 506 m² (500) | 305 m² (300) | 45 kL |
+
+**Geometry is computed, never typed.** `model/case.py` holds every plan as rectangles and
+circles in metres. Footprint, roof plan area (footprint plus eaves, plus roofs over
+hardstand), roof zones and growing areas are derived from it and must reproduce the preset
+within the larger of 15 m² or 4 %. The model's self-check also fails on overlapping
+cover, anything outside a boundary, a roof zone off a roof, a tank on a building, a rural
+working area outside its parcel, or rooms that do not tile the floor plan. Footprint, roof
+plan area and roof surface area are taught as three different quantities.
+
+**Brisbane's shared garden** is 40 m² of common property outside the 300 m² lot, held as a
+revocable exclusive-use allocation. It is shown on a separate scheme plan and never added to
+the lot.
+
+**Canberra's growing envelope** includes the back lawn; the client keeps at least 100 m² of
+it as lawn, so at most 343 m² may be cultivated. At the other homes retained recreation lies
+outside the envelope.
+
+### 4.1 Release A: homeowner intake (week 1)
+
+Whole-plot plan (and, for rural homes, the whole parcel plus the enlarged working area);
+floor plan locating wet areas and services; boundary dimensions and area; north arrow,
+scale bar and legend; footprints; roof zones and downpipes; hardstand; access; growing
+zones; retained recreation; trees and shade; spot levels; existing tanks, bore and
+services; easements and ownership boundaries; equipment inventory; bills; homeowner
+observations; priorities; case constraints (maintenance availability, permitted uses,
+installation zones, acceptable disruption); and unknowns to be measured. Every dossier fact
+is tagged **known**, **estimate** or **unknown**; service routes and ground conditions that
+nobody has verified are marked unknown rather than drawn with survey certainty.
+
+### 4.2 Release B: specialist findings (week 7)
+
+A memo dated 14 April 2028 covering April 2027 to March 2028: twelve-month tables, seasonal
+profiles, critical flow events and fixture flows, level survey for pump head, water
+quality, soil and sun by growing zone with a relative productivity, a food-waste audit,
+existing pump energy, recurring costs and maintenance observed, missing-data notes,
+implications and remaining questions. Specialists analyse; they do not choose the system.
+Downloadable CSVs carry units and a shared data dictionary.
+
+The measured year is **synthetic**, generated by running each home's existing condition
+through the scenario model on a seeded perturbed year (`model/release_b.py`), so tables,
+tank levels, bills and memo agree. It is distinguished everywhere from sourced BoM long-term
+climate and from the separate synthetic dry year. One observed year says nothing about
+drought reliability. Every student choosing a home receives the same Release B, whatever
+their A1 said; A2 asks for a short reconciliation of what their own plan would have missed.
+
+## 5. The design problem
+
+### 5.1 Decision variables (seven, discrete, bounded by what exists)
+
+| Variable | Range | Bound |
 |---|---|---|
-| Household | 2 adults + 2 children (9–13 y) | course rule |
-| Food demand | 40.0 MJ/d; protein 185 g/d | sourced [S03][S04] |
-| Reference domestic water | 150 L/person/day (219 kL/yr). Reductions count only if evidenced | **verify before publishing** [S06] |
-| Excreted N | 13.6 kg N/yr | sourced [S05]; children as 0.5 adult is a course assumption |
-| Energy allowance | **5 kWh/day, peak month, counted loads only (§2.1)** | course rule |
-| Budget | **$30,000 course costing allowance** for new spend, priced only from the course price schedule (§2.2). Listed existing inventory is free | course rule |
-| Biogas and other energy outputs | Recorded, not credited in part 1; only digestate nutrients count | course rule |
+| New storage | per-home steps, e.g. Canberra 0–20 kL, Darwin 0–112.5 kL, Brisbane 0–4 kL slimline | the client's installation zones |
+| Connected roof zones | subsets of the existing guttered zones | existing roof only |
+| Cultivated area beyond the existing plantings | 0 to the cultivable maximum, in quarter steps | growing envelope minus retained areas; Brisbane adds the allocation |
+| Crop mix | leafy, mixed, staples and perennials | — |
+| Water strategy | garden only; garden and permitted indoor uses; either with greywater diversion | the client's permitted uses; subsurface, same-day greywater (course rule) |
+| Biological and sanitation modules | any subset of six | attendance, absence and energy limits |
+| Operating schedule | year-round; rest added crops in the three peak-deficit months; garden-first in peak months | garden-first only where mains water exists |
 
-### 2.1 Energy: what counts
+### 5.2 Client priority service targets
 
-**Counted:** all electricity or fuel used to run the food, water and waste loop.
+Each home carries four targets, set from the model rather than as aspirations
+(`model/scenario.py`, `TARGETS`). For every home the existing condition fails at least
+one, and a staff check over the whole decision space found feasible options:
 
-| Group | Loads |
-|---|---|
-| Water movement | Domestic pressure pumps, transfer pumps, irrigation pumps, greywater pumps |
-| Water treatment | UV lamps, dosing pumps, any powered filtration |
-| Aquaponics | Circulation pumps, aeration |
-| Climate control of biological systems | Heating or cooling of fish tanks, insect units, mushroom chambers and fermentation spaces; humidifiers; fans |
-| Sanitation | Composting-toilet fans and heaters, urine-system pumps |
-| Waste processing | Digester heating or mixing, powered compost aeration |
-| Food preservation beyond the household kitchen | Dehydrators, dedicated fermentation or cold storage for loop produce |
-
-**Not counted** (they belong to SLOP4762): general household appliances, the household fridge and cooking, lighting, space heating or cooling of living areas, water heating for bathing and laundry.
-
-**Required of students:**
-- Report the peak-month average daily load, with the month named.
-- List every counted load with its power, duty cycle and source.
-- **List uncertain or omitted loads explicitly**, each with an estimated range.
-- Take the upper end of any uncertain load when checking the 5 kWh/d limit.
-
-### 2.2 Budget: the course price schedule
-
-$30,000 is a **course costing allowance, not a market quotation**. Assessment uses the published schedule below, whatever real prices are, because the screening model simplifies or omits some establishment, installation and treatment costs.
-
-The schedule is labelled honestly:
-- **Indicative** = based on a retail listing [S31–S34]
-- **Course assumption** = set by the course for assessment consistency
-
-Figures must be checked before publishing; see §7.
-
-| Component | Course price | Basis |
-|---|---|---|
-| Polyethylene rainwater storage (supply) | $130 per kL | indicative [S31] |
-| Tank establishment: pad, inlet/outlet plumbing, overflow | $1,000 per tank | course assumption |
-| First-flush diverter + leaf screen | $150 per downpipe | course assumption |
-| Pressure or transfer pump | $700 each | course assumption |
-| Point-of-entry UV unit with sensor | $1,200 | course assumption |
-| Cartridge pre-filtration train | $400 | course assumption |
-| Additional roof catchment (skillion shed roof) | $60 per m² | course assumption |
-| Composting toilet (unit) | $3,500 each | indicative [S32] |
-| Urine diversion and storage tank | $900 | course assumption |
-| Greywater diversion, bathroom + laundry, installed | $2,100 | indicative [S33] |
-| Greywater treatment system | $6,000 | indicative [S33] |
-| Aquaponics: tank, 4 m² grow bed, pump, aeration | $2,500 per 4 m² bed | indicative [S34] |
-| Insect rearing unit (black soldier fly or mealworm) | $300 | course assumption |
-| Humidified mushroom fruiting chamber | $800 | course assumption |
-| Hot-compost bays (set of 3) | $500 | course assumption |
-| Household anaerobic digester | $1,500 | course assumption |
-| Fruit or nut tree (potted) | $50 each | course assumption |
-| Drip irrigation | $8 per m² irrigated | course assumption |
-| Contingency | 10 % of subtotal, required | course rule |
-
-**Bill-of-materials rules** (course assumptions, published with the schedule, applied in `model/reference_costs.py`):
-- New storage arrives in tanks of at most 25 kL, so the per-tank establishment charge scales with tank count.
-- One first-flush diverter and leaf screen per 75 m² of connected roof.
-- Two pumps: one for domestic supply, one to move tank water to the garden. Both are counted loads under §2.1.
-- The aquaponics line bundles tank, pump and aeration, so a second 4 m² bed on the same system costs $1,800 — the bundle price less one pump line. This is the rule that stops a pump being paid for twice.
-- Drip irrigation covers the whole production area, because the model irrigates the whole production area.
-
-**Priced but not drawn in the reference designs** (no recipe parameter or counted load implies them; a student who chooses them pays from the same allowance): greywater treatment, anaerobic digester, mushroom fruiting chamber, fruit and nut trees.
-
-**Not priced by the schedule at all**, published so the allowance is not read as a quotation: garden establishment (soil, mulch, seed and stock); aquaculture tank heating hardware; labour beyond the lines marked installed; earthworks and access beyond the per-tank establishment line; council approval, plumbing certification and WaterMark device fitting; consumables and replacement (UV lamps, filter cartridges, imported fish feed, desludging).
-
-## 3. The five preset sites
-
-| ID | Site | Climate station | Dwelling | Plot | Growable | Roof | Existing inventory |
-|---|---|---|---|---|---|---|---|
-| S1 | Cool-temperate inland suburban | Canberra 070014 | house + garage + carport | 800 m² | 450 m² | 300 m² | 5 kL tank |
-| S2 | Hot-arid rural-residential | Alice Springs 015590 | house + machinery shed | 2 ha | 400 m² | 350 m² | 22 kL tank; bore capped at 100 kL/yr |
-| S3 | Humid subtropical townhouse | Brisbane 040214 | townhouse | 300 m² | 90 m² + 40 m² strata garden | 170 m² | 3 kL tank |
-| S4 | Mediterranean suburban | Adelaide 023000 | detached house | 700 m² | 250 m² | 230 m² | 5 kL tank |
-| S5 | Tropical wet-dry rural-residential | Darwin 014015 | elevated house + shed | 1 ha | 500 m² | 300 m² | 45 kL tank |
-
-**Decided:**
-- Darwin replaces the cold-upland site.
-- The townhouse is in Brisbane.
-- Adelaide is the Mediterranean suburban site.
-
-**Site cards** must carry the written strengths and constraints, **including those the model cannot score**:
-
-- **S1 Canberra.**
-  - *Strengths:* **the most even rainfall of the five (28 % falls in the driest 4 months, vs 1.4 % in Darwin)**; **high chill for temperate fruit and nuts**; fewest heat days.
-  - *Constraints:* 92 frost days; shortest season; fish and insects active ~7 months without heat (~0.5 kWh/d winter tank heating); excreta storage 1.5–2 years.
-- **S2 Alice Springs.**
-  - *Strengths:* heat for composting and drying; a capped bore; year-round mushroom options in a humid chamber.
-  - *Constraints:* P/ETo 0.16; 1,650 mm/yr irrigation need; 90 days ≥35 °C; hardest food and nutrient closure of the set.
-- **S3 Brisbane townhouse.**
-  - *Strengths:* year-round growing; highest rain-fed yield; mild temperatures for fish and insects.
-  - *Constraints:* **restricted space (130 m² total growing area incl. the shared strata garden)**; **density and strata constraints** (neighbour amenity, odour, shared-property rules); can absorb only ~11 % of household N on site; high-rainfall turbidity and first-flush load.
-- **S4 Adelaide.**
-  - *Strengths:* mild climate; lowest process energy; suits preserving; trout and Murray cod rotation covers 12 months.
-  - *Constraints:* winter rain against summer demand (lowest water closure of the set); 17 % of rain in the driest 4 months.
-- **S5 Darwin.**
-  - *Strengths:* highest food, protein and nutrient potential; barramundi and insects all year.
-  - *Constraints:* 1.4 % of rain in the driest 4 months, so dry-season imports even with 91 kL storage while 200+ kL overflows in the wet; highest pumping energy.
-
-**Custom sites.** Approval by week 3. Requirements:
-- the same parameter sheet, a named BoM station, and a source for every value;
-- values inside the preset envelope (growable 90–500 m², roof 170–350 m², bore ≤100 kL/yr, existing storage ≤45 kL), or a justification for each exception;
-- staff compute the site's bands with the published method.
-
-## 4. Indicators and scoring
-
-### 4.1 Indicators
-
-All are capped at 100 %, counted as used rather than produced, and net of imports [S47].
-
-| Indicator | Definition | How assessed |
-|---|---|---|
-| Water closure | On-site water used (roof, capped bore, reused greywater) ÷ all water used, including carted or imported water | Banded |
-| **Garden water satisfaction** (always shown beside water closure) | Share of the garden's irrigation deficit actually met | Banded, and always reported with water closure: a design can reach high water closure by leaving its garden under-watered |
-| Food energy closure | kcal produced *and eaten* ÷ 40 MJ/d requirement | Banded |
-| Protein closure | Protein produced ÷ 185 g/d; animal products count only in proportion to feed grown on site | Banded |
-| Nutrient closure | N safely recovered *and* applied within crop uptake (~12 g N/m²/yr) ÷ 13.6 kg N/yr | Banded |
-| Waste-stream recovery | % of food-waste dry matter, greywater volume and excreta N routed to a productive use | **Not banded.** The model has no reference calculation for it. Assessed from the submitted mass balances against the rubric, unless a separate reference calculation is added later |
-
-**Supporting evidence** (reported, not banded): storage size, overflow and import months, insect share of fish feed.
-
-### 4.2 Hard constraints (pass/fail)
-
-- **Energy:** peak-month counted process energy ≤5 kWh/d (§2.1), with uncertain loads at their upper estimate.
-- **Budget:** new spend ≤$30,000 from the course price schedule (§2.2), including the 10 % contingency.
-- **Safety and compliance.** Rewritten 2026-09-18 after verification (`verification-log.md`).
-  Every row below is a **course design rule**. Several are stricter than the law at some or
-  all of the five sites, and the site says so rather than presenting a rule as a requirement.
-  A design must also state the approval pathway in **its own** jurisdiction.
-
-  | Course design rule | What the law actually is | Where |
-  |---|---|---|
-  | Greywater: subsurface at ≥100 mm, no storage, no kitchen water | This is **NSW** law, and none of the five sites is in NSW. QLD permits surface irrigation and includes kitchen water in the definition; the ACT has no greywater-specific regulation at all; NT and SA mandate subsurface but allow 24 hours' holding | V3 [S10][S10a]–[S10d] |
-  | Dry excreta stored 1.5–2 years below 20 °C, over 1 year above; urine 1 month for processed crops, 6 months for all crops | WHO figures confirmed exactly. But WHO also says that for "individual one family system … no storage is needed", so the course is deliberately conservative | V7 [S09] |
-  | Hot compost reaches ≥55 °C for 3 days after each of 3 turns, or 15 days after each of 5 turns for food and manure feedstocks | A **commercial windrow** standard (AS 4454, read via SA EPA). No household anywhere is bound by it. The course uses it as the performance target a bay is designed against | V6 [S35] |
-  | Fermentation follows **one named, cited recipe with its own conditions** | NCHFP sauerkraut: ≈2.25 % salt, 21–24 °C, 3–4 weeks, **no pH figure stated**. pH 4.6 is the *C. botulinum* boundary for sealed shelf-stable product, not a general guarantee, and does not transfer to other vegetables. No Australian home-fermentation standard exists | V8 [S36][S36a][S36b] |
-  | Insect substrates are plant-based; larvae are heat-treated before feeding; meat, dairy and fish sludge go to compost or a digester | Restricted-animal-material and swill law binds **pigs and ruminants**, not a household's own fish. No Australian regulator publishes the insect-feed rule the draft cited | V5 [S29][S29a] |
-  | Drinking-water treatment claims are stated as log reductions by pathogen class | WHO's household water treatment scheme is a performance framework, not an Australian requirement. Australian retailers cite **WaterMark**, not NSF/ANSI 55 Class A | V9 [S40] |
-  | Fish: a legal species, kept under the approval its own jurisdiction requires | Tilapia is restricted noxious matter; the keeping offence is **500 penalty units** under s 45 *Biosecurity Act 2014* (Qld), about $86,350, **not the $220,000 the draft carried**. **Silver perch and Murray cod need an ACT licence** (special protection status under the *Nature Conservation Act 2014*), and every live fish entering the ACT needs one under s 76 *Fisheries Act 2000*. QLD, SA and NT define aquaculture around sale, so a household system needs no aquaculture licence there | V10 [S18]–[S20] |
-
-  **The screening model is blind to all of this.** It picks each site's fish rotation on
-  temperature alone, and at Canberra it returns Murray cod — the one species an ACT household
-  may not keep without a licence. Removing the two special-protection species leaves *jade
-  perch + rainbow trout*, six months instead of seven, and **the Canberra bands do not move**:
-  counted fish protein stays at 0.27 kg/year because it is limited by the on-site larvae
-  supply, not by the thermal window. Week 5 teaches exactly that.
-
-### 4.3 Climate-normalised reference bands inspired by NatHERS
-
-**What they are.** The idea comes from NatHERS's climate-specific star bands [S30], but this is **not the NatHERS method**. NatHERS derives its bands from a population of housing simulations. These bands come from **three constructed reference designs** (baseline, competent, excellent) run through the course's screening model for each site.
-
-**Published on the course site:**
-- the three reference designs (one recipe for all sites)
-- their assumptions
-- each site's thresholds
-
-**Bands:**
-
-| Band | Meaning |
-|---|---|
-| 1 | Below baseline |
-| 2 | Baseline to competent |
-| 3 | Competent to excellent |
-| 4 | At or beyond excellent |
-
-**Bands are performance evidence inside the rubric, not an automatic grade.** Reasoning, justification and honest uncertainty carry more weight than where a number lands.
-
-**Why not equalise the sites instead?** Realistic site parameters cannot make these climates equally hard. In a constrained search, the best realistic spread was still 1.35 SD (C15).
-
-**What the sensitivity test does and doesn't show (C16, C29):** across 11 tested perturbations, the constructed reference designs keep broadly similar relative positions inside their sites' bands. Worst-case spread by indicator: food energy 0.07, protein 0.06, nutrient 0.17, water closure 0.24, **garden water satisfaction 0.38**. The two largest arise under the same perturbation, domestic demand at 120 L/person/day; excluding it, no indicator spreads by more than 0.17. Garden water satisfaction is the least stable of the five and was only brought inside the test on 2026-09-18, so earlier stability claims did not cover it. The test does **not** independently prove equal grading outcomes for real student designs.
-
-**Recompute rule:** the bands must be recomputed and republished whenever any course constant changes. That includes household demand, allowances, the price schedule, yield or other model coefficients, and the reference-design recipe.
-
-**Thresholds** (v4 presets; baseline / competent / excellent; from `model/output/band-thresholds.md`):
-
-| Indicator | S1 Canberra | S2 Alice Springs | S3 Brisbane townhouse | S4 Adelaide | S5 Darwin |
+| Home | Targets (short form) | Feasible options | Cheapest feasible capital | Budget margin | Energy margin |
 |---|---|---|---|---|---|
-| Water closure | 65 / 81 / 94 % | 78 / 89 / 97 % | 68 / 84 / 96 % | 42 / 59 / 72 % | 73 / 79 / 83 % |
-| Garden water satisfaction | 0 / 15 / 20 % | 1 / 12 / 16 % | 15 / 72 / 81 % | 0 / 23 / 27 % | 23 / 29 / 31 % |
-| Food energy closure | 1.0 / 3.3 / 5.5 % | 0.2 / 1.6 / 2.9 % | 1.2 / 3.9 / 6.1 % | 1.1 / 3.7 / 5.9 % | 4.8 / 10 / 15 % |
-| Protein closure | 1.6 / 5.5 / 8.9 % | 0.2 / 2.8 / 4.9 % | 1.8 / 6.4 / 9.9 % | 1.6 / 6.1 / 9.6 % | 7.4 / 16 / 25 % |
-| Nutrient closure | 4 / 10 / 14 % | 1 / 4 / 6 % | 3 / 8 / 10 % | 3 / 9 / 12 % | 13 / 21 / 27 % |
+| Canberra | beds and trees fully watered on-site every month; toilet and laundry ≥90 % rainwater in winter; frost-proof; ≤2 h a week, nothing more often than weekly | 360 | $7,216 | $22,784 | 4.59 kWh/d |
+| Alice Springs | carting ≤40 kL/yr; bore within allocation and draw rule; priority plantings ≥45 % of need on-site; locally serviceable | 352 | $9,515 | $20,485 | 3.75 kWh/d |
+| Brisbane | toilet ≥70 % rainwater; ≥120 kg produce with the allocation; existing beds fully watered ≥9 months; quiet, 600 mm path, courtyard kept | 1,909 | $4,389 | $25,611 | 4.81 kWh/d |
+| Adelaide | beds and trees ≥90 % on-site across December–February; new running cost ≤$250/yr; producing ≥10 months | 342 | $4,290 | $25,710 | 4.86 kWh/d |
+| Darwin | carting ≤20 kL/yr; unattended through the July absence; overflow to a nominated point; main garden ≥60 % of dry-season need | 232 | $17,133 | $12,867 | 3.97 kWh/d |
 
-**Ceiling:** no excellent value reaches 100 % under recipe v5, so band 4 is open at every site.
+The site publishes the targets and a rounded-down margin, not the configuration. In the
+synthetic dry year every cheapest option misses at least one target, which is exactly where a
+student must argue whether extra resilience is worth its cost. Students may explain target
+conflicts or propose a phased approach. Nothing rewards spending the allowance.
 
-**Rounding:** bands are evaluated against the model's unrounded reference values. The percentages above are a rounded display of those values, not the thresholds themselves.
+### 5.3 What students evaluate
 
-**Reference-design recipe** (same at every site):
+The existing-condition baseline plus three feasible alternatives — minimum intervention,
+balanced and higher resilience — in a small reproducible spreadsheet grid, with dominated
+options identified. Required calculations: monthly supply, demand and storage balance;
+critical service flow in L/min and a justified pump head; capacities and duty cycles; useful
+food and protein with stated limits; nutrient recovery against uptake; peak-month process
+energy with the month named; capital and operating cost; sensitivity to demand, yield, price
+and the dry year. Pipe diameters, fitting losses, reinforcement, wiring, certification and
+fabrication drawings are out of scope: students specify performance requirements and
+commissioning checks.
 
-| Parameter | Baseline | Competent | Excellent |
+Imported resources, recurring costs, maintenance hours, uncertainty and contingency are all
+counted. Preserved food is not counted twice, and output grown on imported feed is not
+closed-loop output.
+
+### 5.4 Diagnostics kept from the first draft
+
+The five closure indicators and the climate-normalised reference bands (recipe v6) remain
+as diagnostics on the method page. They are not a target, not a grade, and not a recipe to
+approach. Water closure is never shown without garden water satisfaction beside it.
+
+## 6. Constraints, prices and safety
+
+### 6.1 Budget
+
+$30,000 of new spend including 10 % contingency, priced only from the course schedule.
+The v4 schedule stands; retrofit lines added in v5 (course assumptions): slimline tank
+$450/kL and $300 per module; roof-zone connection $600 per zone; rainwater-to-mains
+changeover $450; overflow to a nominated discharge point $800; frost protection $250;
+acoustic enclosure $350 per pump; drip disc filter $200. What the schedule does not price is
+published beside it, as in v4.
+
+### 6.2 Energy
+
+5 kWh/day, peak-month average, counted loads only (v4 §2.1 boundary), summed month by month
+with uncertain loads at their upper estimate. The first scenario draft averaged pumping over
+the year; v5 names the peak month.
+
+### 6.3 Measurement allowance
+
+$1,500 per home for equipment and services from an 18-line measurement schedule (course
+assumptions). Demonstrated feasible before publication: the Wattle Street practice plan costs
+$1,345 with 77 hours of consultant time. A staff check found comparable plans at every client
+home costing $1,135–$1,470 (`model/output/measurement-check.md`); those plans are not
+published.
+
+### 6.4 Safety and compliance
+
+Unchanged from v4 §4.2 and `verification-log.md` V3–V10: greywater, excreta and urine
+storage, compost pasteurisation, one named fermentation recipe, insect substrates, drinking-
+water treatment performance and fish legality are course design rules, each with its
+jurisdiction and instrument, distinguished from the law. Students design; they do not build,
+operate, eat from or drink from anything.
+
+## 7. Twelve weeks
+
+| Wk | Topic | Lead home | Assignment component produced |
 |---|---|---|---|
-| Domestic demand (L/person/day) | 150 | 150 | 130 |
-| Composting toilet | no | yes | yes |
-| Greywater reused | 0 % | 50 % | 90 % |
-| Growable area in production | 50 % | 80 % | 100 % |
-| Yield vs 1,500 kcal/m²/yr reference | 0.8× | 1.0× | 1.2× |
-| Excreted N recovered | 30 % | 60 % | 80 % |
-| Aquaponic grow bed | none | 4 m² | 8 m² |
-| Added roof catchment | none | none | +5 % of roof |
-| New storage spend (tank shells) | $3,000 | $3,500 | $4,000 |
+| 1 | Client commission, programme rules, engineering boundaries, five-home intake | all five | client question and decision map, first pass |
+| 2 | Site survey, requirements, mass balances and measurement objectives | Canberra | annotated measurement locations, variables list |
+| 3 | Water monitoring: rainfall, roof runoff, demand, tank levels, flow | Alice Springs | water instrument table (quiz 1) |
+| 4 | Soil, microclimate, crop demand and yield, spatial sampling | Brisbane | soil and sun sampling design |
+| 5 | Food, waste and nutrient audits; biological options; measurement uncertainty | Adelaide | audit design and uncertainty budget (quiz 2) |
+| 6 | Twelve-month sampling, sensors, calibration, data quality, cost, handover | Darwin | schedule, QC, costed plan, data dictionary |
+| 7 | A1 due; twelve-month jump; specialist findings and uncertainty | Canberra | Release B interpretation and A1 reconciliation |
+| 8 | Water-system sizing: storage, reuse, treatment, flow and energy | Alice Springs | monthly balance and pump duty (quiz 3) |
+| 9 | Food-system selection: perennials, mushrooms, insects, aquaponics | Brisbane | module screening with reasons to accept or reject |
+| 10 | Waste, sanitation, preservation and integrated balances | Adelaide | nutrient and waste balances (quiz 4) |
+| 11 | Alternatives, constrained optimisation, costs and resilience | Darwin | scenario grid, dominance, sensitivity |
+| 12 | Investment proposal, design review, bridge to SLOP4762 | all five | review-ready proposal (quiz 5) |
 
-**Gap resolved (2026-09-18, recipe v5).** The v4 designs had been costed with the model's five simplified prices and no contingency, giving $3k / $14.1k / $22–25k. Re-costed against the §2.2 schedule by `model/reference_costs.py`, the v4 excellent design came to $33,704–$39,545 — over the allowance at **every** site. Two changes fixed it, and nothing else in the recipe moved: new-storage spend fell to $3,000 / $3,500 / $4,000, because the monthly tank balance saturates (the extra $5,000 moved water closure by at most 0.06), and the excellent design's added catchment fell from 25 % to 5 %, because it was the most expensive water lever per point of closure. Every reference design now fits both hard constraints. See `critique-log.md` iteration 5.
+Every week from 2 to 11 carries a substantive Five homes comparison; each home leads
+exactly twice. Leads are not chosen to line up with the easiest or hardest climate.
+Measurement method needed for A1 is taught in weeks 1–6.
 
-| Level | Cost range across the five sites | Worst budget headroom | Worst declared peak energy |
-|---|---|---|---|
-| Baseline | $10,307 – $12,100 | $17,900 | 2.61 kWh/d |
-| Competent | $21,540 – $24,310 | $5,690 | 4.01 kWh/d |
-| Excellent | $24,860 – $28,875 | $1,125 | 3.99 kWh/d |
-
-Totals include the required 10 % contingency, and the energy figures include a declared 0.65 kWh/d upper-estimate allowance for the counted loads the screening model does not compute. $1,125 of headroom at Darwin is inside the noise of a screening model priced from commercial listings, so the published claim is that the reference designs fit the allowance **as the schedule prices them**, not that a real build would cost this.
-
-## 5. Twelve weeks
-
-Ordered by what feeds what. Each topic week has a "Five sites" worked section. Each site leads two weeks, one where its climate helps and one where it hurts.
-
-| Wk | Topic | Core quantitative method | Loop links | Lead site |
-|---|---|---|---|---|
-| 1 | Loop thinking and the site sheet | Mass balances; household demand [S03–S05]; indicators; reference bands; energy-load and price-schedule rules | Whole framework; what's out of scope (energy and shelter → SLOP4762) | all |
-| 2 | Perennial food systems and soil | ETo (FAO-56 Eq. 52), Kc, effective rain [S11][S12]; yield ranges [S13–S15]; chill categories [S24] | In: compost, spent substrate, greywater, urine N. Out: food, prunings | **S1** (helps: chill) |
-| 3 | Mycology | Biological efficiency [S23b]; species temperature bands [S23]; spent-substrate mass [S23d] | In: prunings, straw. Out: mushrooms; spent substrate → soil/compost (not larvae [S23c]) | **S3** (helps: humidity) |
-| 4 | Insect farming | Degree-days and threshold temperatures [S22]; bioconversion [S22b]; composition [S37]; feed rules [S29] | In: *plant-based* scraps, ≤25 % spent substrate. Out: heat-treated larvae → fish; frass → soil. Meat and dairy → week 10 | **S5** (helps: warm all year) |
-| 5 | Aquaponics | Feed-rate ratio, stocking, FCR [S16][S49]; legal species bands [S18–S20]; larvae cover only ~10–17 % of feed | In: larvae, top-up water (placeholder 20 L/d, sized in weeks 7–9). Out: fish, greens, nutrient water | **S4** (hurts: seasonal species switching) |
-| 6 | Fermentation and cultured microbes | Salt %, temperature, pH safety [S36]; surplus-to-winter storage balance | In: seasonal surplus. Out: preserved food; bokashi/silage pre-treatment → week 10 | **S4** (helps: mild) |
-| 7 | Water sourcing | Roof runoff formula [S08]; bore allocation; effective rain [S12] | Roof, bore, surface → raw water | **S2** (hurts: arid) |
-| 8 | Filtration and treatment | Multi-barrier; log reductions and WHO star ratings [S40]; BioSand [S41]; UV dose [S42]; pumping energy [S21] | Raw → potable; energy against the allowance | **S3** (hurts: turbidity, density) |
-| 9 | Water security and storage | Monthly tank balance, reliability, overflow and import months [S08]; drought-year dataset | Storage sizing against climate; budget trade-off | **S5** (hurts: 6-month dry season) |
-| 10 | Waste management | AS 4454 pasteurisation [S35]; C:N; digester temperature [S27]; WHO composting [S09] | Food waste, meat/dairy, spent substrate, fish sludge → compost/digestate → soil | **S2** (helps: heat) |
-| 11 | Sanitation | WHO storage times by temperature; urine storage [S09]; greywater rules [S10]; N uptake limit [S05] | Excreta and urine → N; greywater → subsurface irrigation | **S1** (hurts: cold → longer storage) |
-| 12 | Integration | Whole-household model; failure modes; bands; bridge to SLOP4762 | Closes the loop | all |
-
-## 6. Assessment (totals 100 %)
+## 8. Assessment (totals 100 %)
 
 | Item | Weight | When |
 |---|---|---|
-| Quizzes: 5 × 8 %, conceptual multiple choice, no maths | 40 % | **Weeks 3, 5, 8, 10, 12** (none in A1's due week) |
-| Assignment 1: Food Loop Design | 20 % | Due week 7 |
-| Capstone: The Site-Specific Off-Grid Master Plan | 40 % | Exam period |
+| Five conceptual quizzes, 8 % each | 40 % | weeks 3, 5, 8, 10, 12 |
+| A1 Year-long Measurement Programme | 20 % | due week 7 |
+| A2 Household Resilience Investment Proposal | 40 % | exam period |
 
-**No oral defence.** The troubleshooting dataset, calculations and written justification already test understanding. An oral should only be reconsidered if it is short and either mandatory, ungraded, or assessed under identical conditions for every student.
+No oral assessment.
 
-### Assignment 1
+**A1** (suggested 1,800–2,200 words plus plans and tables): client question and decision
+map; annotated measurement locations; variable, instrument, range, accuracy, frequency and
+duration table; twelve-month sampling schedule covering seasonal and event variation;
+calibration and quality control; missing-data procedure; safety, permissions and household
+data privacy; equipment and services cost against the $1,500 allowance and a labour schedule;
+data dictionary; how the readings support the later design. Rubric: decision relevance 25;
+measurement and sampling design 30; uncertainty and quality control 20; feasibility, cost and
+safety 15; communication 10.
 
-Covers weeks 1–6, for the chosen site. Deliverables:
-- parameter sheet
-- sized designs for the five food subsystems, with stated assumptions
-- mass balance
-- energy and protein closure
-- nutrient flows
-- partial energy-load list (counted, uncertain and omitted)
-- price-schedule costing
-- ±20 % yield sensitivity
-- one troubleshooting dataset (e.g. an aquaponics nitrite/pH log)
+**A2** (suggested 2,500–3,000 words plus workbook and plans): executive recommendation;
+client targets and acceptance criteria; interpretation of Release B; baseline and three
+alternatives; reproducible workbook; selected concept layout and system-flow schematic;
+capital and operating cost and the borrowing justification; sensitivity and failure
+response; maintenance plan; approval and commissioning pathway; A1 reconciliation. Rubric:
+engineering balances and sizing 25; alternatives, optimisation and value 25; interpretation
+and uncertainty 20; client and site fit and feasibility 20; communication 10. No marks for
+visual extravagance or for presenting a concept as build-ready.
 
-### Capstone
+## 9. Site and visual treatment
 
-Deliverables:
-- the A1 loop revised with feedback
-- water and waste systems integrated
-- all banded indicators with garden water satisfaction beside water closure
-- waste-stream mass balances
-- full energy-load list and price-schedule costing (hard constraints)
-- safety and legal checklist
-- scaled CAD site layout
-- a drought-year dataset: what fails first, and the design response
+- Pages: home; programme (teaching fiction); clients index and one page per home, each with
+  Release A and a separate Release B page; twelve lectures with decks; twelve tutorials; two
+  assignment briefs and five quizzes; method (decision reference, costing, datasets, the
+  Wattle Street worked optimisation, diagnostics); resources (glossary, formula sheet,
+  templates); people; policies.
+- Tutorials: a 60–90 minute sequence, concrete inputs, an annotated worked example, two
+  graduated exercises, and worked feedback on practice data. No solution to an assessed home.
+- Plans, charts and schematics are drawn in the page from data as SVG. No unlabelled
+  placeholder stands where a student needs a number.
+- Illustrations are optional and follow later. Until then each has a reserved slot with a
+  temporary drawn illustration, and `research/asset-manifest.md` lists filename, page,
+  purpose, dimensions and alt text.
 
-### Rubric (draft, both assignments)
+## 10. Checked mechanically, judged manually
 
-| Criterion | Weight |
-|---|---|
-| Calculations and justified assumptions | 30 % |
-| Loop integration (mass balances, waste-stream recovery) | 25 % |
-| Site fit (uses the site's strengths, designs around its constraints, including the unmodelled ones) | 20 % |
-| Data-driven troubleshooting | 15 % |
-| Drawings and communication | 10 % |
+Spec tests (`spec/course-contract.test.ts`) check: identity and dates; twelve lectures,
+twelve tutorials and twelve linked decks; assessment weights, weeks and rubrics; the lead-home
+allocation and Five homes coverage; five fixed homes and no custom-site route or text; plan
+geometry against presets and boundaries; Release A and B pages and dataset files with their
+schema, units and synthetic labels; the paired water indicators; hard constraints and
+reference costs; targets carrying a published feasibility margin; the practice grid's
+dominance marks; and citations that resolve to a reference entry. Teaching quality, story
+balance and diagram readability are judged in the browser at both marking viewports.
 
-Band positions are **performance evidence** within "calculations" and "loop integration", never a separate automatic score.
+## 11. Decision record
 
-### Datasets
-
-- Climate: real BoM statistics per site.
-- Sensor logs and drought years: **clearly labelled synthetic** data derived from those statistics.
-
-## 7. Before anything is published: figure verification
-
-Every figure marked medium or low confidence in `sources.md` must be verified against a primary source. If it cannot be upgraded, the site must label it **"course assumption"** or **"indicative value"** rather than presenting it as settled fact.
-
-**Status: done 2026-09-18.** All five priority checks were carried out and are recorded in
-`verification-log.md` (V1–V10), which is the authority. Outcomes:
-
-1. **150 L/person/day** — not on any Your Home page. Relabelled a **course assumption** at the
-   midpoint of enHealth's sourced 100–200 L/person/day indoor range (V1).
-2. **Prices** — thirteen schedule lines checked against fetched Australian listings. $130/kL
-   is supported at 22–30 kL, which is where the bill-of-materials rule buys; the aquaponics
-   line is optimistic; the insect unit is weak; the installed greywater figure is the weakest
-   in the schedule (V9).
-3. **Greywater** — the draft's rule was NSW law applied to five non-NSW sites. Now a course
-   design rule with a five-jurisdiction comparison (V3).
-4. **Fish** — the tilapia penalty figure was wrong, and the ACT licence requirement for
-   silver perch and Murray cod had been missed entirely (V10).
-5. **Mushrooms** — **not re-verified.** [S23], [S23b] and [S23d] still rest on search
-   summaries of commercial and academic sources. Mushroom output is not scored by any banded
-   indicator, so nothing downstream of a band depends on them, but week 3's yield figures
-   carry their confidence labels and the site says they are unverified.
-
-**Also medium/low:** S14, S15, S17, S21, S22b, S24, S26, S27, S28, S41, S49.
-
-## 8. Site scope for this submission
-
-- **Build:** published score tables, clear site cards, band tables, and **one worked comparison** of the same design idea across sites. **No interactive calculator** (possible later extension).
-- **Priorities:** a coherent twelve-week course, assessment pages, the deck, policies, mobile layout, and verification.
-
-## 9. Decision record (2026-09-17)
-
-1. Identity: SLOP4761 / SLOP4762 titles as in §1; 4xxx undergraduate.
-2. Quizzes in weeks 3, 5, 8, 10, 12.
-3. Scoring: climate-normalised reference bands inspired by NatHERS, as ordinal performance evidence. Publish recipe, assumptions and thresholds; recompute on any constant change. Garden water satisfaction beside water closure. Waste-stream recovery via mass balances and rubric. Careful sensitivity wording.
-4. Sites: Darwin replaces cold upland; townhouse in Brisbane; Adelaide suburban; keep written unmodelled strengths and constraints.
-5. Hard constraints: 5 kWh/d peak-month counted loads, with uncertain and omitted loads declared. $30,000 as a costing allowance governed by a published price schedule.
-6. No oral defence.
-7. Score tables and site cards, not a calculator. Verify medium/low figures or label them.
+- **2026-09-17** (v4): identity; quiz weeks; bands as performance evidence; site set; hard
+  constraints; no oral; score tables, not a calculator.
+- **2026-09-18** (v5): the consultancy redesign in §0. The first draft's commits are kept as
+  history; nothing was rewritten to look test-first.

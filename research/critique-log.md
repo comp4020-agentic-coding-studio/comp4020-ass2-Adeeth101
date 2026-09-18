@@ -101,6 +101,17 @@ that the reference designs fit the allowance *as the schedule prices them*, not 
 build would cost this. The schedule omits garden establishment, tank heating hardware, labour,
 earthworks, approvals and consumables; those omissions are published beside the schedule.
 
+## Iteration 6: the consultancy redesign (second draft, 2026-09-18)
+
+| # | Issue | Evidence | Change |
+|---|---|---|---|
+| C30 | The excellent reference design built new roof catchment on homes that are fixed existing properties | recipe v5 excellent: +5 % catchment | Recipe v6: no new catchment; excellent water closure falls 1–2 points at four sites; worst headroom rises to $2,280 |
+| C31 | Closure scores cannot stand for what a client values | a design can raise closure while failing the household's actual priority | Client priority service targets per home, set from the scenario model with a feasibility margin; bands kept as diagnostics |
+| C32 | The first scenario draft averaged pumping energy over the year, served every indoor use from the tank, and charged the existing condition for new equipment | `scenario.py` checkpoint review | Monthly energy with the peak month named; tank serves only each client's permitted uses; existing condition costs nothing in capital |
+| C33 | Plans and dossiers were inconsistent: Canberra's "back garden" lay between the house and the street; Brisbane's path was both 600 and 700 mm | the checkpoint `case.py` geometry | All five plans relaid; areas derived and self-checked against presets within 15 m² or 4 % |
+| C34 | The model irrigated dormant gardens in a Canberra winter, which kept the existing tank empty all year and contradicted the client | Release B first run | No irrigation is scheduled below 10 °C monthly mean; dormant months count as satisfied |
+| C35 | The 372 m² claim misread its source | V11 | Removed; taught in week 9 with the source's two estimates and assumptions |
+
 ## Fairness acceptance criteria: final status
 
 | Criterion | Status |

@@ -359,3 +359,41 @@ rules were not exhaustively checked, and the site says so.
 | Prices | four retailer keys | thirteen schedule lines checked against fetched Australian listings |
 | Tilapia penalty | "up to $220,000" | 500 penalty units under s 45 Biosecurity Act 2014 (Qld), $86,350 at the current unit value |
 | Keeping fish | "legal species only" | a per-jurisdiction table; silver perch and Murray cod need an ACT licence, and every live fish entering the ACT needs one |
+
+---
+
+## V11 — Land per person for a complete diet [S14] — **not a universal threshold; the claim is withdrawn**
+
+Checked 2026-09-18 for the second draft. Fetched and read in full: Ecology Action,
+*"GROW BIOINTENSIVE Closed-Loop" Sustainability Protocol*, dated 22 October 2018, six pages.
+
+The first draft's home page said a near-complete diet takes "something like 372 m² of good
+ground per adult" and set that against "the largest site in this course has 500 m²". The
+source does not support a threshold of that kind:
+
+- p.3, footnote 1: the **minimum** farm size "for growing all of one person's soil fertility,
+  human nutrition with a well-designed vegan diet **and income** on a sustainable basis will be
+  approximately 4,000 square feet of planted surface, assuming **intermediate** GROW
+  BIOINTENSIVE yields", which "may be significantly reduced" as skill and soil improve.
+- p.6: vegan diets "can be grown on as little as 4,000-sq-ft with **beginning** GB yields, and
+  … on as little 2,000-sq-ft with **intermediate** GB yields".
+
+The same document therefore gives 4,000 ft² at intermediate yields (with income and soil
+fertility included) and 2,000 ft² at intermediate yields (diet only). Both rest on a
+60/30/10 crop split with compost crops, a 24-inch double-dug bed, closed-loop compost and
+the method's own yield levels. None of the five households eats that diet or farms that way.
+
+**Action:** the claim is removed from the home page, decks and harness. Week 9 teaches the
+figures as method-specific estimates with their assumptions and explains why they cannot set
+a fixed threshold for these clients. The largest **designated growing area** is 500 m²
+(Darwin); the largest **whole plot** is the 2 ha Alice Springs parcel.
+
+## V12 — Irrigation application efficiency [S12a] — **supported**
+
+Checked 2026-09-18. Fetched: FAO *Irrigation Water Management Training Manual 4: Irrigation
+scheduling*, Annex I, Table 8, "Indicative values of the field application efficiency (ea)":
+surface irrigation (border, furrow, basin) 60 %, sprinkler 75 %, drip 90 %.
+
+**Action:** used as indicative values in the gross irrigation calculation (drip 0.90,
+sprinkler and hose 0.75), published as indicative with the source.
+
