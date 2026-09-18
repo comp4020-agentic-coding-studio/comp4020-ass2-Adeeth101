@@ -1,0 +1,422 @@
+[
+ {
+  "objective": 1.384,
+  "ease_spread": 1.349,
+  "dominated_pairs": 0,
+  "mean_drift": 0.117,
+  "ease_index": {
+   "S1": -0.55,
+   "S2": -0.31,
+   "S3": 0.38,
+   "S4": -0.33,
+   "S5": 0.8
+  },
+  "levers": {
+   "S1": {
+    "growable_m2": 450,
+    "roof_m2": 300,
+    "existing_storage_kl": 5
+   },
+   "S2": {
+    "growable_m2": 400,
+    "roof_m2": 350,
+    "other_water_kl_year": 100,
+    "existing_storage_kl": 22
+   },
+   "S3": {
+    "growable_m2": 90,
+    "shared_growing_m2": 40,
+    "roof_m2": 170,
+    "existing_storage_kl": 3
+   },
+   "S4": {
+    "growable_m2": 250,
+    "roof_m2": 230,
+    "existing_storage_kl": 5
+   },
+   "S5": {
+    "growable_m2": 500,
+    "roof_m2": 300,
+    "existing_storage_kl": 45
+   }
+  }
+ },
+ {
+  "objective": 1.384,
+  "ease_spread": 1.349,
+  "dominated_pairs": 0,
+  "mean_drift": 0.117,
+  "ease_index": {
+   "S1": -0.56,
+   "S2": -0.28,
+   "S3": 0.38,
+   "S4": -0.32,
+   "S5": 0.79
+  },
+  "levers": {
+   "S1": {
+    "growable_m2": 450,
+    "roof_m2": 300,
+    "existing_storage_kl": 5
+   },
+   "S2": {
+    "growable_m2": 400,
+    "roof_m2": 350,
+    "other_water_kl_year": 100,
+    "existing_storage_kl": 22
+   },
+   "S3": {
+    "growable_m2": 90,
+    "shared_growing_m2": 40,
+    "roof_m2": 170,
+    "existing_storage_kl": 3
+   },
+   "S4": {
+    "growable_m2": 250,
+    "roof_m2": 270,
+    "existing_storage_kl": 5
+   },
+   "S5": {
+    "growable_m2": 500,
+    "roof_m2": 300,
+    "existing_storage_kl": 45
+   }
+  }
+ },
+ {
+  "objective": 1.386,
+  "ease_spread": 1.35,
+  "dominated_pairs": 0,
+  "mean_drift": 0.121,
+  "ease_index": {
+   "S1": -0.5,
+   "S2": -0.43,
+   "S3": 0.42,
+   "S4": -0.34,
+   "S5": 0.85
+  },
+  "levers": {
+   "S1": {
+    "growable_m2": 450,
+    "roof_m2": 300,
+    "existing_storage_kl": 5
+   },
+   "S2": {
+    "growable_m2": 600,
+    "roof_m2": 350,
+    "other_water_kl_year": 60,
+    "existing_storage_kl": 22
+   },
+   "S3": {
+    "growable_m2": 90,
+    "shared_growing_m2": 40,
+    "roof_m2": 170,
+    "existing_storage_kl": 3
+   },
+   "S4": {
+    "growable_m2": 250,
+    "roof_m2": 230,
+    "existing_storage_kl": 5
+   },
+   "S5": {
+    "growable_m2": 500,
+    "roof_m2": 300,
+    "existing_storage_kl": 45
+   }
+  }
+ },
+ {
+  "objective": 1.386,
+  "ease_spread": 1.35,
+  "dominated_pairs": 0,
+  "mean_drift": 0.121,
+  "ease_index": {
+   "S1": -0.5,
+   "S2": -0.46,
+   "S3": 0.43,
+   "S4": -0.33,
+   "S5": 0.85
+  },
+  "levers": {
+   "S1": {
+    "growable_m2": 450,
+    "roof_m2": 300,
+    "existing_storage_kl": 5
+   },
+   "S2": {
+    "growable_m2": 600,
+    "roof_m2": 350,
+    "other_water_kl_year": 60,
+    "existing_storage_kl": 22
+   },
+   "S3": {
+    "growable_m2": 90,
+    "shared_growing_m2": 40,
+    "roof_m2": 170,
+    "existing_storage_kl": 3
+   },
+   "S4": {
+    "growable_m2": 250,
+    "roof_m2": 270,
+    "existing_storage_kl": 5
+   },
+   "S5": {
+    "growable_m2": 500,
+    "roof_m2": 300,
+    "existing_storage_kl": 45
+   }
+  }
+ },
+ {
+  "objective": 1.386,
+  "ease_spread": 1.354,
+  "dominated_pairs": 0,
+  "mean_drift": 0.106,
+  "ease_index": {
+   "S1": -0.56,
+   "S2": -0.32,
+   "S3": 0.37,
+   "S4": -0.29,
+   "S5": 0.8
+  },
+  "levers": {
+   "S1": {
+    "growable_m2": 450,
+    "roof_m2": 300,
+    "existing_storage_kl": 5
+   },
+   "S2": {
+    "growable_m2": 400,
+    "roof_m2": 350,
+    "other_water_kl_year": 100,
+    "existing_storage_kl": 22
+   },
+   "S3": {
+    "growable_m2": 90,
+    "shared_growing_m2": 40,
+    "roof_m2": 170,
+    "existing_storage_kl": 3
+   },
+   "S4": {
+    "growable_m2": 300,
+    "roof_m2": 230,
+    "existing_storage_kl": 5
+   },
+   "S5": {
+    "growable_m2": 500,
+    "roof_m2": 300,
+    "existing_storage_kl": 45
+   }
+  }
+ },
+ {
+  "objective": 1.386,
+  "ease_spread": 1.354,
+  "dominated_pairs": 0,
+  "mean_drift": 0.106,
+  "ease_index": {
+   "S1": -0.57,
+   "S2": -0.3,
+   "S3": 0.37,
+   "S4": -0.28,
+   "S5": 0.78
+  },
+  "levers": {
+   "S1": {
+    "growable_m2": 450,
+    "roof_m2": 300,
+    "existing_storage_kl": 5
+   },
+   "S2": {
+    "growable_m2": 400,
+    "roof_m2": 350,
+    "other_water_kl_year": 100,
+    "existing_storage_kl": 22
+   },
+   "S3": {
+    "growable_m2": 90,
+    "shared_growing_m2": 40,
+    "roof_m2": 170,
+    "existing_storage_kl": 3
+   },
+   "S4": {
+    "growable_m2": 300,
+    "roof_m2": 270,
+    "existing_storage_kl": 5
+   },
+   "S5": {
+    "growable_m2": 500,
+    "roof_m2": 300,
+    "existing_storage_kl": 45
+   }
+  }
+ },
+ {
+  "objective": 1.388,
+  "ease_spread": 1.357,
+  "dominated_pairs": 0,
+  "mean_drift": 0.103,
+  "ease_index": {
+   "S1": -0.49,
+   "S2": -0.36,
+   "S3": 0.32,
+   "S4": -0.34,
+   "S5": 0.87
+  },
+  "levers": {
+   "S1": {
+    "growable_m2": 450,
+    "roof_m2": 300,
+    "existing_storage_kl": 5
+   },
+   "S2": {
+    "growable_m2": 600,
+    "roof_m2": 450,
+    "other_water_kl_year": 60,
+    "existing_storage_kl": 22
+   },
+   "S3": {
+    "growable_m2": 90,
+    "shared_growing_m2": 40,
+    "roof_m2": 150,
+    "existing_storage_kl": 3
+   },
+   "S4": {
+    "growable_m2": 250,
+    "roof_m2": 230,
+    "existing_storage_kl": 5
+   },
+   "S5": {
+    "growable_m2": 500,
+    "roof_m2": 300,
+    "existing_storage_kl": 45
+   }
+  }
+ },
+ {
+  "objective": 1.388,
+  "ease_spread": 1.357,
+  "dominated_pairs": 0,
+  "mean_drift": 0.103,
+  "ease_index": {
+   "S1": -0.49,
+   "S2": -0.35,
+   "S3": 0.3,
+   "S4": -0.33,
+   "S5": 0.87
+  },
+  "levers": {
+   "S1": {
+    "growable_m2": 450,
+    "roof_m2": 300,
+    "existing_storage_kl": 5
+   },
+   "S2": {
+    "growable_m2": 600,
+    "roof_m2": 450,
+    "other_water_kl_year": 60,
+    "existing_storage_kl": 22
+   },
+   "S3": {
+    "growable_m2": 90,
+    "shared_growing_m2": 40,
+    "roof_m2": 150,
+    "existing_storage_kl": 3
+   },
+   "S4": {
+    "growable_m2": 250,
+    "roof_m2": 270,
+    "existing_storage_kl": 5
+   },
+   "S5": {
+    "growable_m2": 500,
+    "roof_m2": 300,
+    "existing_storage_kl": 45
+   }
+  }
+ },
+ {
+  "objective": 1.389,
+  "ease_spread": 1.356,
+  "dominated_pairs": 0,
+  "mean_drift": 0.11,
+  "ease_index": {
+   "S1": -0.51,
+   "S2": -0.47,
+   "S3": 0.42,
+   "S4": -0.29,
+   "S5": 0.85
+  },
+  "levers": {
+   "S1": {
+    "growable_m2": 450,
+    "roof_m2": 300,
+    "existing_storage_kl": 5
+   },
+   "S2": {
+    "growable_m2": 600,
+    "roof_m2": 350,
+    "other_water_kl_year": 60,
+    "existing_storage_kl": 22
+   },
+   "S3": {
+    "growable_m2": 90,
+    "shared_growing_m2": 40,
+    "roof_m2": 170,
+    "existing_storage_kl": 3
+   },
+   "S4": {
+    "growable_m2": 300,
+    "roof_m2": 270,
+    "existing_storage_kl": 5
+   },
+   "S5": {
+    "growable_m2": 500,
+    "roof_m2": 300,
+    "existing_storage_kl": 45
+   }
+  }
+ },
+ {
+  "objective": 1.389,
+  "ease_spread": 1.356,
+  "dominated_pairs": 0,
+  "mean_drift": 0.11,
+  "ease_index": {
+   "S1": -0.51,
+   "S2": -0.44,
+   "S3": 0.4,
+   "S4": -0.3,
+   "S5": 0.85
+  },
+  "levers": {
+   "S1": {
+    "growable_m2": 450,
+    "roof_m2": 300,
+    "existing_storage_kl": 5
+   },
+   "S2": {
+    "growable_m2": 600,
+    "roof_m2": 350,
+    "other_water_kl_year": 60,
+    "existing_storage_kl": 22
+   },
+   "S3": {
+    "growable_m2": 90,
+    "shared_growing_m2": 40,
+    "roof_m2": 170,
+    "existing_storage_kl": 3
+   },
+   "S4": {
+    "growable_m2": 300,
+    "roof_m2": 230,
+    "existing_storage_kl": 5
+   },
+   "S5": {
+    "growable_m2": 500,
+    "roof_m2": 300,
+    "existing_storage_kl": 45
+   }
+  }
+ }
+]

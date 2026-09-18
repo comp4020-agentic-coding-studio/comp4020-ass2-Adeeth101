@@ -1,0 +1,1871 @@
+{
+ "budget": 30000,
+ "contingency": 0.1,
+ "schedule": {
+  "tank_shell_per_kl": [
+   130,
+   "indicative",
+   "Polyethylene rainwater storage, supply only [S31]"
+  ],
+  "tank_establishment": [
+   1000,
+   "assumption",
+   "Pad, inlet/outlet plumbing, overflow, per tank"
+  ],
+  "first_flush_per_downpipe": [
+   150,
+   "assumption",
+   "First-flush diverter and leaf screen, per downpipe"
+  ],
+  "pump": [
+   700,
+   "assumption",
+   "Pressure or transfer pump, each"
+  ],
+  "uv_unit": [
+   1200,
+   "assumption",
+   "Point-of-entry UV unit with sensor"
+  ],
+  "prefiltration": [
+   400,
+   "assumption",
+   "Cartridge pre-filtration train"
+  ],
+  "catchment_per_m2": [
+   60,
+   "assumption",
+   "Additional roof catchment (skillion shed roof)"
+  ],
+  "composting_toilet": [
+   3500,
+   "indicative",
+   "Composting toilet unit [S32]"
+  ],
+  "urine_system": [
+   900,
+   "assumption",
+   "Urine diversion and storage tank"
+  ],
+  "greywater_diversion": [
+   2100,
+   "indicative",
+   "Greywater diversion, bathroom and laundry, installed [S33]"
+  ],
+  "greywater_treatment": [
+   6000,
+   "indicative",
+   "Greywater treatment system [S33]"
+  ],
+  "aquaponics_4m2": [
+   2500,
+   "indicative",
+   "Aquaponics: tank, 4 m2 grow bed, pump, aeration [S34]"
+  ],
+  "insect_unit": [
+   300,
+   "assumption",
+   "Insect rearing unit (black soldier fly or mealworm)"
+  ],
+  "mushroom_chamber": [
+   800,
+   "assumption",
+   "Humidified mushroom fruiting chamber"
+  ],
+  "compost_bays": [
+   500,
+   "assumption",
+   "Hot-compost bays, set of three"
+  ],
+  "digester": [
+   1500,
+   "assumption",
+   "Household anaerobic digester"
+  ],
+  "tree": [
+   50,
+   "assumption",
+   "Fruit or nut tree, potted, each"
+  ],
+  "drip_per_m2": [
+   8,
+   "assumption",
+   "Drip irrigation, per m2 irrigated"
+  ]
+ },
+ "not_in_reference": [
+  "greywater_treatment",
+  "digester",
+  "mushroom_chamber",
+  "tree"
+ ],
+ "unpriced": [
+  "Garden establishment: soil improvement, mulch, seed and seedling stock",
+  "Aquaculture tank heating or cooling hardware",
+  "Labour beyond the lines marked installed",
+  "Earthworks, slabs and access beyond the per-tank establishment line",
+  "Council approval, plumbing certification and fitting of WaterMark-licensed devices",
+  "Consumables and replacement: UV lamps, filter cartridges, imported fish feed, desludging"
+ ],
+ "bom_rules": {
+  "max_tank_kl": 25.0,
+  "roof_per_downpipe_m2": 75.0,
+  "extra_bed_cost": 1800
+ },
+ "energy": {
+  "cap_kwh_day": 5.0,
+  "uncertain_upper_kwh_day": 0.65,
+  "modelled_loads": [
+   [
+    "Water movement",
+    "Domestic pressure pump, garden transfer pump",
+    "modelled"
+   ],
+   [
+    "Water treatment",
+    "Point-of-entry UV lamp",
+    "modelled"
+   ],
+   [
+    "Water treatment",
+    "Cartridge pre-filtration (unpowered)",
+    "zero by design"
+   ],
+   [
+    "Aquaponics",
+    "Circulation pump and aeration",
+    "modelled"
+   ],
+   [
+    "Climate control",
+    "Aquaculture tank heating",
+    "modelled"
+   ],
+   [
+    "Sanitation",
+    "Composting-toilet fan",
+    "modelled"
+   ]
+  ],
+  "uncertain_loads": [
+   [
+    "Climate control",
+    "Insect rearing unit heating (40 W mat, winter duty)",
+    0.0,
+    0.5
+   ],
+   [
+    "Water movement",
+    "Greywater pump, if the diversion is not gravity-fed",
+    0.0,
+    0.15
+   ]
+  ],
+  "optional_loads": [
+   [
+    "Mycology",
+    "Humidified fruiting chamber: fan and humidifier",
+    0.2,
+    0.6
+   ],
+   [
+    "Fermentation",
+    "Temperature-controlled fermentation space",
+    0.05,
+    0.25
+   ],
+   [
+    "Food preservation",
+    "Dehydrator for loop produce, peak-month average",
+    0.1,
+    0.3
+   ],
+   [
+    "Waste processing",
+    "Digester heating or mixing",
+    0.0,
+    0.4
+   ],
+   [
+    "Waste processing",
+    "Powered compost aeration (zero if hand-turned)",
+    0.0,
+    0.1
+   ]
+  ],
+  "by_site": {
+   "S1": {
+    "baseline": {
+     "modelled_kwh_day": 1.53,
+     "uncertain_upper_kwh_day": 0.65,
+     "declared_peak_kwh_day": 2.18,
+     "fits": true,
+     "headroom_kwh_day": 2.82
+    },
+    "competent": {
+     "modelled_kwh_day": 3.36,
+     "uncertain_upper_kwh_day": 0.65,
+     "declared_peak_kwh_day": 4.01,
+     "fits": true,
+     "headroom_kwh_day": 0.99
+    },
+    "excellent": {
+     "modelled_kwh_day": 3.3,
+     "uncertain_upper_kwh_day": 0.65,
+     "declared_peak_kwh_day": 3.95,
+     "fits": true,
+     "headroom_kwh_day": 1.05
+    }
+   },
+   "S2": {
+    "baseline": {
+     "modelled_kwh_day": 1.6,
+     "uncertain_upper_kwh_day": 0.65,
+     "declared_peak_kwh_day": 2.25,
+     "fits": true,
+     "headroom_kwh_day": 2.75
+    },
+    "competent": {
+     "modelled_kwh_day": 2.97,
+     "uncertain_upper_kwh_day": 0.65,
+     "declared_peak_kwh_day": 3.62,
+     "fits": true,
+     "headroom_kwh_day": 1.38
+    },
+    "excellent": {
+     "modelled_kwh_day": 2.91,
+     "uncertain_upper_kwh_day": 0.65,
+     "declared_peak_kwh_day": 3.56,
+     "fits": true,
+     "headroom_kwh_day": 1.44
+    }
+   },
+   "S3": {
+    "baseline": {
+     "modelled_kwh_day": 1.59,
+     "uncertain_upper_kwh_day": 0.65,
+     "declared_peak_kwh_day": 2.24,
+     "fits": true,
+     "headroom_kwh_day": 2.76
+    },
+    "competent": {
+     "modelled_kwh_day": 2.88,
+     "uncertain_upper_kwh_day": 0.65,
+     "declared_peak_kwh_day": 3.53,
+     "fits": true,
+     "headroom_kwh_day": 1.47
+    },
+    "excellent": {
+     "modelled_kwh_day": 2.78,
+     "uncertain_upper_kwh_day": 0.65,
+     "declared_peak_kwh_day": 3.43,
+     "fits": true,
+     "headroom_kwh_day": 1.57
+    }
+   },
+   "S4": {
+    "baseline": {
+     "modelled_kwh_day": 1.53,
+     "uncertain_upper_kwh_day": 0.65,
+     "declared_peak_kwh_day": 2.18,
+     "fits": true,
+     "headroom_kwh_day": 2.82
+    },
+    "competent": {
+     "modelled_kwh_day": 2.83,
+     "uncertain_upper_kwh_day": 0.65,
+     "declared_peak_kwh_day": 3.48,
+     "fits": true,
+     "headroom_kwh_day": 1.52
+    },
+    "excellent": {
+     "modelled_kwh_day": 2.71,
+     "uncertain_upper_kwh_day": 0.65,
+     "declared_peak_kwh_day": 3.36,
+     "fits": true,
+     "headroom_kwh_day": 1.64
+    }
+   },
+   "S5": {
+    "baseline": {
+     "modelled_kwh_day": 1.96,
+     "uncertain_upper_kwh_day": 0.65,
+     "declared_peak_kwh_day": 2.61,
+     "fits": true,
+     "headroom_kwh_day": 2.39
+    },
+    "competent": {
+     "modelled_kwh_day": 3.36,
+     "uncertain_upper_kwh_day": 0.65,
+     "declared_peak_kwh_day": 4.01,
+     "fits": true,
+     "headroom_kwh_day": 0.99
+    },
+    "excellent": {
+     "modelled_kwh_day": 3.34,
+     "uncertain_upper_kwh_day": 0.65,
+     "declared_peak_kwh_day": 3.99,
+     "fits": true,
+     "headroom_kwh_day": 1.01
+    }
+   }
+  }
+ },
+ "costs": {
+  "S1": {
+   "baseline": {
+    "rows": [
+     [
+      "Rainwater storage (shell)",
+      23.1,
+      "kL",
+      3000
+     ],
+     [
+      "Tank establishment",
+      1,
+      "tank",
+      1000
+     ],
+     [
+      "First-flush diverter and leaf screen",
+      4,
+      "downpipe",
+      600
+     ],
+     [
+      "Pressure pump (domestic supply)",
+      1,
+      "ea",
+      700
+     ],
+     [
+      "Transfer pump (garden irrigation)",
+      1,
+      "ea",
+      700
+     ],
+     [
+      "Point-of-entry UV unit",
+      1,
+      "ea",
+      1200
+     ],
+     [
+      "Cartridge pre-filtration train",
+      1,
+      "ea",
+      400
+     ],
+     [
+      "Urine diversion and storage",
+      1,
+      "ea",
+      900
+     ],
+     [
+      "Hot-compost bays",
+      1,
+      "set",
+      500
+     ],
+     [
+      "Drip irrigation",
+      225,
+      "m2",
+      1800
+     ]
+    ],
+    "subtotal": 10800,
+    "contingency": 1080,
+    "total": 11880,
+    "fits": true,
+    "headroom": 18120,
+    "indicators": {
+     "water_closure": 0.65,
+     "imported_kl": 77,
+     "overflow_kl": 0,
+     "storage_kl": 28,
+     "garden_water_satisfaction": 0.0,
+     "food_kcal_closure": 0.01,
+     "protein_closure": 0.016,
+     "nutrient_closure": 0.04,
+     "production_area_m2": 225,
+     "peak_energy_kwh_day": 1.53,
+     "indicative_cost": 3000,
+     "insect_share_of_fish_feed": null,
+     "fish_protein_kg_counted": 0.0,
+     "bio_window": 0.51
+    }
+   },
+   "competent": {
+    "rows": [
+     [
+      "Rainwater storage (shell)",
+      26.9,
+      "kL",
+      3500
+     ],
+     [
+      "Tank establishment",
+      2,
+      "tank",
+      2000
+     ],
+     [
+      "First-flush diverter and leaf screen",
+      4,
+      "downpipe",
+      600
+     ],
+     [
+      "Pressure pump (domestic supply)",
+      1,
+      "ea",
+      700
+     ],
+     [
+      "Transfer pump (garden irrigation)",
+      1,
+      "ea",
+      700
+     ],
+     [
+      "Point-of-entry UV unit",
+      1,
+      "ea",
+      1200
+     ],
+     [
+      "Cartridge pre-filtration train",
+      1,
+      "ea",
+      400
+     ],
+     [
+      "Composting toilet",
+      1,
+      "ea",
+      3500
+     ],
+     [
+      "Urine diversion and storage",
+      1,
+      "ea",
+      900
+     ],
+     [
+      "Greywater diversion (installed)",
+      1,
+      "ea",
+      2100
+     ],
+     [
+      "Aquaponics system",
+      4,
+      "m2",
+      2500
+     ],
+     [
+      "Insect rearing unit",
+      1,
+      "ea",
+      300
+     ],
+     [
+      "Hot-compost bays",
+      1,
+      "set",
+      500
+     ],
+     [
+      "Drip irrigation",
+      360,
+      "m2",
+      2880
+     ]
+    ],
+    "subtotal": 21780,
+    "contingency": 2178,
+    "total": 23958,
+    "fits": true,
+    "headroom": 6042,
+    "indicators": {
+     "water_closure": 0.81,
+     "imported_kl": 45,
+     "overflow_kl": 0,
+     "storage_kl": 32,
+     "garden_water_satisfaction": 0.15,
+     "food_kcal_closure": 0.033,
+     "protein_closure": 0.055,
+     "nutrient_closure": 0.1,
+     "production_area_m2": 360,
+     "peak_energy_kwh_day": 3.36,
+     "indicative_cost": 11600,
+     "insect_share_of_fish_feed": 0.16,
+     "fish_protein_kg_counted": 0.27,
+     "bio_window": 0.51
+    }
+   },
+   "excellent": {
+    "rows": [
+     [
+      "Rainwater storage (shell)",
+      30.8,
+      "kL",
+      4000
+     ],
+     [
+      "Tank establishment",
+      2,
+      "tank",
+      2000
+     ],
+     [
+      "First-flush diverter and leaf screen",
+      5,
+      "downpipe",
+      750
+     ],
+     [
+      "Additional roof catchment",
+      15,
+      "m2",
+      900
+     ],
+     [
+      "Pressure pump (domestic supply)",
+      1,
+      "ea",
+      700
+     ],
+     [
+      "Transfer pump (garden irrigation)",
+      1,
+      "ea",
+      700
+     ],
+     [
+      "Point-of-entry UV unit",
+      1,
+      "ea",
+      1200
+     ],
+     [
+      "Cartridge pre-filtration train",
+      1,
+      "ea",
+      400
+     ],
+     [
+      "Composting toilet",
+      1,
+      "ea",
+      3500
+     ],
+     [
+      "Urine diversion and storage",
+      1,
+      "ea",
+      900
+     ],
+     [
+      "Greywater diversion (installed)",
+      1,
+      "ea",
+      2100
+     ],
+     [
+      "Aquaponics system",
+      8,
+      "m2",
+      4300
+     ],
+     [
+      "Insect rearing unit",
+      1,
+      "ea",
+      300
+     ],
+     [
+      "Hot-compost bays",
+      1,
+      "set",
+      500
+     ],
+     [
+      "Drip irrigation",
+      450,
+      "m2",
+      3600
+     ]
+    ],
+    "subtotal": 25850,
+    "contingency": 2585,
+    "total": 28435,
+    "fits": true,
+    "headroom": 1565,
+    "indicators": {
+     "water_closure": 0.94,
+     "imported_kl": 16,
+     "overflow_kl": 0,
+     "storage_kl": 36,
+     "garden_water_satisfaction": 0.2,
+     "food_kcal_closure": 0.055,
+     "protein_closure": 0.089,
+     "nutrient_closure": 0.14,
+     "production_area_m2": 450,
+     "peak_energy_kwh_day": 3.3,
+     "indicative_cost": 15500,
+     "insect_share_of_fish_feed": 0.08,
+     "fish_protein_kg_counted": 0.27,
+     "bio_window": 0.51
+    }
+   }
+  },
+  "S2": {
+   "baseline": {
+    "rows": [
+     [
+      "Rainwater storage (shell)",
+      23.1,
+      "kL",
+      3000
+     ],
+     [
+      "Tank establishment",
+      1,
+      "tank",
+      1000
+     ],
+     [
+      "First-flush diverter and leaf screen",
+      5,
+      "downpipe",
+      750
+     ],
+     [
+      "Pressure pump (domestic supply)",
+      1,
+      "ea",
+      700
+     ],
+     [
+      "Transfer pump (garden irrigation)",
+      1,
+      "ea",
+      700
+     ],
+     [
+      "Point-of-entry UV unit",
+      1,
+      "ea",
+      1200
+     ],
+     [
+      "Cartridge pre-filtration train",
+      1,
+      "ea",
+      400
+     ],
+     [
+      "Urine diversion and storage",
+      1,
+      "ea",
+      900
+     ],
+     [
+      "Hot-compost bays",
+      1,
+      "set",
+      500
+     ],
+     [
+      "Drip irrigation",
+      200,
+      "m2",
+      1600
+     ]
+    ],
+    "subtotal": 10750,
+    "contingency": 1075,
+    "total": 11825,
+    "fits": true,
+    "headroom": 18175,
+    "indicators": {
+     "water_closure": 0.78,
+     "imported_kl": 50,
+     "overflow_kl": 0,
+     "storage_kl": 45,
+     "garden_water_satisfaction": 0.01,
+     "food_kcal_closure": 0.002,
+     "protein_closure": 0.002,
+     "nutrient_closure": 0.01,
+     "production_area_m2": 200,
+     "peak_energy_kwh_day": 1.6,
+     "indicative_cost": 3000,
+     "insect_share_of_fish_feed": null,
+     "fish_protein_kg_counted": 0.0,
+     "bio_window": 0.83
+    }
+   },
+   "competent": {
+    "rows": [
+     [
+      "Rainwater storage (shell)",
+      26.9,
+      "kL",
+      3500
+     ],
+     [
+      "Tank establishment",
+      2,
+      "tank",
+      2000
+     ],
+     [
+      "First-flush diverter and leaf screen",
+      5,
+      "downpipe",
+      750
+     ],
+     [
+      "Pressure pump (domestic supply)",
+      1,
+      "ea",
+      700
+     ],
+     [
+      "Transfer pump (garden irrigation)",
+      1,
+      "ea",
+      700
+     ],
+     [
+      "Point-of-entry UV unit",
+      1,
+      "ea",
+      1200
+     ],
+     [
+      "Cartridge pre-filtration train",
+      1,
+      "ea",
+      400
+     ],
+     [
+      "Composting toilet",
+      1,
+      "ea",
+      3500
+     ],
+     [
+      "Urine diversion and storage",
+      1,
+      "ea",
+      900
+     ],
+     [
+      "Greywater diversion (installed)",
+      1,
+      "ea",
+      2100
+     ],
+     [
+      "Aquaponics system",
+      4,
+      "m2",
+      2500
+     ],
+     [
+      "Insect rearing unit",
+      1,
+      "ea",
+      300
+     ],
+     [
+      "Hot-compost bays",
+      1,
+      "set",
+      500
+     ],
+     [
+      "Drip irrigation",
+      320,
+      "m2",
+      2560
+     ]
+    ],
+    "subtotal": 21610,
+    "contingency": 2161,
+    "total": 23771,
+    "fits": true,
+    "headroom": 6229,
+    "indicators": {
+     "water_closure": 0.89,
+     "imported_kl": 26,
+     "overflow_kl": 0,
+     "storage_kl": 49,
+     "garden_water_satisfaction": 0.12,
+     "food_kcal_closure": 0.016,
+     "protein_closure": 0.028,
+     "nutrient_closure": 0.04,
+     "production_area_m2": 320,
+     "peak_energy_kwh_day": 2.97,
+     "indicative_cost": 11600,
+     "insect_share_of_fish_feed": 0.11,
+     "fish_protein_kg_counted": 0.29,
+     "bio_window": 0.83
+    }
+   },
+   "excellent": {
+    "rows": [
+     [
+      "Rainwater storage (shell)",
+      30.8,
+      "kL",
+      4000
+     ],
+     [
+      "Tank establishment",
+      2,
+      "tank",
+      2000
+     ],
+     [
+      "First-flush diverter and leaf screen",
+      5,
+      "downpipe",
+      750
+     ],
+     [
+      "Additional roof catchment",
+      18,
+      "m2",
+      1050
+     ],
+     [
+      "Pressure pump (domestic supply)",
+      1,
+      "ea",
+      700
+     ],
+     [
+      "Transfer pump (garden irrigation)",
+      1,
+      "ea",
+      700
+     ],
+     [
+      "Point-of-entry UV unit",
+      1,
+      "ea",
+      1200
+     ],
+     [
+      "Cartridge pre-filtration train",
+      1,
+      "ea",
+      400
+     ],
+     [
+      "Composting toilet",
+      1,
+      "ea",
+      3500
+     ],
+     [
+      "Urine diversion and storage",
+      1,
+      "ea",
+      900
+     ],
+     [
+      "Greywater diversion (installed)",
+      1,
+      "ea",
+      2100
+     ],
+     [
+      "Aquaponics system",
+      8,
+      "m2",
+      4300
+     ],
+     [
+      "Insect rearing unit",
+      1,
+      "ea",
+      300
+     ],
+     [
+      "Hot-compost bays",
+      1,
+      "set",
+      500
+     ],
+     [
+      "Drip irrigation",
+      400,
+      "m2",
+      3200
+     ]
+    ],
+    "subtotal": 25600,
+    "contingency": 2560,
+    "total": 28160,
+    "fits": true,
+    "headroom": 1840,
+    "indicators": {
+     "water_closure": 0.97,
+     "imported_kl": 8,
+     "overflow_kl": 0,
+     "storage_kl": 53,
+     "garden_water_satisfaction": 0.16,
+     "food_kcal_closure": 0.029,
+     "protein_closure": 0.049,
+     "nutrient_closure": 0.06,
+     "production_area_m2": 400,
+     "peak_energy_kwh_day": 2.91,
+     "indicative_cost": 15650,
+     "insect_share_of_fish_feed": 0.05,
+     "fish_protein_kg_counted": 0.29,
+     "bio_window": 0.83
+    }
+   }
+  },
+  "S3": {
+   "baseline": {
+    "rows": [
+     [
+      "Rainwater storage (shell)",
+      23.1,
+      "kL",
+      3000
+     ],
+     [
+      "Tank establishment",
+      1,
+      "tank",
+      1000
+     ],
+     [
+      "First-flush diverter and leaf screen",
+      3,
+      "downpipe",
+      450
+     ],
+     [
+      "Pressure pump (domestic supply)",
+      1,
+      "ea",
+      700
+     ],
+     [
+      "Transfer pump (garden irrigation)",
+      1,
+      "ea",
+      700
+     ],
+     [
+      "Point-of-entry UV unit",
+      1,
+      "ea",
+      1200
+     ],
+     [
+      "Cartridge pre-filtration train",
+      1,
+      "ea",
+      400
+     ],
+     [
+      "Urine diversion and storage",
+      1,
+      "ea",
+      900
+     ],
+     [
+      "Hot-compost bays",
+      1,
+      "set",
+      500
+     ],
+     [
+      "Drip irrigation",
+      65,
+      "m2",
+      520
+     ]
+    ],
+    "subtotal": 9370,
+    "contingency": 937,
+    "total": 10307,
+    "fits": true,
+    "headroom": 19693,
+    "indicators": {
+     "water_closure": 0.68,
+     "imported_kl": 73,
+     "overflow_kl": 0,
+     "storage_kl": 26,
+     "garden_water_satisfaction": 0.15,
+     "food_kcal_closure": 0.012,
+     "protein_closure": 0.018,
+     "nutrient_closure": 0.03,
+     "production_area_m2": 65,
+     "peak_energy_kwh_day": 1.59,
+     "indicative_cost": 3000,
+     "insect_share_of_fish_feed": null,
+     "fish_protein_kg_counted": 0.0,
+     "bio_window": 0.86
+    }
+   },
+   "competent": {
+    "rows": [
+     [
+      "Rainwater storage (shell)",
+      26.9,
+      "kL",
+      3500
+     ],
+     [
+      "Tank establishment",
+      2,
+      "tank",
+      2000
+     ],
+     [
+      "First-flush diverter and leaf screen",
+      3,
+      "downpipe",
+      450
+     ],
+     [
+      "Pressure pump (domestic supply)",
+      1,
+      "ea",
+      700
+     ],
+     [
+      "Transfer pump (garden irrigation)",
+      1,
+      "ea",
+      700
+     ],
+     [
+      "Point-of-entry UV unit",
+      1,
+      "ea",
+      1200
+     ],
+     [
+      "Cartridge pre-filtration train",
+      1,
+      "ea",
+      400
+     ],
+     [
+      "Composting toilet",
+      1,
+      "ea",
+      3500
+     ],
+     [
+      "Urine diversion and storage",
+      1,
+      "ea",
+      900
+     ],
+     [
+      "Greywater diversion (installed)",
+      1,
+      "ea",
+      2100
+     ],
+     [
+      "Aquaponics system",
+      4,
+      "m2",
+      2500
+     ],
+     [
+      "Insect rearing unit",
+      1,
+      "ea",
+      300
+     ],
+     [
+      "Hot-compost bays",
+      1,
+      "set",
+      500
+     ],
+     [
+      "Drip irrigation",
+      104,
+      "m2",
+      832
+     ]
+    ],
+    "subtotal": 19582,
+    "contingency": 1958,
+    "total": 21540,
+    "fits": true,
+    "headroom": 8460,
+    "indicators": {
+     "water_closure": 0.84,
+     "imported_kl": 38,
+     "overflow_kl": 1,
+     "storage_kl": 30,
+     "garden_water_satisfaction": 0.72,
+     "food_kcal_closure": 0.039,
+     "protein_closure": 0.064,
+     "nutrient_closure": 0.08,
+     "production_area_m2": 104,
+     "peak_energy_kwh_day": 2.88,
+     "indicative_cost": 11600,
+     "insect_share_of_fish_feed": 0.1,
+     "fish_protein_kg_counted": 0.29,
+     "bio_window": 0.86
+    }
+   },
+   "excellent": {
+    "rows": [
+     [
+      "Rainwater storage (shell)",
+      30.8,
+      "kL",
+      4000
+     ],
+     [
+      "Tank establishment",
+      2,
+      "tank",
+      2000
+     ],
+     [
+      "First-flush diverter and leaf screen",
+      3,
+      "downpipe",
+      450
+     ],
+     [
+      "Additional roof catchment",
+      8,
+      "m2",
+      510
+     ],
+     [
+      "Pressure pump (domestic supply)",
+      1,
+      "ea",
+      700
+     ],
+     [
+      "Transfer pump (garden irrigation)",
+      1,
+      "ea",
+      700
+     ],
+     [
+      "Point-of-entry UV unit",
+      1,
+      "ea",
+      1200
+     ],
+     [
+      "Cartridge pre-filtration train",
+      1,
+      "ea",
+      400
+     ],
+     [
+      "Composting toilet",
+      1,
+      "ea",
+      3500
+     ],
+     [
+      "Urine diversion and storage",
+      1,
+      "ea",
+      900
+     ],
+     [
+      "Greywater diversion (installed)",
+      1,
+      "ea",
+      2100
+     ],
+     [
+      "Aquaponics system",
+      8,
+      "m2",
+      4300
+     ],
+     [
+      "Insect rearing unit",
+      1,
+      "ea",
+      300
+     ],
+     [
+      "Hot-compost bays",
+      1,
+      "set",
+      500
+     ],
+     [
+      "Drip irrigation",
+      130,
+      "m2",
+      1040
+     ]
+    ],
+    "subtotal": 22600,
+    "contingency": 2260,
+    "total": 24860,
+    "fits": true,
+    "headroom": 5140,
+    "indicators": {
+     "water_closure": 0.96,
+     "imported_kl": 10,
+     "overflow_kl": 8,
+     "storage_kl": 34,
+     "garden_water_satisfaction": 0.81,
+     "food_kcal_closure": 0.061,
+     "protein_closure": 0.099,
+     "nutrient_closure": 0.1,
+     "production_area_m2": 130,
+     "peak_energy_kwh_day": 2.78,
+     "indicative_cost": 15110,
+     "insect_share_of_fish_feed": 0.05,
+     "fish_protein_kg_counted": 0.29,
+     "bio_window": 0.86
+    }
+   }
+  },
+  "S4": {
+   "baseline": {
+    "rows": [
+     [
+      "Rainwater storage (shell)",
+      23.1,
+      "kL",
+      3000
+     ],
+     [
+      "Tank establishment",
+      1,
+      "tank",
+      1000
+     ],
+     [
+      "First-flush diverter and leaf screen",
+      4,
+      "downpipe",
+      600
+     ],
+     [
+      "Pressure pump (domestic supply)",
+      1,
+      "ea",
+      700
+     ],
+     [
+      "Transfer pump (garden irrigation)",
+      1,
+      "ea",
+      700
+     ],
+     [
+      "Point-of-entry UV unit",
+      1,
+      "ea",
+      1200
+     ],
+     [
+      "Cartridge pre-filtration train",
+      1,
+      "ea",
+      400
+     ],
+     [
+      "Urine diversion and storage",
+      1,
+      "ea",
+      900
+     ],
+     [
+      "Hot-compost bays",
+      1,
+      "set",
+      500
+     ],
+     [
+      "Drip irrigation",
+      125,
+      "m2",
+      1000
+     ]
+    ],
+    "subtotal": 10000,
+    "contingency": 1000,
+    "total": 11000,
+    "fits": true,
+    "headroom": 19000,
+    "indicators": {
+     "water_closure": 0.42,
+     "imported_kl": 127,
+     "overflow_kl": 0,
+     "storage_kl": 28,
+     "garden_water_satisfaction": 0.0,
+     "food_kcal_closure": 0.011,
+     "protein_closure": 0.016,
+     "nutrient_closure": 0.03,
+     "production_area_m2": 125,
+     "peak_energy_kwh_day": 1.53,
+     "indicative_cost": 3000,
+     "insect_share_of_fish_feed": null,
+     "fish_protein_kg_counted": 0.0,
+     "bio_window": 0.78
+    }
+   },
+   "competent": {
+    "rows": [
+     [
+      "Rainwater storage (shell)",
+      26.9,
+      "kL",
+      3500
+     ],
+     [
+      "Tank establishment",
+      2,
+      "tank",
+      2000
+     ],
+     [
+      "First-flush diverter and leaf screen",
+      4,
+      "downpipe",
+      600
+     ],
+     [
+      "Pressure pump (domestic supply)",
+      1,
+      "ea",
+      700
+     ],
+     [
+      "Transfer pump (garden irrigation)",
+      1,
+      "ea",
+      700
+     ],
+     [
+      "Point-of-entry UV unit",
+      1,
+      "ea",
+      1200
+     ],
+     [
+      "Cartridge pre-filtration train",
+      1,
+      "ea",
+      400
+     ],
+     [
+      "Composting toilet",
+      1,
+      "ea",
+      3500
+     ],
+     [
+      "Urine diversion and storage",
+      1,
+      "ea",
+      900
+     ],
+     [
+      "Greywater diversion (installed)",
+      1,
+      "ea",
+      2100
+     ],
+     [
+      "Aquaponics system",
+      4,
+      "m2",
+      2500
+     ],
+     [
+      "Insect rearing unit",
+      1,
+      "ea",
+      300
+     ],
+     [
+      "Hot-compost bays",
+      1,
+      "set",
+      500
+     ],
+     [
+      "Drip irrigation",
+      200,
+      "m2",
+      1600
+     ]
+    ],
+    "subtotal": 20500,
+    "contingency": 2050,
+    "total": 22550,
+    "fits": true,
+    "headroom": 7450,
+    "indicators": {
+     "water_closure": 0.59,
+     "imported_kl": 95,
+     "overflow_kl": 0,
+     "storage_kl": 32,
+     "garden_water_satisfaction": 0.23,
+     "food_kcal_closure": 0.037,
+     "protein_closure": 0.061,
+     "nutrient_closure": 0.09,
+     "production_area_m2": 200,
+     "peak_energy_kwh_day": 2.83,
+     "indicative_cost": 11600,
+     "insect_share_of_fish_feed": 0.09,
+     "fish_protein_kg_counted": 0.27,
+     "bio_window": 0.78
+    }
+   },
+   "excellent": {
+    "rows": [
+     [
+      "Rainwater storage (shell)",
+      30.8,
+      "kL",
+      4000
+     ],
+     [
+      "Tank establishment",
+      2,
+      "tank",
+      2000
+     ],
+     [
+      "First-flush diverter and leaf screen",
+      4,
+      "downpipe",
+      600
+     ],
+     [
+      "Additional roof catchment",
+      12,
+      "m2",
+      690
+     ],
+     [
+      "Pressure pump (domestic supply)",
+      1,
+      "ea",
+      700
+     ],
+     [
+      "Transfer pump (garden irrigation)",
+      1,
+      "ea",
+      700
+     ],
+     [
+      "Point-of-entry UV unit",
+      1,
+      "ea",
+      1200
+     ],
+     [
+      "Cartridge pre-filtration train",
+      1,
+      "ea",
+      400
+     ],
+     [
+      "Composting toilet",
+      1,
+      "ea",
+      3500
+     ],
+     [
+      "Urine diversion and storage",
+      1,
+      "ea",
+      900
+     ],
+     [
+      "Greywater diversion (installed)",
+      1,
+      "ea",
+      2100
+     ],
+     [
+      "Aquaponics system",
+      8,
+      "m2",
+      4300
+     ],
+     [
+      "Insect rearing unit",
+      1,
+      "ea",
+      300
+     ],
+     [
+      "Hot-compost bays",
+      1,
+      "set",
+      500
+     ],
+     [
+      "Drip irrigation",
+      250,
+      "m2",
+      2000
+     ]
+    ],
+    "subtotal": 23890,
+    "contingency": 2389,
+    "total": 26279,
+    "fits": true,
+    "headroom": 3721,
+    "indicators": {
+     "water_closure": 0.72,
+     "imported_kl": 61,
+     "overflow_kl": 0,
+     "storage_kl": 36,
+     "garden_water_satisfaction": 0.27,
+     "food_kcal_closure": 0.059,
+     "protein_closure": 0.096,
+     "nutrient_closure": 0.12,
+     "production_area_m2": 250,
+     "peak_energy_kwh_day": 2.71,
+     "indicative_cost": 15290,
+     "insect_share_of_fish_feed": 0.05,
+     "fish_protein_kg_counted": 0.27,
+     "bio_window": 0.78
+    }
+   }
+  },
+  "S5": {
+   "baseline": {
+    "rows": [
+     [
+      "Rainwater storage (shell)",
+      23.1,
+      "kL",
+      3000
+     ],
+     [
+      "Tank establishment",
+      1,
+      "tank",
+      1000
+     ],
+     [
+      "First-flush diverter and leaf screen",
+      4,
+      "downpipe",
+      600
+     ],
+     [
+      "Pressure pump (domestic supply)",
+      1,
+      "ea",
+      700
+     ],
+     [
+      "Transfer pump (garden irrigation)",
+      1,
+      "ea",
+      700
+     ],
+     [
+      "Point-of-entry UV unit",
+      1,
+      "ea",
+      1200
+     ],
+     [
+      "Cartridge pre-filtration train",
+      1,
+      "ea",
+      400
+     ],
+     [
+      "Urine diversion and storage",
+      1,
+      "ea",
+      900
+     ],
+     [
+      "Hot-compost bays",
+      1,
+      "set",
+      500
+     ],
+     [
+      "Drip irrigation",
+      250,
+      "m2",
+      2000
+     ]
+    ],
+    "subtotal": 11000,
+    "contingency": 1100,
+    "total": 12100,
+    "fits": true,
+    "headroom": 17900,
+    "indicators": {
+     "water_closure": 0.73,
+     "imported_kl": 71,
+     "overflow_kl": 215,
+     "storage_kl": 68,
+     "garden_water_satisfaction": 0.23,
+     "food_kcal_closure": 0.048,
+     "protein_closure": 0.074,
+     "nutrient_closure": 0.13,
+     "production_area_m2": 250,
+     "peak_energy_kwh_day": 1.96,
+     "indicative_cost": 3000,
+     "insect_share_of_fish_feed": null,
+     "fish_protein_kg_counted": 0.0,
+     "bio_window": 0.99
+    }
+   },
+   "competent": {
+    "rows": [
+     [
+      "Rainwater storage (shell)",
+      26.9,
+      "kL",
+      3500
+     ],
+     [
+      "Tank establishment",
+      2,
+      "tank",
+      2000
+     ],
+     [
+      "First-flush diverter and leaf screen",
+      4,
+      "downpipe",
+      600
+     ],
+     [
+      "Pressure pump (domestic supply)",
+      1,
+      "ea",
+      700
+     ],
+     [
+      "Transfer pump (garden irrigation)",
+      1,
+      "ea",
+      700
+     ],
+     [
+      "Point-of-entry UV unit",
+      1,
+      "ea",
+      1200
+     ],
+     [
+      "Cartridge pre-filtration train",
+      1,
+      "ea",
+      400
+     ],
+     [
+      "Composting toilet",
+      1,
+      "ea",
+      3500
+     ],
+     [
+      "Urine diversion and storage",
+      1,
+      "ea",
+      900
+     ],
+     [
+      "Greywater diversion (installed)",
+      1,
+      "ea",
+      2100
+     ],
+     [
+      "Aquaponics system",
+      4,
+      "m2",
+      2500
+     ],
+     [
+      "Insect rearing unit",
+      1,
+      "ea",
+      300
+     ],
+     [
+      "Hot-compost bays",
+      1,
+      "set",
+      500
+     ],
+     [
+      "Drip irrigation",
+      400,
+      "m2",
+      3200
+     ]
+    ],
+    "subtotal": 22100,
+    "contingency": 2210,
+    "total": 24310,
+    "fits": true,
+    "headroom": 5690,
+    "indicators": {
+     "water_closure": 0.79,
+     "imported_kl": 58,
+     "overflow_kl": 221,
+     "storage_kl": 72,
+     "garden_water_satisfaction": 0.29,
+     "food_kcal_closure": 0.101,
+     "protein_closure": 0.164,
+     "nutrient_closure": 0.21,
+     "production_area_m2": 400,
+     "peak_energy_kwh_day": 3.36,
+     "indicative_cost": 11600,
+     "insect_share_of_fish_feed": 0.17,
+     "fish_protein_kg_counted": 0.49,
+     "bio_window": 0.99
+    }
+   },
+   "excellent": {
+    "rows": [
+     [
+      "Rainwater storage (shell)",
+      30.8,
+      "kL",
+      4000
+     ],
+     [
+      "Tank establishment",
+      2,
+      "tank",
+      2000
+     ],
+     [
+      "First-flush diverter and leaf screen",
+      5,
+      "downpipe",
+      750
+     ],
+     [
+      "Additional roof catchment",
+      15,
+      "m2",
+      900
+     ],
+     [
+      "Pressure pump (domestic supply)",
+      1,
+      "ea",
+      700
+     ],
+     [
+      "Transfer pump (garden irrigation)",
+      1,
+      "ea",
+      700
+     ],
+     [
+      "Point-of-entry UV unit",
+      1,
+      "ea",
+      1200
+     ],
+     [
+      "Cartridge pre-filtration train",
+      1,
+      "ea",
+      400
+     ],
+     [
+      "Composting toilet",
+      1,
+      "ea",
+      3500
+     ],
+     [
+      "Urine diversion and storage",
+      1,
+      "ea",
+      900
+     ],
+     [
+      "Greywater diversion (installed)",
+      1,
+      "ea",
+      2100
+     ],
+     [
+      "Aquaponics system",
+      8,
+      "m2",
+      4300
+     ],
+     [
+      "Insect rearing unit",
+      1,
+      "ea",
+      300
+     ],
+     [
+      "Hot-compost bays",
+      1,
+      "set",
+      500
+     ],
+     [
+      "Drip irrigation",
+      500,
+      "m2",
+      4000
+     ]
+    ],
+    "subtotal": 26250,
+    "contingency": 2625,
+    "total": 28875,
+    "fits": true,
+    "headroom": 1125,
+    "indicators": {
+     "water_closure": 0.83,
+     "imported_kl": 48,
+     "overflow_kl": 245,
+     "storage_kl": 76,
+     "garden_water_satisfaction": 0.31,
+     "food_kcal_closure": 0.154,
+     "protein_closure": 0.246,
+     "nutrient_closure": 0.27,
+     "production_area_m2": 500,
+     "peak_energy_kwh_day": 3.34,
+     "indicative_cost": 15500,
+     "insect_share_of_fish_feed": 0.08,
+     "fish_protein_kg_counted": 0.49,
+     "bio_window": 0.99
+    }
+   }
+  }
+ }
+}
