@@ -5,7 +5,9 @@ import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
 import { withBase } from "astro-theme-university/url";
 import BandTable from "../../components/BandTable.astro";
 import Figure from "../../components/Figure.astro";
-import { courseModel, indicators, sites, pct } from "../../lib/model";
+import { constraints, courseModel, indicators, sites, pct } from "../../lib/model";
+import { measurement, money } from "../../lib/cases";
+import WalkthroughButton from "../../components/WalkthroughButton.astro";
 import { siteConfig } from "../../site-config";
 
 const recipe = courseModel.recipe;
@@ -30,12 +32,102 @@ const nameOf = (k: string) => indicators.find((i) => i.key === k)?.name ?? k;
 ---
 
 <ContentLayout
-  title="Method: indicators, bands and what they are not"
-  description="How this course turns a design into evidence: five capped indicators, per-site reference bands built from three constructed designs, and a clear statement of what the method does not establish."
+  title="Programme and method"
+  description="The fictional loan programme and the consultancy, the two phases of the commission, and then the reference material every design is measured and costed against."
   wide
   {...siteConfig}
 >
-  <h2>What is measured</h2>
+  <WalkthroughButton page="method" />
+
+  <p class="fiction">
+    <strong>Teaching fiction.</strong> The Household Resilience Loan Programme and Common Ground
+    Engineering do not exist. They are a frame for the engineering: they give every design a
+    client, a deadline, a budget and a reviewer. The government is imaginary. Your water balance
+    still has to add up.
+  </p>
+
+  <h2 id="the-scenario">The scenario</h2>
+  <p>
+    A government programme in this course's fiction lends to homeowners for retrofits that make a
+    household more self-reliant in food, water and waste. Loans are selective: an application
+    stands or falls on an engineering proposal showing that the retrofit meets the household's own
+    service needs, costs what it says, and will still be working in five years.
+  </p>
+  <p>
+    You are a graduate engineer at <strong>Common Ground</strong>, a small consultancy that
+    prepares those applications. Each graduate takes one household from intake to proposal under a
+    senior reviewer, played by the teaching team, who reads your drafts the way a programme
+    assessor will. <strong>Nobody applies for a real loan, and nobody waits a real year.</strong>
+  </p>
+
+  <h2 id="two-phases">The two phases</h2>
+  <ol class="phases">
+    <li>
+      <strong>Weeks 1 to 6 — work out what you would need to know.</strong> The homeowner supplies
+      an intake dossier: the property as it stands, what they already own, what they will and will
+      not allow, and the service targets they care about. You work through each candidate system
+      far enough to know what it would need, and you produce a costed twelve-month measurement
+      programme. That is <a href={withBase("/assessments/food-loop-design/")}>Assignment 1</a>,
+      due in week 7.
+    </li>
+    <li>
+      <strong>Week 7, then weeks 8 to 12 — decide, and argue for it.</strong> Assignment 1 goes in
+      on the Friday. The story then jumps twelve months and the specialist team hands over its
+      analysed findings for your home. You compare the existing baseline with three feasible
+      retrofit options and recommend one. That is
+      <a href={withBase("/assessments/capstone-master-plan/")}>Assignment 2</a>.
+    </li>
+  </ol>
+  <p>
+    The specialists' measured year is <strong>synthetic</strong>, generated to be consistent with
+    each home and labelled that way everywhere it appears. It is the same for every student who
+    took that home, whatever their Assignment 1 said. Specialists analyse; they never choose the
+    system.
+  </p>
+
+  <h2 id="what-you-produce">What you produce, and what you do not</h2>
+  <p>
+    What an application gets from you is the <strong>technical annex and executive
+    recommendation</strong>. It is not a loan approval and it is not a construction-certified
+    design: pipe sizes, wiring, structural detail and certification belong to licensed trades
+    later. You specify performance and how to check it has been achieved. There are no interest
+    rates, credit scores or income tests anywhere in this course, and nothing here is financial
+    advice.
+  </p>
+
+  <h2 id="the-rules">The programme's rules</h2>
+  <Figure caption="Programme rules. They apply to every home and every alternative." basis="course assumption">
+    <table>
+      <thead><tr><th scope="col">Rule</th><th scope="col">Limit</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Implementation cost</th><td>at most {money(constraints.budget_aud)}, including a {(constraints.contingency * 100).toFixed(0)} % contingency, priced from the <a href={withBase("/method/costing/")}>course schedule</a></td></tr>
+        <tr><th scope="row">Process energy</th><td>at most {constraints.energy_cap_kwh_day} kWh a day, averaged over the peak month, counting the loads that run the food, water and waste systems</td></tr>
+        <tr><th scope="row">Preliminary investigation</th><td>a separate {money(measurement.allowance)} per home for measurement equipment and services; consultant time is scheduled in hours, not charged</td></tr>
+        <tr><th scope="row">Scope</th><td>food, water and waste only; energy and shelter belong to a later round of the programme</td></tr>
+      </tbody>
+    </table>
+  </Figure>
+  <p>
+    Borrowing more is allowed up to the limit, but a larger loan is a larger exposure, so the
+    programme asks a stronger question of it: <strong>what does the extra money buy that a cheaper
+    option does not?</strong> That is an engineering question about alternatives, and it is the
+    question Assignment 2 answers.
+  </p>
+
+  <h2 id="contents">The reference material</h2>
+  <p>Everything below this line is reference. Come back to it all semester.</p>
+  <ul class="contents">
+    <li><a href="#what-is-measured">What is measured</a> — the five capped indicators and their definitions</li>
+    <li><a href="#reference-bands">Reference bands</a> — where the per-site thresholds come from, and what they do not establish</li>
+    <li><a href="#how-stable-are-the-bands">How stable the bands are</a> — the sensitivity testing, published with its limits</li>
+    <li><a href="#screening-model">The screening model</a> — what it contains and what it leaves out</li>
+    <li><a href={withBase("/method/measurement/")}>Measurement primer</a> — instrument classes, units, frequencies and honest accuracies</li>
+    <li><a href={withBase("/method/costing/")}>Costing and energy</a> — the price schedule, and which loads count</li>
+    <li><a href={withBase("/method/comparison/")}>Worked comparison</a> — one design idea through all five sites</li>
+    <li><a href={withBase("/method/datasets/")}>Datasets</a> — the synthetic data, and what it is not</li>
+  </ul>
+
+  <h2 id="what-is-measured">What is measured</h2>
   <p>
     Five indicators, all capped at 100 %, all counted as <em>used</em> rather than
     produced, and all net of imports. That last rule is the one that does the work:
@@ -78,7 +170,7 @@ const nameOf = (k: string) => indicators.find((i) => i.key === k)?.name ?? k;
     so is better than inventing a number and calling it a measurement.
   </p>
 
-  <h2>Reference bands, and what they borrow from NatHERS</h2>
+  <h2 id="reference-bands">Reference bands, and what they borrow from NatHERS</h2>
   <p>
     NatHERS could not use one national energy target across Australian climates
     because a single figure "would bias results", so it sets climate-specific star
@@ -225,7 +317,7 @@ const nameOf = (k: string) => indicators.find((i) => i.key === k)?.name ?? k;
     </li>
   </ul>
 
-  <h2>The screening model behind all of it</h2>
+  <h2 id="screening-model">The screening model behind all of it</h2>
   <p>
     Monthly, transparent, and built only from published formulas so that a student
     can reproduce any number by hand. It has no drought years, no pests, no soil
@@ -240,6 +332,9 @@ const nameOf = (k: string) => indicators.find((i) => i.key === k)?.name ?? k;
   </p>
 
   <CardGrid columns={2}>
+    <Card title="Measurement primer" href={withBase("/method/measurement/")}>
+      <p>What a household measurement programme measures, in what units, how often and how well.</p>
+    </Card>
     <Card title="Costing and energy" href={withBase("/method/costing/")}>
       <p>The price schedule, the bill-of-materials rules, and exactly which loads count against 5 kWh a day.</p>
     </Card>
@@ -256,6 +351,24 @@ const nameOf = (k: string) => indicators.find((i) => i.key === k)?.name ?? k;
 </ContentLayout>
 
 <style>
+  .fiction {
+    padding: 0.8rem 1rem;
+    border-left: 3px solid var(--at-primary);
+    background: var(--at-bg-alt);
+  }
+
+  .phases li {
+    margin-bottom: 0.75rem;
+  }
+
+  .contents {
+    padding-left: 1.1rem;
+  }
+
+  .contents li {
+    margin-bottom: 0.3rem;
+  }
+
   th[scope="row"] {
     text-align: left;
     font-weight: 500;

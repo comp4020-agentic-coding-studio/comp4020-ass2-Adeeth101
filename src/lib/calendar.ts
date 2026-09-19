@@ -25,6 +25,9 @@ export const lectureDate = (week: number): string => iso(mondayOf(week));
 export const tutorialDate = (week: number): string =>
   iso(new Date(mondayOf(week).getTime() + 3 * DAY));
 
+/** Alias kept for the planner, which reads tutorial dates by a stable name. */
+export const studioDateOrFallback = tutorialDate;
+
 /** Friday of a teaching week, used for work due at the end of a week. */
 export const fridayOf = (week: number): string =>
   iso(new Date(mondayOf(week).getTime() + 4 * DAY));

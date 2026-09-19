@@ -20,14 +20,20 @@ export const siteConfig = defineSiteConfig({
   ...slopBranding,
   name: "Slop University",
 
+  // Three groups, in this order. The group headings are attached to the first
+  // link of each group by `src/styles/site.css`, which keys on the href — so
+  // reordering these, or changing a group's first href, means changing that file
+  // too. One flat list keeps the desktop bar and the mobile menu in agreement.
   links: [
+    // Weekly study
     { text: "Weeks", href: "/weeks/" },
     { text: "Lectures", href: "/lectures/" },
     { text: sessionLabels.plural, href: "/sessions/" },
-    { text: "Assessment", href: "/assessments/" },
+    { text: "Assessments", href: "/assessments/" },
+    // Course reference
     { text: "Clients", href: "/clients/" },
-    { text: "Programme", href: "/programme/" },
-    { text: "Method", href: "/method/" },
+    { text: "Programme & method", href: "/method/" },
+    // People & policies
     { text: "People", href: "/people/" },
     { text: "Policies", href: "/policies/" },
   ],

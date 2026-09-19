@@ -4,6 +4,8 @@ import CardGrid from "astro-theme-university/components/CardGrid.astro";
 import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
 import { withBase } from "astro-theme-university/url";
 import Timeline from "../components/Timeline.astro";
+import Planner from "../components/Planner.astro";
+import WalkthroughButton from "../components/WalkthroughButton.astro";
 import { courseMeta, helpful, prerequisites, sequel } from "../course-config";
 import { midSemesterBreak, teachingEnds } from "../lib/calendar";
 import { constraints } from "../lib/model";
@@ -30,30 +32,69 @@ import { sessionLabels, siteConfig } from "../site-config";
     That is the question a homeowner asks when they apply for a loan to make their house more
     self-reliant, and it is the one this course trains you to answer. You work as a graduate
     engineer at a small consultancy, taking one household from its first meeting to a costed
-    proposal. The household and the <a href={withBase("/programme/")}>loan programme</a> are
-    fiction; the climates, the water balances, the soil, the pumps and the prices are not.
+    proposal. <strong>The government is imaginary. Your water balance still has to add up.</strong>
   </p>
 
-  <dl class="orient">
+  <div id="start-here" class="start">
+    <WalkthroughButton page="home" />
+  </div>
+
+  <dl class="orient" id="orientation">
     <dt>What this course is</dt>
     <dd>
       A twelve-week engineering design course. You are given one real Australian climate, one
       fixed existing house and one fictional client, and you decide what their household should
-      spend to become more self-reliant in food, water and waste.
+      spend to become more self-reliant in food, water and waste. The
+      <a href={withBase("/method/#the-scenario")}>loan programme and the consultancy</a> are
+      fiction; the climates, the water balances, the soil, the pumps and the prices are not.
     </dd>
-    <dt>What you submit</dt>
+    <dt id="what-you-submit">What you submit</dt>
     <dd>
-      Five short quizzes in the tutorials, a measurement programme in week 7, and an investment
-      proposal in the assessment period. <a href={withBase("/assessments/")}>Assessment</a> has
-      the weights and the marking criteria.
+      Ten small tutorial checkpoints (20 %), five short quizzes (20 %), a measurement programme in
+      week 7 (20 %), and an investment proposal in the assessment period (40 %).
+      <a href={withBase("/assessments/")}>Assessment</a> has the criteria; half the marks are for
+      the weekly work the two assignments are assembled from.
     </dd>
     <dt>What to do this week</dt>
     <dd>
       Open <a href={withBase("/weeks/")}>the weekly map</a>, find your week, and read the two
-      paragraphs at the top of it. Each week names the question it answers and what you should be
-      holding when it ends.
+      paragraphs at the top of it. If this is your first visit, start at
+      <a href={withBase("/weeks/week-01/")}>week 1</a>: choose a client home and build the
+      evidence workbook every later week writes into.
     </dd>
   </dl>
+
+  <h2 id="three-groups">How this site is arranged</h2>
+  <p>
+    Three groups, in the navigation above and in the menu on a phone. Knowing which group you are
+    in tells you whether something is a task or a reference.
+  </p>
+  <CardGrid columns={3}>
+    <Card title="Weekly study">
+      <p>
+        What you do each week. <a href={withBase("/weeks/")}>Weeks</a> first — it is the map, and
+        the other three are entry points into the same material:
+        <a href={withBase("/lectures/")}>Lectures</a>,
+        <a href={withBase("/sessions/")}>{sessionLabels.plural}</a> and
+        <a href={withBase("/assessments/")}>Assessments</a>.
+      </p>
+    </Card>
+    <Card title="Course reference">
+      <p>
+        Material you come back to all semester, not another weekly task list. The
+        <a href={withBase("/clients/")}>five client homes</a>, and
+        <a href={withBase("/method/")}>Programme &amp; method</a> — the scenario, the definitions,
+        the bands, the price schedule and the datasets.
+      </p>
+    </Card>
+    <Card title="People &amp; policies">
+      <p>
+        Who teaches what and how to reach them (<a href={withBase("/people/")}>People</a>), and
+        deadlines, extensions, generative AI and how the fiction and the facts are kept apart
+        (<a href={withBase("/policies/")}>Policies</a>).
+      </p>
+    </Card>
+  </CardGrid>
 
   <h2>One commission, two assignments</h2>
   <p>
@@ -64,10 +105,17 @@ import { sessionLabels, siteConfig } from "../site-config";
   </p>
   <p>
     Then the story jumps twelve months. A specialist team hands over what the measurement year
-    found, and you design the retrofit: the lowest-cost option that meets the household's own
-    service targets, then an honest case for any money spent beyond it. That is Assignment 2, the
-    technical annex to the family's loan application.
+    found, and you compare the existing home with three feasible retrofit options and recommend
+    one: the cheapest arrangement that meets the household's own service targets, then an honest
+    case for any money spent beyond it. That is Assignment 2, the technical annex to the family's
+    loan application.
   </p>
+  <p class="under">
+    Nobody applies for a real loan and nobody waits a real year. Everything you calculate before
+    week 7's handover is a scoping estimate on published figures, labelled as one.
+  </p>
+
+  <Planner />
 
   <Timeline />
   <p class="under">
@@ -136,8 +184,8 @@ import { sessionLabels, siteConfig } from "../site-config";
     <Card title="The twelve weeks" href="/weeks/">
       <p>The weekly map: what each week asks, what it teaches, and what you leave holding.</p>
     </Card>
-    <Card title="The programme and the practice" href="/programme/">
-      <p>The fictional loan programme, the consultancy you work for, and the rules they set.</p>
+    <Card title="Programme &amp; method" href="/method/">
+      <p>The fictional loan programme and the consultancy, then every definition, band, price and dataset.</p>
     </Card>
     <Card title="Lectures" href="/lectures/">
       <p>One engineering question a week, a named method, and a worked example at that week's home.</p>
@@ -146,10 +194,10 @@ import { sessionLabels, siteConfig } from "../site-config";
       <p>Ninety-minute sessions with worked examples on a practice house and exercises on your own home.</p>
     </Card>
     <Card title="Assessment" href="/assessments/">
-      <p>Five conceptual quizzes, the measurement programme and the investment proposal.</p>
+      <p>Ten tutorial checkpoints, five conceptual quizzes, the measurement programme and the investment proposal.</p>
     </Card>
-    <Card title="Method" href="/method/">
-      <p>The decision variables, the reference data and the price schedules every design is costed from.</p>
+    <Card title="Measurement primer" href="/method/measurement/">
+      <p>What a household measurement programme measures, in what units, how often and how well.</p>
     </Card>
     <Card title="Policies" href="/policies/">
       <p>Deadlines, extensions, generative AI, and how the fiction and the facts are kept apart.</p>
@@ -209,6 +257,10 @@ import { sessionLabels, siteConfig } from "../site-config";
     .orient dd {
       margin-bottom: 0.8rem;
     }
+  }
+
+  .start {
+    margin-bottom: 1.25rem;
   }
 
   .claim {

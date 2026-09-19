@@ -4,6 +4,7 @@ import CardGrid from "astro-theme-university/components/CardGrid.astro";
 import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
 import { withBase } from "astro-theme-university/url";
 import Figure from "../../components/Figure.astro";
+import WalkthroughButton from "../../components/WalkthroughButton.astro";
 import { homes } from "../../lib/cases";
 import { sites } from "../../lib/model";
 import { siteConfig } from "../../site-config";
@@ -36,7 +37,9 @@ const fmt = (v: number) => v.toLocaleString("en-AU", { maximumFractionDigits: 0 
     <a href={withBase("/method/")}>method page</a>.
   </p>
 
-  <h2>Choose a home</h2>
+  <WalkthroughButton page="clients" />
+
+  <h2 id="the-homes">Choose a home</h2>
   <CardGrid columns={3}>
     {homes.map((h) => (
       <Card title={`${h.short}: the ${h.family} household`} href={`/clients/${h.slug}/`}>
@@ -46,7 +49,7 @@ const fmt = (v: number) => v.toLocaleString("en-AU", { maximumFractionDigits: 0 
     ))}
   </CardGrid>
 
-  <h2>The five side by side</h2>
+  <h2 id="comparison">The five side by side</h2>
   <Figure
     caption="Plot, growing and roof areas are computed from each plan; climate is Bureau of Meteorology long-term statistics for the named station. Brisbane's shared-garden allocation is common property and is shown separately, never added to the lot."
     basis="sourced"

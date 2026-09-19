@@ -1,0 +1,569 @@
+---
+/** The semester planner, in two views, shared by the home page and /weeks/.
+ *
+ *  Both views are rendered as plain HTML and CSS — no chart library, no canvas.
+ *  Without JavaScript both are present and readable, one after the other, with
+ *  their headings and their accessible tables. With JavaScript the two radio
+ *  controls switch between them.
+ *
+ *  Every marker is a real link with its detail in the page (not a title
+ *  attribute), so it works on touch and on focus as well as on hover. Colour is
+ *  never the only distinction: every row is labelled and every marker carries
+ *  its own text. */
+import { getPublishedCollection } from "astro-course-university/content";
+import { withBase } from "astro-theme-university/url";
+import {
+  ASSESSMENT_PERIOD_HOURS,
+  ASSESSMENT_PERIOD_NOTE,
+  BREAK_NOTE,
+  EFFORT_CATEGORIES,
+  EFFORT_CAVEAT,
+  GRAND_TOTAL,
+  MARKER_ROWS,
+  TEACHING_TOTAL,
+  buildMarkers,
+  weekEffort,
+} from "../lib/planner";
+import { TEACHING_WEEKS, midSemesterBreak } from "../lib/calendar";
+import { formatCourseDate } from "../lib/dates";
+import { courseMeta } from "../course-config";
+
+const entries = await getPublishedCollection("assessments");
+const markers = buildMarkers(
+  entries.map((a) => ({
+    id: a.id,
+    week: a.data.week,
+    weight: a.data.weight,
+    title: a.data.title,
+    due: a.data.due,
+  })),
+);
+
+const checkpoints = entries.find((a) => a.id === "tutorial-checkpoints");
+
+/** Markers that fall inside teaching, keyed by row and week. */
+const inWeek = (kind: string, week: number) =>
+  markers.filter((m) => m.kind === kind && m.week === week && !isAfterTeaching(m));
+
+/** A2 is due in the assessment period even though its metadata says week 12, so
+ *  it belongs in the trailing column rather than over week 12. */
+const teachingEndsIso = `${courseMeta.year}-05-28`;
+function isAfterTeaching(m: { kind: string; date: string }) {
+  return m.kind === "assignment" && m.date > teachingEndsIso;
+}
+const afterTeaching = markers.filter(isAfterTeaching);
+
+const maxHours = Math.max(...weekEffort.map((w) => w.total));
+const weeks = Array.from({ length: TEACHING_WEEKS }, (_, i) => i + 1);
+
+/** Today's line only if the real current date falls inside this course's real
+ *  calendar. It is 2027 fiction, so in practice it never does — and inventing a
+ *  current week would be worse than having none. */
+const today = new Date().toISOString().slice(0, 10);
+const todayInCourse = today >= courseMeta.startDate && today <= courseMeta.endDate;
+---
+
+<section class="planner" id="planner" aria-labelledby="planner-h" data-planner>
+  <div class="planner-head">
+    <h2 id="planner-h">The semester at a glance</h2>
+    <div class="planner-switch" role="group" aria-label="Planner view" data-planner-switch hidden>
+      <button type="button" data-view="deadlines" aria-pressed="true">Deadlines &amp; materials</button>
+      <button type="button" data-view="effort" aria-pressed="false">Suggested weekly effort</button>
+    </div>
+  </div>
+
+  <!-- ---------------------------------------------------------------- -->
+  <div class="view" data-view-panel="deadlines">
+    <h3 class="view-h">Deadlines and materials</h3>
+    <p class="view-note">
+      Twelve teaching weeks, the mid-semester break after week 5, then the assessment period.
+      Every marker is a link.
+    </p>
+
+    <div class="scroller" tabindex="0" role="region" aria-label="Deadlines and materials chart, scrolls sideways">
+      <table class="grid">
+        <caption class="visually-hidden">
+          What exists in each teaching week, by kind, with the assessment period at the end
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col" class="rowhead">Kind</th>
+            {weeks.map((w) => <th scope="col">Wk {w}{w === 5 && <span class="brk">break after</span>}</th>)}
+            <th scope="col" class="exam">Assessment period</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            MARKER_ROWS.map((row) => (
+              <tr class={`r-${row.kind}`}>
+                <th scope="row" class="rowhead">{row.label}</th>
+                {weeks.map((w) => (
+                  <td>
+                    {inWeek(row.kind, w).map((m) => (
+                      <a href={withBase(m.href)} class="mk">
+                        <span class="mk-label">{m.label}</span>
+                        <span class="mk-detail">{m.detail}</span>
+                      </a>
+                    ))}
+                  </td>
+                ))}
+                <td class="exam">
+                  {row.kind === "assignment" &&
+                    afterTeaching.map((m) => (
+                      <a href={withBase(m.href)} class="mk">
+                        <span class="mk-label">{m.label}</span>
+                        <span class="mk-detail">{m.detail}</span>
+                      </a>
+                    ))}
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+    <p class="cue">Scroll sideways to see every week, or read the list below.</p>
+
+    <ul class="legend">
+      {MARKER_ROWS.map((row) => <li class={`r-${row.kind}`}>{row.label}</li>)}
+    </ul>
+
+    <p class="view-note">
+      Break: {formatCourseDate(midSemesterBreak.from)} to {formatCourseDate(midSemesterBreak.to)}.
+      {checkpoints && (
+        <>
+          {" "}Tutorial checkpoints are one{" "}
+          <a href={withBase("/assessments/tutorial-checkpoints/")}>{checkpoints.data.weight} % record</a>{" "}
+          with ten Friday deadlines, not ten separate assessments.
+        </>
+      )}
+      {!todayInCourse && <> This course's calendar is in {courseMeta.year}, so no "today" line is drawn.</>}
+    </p>
+
+    <details class="alt">
+      <summary>The same thing as a list</summary>
+      <ul class="flat">
+        {
+          MARKER_ROWS.map((row) => (
+            <li>
+              <strong>{row.label}.</strong>{" "}
+              {markers
+                .filter((m) => m.kind === row.kind)
+                .map((m) => `${m.label} (${m.detail})`)
+                .join("; ") || "none"}
+            </li>
+          ))
+        }
+      </ul>
+    </details>
+  </div>
+
+  <!-- ---------------------------------------------------------------- -->
+  <div class="view" data-view-panel="effort">
+    <h3 class="view-h">Suggested weekly effort</h3>
+    <p class="view-note">
+      {EFFORT_CAVEAT} {TEACHING_TOTAL} hours across the twelve teaching weeks, plus
+      {" "}{ASSESSMENT_PERIOD_HOURS} in the assessment period — {GRAND_TOTAL} in total.
+    </p>
+
+    <div class="scroller" tabindex="0" role="region" aria-label="Suggested weekly effort chart, scrolls sideways">
+      <div class="bars" style={`--max:${maxHours}`}>
+        <div class="axis" aria-hidden="true">
+          {[8, 6, 4, 2, 0].map((h) => <span style={`--h:${h}`}>{h} h</span>)}
+        </div>
+        {
+          weekEffort.map((w) => (
+            <div class="barcol">
+              <div class="bar" style={`--total:${w.total}`}>
+                {EFFORT_CATEGORIES.map((c) =>
+                  w.hours[c.key] > 0 ? (
+                    <span class={`seg s-${c.key}`} style={`--h:${w.hours[c.key]}`}>
+                      <span class="visually-hidden">{c.label}: {w.hours[c.key]} hours</span>
+                    </span>
+                  ) : null,
+                )}
+              </div>
+              <span class="barlab">{w.week}</span>
+            </div>
+          ))
+        }
+        <div class="barcol exam">
+          <div class="bar" style={`--total:${ASSESSMENT_PERIOD_HOURS}`}>
+            <span class="seg s-a2" style={`--h:${ASSESSMENT_PERIOD_HOURS}`}>
+              <span class="visually-hidden">Assignment 2 final review: {ASSESSMENT_PERIOD_HOURS} hours</span>
+            </span>
+          </div>
+          <span class="barlab">exam</span>
+        </div>
+      </div>
+    </div>
+    <p class="cue">Hours on the vertical axis, one bar per teaching week. Scroll sideways if it is cut off.</p>
+
+    <ul class="legend">
+      {EFFORT_CATEGORIES.map((c) => <li class={`s-${c.key}`}>{c.label} — {c.note}</li>)}
+    </ul>
+
+    <p class="view-note">{BREAK_NOTE} {ASSESSMENT_PERIOD_NOTE}</p>
+
+    <details class="alt">
+      <summary>The same thing as a table</summary>
+      <table class="hours">
+        <caption>Suggested hours per teaching week, and the assignment milestone each week's assignment hours go into.</caption>
+        <thead>
+          <tr>
+            <th scope="col">Week</th>
+            {EFFORT_CATEGORIES.map((c) => <th scope="col">{c.label}</th>)}
+            <th scope="col">Total</th>
+            <th scope="col">Assignment milestone</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            weekEffort.map((w) => (
+              <tr>
+                <th scope="row">{w.week}</th>
+                {EFFORT_CATEGORIES.map((c) => <td>{w.hours[c.key] || "—"}</td>)}
+                <td><strong>{w.total}</strong></td>
+                <td>{w.milestone}</td>
+              </tr>
+            ))
+          }
+          <tr>
+            <th scope="row">Assessment period</th>
+            {EFFORT_CATEGORIES.map((c) => <td>{c.key === "a2" ? ASSESSMENT_PERIOD_HOURS : "—"}</td>)}
+            <td><strong>{ASSESSMENT_PERIOD_HOURS}</strong></td>
+            <td>Final review, drawing and submission</td>
+          </tr>
+          <tr>
+            <th scope="row">Total</th>
+            {EFFORT_CATEGORIES.map((c) => (
+              <td>{weekEffort.reduce((s, w) => s + w.hours[c.key], 0) + (c.key === "a2" ? ASSESSMENT_PERIOD_HOURS : 0)}</td>
+            ))}
+            <td><strong>{GRAND_TOTAL}</strong></td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+  </div>
+</section>
+
+<style>
+  .planner {
+    margin: 1.5rem 0 2rem;
+    padding: 1rem 1.15rem 1.25rem;
+    border: 1px solid var(--at-border);
+    border-radius: 4px;
+  }
+
+  .planner-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+  }
+
+  .planner-head h2 {
+    margin: 0;
+    font-size: 1.15rem;
+  }
+
+  .planner-switch {
+    display: flex;
+    gap: 0.35rem;
+  }
+
+  .planner-switch button {
+    padding: 0.3rem 0.8rem;
+    border: 1px solid var(--at-border);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--at-text-secondary);
+    font: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+
+  .planner-switch button[aria-pressed="true"] {
+    border-color: var(--at-primary);
+    background: var(--at-accent-soft);
+    color: var(--at-text);
+    font-weight: 600;
+  }
+
+  .view + .view {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed var(--at-border);
+  }
+
+  .view-h {
+    margin: 1rem 0 0.3rem;
+    font-size: 1rem;
+  }
+
+  .view-note,
+  .cue {
+    margin: 0.3rem 0 0.75rem;
+    font-size: 0.85rem;
+    color: var(--at-text-secondary);
+  }
+
+  .scroller {
+    overflow-x: auto;
+    padding-bottom: 0.4rem;
+  }
+
+  .scroller:focus-visible {
+    outline: 2px solid var(--at-accent);
+    outline-offset: 2px;
+  }
+
+  /* ---- deadlines grid ---- */
+  .grid {
+    border-collapse: collapse;
+    min-width: 54rem;
+    font-size: 0.8rem;
+  }
+
+  .grid th,
+  .grid td {
+    border: 1px solid var(--at-border);
+    padding: 0.2rem 0.25rem;
+    vertical-align: top;
+  }
+
+  .grid thead th {
+    font-size: 0.72rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .rowhead {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    min-width: 8.5rem;
+    background: var(--at-bg);
+    text-align: left;
+  }
+
+  .brk {
+    display: block;
+    font-weight: 400;
+    font-size: 0.64rem;
+    color: var(--at-text-muted);
+  }
+
+  .grid .exam {
+    min-width: 11rem;
+    background: var(--at-bg-alt);
+  }
+
+  .mk {
+    display: block;
+    padding: 0.2rem 0.3rem;
+    border-left: 3px solid var(--at-border);
+    border-radius: 2px;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .mk + .mk {
+    margin-top: 0.2rem;
+  }
+
+  .mk:hover,
+  .mk:focus-visible {
+    background: var(--at-accent-soft);
+  }
+
+  .mk-label {
+    display: block;
+    font-weight: 600;
+  }
+
+  .mk-detail {
+    display: block;
+    font-size: 0.72rem;
+    color: var(--at-text-secondary);
+  }
+
+  /* Row identity: a left border colour AND the row's own label, so colour is
+     never carrying the meaning by itself. */
+  .r-overview .mk { border-left-color: var(--at-primary); }
+  .r-lecture .mk { border-left-color: var(--at-secondary); }
+  .r-tutorial .mk { border-left-color: var(--at-tertiary); }
+  .r-quiz .mk { border-left-style: dashed; border-left-color: var(--at-text); }
+  .r-assignment .mk { border-left-width: 5px; border-left-color: var(--at-text); }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 1.1rem;
+    margin: 0.5rem 0 0.75rem;
+    padding: 0;
+    list-style: none;
+    font-size: 0.8rem;
+    color: var(--at-text-secondary);
+  }
+
+  .legend li::before {
+    content: "";
+    display: inline-block;
+    width: 0.85rem;
+    height: 0.3rem;
+    margin-right: 0.35rem;
+    vertical-align: middle;
+    border-radius: 2px;
+    background: var(--at-border);
+  }
+
+  .legend .r-overview::before, .legend .s-lecture::before { background: var(--at-primary); }
+  .legend .r-lecture::before, .legend .s-tutorial::before { background: var(--at-secondary); }
+  .legend .r-tutorial::before, .legend .s-prep::before { background: var(--at-tertiary); }
+  .legend .r-quiz::before { background: repeating-linear-gradient(90deg, var(--at-text) 0 3px, transparent 3px 6px); }
+  .legend .r-assignment::before, .legend .s-a1::before { background: var(--at-text); }
+  .legend .s-a2::before { background: repeating-linear-gradient(135deg, var(--at-text) 0 4px, var(--at-bg-alt) 4px 8px); }
+
+  /* ---- effort bars ---- */
+  .bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.35rem;
+    min-width: 34rem;
+    height: 15rem;
+    padding-left: 2.6rem;
+    position: relative;
+  }
+
+  .axis {
+    position: absolute;
+    inset: 0 auto 1.2rem 0;
+    width: 2.4rem;
+  }
+
+  .axis span {
+    position: absolute;
+    left: 0;
+    bottom: calc(var(--h) / var(--max) * 100%);
+    transform: translateY(50%);
+    font-size: 0.68rem;
+    color: var(--at-text-muted);
+  }
+
+  .barcol {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex: 1 0 1.8rem;
+    height: 100%;
+  }
+
+  .bar {
+    display: flex;
+    flex-direction: column-reverse;
+    height: calc(var(--total) / var(--max) * (100% - 1.2rem));
+    border-radius: 2px 2px 0 0;
+    overflow: hidden;
+  }
+
+  .seg {
+    flex: 0 0 calc(var(--h) / var(--total) * 100%);
+    border-top: 1px solid var(--at-bg);
+  }
+
+  .s-lecture { background: var(--at-primary); }
+  .s-tutorial { background: var(--at-secondary); }
+  .s-prep { background: var(--at-tertiary); }
+  .s-a1 { background: var(--at-text); }
+  .s-a2 { background: repeating-linear-gradient(135deg, var(--at-text) 0 4px, var(--at-bg-alt) 4px 8px); }
+
+  .barlab {
+    height: 1.2rem;
+    padding-top: 0.2rem;
+    font-size: 0.7rem;
+    text-align: center;
+    color: var(--at-text-secondary);
+  }
+
+  .barcol.exam .bar {
+    opacity: 0.85;
+  }
+
+  .alt {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .alt summary {
+    cursor: pointer;
+    color: var(--at-text-secondary);
+  }
+
+  .alt table {
+    margin-top: 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .alt caption {
+    text-align: left;
+    color: var(--at-text-secondary);
+    margin-bottom: 0.35rem;
+  }
+
+  .flat {
+    padding-left: 1.1rem;
+  }
+
+  .flat li {
+    margin-bottom: 0.35rem;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 560px) {
+    .planner {
+      padding-inline: 0.75rem;
+    }
+  }
+</style>
+
+<script>
+  function setupPlanner() {
+    for (const root of document.querySelectorAll<HTMLElement>("[data-planner]")) {
+      if (root.dataset.plannerReady === "true") continue;
+      root.dataset.plannerReady = "true";
+
+      const group = root.querySelector<HTMLElement>("[data-planner-switch]")!;
+      const panels = [...root.querySelectorAll<HTMLElement>("[data-view-panel]")];
+      const buttons = [...group.querySelectorAll<HTMLButtonElement>("button[data-view]")];
+      if (panels.length < 2) continue;
+
+      // Only switch once the script is running; without it both views render.
+      group.hidden = false;
+      for (const panel of panels) panel.querySelector(".view-h")?.classList.add("visually-hidden");
+
+      const select = (view: string) => {
+        for (const panel of panels) panel.hidden = panel.dataset.viewPanel !== view;
+        for (const b of buttons) b.setAttribute("aria-pressed", String(b.dataset.view === view));
+      };
+
+      for (const b of buttons) b.addEventListener("click", () => select(b.dataset.view!));
+      select("deadlines");
+    }
+  }
+
+  setupPlanner();
+  document.addEventListener("astro:page-load", setupPlanner);
+</script>

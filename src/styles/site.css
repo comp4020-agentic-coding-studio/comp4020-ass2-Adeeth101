@@ -1,0 +1,90 @@
+/* Site-wide styling for SLOP4761, loaded on every page through `brandCss` in
+ * astro.config.ts — the theme's supported hook for CSS that must reach every
+ * route, including the pages that import ContentLayout directly.
+ *
+ * It holds one thing: the three visible navigation groups. */
+
+/* ---------------------------------------------------------------------------
+ * Grouped navigation
+ *
+ * The theme's Nav renders siteConfig.links as one flat <ul class="at-nav-links">,
+ * used for both the desktop bar and the mobile menu. It takes no group
+ * structure, so rather than replace the component (or patch the package) the
+ * group headings are attached to the first link of each group with :has(), which
+ * means one list, one source of links, and the same grouping in both layouts.
+ *
+ * The selectors key on the href SUFFIX, because withBase() prefixes every link
+ * with the deployment's base path. Change a group's first link in
+ * src/site-config.ts and you must change the matching selector here; the spec
+ * checks that all three headings render.
+ * ------------------------------------------------------------------------- */
+
+.at-nav-links li:has(> a[href$="/weeks/"])::before {
+  content: "Weekly study";
+}
+
+.at-nav-links li:has(> a[href$="/clients/"])::before {
+  content: "Course reference";
+}
+
+.at-nav-links li:has(> a[href$="/people/"])::before {
+  content: "People & policies";
+}
+
+.at-nav-links li:has(> a[href$="/weeks/"])::before,
+.at-nav-links li:has(> a[href$="/clients/"])::before,
+.at-nav-links li:has(> a[href$="/people/"])::before {
+  font-family: var(--at-font-mono, monospace);
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--at-text-muted);
+  white-space: nowrap;
+}
+
+/* Mobile menu: a column, so each heading sits above its group with a rule and a
+   tinted band, and the grouping reads at a glance. */
+@media (width < 640px) {
+  .at-nav-links li:has(> a[href$="/weeks/"])::before,
+  .at-nav-links li:has(> a[href$="/clients/"])::before,
+  .at-nav-links li:has(> a[href$="/people/"])::before {
+    display: block;
+    margin: 0.55rem 0 0.2rem;
+    padding: 0.3rem var(--at-spacing-sm, 0.5rem);
+    border-top: 1px solid var(--at-border);
+    background: var(--at-bg-alt);
+    border-radius: var(--at-border-radius, 4px);
+  }
+
+  .at-nav-links li:has(> a[href$="/weeks/"]):first-child::before {
+    margin-top: 0;
+    border-top: 0;
+  }
+}
+
+/* Desktop bar: a row. The group label sits inline before its first link, with a
+   leading rule instead of a band, and the row is allowed to wrap rather than
+   scroll — twelve items do not fit on one line inside the content column. */
+@media (width >= 640px) {
+  .at-nav-links {
+    flex-wrap: wrap;
+    row-gap: 0.15rem;
+    overflow-x: visible;
+    mask-image: none;
+  }
+
+  .at-nav-links li:has(> a[href$="/weeks/"]),
+  .at-nav-links li:has(> a[href$="/clients/"]),
+  .at-nav-links li:has(> a[href$="/people/"]) {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+
+  .at-nav-links li:has(> a[href$="/clients/"])::before,
+  .at-nav-links li:has(> a[href$="/people/"])::before {
+    padding-left: 0.7rem;
+    border-left: 1px solid var(--at-border);
+  }
+}

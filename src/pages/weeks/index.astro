@@ -5,6 +5,8 @@
 import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
 import { getPublishedCollection } from "astro-course-university/content";
 import { withBase } from "astro-theme-university/url";
+import Planner from "../../components/Planner.astro";
+import WalkthroughButton from "../../components/WalkthroughButton.astro";
 import { homeById } from "../../lib/cases";
 import { formatCourseDate } from "../../lib/dates";
 import { midSemesterBreak } from "../../lib/calendar";
@@ -32,12 +34,14 @@ const stages = [STAGES.learn, STAGES.handover, STAGES.design];
   description="Every week on one page: its question, its lecture, its tutorial, what is assessed in it, and what you should be holding when it ends."
   {...siteConfig}
 >
+  <WalkthroughButton page="weeks" />
+
   <p class="claim">
     One commission, twelve weeks. Each week answers one question about the client's home and
     leaves you holding one more piece of an assignment.
   </p>
 
-  <ol class="stages">
+  <ol class="stages" id="stages">
     {
       stages.map((stage) => (
         <li>
@@ -52,7 +56,9 @@ const stages = [STAGES.learn, STAGES.handover, STAGES.design];
     {formatCourseDate(midSemesterBreak.from)} to {formatCourseDate(midSemesterBreak.to)}.
   </p>
 
-  <h2>Week by week</h2>
+  <Planner />
+
+  <h2 id="week-by-week">Week by week</h2>
   <ol class="weeks">
     {
       rows.map(({ entry, lecture, tutorial, assessed }) => (

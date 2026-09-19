@@ -1,0 +1,331 @@
+---
+/** A page walkthrough: an inline step panel, never an overlay and never
+ *  automatic.
+ *
+ *  Without JavaScript the panel is simply open, with every step visible as an
+ *  ordinary list and each "take me there" a real in-page link — so the content
+ *  is readable and usable whatever happens to the script. With JavaScript the
+ *  same markup becomes one step at a time, with previous/next, a step count,
+ *  close and restart. Step changes are announced through a live region, focus
+ *  moves to the step heading, focus returns to the button on close, and the
+ *  scroll respects prefers-reduced-motion. */
+import { walkthrough } from "../lib/walkthroughs";
+
+interface Props {
+  /** Which walkthrough: home, weeks, clients or method. */
+  page: string;
+}
+
+const { page } = Astro.props;
+const w = walkthrough(page);
+const panelId = `walkthrough-${w.id}`;
+---
+
+<div class="wt" data-walkthrough={w.id}>
+  <button
+    type="button"
+    class="wt-open"
+    aria-expanded="false"
+    aria-controls={panelId}
+    data-wt-open
+    hidden
+  >
+    {w.label}
+  </button>
+
+  <section id={panelId} class="wt-panel" aria-label={w.label} data-wt-panel>
+    <div class="wt-head">
+      <h2 class="wt-title">{w.label}</h2>
+      <p class="wt-count" data-wt-count>{w.steps.length} steps</p>
+      <button type="button" class="wt-close" data-wt-close hidden>Close</button>
+    </div>
+    <p class="wt-intro">{w.intro}</p>
+
+    <ol class="wt-steps" data-wt-steps>
+      {
+        w.steps.map((step, i) => (
+          <li class="wt-step" data-wt-step={i}>
+            <h3 tabindex="-1" data-wt-step-title>
+              <span class="wt-n">Step {i + 1}</span> {step.title}
+            </h3>
+            <p>{step.body}</p>
+            <p class="wt-go">
+              <a href={`#${step.target}`} data-wt-target={step.target}>
+                Show me {step.targetLabel}
+              </a>
+            </p>
+          </li>
+        ))
+      }
+    </ol>
+
+    <p class="wt-controls" data-wt-controls hidden>
+      <button type="button" data-wt-prev>Back</button>
+      <button type="button" data-wt-next>Next</button>
+      <button type="button" data-wt-restart>Start again</button>
+    </p>
+    <p class="wt-live" aria-live="polite" data-wt-live></p>
+  </section>
+</div>
+
+<style>
+  .wt {
+    margin: 0 0 1.75rem;
+  }
+
+  .wt-open {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--at-primary);
+    border-radius: 999px;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: 0.95rem;
+    cursor: pointer;
+  }
+
+  .wt-open::before {
+    content: "?";
+    display: inline-grid;
+    place-items: center;
+    width: 1.15rem;
+    height: 1.15rem;
+    border-radius: 50%;
+    background: var(--at-primary);
+    color: var(--at-bg);
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .wt-open:hover,
+  .wt-open:focus-visible {
+    background: var(--at-accent-soft);
+  }
+
+  .wt-panel {
+    margin-top: 0.75rem;
+    padding: 1rem 1.15rem;
+    border: 1px solid var(--at-border);
+    border-left: 4px solid var(--at-primary);
+    border-radius: 4px;
+    background: var(--at-bg-alt);
+  }
+
+  .wt-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem 1rem;
+  }
+
+  .wt-title {
+    margin: 0;
+    font-size: 1.05rem;
+  }
+
+  .wt-count {
+    margin: 0;
+    font-family: var(--at-font-mono);
+    font-size: 0.75rem;
+    color: var(--at-text-secondary);
+  }
+
+  .wt-close {
+    margin-left: auto;
+    padding: 0.2rem 0.6rem;
+    border: 1px solid var(--at-border);
+    border-radius: 4px;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+
+  .wt-intro {
+    margin: 0.4rem 0 0.9rem;
+    font-size: 0.92rem;
+    color: var(--at-text-secondary);
+  }
+
+  .wt-steps {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .wt-step + .wt-step {
+    margin-top: 1.1rem;
+  }
+
+  .wt-step h3 {
+    margin: 0 0 0.25rem;
+    font-size: 1rem;
+  }
+
+  .wt-step h3:focus-visible {
+    outline: 2px solid var(--at-accent);
+    outline-offset: 3px;
+  }
+
+  .wt-n {
+    display: block;
+    font-family: var(--at-font-mono);
+    font-size: 0.7rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--at-text-muted);
+  }
+
+  .wt-step p {
+    margin: 0 0 0.3rem;
+    font-size: 0.95rem;
+  }
+
+  .wt-go {
+    font-size: 0.9rem;
+  }
+
+  .wt-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0 0;
+  }
+
+  .wt-controls button {
+    padding: 0.35rem 0.85rem;
+    border: 1px solid var(--at-border);
+    border-radius: 4px;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+
+  .wt-controls button:hover:not(:disabled),
+  .wt-controls button:focus-visible:not(:disabled) {
+    background: var(--at-accent-soft);
+  }
+
+  .wt-controls button:disabled {
+    opacity: 0.45;
+    cursor: default;
+  }
+
+  .wt-live {
+    margin: 0;
+    height: 0;
+    overflow: hidden;
+  }
+
+  /* The highlight the "show me" links leave on the real section. */
+  :global(.wt-highlight) {
+    outline: 3px solid var(--at-accent);
+    outline-offset: 6px;
+    border-radius: 4px;
+  }
+</style>
+
+<script>
+  function setupWalkthroughs() {
+    for (const root of document.querySelectorAll<HTMLElement>("[data-walkthrough]")) {
+      if (root.dataset.wtReady === "true") continue;
+      root.dataset.wtReady = "true";
+
+      const openBtn = root.querySelector<HTMLButtonElement>("[data-wt-open]")!;
+      const panel = root.querySelector<HTMLElement>("[data-wt-panel]")!;
+      const closeBtn = root.querySelector<HTMLButtonElement>("[data-wt-close]")!;
+      const controls = root.querySelector<HTMLElement>("[data-wt-controls]")!;
+      const live = root.querySelector<HTMLElement>("[data-wt-live]")!;
+      const count = root.querySelector<HTMLElement>("[data-wt-count]")!;
+      const steps = [...root.querySelectorAll<HTMLElement>("[data-wt-step]")];
+      const prev = root.querySelector<HTMLButtonElement>("[data-wt-prev]")!;
+      const next = root.querySelector<HTMLButtonElement>("[data-wt-next]")!;
+      const restart = root.querySelector<HTMLButtonElement>("[data-wt-restart]")!;
+      if (steps.length === 0) continue;
+
+      // Everything below only applies once the script has run, so the no-JS
+      // rendering stays a plain readable list.
+      openBtn.hidden = false;
+      closeBtn.hidden = false;
+      controls.hidden = false;
+      panel.hidden = true;
+
+      let index = 0;
+
+      const show = (i: number, announce = true) => {
+        index = Math.max(0, Math.min(i, steps.length - 1));
+        steps.forEach((s, n) => {
+          s.hidden = n !== index;
+        });
+        prev.disabled = index === 0;
+        next.disabled = index === steps.length - 1;
+        count.textContent = `Step ${index + 1} of ${steps.length}`;
+        if (announce) {
+          const title = steps[index].querySelector("[data-wt-step-title]");
+          live.textContent = `Step ${index + 1} of ${steps.length}. ${title?.textContent?.trim() ?? ""}`;
+          (title as HTMLElement | null)?.focus();
+        }
+      };
+
+      const open = () => {
+        panel.hidden = false;
+        openBtn.setAttribute("aria-expanded", "true");
+        show(index);
+      };
+
+      const close = () => {
+        panel.hidden = true;
+        openBtn.setAttribute("aria-expanded", "false");
+        live.textContent = "";
+        clearHighlight();
+        openBtn.focus();
+      };
+
+      let highlighted: Element | null = null;
+      const clearHighlight = () => {
+        highlighted?.classList.remove("wt-highlight");
+        highlighted = null;
+      };
+
+      openBtn.addEventListener("click", () => (panel.hidden ? open() : close()));
+      closeBtn.addEventListener("click", close);
+      prev.addEventListener("click", () => show(index - 1));
+      next.addEventListener("click", () => show(index + 1));
+      restart.addEventListener("click", () => show(0));
+
+      panel.addEventListener("keydown", (event) => {
+        if ((event as KeyboardEvent).key === "Escape") {
+          event.preventDefault();
+          close();
+        }
+      });
+
+      for (const link of root.querySelectorAll<HTMLAnchorElement>("[data-wt-target]")) {
+        link.addEventListener("click", (event) => {
+          const target = document.getElementById(link.dataset.wtTarget ?? "");
+          if (!target) return; // let the browser handle a missing id honestly
+          event.preventDefault();
+          clearHighlight();
+          target.classList.add("wt-highlight");
+          highlighted = target;
+          const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+          target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+          live.textContent = `Moved to ${link.textContent?.replace(/^Show me /, "").trim()}.`;
+        });
+      }
+
+      show(0, false);
+      panel.hidden = true;
+    }
+  }
+
+  setupWalkthroughs();
+  document.addEventListener("astro:page-load", setupWalkthroughs);
+</script>
