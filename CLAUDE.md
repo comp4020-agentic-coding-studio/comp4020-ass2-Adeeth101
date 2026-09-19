@@ -146,12 +146,14 @@ integrated balances; 11 sanitation, nutrient limits and choosing between options
 12 integration and the investment recommendation.
 
 Weeks 1–6 work out how each candidate system behaves and what would have to be
-measured, and feed A1. Week 7 submits A1, then the story jumps twelve fictional
-months and Release B is handed over. Weeks 7–12 use those findings to select and
+measured, and feed A1. A1 is due Friday in week 7; teaching may preview the
+findings earlier, but the fictional handover follows submission, when the story
+jumps twelve months and Release B is handed over. Weeks 7–12 use those findings to select and
 justify the retrofit, and feed A2. **Calculations before the handover are scoping
 or practice estimates, never claims about measured results**, and the pages say
-so. Quizzes at 8 % in weeks 3, 5, 8, 10 and 12; A1 20 %; A2 40 %; no oral
-assessment.
+so. Five quizzes at 4 % in weeks 3, 5, 8, 10 and 12; ten tutorial completion
+checkpoints at 2 % in weeks 2–11, held as one 20 % assessment record; A1 20 %;
+A2 40 %; no oral assessment. Weeks 1 and 12 tutorials are ungraded.
 
 **Lead homes:** Canberra 2 and 11; Brisbane 3 and 8; Darwin 4 and 9; Adelaide 5
 and 6; Alice Springs 7 and 10 — each once where its climate helps and once where
@@ -159,9 +161,9 @@ it hurts. Weeks 1 and 12 integrate all five, and weeks 2–11 each carry a Five
 homes comparison naming all five. A week overview names only its own lead home;
 the five-way comparison belongs on the lecture page.
 
-Decks are optional and produced where an argument needs one, not one per week.
-Each tutorial already carries a spec whose lines a student can check
-unaided; extend a tutorial rather than replacing it.
+All twelve lectures have linked teaching decks. Each tutorial carries inputs,
+actions, templates or examples, outputs, checks and next steps, plus a spec whose
+lines a student can check unaided; extend a tutorial rather than replacing it.
 
 ## Safety
 
@@ -188,9 +190,12 @@ the site publishes.
 
 ## Illustrations
 
-Generated images are a later pass. Until then, `Illustration.astro` reserves the
-slot with a drawn placeholder, and `research/asset-manifest.md` lists every
-image: filename, page, purpose, dimensions and alt text. Keep the two in step.
+Supplied generated conceptual artwork lives under `src/assets/images/` and is
+processed through Astro's image pipeline. Five home portraits appear on the
+client cards and matching dossiers; the homepage and method page each have one
+purpose-specific illustration. Captions identify conceptual artwork, and the
+scaled SVG plans remain the authority for geometry. Keep
+`research/asset-manifest.md` in step with every used and rejected supplied file.
 
 ## Verification
 

@@ -166,7 +166,7 @@ const ENTRIES: WeekEntry[] = [
       "client's own prunings supply is a measurement question you carry into Assignment 1.",
     output:
       "A substrate mass balance with both arrows drawn: substrate in, mushrooms out, spent substrate to soil and compost.",
-    milestone: "Quiz 1 (8 %), sat at the start of the tutorial, on weeks 1–3.",
+    milestone: "Quiz 1 (4 %), sat at the start of the tutorial, on weeks 1–3.",
   },
   {
     week: 4,
@@ -220,7 +220,7 @@ const ENTRIES: WeekEntry[] = [
       "fish is reported net of imported feed, every time.",
     output:
       "A grow bed sized from the feed-rate ratio, a species choice with its temperature band, and the approval pathway named.",
-    milestone: "Quiz 2 (8 %), on weeks 4–5.",
+    milestone: "Quiz 2 (4 %), on weeks 4–5.",
   },
   {
     week: 6,
@@ -264,8 +264,9 @@ const ENTRIES: WeekEntry[] = [
     leadRole: "hurts",
     brief:
       "Two things happen this week. Assignment 1 is submitted — the measurement programme you have " +
-      "been assembling since week 1 — and then the story jumps twelve fictional months. The " +
-      "specialist team hands back Release B: the analysed findings of a measurement year at your " +
+      "been assembling since week 1. Teaching may preview how to read the findings earlier in the " +
+      "week, but the fictional handover follows Friday's submission: the story jumps twelve months " +
+      "and the specialist team hands back Release B, the analysed findings of a measurement year at your " +
       "home, identical for every student who took that home, whatever their programme said. From " +
       "here your figures are findings rather than estimates. The teaching content is water supply: " +
       "the enHealth runoff formula applied month by month, a capped bore where the home has one, " +
@@ -275,7 +276,7 @@ const ENTRIES: WeekEntry[] = [
     output:
       "A monthly supply curve laid over week 2's demand curve, on the same axis and in the same units.",
     milestone:
-      "Assignment 1, the year-long measurement programme (20 %), is due 5 pm Friday. The specialist findings are handed over in the lecture on the Monday, as a preview of what the measured year produced; the deadline is not moved by it.",
+      "Assignment 1, the year-long measurement programme (20 %), is due 5 pm Friday. Teaching may preview how to read the findings earlier, but the fictional specialist handover follows submission.",
   },
   {
     week: 8,
@@ -302,7 +303,7 @@ const ENTRIES: WeekEntry[] = [
       "usually where a first treatment train stops being adequate.",
     output:
       "A barrier sequence with a sourced log reduction on each barrier and its running energy costed.",
-    milestone: "Quiz 3 (8 %), on weeks 6–8.",
+    milestone: "Quiz 3 (4 %), on weeks 6–8.",
   },
   {
     week: 9,
@@ -356,7 +357,7 @@ const ENTRIES: WeekEntry[] = [
       "balance that will not close.",
     output:
       "A closed dry-matter balance in which every organic stream has a destination and every loss term is stated.",
-    milestone: "Quiz 4 (8 %), on weeks 9–10.",
+    milestone: "Quiz 4 (4 %), on weeks 9–10.",
   },
   {
     week: 11,

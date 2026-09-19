@@ -1,7 +1,7 @@
-# Course design: decided (v5, second draft)
+# Course design: decided (v6, integrated course)
 
-The contract for SLOP4761 after the review of the first draft. It supersedes v4 wherever
-the two conflict; §0 lists every first-draft requirement this revision changes. The
+The contract for SLOP4761 after the review and final integration passes. It supersedes v4
+and v5 wherever they conflict; §0 lists the major first-draft requirements this revision changes. The
 evidence base (`findings.md`, `sources.md`, `verification-log.md`, `critique-log.md`)
 still stands except where noted, and the screening model behind the first draft is kept
 for the diagnostic reference bands.
@@ -15,7 +15,7 @@ for the diagnostic reference bands.
 | Excellent reference design added +5 % roof catchment | **No new catchment.** A design may connect more of the roof that already exists (recipe v6) | Fixed existing properties |
 | Assessment leaned on closure indicators and reference bands | Lowest-cost option that meets the **client's priority service targets**, then a justified case for any extra spending. Bands kept as **diagnostics only** | A constrained, multi-objective decision; no single score captures client values |
 | "Everyone needs 372 m² to grow a near-complete diet"; "the largest site has 500 m²" | Removed. Ecology Action's figures are taught in week 9 with their diet, yield, soil and skill assumptions, and the document's own two estimates (V11). 500 m² is the largest designated growing area; the largest whole plot is 2 ha | Method-specific estimates are not a universal minimum |
-| Week order by subsystem (perennials, mycology, insects, …); lead sites Canberra 2/11, Brisbane 3/8, Darwin 4/9, Adelaide 5/6, Alice Springs 7/10 | Measurement weeks 1–6, specialist handover week 7, design weeks 8–12; lead sites Canberra 2/7, Alice Springs 3/8, Brisbane 4/9, Adelaide 5/10, Darwin 6/11 (§7) | A1 needs measurement method before week 7; biological detail is revisited in week 9 |
+| Week order by subsystem (perennials, mycology, insects, …); lead sites Canberra 2/11, Brisbane 3/8, Darwin 4/9, Adelaide 5/6, Alice Springs 7/10 | The authoritative order in `src/lib/weeks.ts`: evidence; soil/plants; mushrooms; insects; aquaponics; preservation and measurement-plan assembly; water sourcing and handover; treatment; storage; waste; sanitation/options; integration (§7) | The sequence now follows the measurement proposal into supplied findings and then the investment recommendation |
 | A1 "Food Loop Design"; capstone "Site-Specific Off-Grid Master Plan"; one shared rubric | A1 "Year-long Measurement Programme"; A2 "Household Resilience Investment Proposal"; separate rubrics (§8) | The deliverables changed |
 | Prerequisites led with microbiology, soil science and chemistry | Engineering design, mass and energy balances, introductory statistics and measurement, spreadsheet modelling, basic CAD; environmental or biological study helpful | The course teaches the biology it needs |
 | Two decks | Twelve decks, one per lecture, 8–12 teaching slides each | Every lecture needs its slides |
@@ -52,8 +52,9 @@ tolerance), quiz weeks, and no oral assessment.
   rate, credit score or financial advice.
 - **The deliverable is not a loan approval or a construction-certified design.** A2 is the
   technical annex and executive recommendation for an application.
-- **Narrative**: client intake (week 1) → measurement proposal (weeks 2–6, A1 due week 7)
-  → a jump of twelve fictional months → specialist handover (week 7) → engineering proposal
+- **Narrative**: client intake (week 1) → measurement proposal (weeks 2–6, A1 due Friday
+  in week 7) → a jump of twelve fictional months → specialist handover after submission
+  (teaching may preview it earlier in week 7) → engineering proposal
   (weeks 8–12, A2 in the exam period). Students do not collect real data.
 
 ## 3. Fixed household and reference data
@@ -227,18 +228,18 @@ operate, eat from or drink from anything.
 
 | Wk | Topic | Lead home | Assignment component produced |
 |---|---|---|---|
-| 1 | Client commission, programme rules, engineering boundaries, five-home intake | all five | client question and decision map, first pass |
-| 2 | Site survey, requirements, mass balances and measurement objectives | Canberra | annotated measurement locations, variables list |
-| 3 | Water monitoring: rainfall, roof runoff, demand, tank levels, flow | Alice Springs | water instrument table (quiz 1) |
-| 4 | Soil, microclimate, crop demand and yield, spatial sampling | Brisbane | soil and sun sampling design |
-| 5 | Food, waste and nutrient audits; biological options; measurement uncertainty | Adelaide | audit design and uncertainty budget (quiz 2) |
-| 6 | Twelve-month sampling, sensors, calibration, data quality, cost, handover | Darwin | schedule, QC, costed plan, data dictionary |
-| 7 | A1 due; twelve-month jump; specialist findings and uncertainty | Canberra | Release B interpretation and A1 reconciliation |
-| 8 | Water-system sizing: storage, reuse, treatment, flow and energy | Alice Springs | monthly balance and pump duty (quiz 3) |
-| 9 | Food-system selection: perennials, mushrooms, insects, aquaponics | Brisbane | module screening with reasons to accept or reject |
-| 10 | Waste, sanitation, preservation and integrated balances | Adelaide | nutrient and waste balances (quiz 4) |
-| 11 | Alternatives, constrained optimisation, costs and resilience | Darwin | scenario grid, dominance, sensitivity |
-| 12 | Investment proposal, design review, bridge to SLOP4762 | all five | review-ready proposal (quiz 5) |
+| 1 | Meet your client: household systems and evidence | all five | client evidence workbook and sourced site sheet |
+| 2 | Soil, plants and irrigation demand | Canberra | twelve-row irrigation demand curve and defensible planted area |
+| 3 | Mushrooms: substrate, yield and what to measure | Brisbane | substrate mass balance (quiz 1) |
+| 4 | Insects: waste streams and conversion limits | Darwin | larval yield and imported fish-feed share |
+| 5 | Aquaponics: feed, fish and operating conditions | Adelaide | sized grow bed, species choice and approval pathway (quiz 2) |
+| 6 | Preservation and assembling the measurement plan | Adelaide | sized store and draft measurement plan |
+| 7 | Water sourcing and the specialist handover | Alice Springs | monthly supply and demand curves; A1 due Friday, then Release B handover |
+| 8 | Treatment, reuse and service requirements | Brisbane | treatment barriers, performance and running energy (quiz 3) |
+| 9 | Storage and seasonal reliability | Darwin | sized store, saturation point and dry-year check |
+| 10 | Waste recovery and integrated balances | Alice Springs | closed dry-matter balance (quiz 4) |
+| 11 | Sanitation, nutrient limits and choosing between options | Canberra | nutrient balance and options grid |
+| 12 | Integration and the investment recommendation | all five | whole-system model and proposal skeleton (quiz 5) |
 
 Every week from 2 to 11 carries a substantive Five homes comparison; each home leads
 exactly twice. Leads are not chosen to line up with the easiest or hardest climate.
@@ -248,7 +249,8 @@ Measurement method needed for A1 is taught in weeks 1–6.
 
 | Item | Weight | When |
 |---|---|---|
-| Five conceptual quizzes, 8 % each | 40 % | weeks 3, 5, 8, 10, 12 |
+| Five conceptual quizzes, 4 % each | 20 % | weeks 3, 5, 8, 10, 12 |
+| Ten tutorial completion checkpoints, 2 % each, represented as one assessment record | 20 % | weeks 2–11; weeks 1 and 12 are ungraded |
 | A1 Year-long Measurement Programme | 20 % | due week 7 |
 | A2 Household Resilience Investment Proposal | 40 % | exam period |
 
@@ -274,7 +276,7 @@ visual extravagance or for presenting a concept as build-ready.
 
 ## 9. Site and visual treatment
 
-- Pages: home; programme (teaching fiction); clients index and one page per home, each with
+- Pages: home; Programme & method (teaching fiction first, then methods); clients index and one page per home, each with
   Release A and a separate Release B page; twelve lectures with decks; twelve tutorials; two
   assignment briefs and five quizzes; method (decision reference, costing, datasets, the
   Wattle Street worked optimisation, diagnostics); resources (glossary, formula sheet,
@@ -283,9 +285,14 @@ visual extravagance or for presenting a concept as build-ready.
   graduated exercises, and worked feedback on practice data. No solution to an assessed home.
 - Plans, charts and schematics are drawn in the page from data as SVG. No unlabelled
   placeholder stands where a student needs a number.
-- Illustrations are optional and follow later. Until then each has a reserved slot with a
-  temporary drawn illustration, and `research/asset-manifest.md` lists filename, page,
-  purpose, dimensions and alt text.
+- Supplied generated conceptual artwork is processed through Astro's image pipeline: a homepage
+  hero, five consistently mapped home portraits on client cards and dossiers, and one
+  measurement-to-proposal illustration on Programme & method. Captions identify conceptual
+  artwork and direct readers to the scaled plans for geometry. `research/asset-manifest.md`
+  records each supplied file, purpose, placement, dimensions, alt/caption and any rejection.
+- Navigation has three visible semantic groups at desktop and mobile widths. Home and Weeks share
+  one two-mode semester planner. Home, Weeks, Clients and Programme & method each have an optional,
+  keyboard-operable walkthrough that targets real page sections and never opens automatically.
 
 ## 10. Checked mechanically, judged manually
 
@@ -304,3 +311,5 @@ balance and diagram readability are judged in the browser at both marking viewpo
   constraints; no oral; score tables, not a calculator.
 - **2026-09-18** (v5): the consultancy redesign in §0. The first draft's commits are kept as
   history; nothing was rewritten to look test-first.
+- **2026-09-19** (v6): weekly sequence, assessment weights, navigation, walkthroughs, shared
+  planner, twelve decks and supplied conceptual artwork integrated into the final course site.

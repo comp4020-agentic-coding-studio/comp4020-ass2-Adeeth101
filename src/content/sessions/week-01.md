@@ -85,10 +85,10 @@ in the tables below and that is all the templates contain.
 ## Do this
 
 **1. Choose your home (10 minutes).** Open [the clients page](/clients/) and read
-the five intake notes. Five presets, no cap on how many students take each, and
-no preset is easier than another — week 1's lecture was about why arranging that
-took four rounds of model revision. Write your choice and one sentence of reason
-on sheet 1.
+the five intake notes. Five presets, no cap on how many students take each.
+Different constraints make different homes easier or harder in context; the
+site-specific reference bands are a diagnostic comparison, not proof of equal
+grading outcomes. Write your choice and one sentence of reason on sheet 1.
 
 **2. Fill sheet 1 from the dossier (25 minutes).** Your home's page carries
 everything on this sheet. Eight rows minimum. Every row needs a **status** and a
