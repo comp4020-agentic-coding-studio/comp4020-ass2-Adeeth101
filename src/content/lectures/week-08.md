@@ -7,6 +7,7 @@ week: 8
 date: 2027-04-26
 teachers:
   - teodor-vasilache
+slides: /decks/week-08/
 related:
   - sessions/week-08
   - assessments/quiz-3

@@ -8,6 +8,7 @@ date: 2027-05-17
 teachers:
   - eun-ji-marchetti
   - harriet-oyelaran
+slides: /decks/week-11/
 related:
   - sessions/week-11
   - assessments/quiz-5

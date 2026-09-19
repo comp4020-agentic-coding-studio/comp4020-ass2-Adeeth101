@@ -7,6 +7,7 @@ week: 6
 date: 2027-04-12
 teachers:
   - noor-bakhshi
+slides: /decks/week-06/
 related:
   - sessions/week-06
   - lectures/week-10

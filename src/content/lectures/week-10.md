@@ -7,6 +7,7 @@ week: 10
 date: 2027-05-10
 teachers:
   - noor-bakhshi
+slides: /decks/week-10/
 related:
   - sessions/week-10
   - assessments/quiz-4

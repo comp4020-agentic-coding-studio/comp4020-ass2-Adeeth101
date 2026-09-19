@@ -1,0 +1,119 @@
+---
+title: What fails first
+description: SLOP4761 week 12 — assembling the whole household model, testing it against both hard constraints and a dry year, and naming the failure you cannot design away
+---
+
+# What fails first
+
+**SLOP4761** · Week 12 · Integration and the investment recommendation
+
+---
+
+## Where we are
+
+**Last teaching week.** Eleven weeks have each produced a sized piece, and each
+one assumed it had first call on water, area and the daily energy allowance.
+
+This tutorial is **ungraded**. It is assembly for Assignment 2.
+
+---
+
+## This week's question
+
+**Put them in one model, run the year, and find out which one gives way first.**
+
+Almost every design fails somewhere the student did not expect, because the
+subsystems compete for three shared resources and each week sized its piece as
+though it had first call on all three.
+
+---
+
+## By the end you can
+
+1. Run five whole-system checks in order, and trace a failure back to the week that caused it
+2. Report a peak-month energy figure that a marker can reproduce
+3. Name what fails first in a dry year, and what you would change
+
+---
+
+## Check 1 — do the mass balances close?
+
+- Water in = water used + overflow + loss
+- Dry matter in = dry matter out + a **stated** respiration term
+- Nitrogen in = nitrogen applied + stored + exported
+
+**A stream that appears in no balance has been forgotten.**
+
+---
+
+## Check 2 — does the energy fit?
+
+Peak-month average daily load, **with the month named**. Every counted load with
+its power and duty cycle. **Uncertain loads at their upper estimate.**
+
+The reference designs declare **0.65 kWh/day** of uncertain load on top of what
+the model computes, and land between **2.18 and 4.01 kWh/day** against the
+5 kWh/day cap.
+
+A mushroom chamber, a controlled fermentation space, a dehydrator and a heated
+digester together come to about **1.65 kWh/day** upper estimate — more headroom
+than some sites have left.
+
+---
+
+## Check 3 — does the budget fit?
+
+Every line from the published schedule, plus the required **10 % contingency**.
+
+The excellent reference designs cost **$24,860 to $28,875**. At Darwin that leaves
+**$1,125** of a $30,000 allowance — inside the noise of a screening model priced
+from retail listings.
+
+**Treat a design that lands within a few thousand dollars of the cap as untested,
+not as compliant.**
+
+---
+
+## Checks 4 and 5
+
+**4. Do the indicators pair?** Water closure is never reported without garden
+water satisfaction. Alice Springs' excellent reference design reaches **97 % water
+closure with 16 % garden water satisfaction**, and a design showing only the first
+number is hiding the second.
+
+**5. What happens in a dry year?** Re-run against the synthetic dry-year dataset
+and **name what fails first**.
+
+---
+
+## Your tutorial task
+
+1. Quiz 5, twenty minutes, on weeks 11 and 12 and the integration material
+2. Run the five checks in order on your recommended option. Most people fail check 2 or 3 — work back and find the load or line item that never made it into the summary
+3. The cross-site comparison: groups of five, one per home, one design idea through all five
+4. The uncertainty list, with a range on each item
+
+**Output:** the proposal skeleton — the ten numbered items of the brief — plus an
+uncertainty list.
+
+---
+
+## And the boundary
+
+Energy supply and shelter are out of scope. Biogas is recorded and not credited;
+only the digestate's nutrients count.
+
+Those belong to **SLOP4762 — Designing the Closed-Loop Household II: Energy and
+Shelter**, a *proposed follow-on course* that adds energy physics and introductory
+thermodynamics to the prerequisites.
+
+---
+
+## Before you leave
+
+- Do all three balances close, with loss terms rather than residuals?
+- Is the peak month **named**, with uncertain loads at their upper estimate?
+- Is garden water satisfaction beside every water closure figure?
+- Can you name what fails first in the dry year, in which month?
+
+What is left is assembly, drawing and writing — **not new subsystems**.

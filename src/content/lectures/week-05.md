@@ -7,6 +7,7 @@ week: 5
 date: 2027-03-22
 teachers:
   - noor-bakhshi
+slides: /decks/week-05/
 related:
   - sessions/week-05
   - assessments/quiz-2

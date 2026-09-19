@@ -1,0 +1,105 @@
+---
+title: Water is the yield limit, not sunlight
+description: SLOP4761 week 2 — evapotranspiration, effective rain, and the monthly deficit that decides how much ground is worth planting
+---
+
+# Water is the yield limit
+
+**SLOP4761** · Week 2 · Soil, plants and irrigation demand
+
+---
+
+## Where we are
+
+Week 1 counted what crosses the fence line. Week 2 asks what the garden wants.
+
+**Still scoping.** Every number today comes from long-term climate records, not
+from your client's garden. What that garden actually draws is a measurement, and
+it goes on your register in week 6.
+
+---
+
+## This week's question
+
+You have between 130 and 500 m² of growable ground.
+
+The naive sizing — area × days × yield — says the warm site with the long season
+wins.
+
+**It does not.** Where does the water come from?
+
+---
+
+## By the end you can
+
+1. Compute ETo for a month by hand from Tmax, Tmin and latitude
+2. Turn twelve months of climate into an irrigation deficit in millimetres
+3. Choose a planted area you can defend on water rather than on ambition
+
+---
+
+## Three equations, and one habit
+
+**Reference evapotranspiration**, FAO-56 Equation 52 (Hargreaves):
+
+    ETo = 0.0023 × (Tmean + 17.8) × √(Tmax − Tmin) × Ra    [mm/month]
+
+**Crop demand:** ETc = ETo × Kc. Kc = 0.95 for a mixed garden — a **course
+assumption**, inside FAO-56 Table 12's range.
+
+**Effective rain**, FAO Irrigation Training Manual 3:
+
+    Pe = 0.8P − 25   for P > 75 mm/month
+    Pe = 0.6P − 10   for P ≤ 75 mm/month
+
+Deficit = ETc − Pe, **floored at zero**.
+
+---
+
+## Worked example: Canberra
+
+Annual ETo 1,244 mm against 616 mm of rain. P/ETo = 0.50.
+
+Sum the monthly deficits across the growing season:
+
+    932 mm of net irrigation per m² per year
+    932 mm × 450 m² = 419,400 L = 419 kL/year
+
+The roof delivers 142 kL, and the household has first call on it.
+
+**Canberra's garden is water-limited long before it is land-limited.**
+
+---
+
+## What the five sites show
+
+Net irrigation demand per m² is a climate property, not a design choice. It is
+highest where ETo is high and rain is low — and the sites do not rank the way
+intuition suggests.
+
+Two Canberra advantages no indicator scores: **rainfall evenness** (28 % of rain
+in the driest four months, against Darwin's 1.4 %) and **chill**, which the course
+handles as a regional category rather than a formula, because the sine-curve
+method gives Canberra 1,979 hours against a reported ~720.
+
+---
+
+## Your tutorial task
+
+1. One month by hand, first. January. Ra, then ETo, then ETc, then Pe, then deficit
+2. Then the twelve rows, from your workbook's sheet 2
+3. Then choose a planted area, and check it against your client's retained area
+
+**Output:** a twelve-row irrigation demand curve **in kilolitres**, on sheet 2.
+
+---
+
+## Before you leave
+
+- Is every deficit computed from **effective** rain, not total rain?
+- Is any deficit negative? Floor it at zero
+- Is the last column in kL, with the unit written on it?
+- Does your hand-computed January match the spreadsheet?
+
+Sources: FAO-56 Equations 21–25 and 52, Table 12; FAO Irrigation Training Manual
+3 Annex 1. Both cited in full in the [week 2 notes](/lectures/week-02/).

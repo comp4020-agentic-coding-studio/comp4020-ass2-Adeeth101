@@ -7,6 +7,7 @@ week: 3
 date: 2027-03-08
 teachers:
   - noor-bakhshi
+slides: /decks/week-03/
 related:
   - sessions/week-03
   - assessments/quiz-1

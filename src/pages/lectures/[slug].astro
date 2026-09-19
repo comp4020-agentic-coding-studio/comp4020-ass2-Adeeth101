@@ -25,9 +25,35 @@ const entry = weekEntry(lecture.data.week);
 <ContentLayout title={title} description={lecture.data.description} {...siteConfig}>
   <WeekNav week={lecture.data.week} current="lecture" />
   <p><strong>{formatCourseDate(lecture.data.date)}</strong></p>
-  {lecture.data.slides && <p><a href={withBase(lecture.data.slides)}>Open the slides</a></p>}
+  {
+    lecture.data.slides && (
+      <p class="slides">
+        <a href={withBase(lecture.data.slides)}>Open slides — week {lecture.data.week}</a>
+      </p>
+    )
+  }
   <Content />
   <ReferenceBlock items={entry.references} />
   <TeachingTeam teachers={lecture.data.teachers} />
   <RelatedContent entry={lecture} collections={graphCollections} />
 </ContentLayout>
+
+<style>
+  .slides {
+    margin: 0 0 1.5rem;
+  }
+
+  .slides a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--at-primary);
+    border-radius: 4px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .slides a:hover,
+  .slides a:focus-visible {
+    background: var(--at-accent-soft);
+  }
+</style>

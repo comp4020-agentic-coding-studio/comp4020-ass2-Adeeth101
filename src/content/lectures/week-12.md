@@ -8,6 +8,7 @@ date: 2027-05-24
 teachers:
   - harriet-oyelaran
   - teodor-vasilache
+slides: /decks/week-12/
 related:
   - sessions/week-12
   - assessments/capstone-master-plan
