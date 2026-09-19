@@ -774,3 +774,77 @@ describe("scope", () => {
     expect(t).toMatch(/not credited|earns you nothing|recorded and not credited/);
   });
 });
+
+// --------------------------------------------------------------------------
+describe("the weekly map", () => {
+  // The course previously carried a second week order in a second module, so the
+  // home page advertised "water monitoring" over a mushroom lecture. These check
+  // the published pages agree with each other, which is the failure that hurt.
+  const LEAD: Record<number, string> = {
+    2: "Canberra", 3: "Brisbane", 4: "Darwin", 5: "Adelaide", 6: "Adelaide",
+    7: "Alice Springs", 8: "Brisbane", 9: "Darwin", 10: "Alice Springs", 11: "Canberra",
+  };
+  const pad = (w: number) => String(w).padStart(2, "0");
+
+  it("publishes an overview for every teaching week, and an index of them", () => {
+    const index = text(page("weeks"));
+    for (let w = 1; w <= 12; w++) {
+      const t = text(page(`weeks/week-${pad(w)}`));
+      expect(t, `week ${w} overview does not name its week`).toContain(`Week ${w}`);
+      expect(index, `the weeks index omits week ${w}`).toContain(`Week ${w}`);
+    }
+  });
+
+  it("links each overview to that week's own lecture and tutorial, not another's", () => {
+    for (let w = 1; w <= 12; w++) {
+      const html = page(`weeks/week-${pad(w)}`);
+      for (const route of [`lectures/week-${pad(w)}/`, `sessions/week-${pad(w)}/`]) {
+        expect(html, `week ${w} overview does not link ${route}`).toContain(route);
+      }
+      for (let other = 1; other <= 12; other++) {
+        if (other === w || other === w - 1 || other === w + 1) continue;
+        expect(html, `week ${w} overview links week ${other}'s lecture`).not.toContain(
+          `lectures/week-${pad(other)}/`,
+        );
+      }
+    }
+  });
+
+  it("gives every week one topic, used identically on the home page and its overview", () => {
+    const home = text(page(""));
+    const index = text(page("weeks"));
+    const topics = new Set<string>();
+    for (let w = 1; w <= 12; w++) {
+      // The overview's <title> is "Week N: <topic>", which is the canonical wording.
+      const title = page(`weeks/week-${pad(w)}`).match(/<title>([^<]*)<\/title>/)![1];
+      const topic = title.split(/Week \d+:\s*/)[1].split("|")[0].trim();
+      expect(topic.length, `week ${w} topic`).toBeGreaterThan(8);
+      expect(topics.has(topic), `week ${w} reuses another week's topic`).toBe(false);
+      topics.add(topic);
+      expect(home, `the home timeline does not carry week ${w}'s topic`).toContain(topic);
+      expect(index, `the weeks index does not carry week ${w}'s topic`).toContain(topic);
+    }
+  });
+
+  it("names the same lead home on the overview as the lecture works its example at", () => {
+    const ALL = ["Canberra", "Alice Springs", "Brisbane", "Adelaide", "Darwin"];
+    for (const [w, site] of Object.entries(LEAD)) {
+      const t = text(page(`weeks/week-${pad(Number(w))}`));
+      expect(t, `week ${w} overview should lead with ${site}`).toContain(site);
+      // An overview that named a second home would be describing a different
+      // week's worked example, which is exactly the drift this guards against.
+      for (const other of ALL.filter((s) => s !== site)) {
+        expect(t, `week ${w} overview names ${other} as well as ${site}`).not.toContain(other);
+      }
+    }
+  });
+
+  it("states what the tutorial produces, on every week", () => {
+    for (let w = 1; w <= 12; w++) {
+      const t = text(page(`weeks/week-${pad(w)}`));
+      expect(t, `week ${w} overview does not say what you leave with`).toContain(
+        "What you leave with",
+      );
+    }
+  });
+});

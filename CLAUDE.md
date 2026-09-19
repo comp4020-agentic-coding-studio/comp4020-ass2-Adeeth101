@@ -130,17 +130,38 @@ Prefer a sentence to a label with a colon. Keep units on every quantity.
 
 ## Teaching sequence
 
-Weeks 1–6 teach measurement and feed A1 (due week 7); week 7 hands over
-Release B; weeks 8–12 teach design and feed A2 (exam period). Quizzes at 8 % in
-weeks 3, 5, 8, 10 and 12; A1 20 %; A2 40 %; no oral assessment.
+`src/lib/weeks.ts` is the **single source** for the week order, each week's
+stage, its lead home and what its tutorial produces. The home timeline, `/weeks/`,
+every week overview and the week banner on lectures and tutorials all read it.
+Dates, titles and weights are **not** in it: those come from the content
+collections and `src/lib/calendar.ts`, and the pages join the two. Never write a
+second week map in another module. *Why:* the course briefly carried two, and the
+home page advertised a topic the lecture did not teach.
 
-**Lead homes:** Canberra 2 and 7; Alice Springs 3 and 8; Brisbane 4 and 9;
-Adelaide 5 and 10; Darwin 6 and 11. Weeks 1 and 12 integrate all five, and
-weeks 2–11 each carry a Five homes comparison naming all five.
+The order is: 1 meet the client and the evidence question; 2 soil, plants and
+irrigation demand; 3 mushrooms; 4 insects; 5 aquaponics; 6 preservation and
+assembling the measurement plan; 7 water sourcing and the specialist handover;
+8 treatment and reuse; 9 storage and seasonal reliability; 10 waste recovery and
+integrated balances; 11 sanitation, nutrient limits and choosing between options;
+12 integration and the investment recommendation.
 
-Every lecture has a linked deck of 8–12 slides that teach; every tutorial is a
-60–90 minute sequence with inputs, an annotated worked example, two graduated
-exercises and worked feedback on practice data.
+Weeks 1–6 work out how each candidate system behaves and what would have to be
+measured, and feed A1. Week 7 submits A1, then the story jumps twelve fictional
+months and Release B is handed over. Weeks 7–12 use those findings to select and
+justify the retrofit, and feed A2. **Calculations before the handover are scoping
+or practice estimates, never claims about measured results**, and the pages say
+so. Quizzes at 8 % in weeks 3, 5, 8, 10 and 12; A1 20 %; A2 40 %; no oral
+assessment.
+
+**Lead homes:** Canberra 2 and 11; Brisbane 3 and 8; Darwin 4 and 9; Adelaide 5
+and 6; Alice Springs 7 and 10 — each once where its climate helps and once where
+it hurts. Weeks 1 and 12 integrate all five, and weeks 2–11 each carry a Five
+homes comparison naming all five. A week overview names only its own lead home;
+the five-way comparison belongs on the lecture page.
+
+Decks are optional and produced where an argument needs one, not one per week.
+Each tutorial already carries a spec whose lines a student can check
+unaided; extend a tutorial rather than replacing it.
 
 ## Safety
 
