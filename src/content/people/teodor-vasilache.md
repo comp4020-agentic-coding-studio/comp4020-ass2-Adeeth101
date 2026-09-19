@@ -10,7 +10,7 @@ contact: Tutorial weeks 7 to 9, or email. Send the spreadsheet, not a screenshot
 ---
 
 Teodor runs the water tutorials — sourcing, treatment and storage — and marks the
-water half of the capstone.
+water half of the investment proposal.
 
 His standing complaint is designs that report an annual water balance and call it
 sized. A Darwin roof collects 411 kL a year and the household needs 219, and the

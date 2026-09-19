@@ -1,0 +1,67 @@
+---
+/** One to three deep links into the reference material, each with the reason a
+ *  student needs it. Used on week overviews, lectures, tutorials and quizzes.
+ *
+ *  Deliberately small: a page that lists the whole reference index teaches
+ *  nothing about which part of it matters here. */
+import { withBase } from "astro-theme-university/url";
+
+export interface ReferenceItem {
+  href: string;
+  label: string;
+  /** Why this student needs this page, now. Not a description of the page. */
+  why: string;
+}
+
+interface Props {
+  items: ReferenceItem[];
+  title?: string;
+}
+
+const { items, title = "Reference you will need" } = Astro.props;
+---
+
+{
+  items.length > 0 && (
+    <aside class="refblock" aria-label={title}>
+      <p class="refblock-title">{title}</p>
+      <ul>
+        {items.slice(0, 3).map((item) => (
+          <li>
+            <a href={withBase(item.href)}>{item.label}</a> — {item.why}.
+          </li>
+        ))}
+      </ul>
+    </aside>
+  )
+}
+
+<style>
+  .refblock {
+    margin: 1.75rem 0;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--at-border);
+    border-left: 4px solid var(--at-secondary);
+    border-radius: 4px;
+    background: var(--at-bg-alt);
+  }
+
+  .refblock-title {
+    margin: 0 0 0.4rem;
+    font-family: var(--at-font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--at-text-secondary);
+  }
+
+  .refblock ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.95rem;
+  }
+
+  .refblock li + li {
+    margin-top: 0.3rem;
+  }
+</style>

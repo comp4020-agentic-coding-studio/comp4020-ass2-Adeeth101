@@ -1,0 +1,313 @@
+---
+/** Release B: the specialist findings for one home, from one shared template.
+ *
+ *  Every figure is read from `src/data/release-b.json`, and every download is a
+ *  file that already exists under `public/data/release-b/<slug>/`. Nothing here
+ *  is a new dataset — this page is the readable face of the one the model
+ *  already produced. */
+import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
+import { withBase } from "astro-theme-university/url";
+import Figure from "../../../components/Figure.astro";
+import ReferenceBlock from "../../../components/ReferenceBlock.astro";
+import { homes, findingsFor, findings as releaseB, money, type Home } from "../../../lib/cases";
+import { siteConfig } from "../../../site-config";
+
+export function getStaticPaths() {
+  return homes.map((home) => ({ params: { slug: home.slug }, props: { home } }));
+}
+
+const { home } = Astro.props as { home: Home };
+const f = findingsFor(home.id);
+const s = f.summary;
+const station = home.station;
+
+const num = (v: number, dp = 1) =>
+  v.toLocaleString("en-AU", { maximumFractionDigits: dp, minimumFractionDigits: 0 });
+
+const dataDir = `/data/release-b/${home.slug}/`;
+const FILES: { file: string; what: string; rows: string; kind: string }[] = [
+  { file: "SYNTHETIC-monthly.csv", what: "The measured year, month by month: rain, temperature, roof inflow, tank level, indoor use by fixture group, imports, garden application, pump energy, frost", rows: `${f.months.length} rows`, kind: "synthetic" },
+  { file: "SYNTHETIC-zones.csv", what: "Soil and shade by growing zone: texture, pH, EC, organic carbon, nutrients, rooting depth, summer and winter sun, relative productivity", rows: `${f.zones.length} rows`, kind: "synthetic" },
+  { file: "SYNTHETIC-water-quality.csv", what: "Water-quality samples: turbidity, E. coli, hardness, TDS, pH, iron, with the sampling note", rows: `${f.quality.length} rows`, kind: "synthetic" },
+  { file: "SYNTHETIC-flow-events.csv", what: "The ten largest simultaneous-draw events: fixtures involved, peak flow and duration", rows: `${f.events.length} rows`, kind: "synthetic" },
+  { file: "SYNTHETIC-food-waste-audit.csv", what: "Four one-week kitchen and garden waste audits, split into plant, meat and dairy, and garden", rows: `${f.food_waste.length} rows`, kind: "synthetic" },
+  { file: `BOM-long-term-${station}.csv`, what: `Long-term climate statistics for Bureau of Meteorology station ${station}, all years of record`, rows: "12 rows", kind: "sourced" },
+];
+
+const MONTHLY_SHOWN = [
+  ["label", "Month", ""],
+  ["rain_mm", "Rain", "mm"],
+  ["eto_mm", "ETo", "mm"],
+  ["roof_inflow_kl", "Roof in", "kL"],
+  ["tank_end_kl", "Tank end", "kL"],
+  ["indoor_kl", "Indoor use", "kL"],
+  ["imported_kl", "Imported", "kL"],
+  ["garden_applied_kl", "Garden applied", "kL"],
+] as const;
+---
+
+<ContentLayout
+  title={`${home.family} household, ${home.short}: specialist findings`}
+  description={`Release B for the ${home.short} home: what a twelve-month measurement year found, the specialists' implications, and the data as CSV. Synthetic case data, handed over in week 7.`}
+  wide
+  {...siteConfig}
+>
+  <p class="fiction">
+    <strong>Synthetic case data.</strong> This is a generated measurement year, produced by the
+    course's model to be consistent with the {home.short} home. It is <strong>not a
+    measurement</strong> and no instrument recorded it. It stands in for the year the story says
+    passed between week 7 and Assignment 2, and it is identical for every student who took this
+    home, whatever their <a href={withBase("/assessments/food-loop-design/")}>Assignment 1</a>
+    said.
+  </p>
+
+  <nav class="release-tabs" aria-label="Releases for this home">
+    <a href={withBase(`/clients/${home.slug}/`)}>Release A · intake (week 1)</a>
+    <span class="current">Release B · specialist findings (week 7)</span>
+  </nav>
+
+  <h2>Memo</h2>
+  <p class="meta">
+    Common Ground Engineering, specialist team, {f.memo_date} · measurement year {f.year}
+  </p>
+  <ul class="team">
+    {f.team.map(([name, role]) => <li><strong>{name}</strong> — {role}</li>)}
+  </ul>
+  <p>
+    The specialists report conditions and what follows from them. <strong>They do not choose the
+    system.</strong> That is your recommendation to make in
+    <a href={withBase("/assessments/capstone-master-plan/")}>Assignment 2</a>.
+  </p>
+
+  <h2>What the year found</h2>
+  <Figure caption={`Annual totals for the measured year, ${f.year}. Synthetic case data.`} basis="synthetic data">
+    <table>
+      <tbody>
+        <tr><th scope="row">Rain at the site</th><td>{num(s.rain_mm, 0)} mm</td><td>long-term mean {num(s.rain_mean_mm, 0)} mm</td></tr>
+        <tr><th scope="row">Roof inflow to storage</th><td>{num(s.roof_inflow_kl)} kL</td><td>{num(s.connected_roof_m2, 0)} m² connected at a runoff coefficient of {s.runoff_coefficient}</td></tr>
+        <tr><th scope="row">Overflow</th><td>{num(s.overflow_kl)} kL</td><td>{s.months_empty} months with storage empty at month end</td></tr>
+        <tr><th scope="row">Indoor use</th><td>{num(s.indoor_kl)} kL</td><td>{num(s.indoor_l_person_day, 0)} L per person per day</td></tr>
+        <tr><th scope="row">Water imported</th><td>{num(s.imported_kl)} kL</td><td>{s.bore_kl > 0 ? `plus ${num(s.bore_kl)} kL drawn from the bore` : "mains supply"}</td></tr>
+        <tr><th scope="row">Garden water applied</th><td>{num(s.garden_applied_kl)} kL</td><td>estimated unmet demand {num(s.garden_unmet_kl)} kL</td></tr>
+        <tr><th scope="row">Pump energy</th><td>{num(s.pump_kwh)} kWh</td><td>electricity at ${f.costs.tariff_kwh.toFixed(2)} per kWh</td></tr>
+        <tr><th scope="row">Harvest weighed</th><td>{num(s.harvest_kg, 0)} kg</td><td>food waste {num(s.food_waste_kg_week)} kg/week, {num(s.food_waste_kg_year, 0)} kg/year, {Math.round(s.plant_share * 100)} % plant-based</td></tr>
+        <tr><th scope="row">Peak simultaneous flow</th><td>{num(s.peak_flow_lpm)} L/min</td><td>70th percentile event {num(s.p70_event_lpm)} L/min; static lift {num(s.static_lift_m)} m</td></tr>
+        <tr><th scope="row">Frost nights</th><td>{s.frost_nights}</td><td>air temperature below 0 °C</td></tr>
+      </tbody>
+    </table>
+  </Figure>
+
+  <h2>The measured year, month by month</h2>
+  <p>
+    An extract. The full table, with every fixture group, the bore, overflow and the quality
+    flags, is in <code>SYNTHETIC-monthly.csv</code> below.
+  </p>
+  <Figure caption={`Monthly extract, ${f.year}. Synthetic case data; ETo is derived from the logged temperatures, not measured.`} basis="synthetic data">
+    <table class="monthly">
+      <thead>
+        <tr>{MONTHLY_SHOWN.map(([, label, unit]) => <th scope="col">{label}{unit && <> ({unit})</>}</th>)}</tr>
+      </thead>
+      <tbody>
+        {
+          f.months.map((m) => (
+            <tr>
+              {MONTHLY_SHOWN.map(([key], i) =>
+                i === 0 ? (
+                  <th scope="row">{m[key as keyof typeof m] as string}</th>
+                ) : (
+                  <td>{num(m[key as keyof typeof m] as number)}</td>
+                ),
+              )}
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </Figure>
+
+  <h2>Growing zones</h2>
+  <Figure caption="Soil and shade by zone. Laboratory values are synthetic case data; the productivity class is the specialists' judgement from them." basis="synthetic data">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Zone</th><th scope="col">Area (m²)</th><th scope="col">Texture</th>
+          <th scope="col">pH</th><th scope="col">Organic C (%)</th><th scope="col">Rooting (cm)</th>
+          <th scope="col">Sun, summer / winter (h)</th><th scope="col">Class</th><th scope="col">Note</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          f.zones.map((z) => (
+            <tr>
+              <th scope="row">{z.zone} {z.label}</th>
+              <td>{num(z.area_m2)}</td><td>{z.texture}</td><td>{z.ph_water}</td>
+              <td>{z.organic_carbon_pct}</td><td>{z.rooting_depth_cm}</td>
+              <td>{z.sun_hours_summer} / {z.sun_hours_winter}</td>
+              <td>{z.productivity_class}</td><td>{z.note}</td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </Figure>
+
+  <h2>Water quality</h2>
+  <Figure caption="Samples taken across the year, including at least one after heavy rain. Synthetic case data." basis="synthetic data">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Month</th><th scope="col">Source</th><th scope="col">Turbidity (NTU)</th>
+          <th scope="col">E. coli (MPN/100 mL)</th><th scope="col">Hardness (mg/L CaCO₃)</th>
+          <th scope="col">pH</th><th scope="col">Note</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          f.quality.map((q) => (
+            <tr>
+              <th scope="row">{q.month}</th><td>{q.source}</td><td>{q.turbidity_ntu}</td>
+              <td>{q.e_coli_mpn_100ml}</td><td>{q.hardness_mg_l_caco3}</td><td>{q.ph}</td>
+              <td>{q.note}</td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </Figure>
+
+  <h2>Hydraulics</h2>
+  <p>
+    Tank outlet at RL {f.hydraulics.tank_outlet_rl} m; highest fixture is the
+    {" "}{f.hydraulics.highest_fixture} at RL {f.hydraulics.highest_fixture_rl} m, giving a static
+    lift of <strong>{num(f.hydraulics.static_lift_m)} m</strong>. Currently served:
+    {" "}{f.hydraulics.served_now}.
+  </p>
+  <p class="note">{f.hydraulics.note}</p>
+  <Figure caption="Measured fixture flow rates, used with the flow-event table to size any pump." basis="synthetic data">
+    <table>
+      <thead><tr><th scope="col">Fixture</th><th scope="col">Flow (L/min)</th></tr></thead>
+      <tbody>
+        {Object.entries(f.hydraulics.fixtures_lpm).map(([k, v]) => (
+          <tr><th scope="row">{k}</th><td>{v}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </Figure>
+
+  <h2>What it costs the household now</h2>
+  <ul>
+    <li>Electricity at ${f.costs.tariff_kwh.toFixed(2)} per kWh.</li>
+    {
+      f.costs.water_usage_kl != null ? (
+        <li>
+          Reticulated water at ${f.costs.water_usage_kl.toFixed(2)} per kL, plus a supply charge of
+          {" "}{money(f.costs.supply_charge_year)} a year.
+        </li>
+      ) : (
+        <li>No reticulated supply and no water bill; all water is carted, drawn from the bore or caught on site.</li>
+      )
+    }
+    {f.costs.carting_kl != null && <li>Carted water at {money(f.costs.carting_kl)} per kL delivered.</li>}
+    {f.costs.maintenance.map((m) => <li>{m}</li>)}
+  </ul>
+
+  <h2>What the specialists conclude</h2>
+  <ol class="implications">{f.implications.map((i) => <li>{i}</li>)}</ol>
+
+  <h2>What they could not settle</h2>
+  <ul>{f.questions.map((q) => <li>{q}</li>)}</ul>
+
+  <h3>Gaps in the record</h3>
+  <ul>
+    {f.missing.map((m) => <li><strong>{m.month}, {m.field}:</strong> {m.note}</li>)}
+  </ul>
+  <p>
+    A gap is marked as a gap. Interpolated values are flagged in the
+    <code>quality_flag</code> column of the monthly CSV, and anything you conclude from those
+    months should carry the same flag.
+  </p>
+
+  <h2>Download the findings</h2>
+  <p>
+    Every file's first line says what it is. The
+    {" "}<a href={withBase("/data/release-b/data-dictionary.csv")}>data dictionary</a> gives each
+    column its unit, meaning and kind — <em>synthetic measured year</em>, <em>derived</em>,
+    <em>calendar</em> or <em>sourced</em>. Keep those apart in your own workbook.
+  </p>
+  <table class="files">
+    <thead>
+      <tr><th scope="col">File</th><th scope="col">What is in it</th><th scope="col">Size</th><th scope="col">Basis</th></tr>
+    </thead>
+    <tbody>
+      {
+        FILES.map((file) => (
+          <tr>
+            <th scope="row"><a href={withBase(dataDir + file.file)}>{file.file}</a></th>
+            <td>{file.what}</td>
+            <td>{file.rows}</td>
+            <td>{file.kind === "sourced" ? "sourced" : "synthetic case data"}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+
+  <ReferenceBlock
+    title="What to do with this"
+    items={[
+      { href: "/assessments/capstone-master-plan/", label: "The Assignment 2 brief", why: "it lists which of these findings the baseline and the three options each have to use" },
+      { href: "/method/datasets/", label: "The dry-year dataset", why: "one measured year does not establish reliability, and the proposal has to test against a dry one" },
+      { href: `/clients/${home.slug}/`, label: "This home's intake dossier", why: "the plan, the constraints and the client's own priorities have not changed" },
+    ]}
+  />
+</ContentLayout>
+
+<style>
+  .fiction {
+    padding: 0.8rem 1rem;
+    border-left: 3px solid var(--at-primary);
+    background: var(--at-bg-alt);
+  }
+
+  .release-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .release-tabs > * {
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--at-border);
+    border-radius: 999px;
+    font-size: 0.9rem;
+  }
+
+  .release-tabs .current {
+    border-color: var(--at-primary);
+    color: var(--at-text);
+    font-weight: 600;
+  }
+
+  .meta,
+  .note {
+    color: var(--at-text-secondary);
+  }
+
+  .team {
+    margin-top: 0;
+  }
+
+  th[scope="row"] {
+    text-align: left;
+  }
+
+  .monthly td,
+  .monthly th {
+    white-space: nowrap;
+  }
+
+  .implications li {
+    margin-bottom: 0.4rem;
+  }
+</style>

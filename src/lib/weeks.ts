@@ -119,6 +119,7 @@ const ENTRIES: WeekEntry[] = [
       "actually draws is one of the things Assignment 1 will have to pay for.",
     output:
       "A twelve-row irrigation demand curve in kilolitres, and a planted area you can defend on water rather than on ambition.",
+    milestone: "Tutorial checkpoint 1 of 10 (2 %) due 5 pm Friday.",
   },
   {
     week: 3,
@@ -162,6 +163,7 @@ const ENTRIES: WeekEntry[] = [
       "out, and when, goes on the measurement list.",
     output:
       "A larval yield derived from your household's waste stream, with the imported share of fish feed stated on the diagram.",
+    milestone: "Tutorial checkpoint 3 of 10 (2 %) due 5 pm Friday.",
   },
   {
     week: 5,
@@ -205,6 +207,7 @@ const ENTRIES: WeekEntry[] = [
       "inform. Adelaide leads again, on its summer.",
     output:
       "A sized preservation store, and a draft measurement plan in which every instrument answers a named decision.",
+    milestone: "Tutorial checkpoint 5 of 10 (2 %) due 5 pm Friday. This is the week Assignment 1 is assembled.",
   },
   {
     week: 7,
@@ -227,7 +230,7 @@ const ENTRIES: WeekEntry[] = [
     output:
       "A monthly supply curve laid over week 2's demand curve, on the same axis and in the same units.",
     milestone:
-      "Assignment 1, the measurement programme (20 %), is due this week, and Release B is handed over.",
+      "Assignment 1, the year-long measurement programme (20 %), is due 5 pm Friday. The specialist findings are handed over in the lecture on the Monday, as a preview of what the measured year produced; the deadline is not moved by it.",
   },
   {
     week: 8,
@@ -271,6 +274,7 @@ const ENTRIES: WeekEntry[] = [
       "synthetic wherever it appears.",
     output:
       "A sized store with its saturation point identified, re-run against the dry year with the first failure named.",
+    milestone: "Tutorial checkpoint 8 of 10 (2 %) due 5 pm Friday.",
   },
   {
     week: 10,
@@ -336,7 +340,7 @@ const ENTRIES: WeekEntry[] = [
     output:
       "A whole-system model that passes both hard constraints, plus the capstone skeleton and an uncertainty list.",
     milestone:
-      "Quiz 5 (8 %), on weeks 11–12. Assignment 2, the investment proposal (40 %), falls in the assessment period.",
+      "Quiz 5 (4 %), on weeks 11–12. Assignment 2, the household resilience investment proposal (40 %), falls in the assessment period. Week 12’s tutorial is ungraded assembly.",
   },
 ];
 
@@ -355,6 +359,15 @@ export function weekEntry(week: number): WeekEntry {
   if (!entry) throw new Error(`no week ${week}`);
   return entry;
 }
+
+/** Weeks 2 to 11 carry a graded tutorial completion checkpoint. Weeks 1 and 12
+ *  are ungraded practice: week 1 has nothing to build on yet, and week 12's
+ *  session is assembly for A2 rather than a piece of its own. */
+export const CHECKPOINT_WEEKS: number[] = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+export const CHECKPOINT_WEIGHT = 2;
+
+/** True when this week's tutorial output is a graded checkpoint. */
+export const isCheckpointWeek = (week: number): boolean => CHECKPOINT_WEEKS.includes(week);
 
 /** The two-digit slug the lectures, tutorials and week overviews all share. */
 export const weekSlug = (week: number): string => String(week).padStart(2, "0");

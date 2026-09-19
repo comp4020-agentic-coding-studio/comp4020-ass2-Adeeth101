@@ -10,7 +10,7 @@ contact: Tutorial weeks 2 to 6 and week 10, or email.
 ---
 
 Noor runs the soil, mycology, insect, aquaponics and fermentation tutorials, and
-marks the nutrient side of the capstone.
+marks the nutrient side of the investment proposal.
 
 They argued for protein closure as a second food indicator after a cohort of
 designs scored identically whether or not they contained a fish tank. Mushrooms,

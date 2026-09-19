@@ -84,7 +84,12 @@ A **twelve-row monthly supply curve** for your site, in kilolitres, with the fir
 flush deducted and every source named. Put it beside week 2's demand curve. The
 gap between them is week 9's problem, and it is not a single number.
 
-This is also the week the story turns. Assignment 1 goes in, twelve fictional
-months pass, and the specialist team hands back Release B. From week 8 on, your
-inputs are findings from a measured year rather than the scoping estimates weeks
-2 to 6 produced.
+This is also the week the story turns, and the order matters. **Assignment 1 is
+due at 5 pm on Friday.** This lecture, on the Monday, previews what a measurement
+year at your home produced — enough for you to see why the register you are about
+to submit was worth writing — and the full Release B handover follows the
+deadline. Nothing in the preview changes what your plan should have said, and no
+calculation before Friday is an observation of this house.
+
+From week 8 on, your inputs are findings from the measured year rather than the
+scoping estimates weeks 2 to 6 produced.

@@ -37,7 +37,7 @@ Against 13.6 kg, no site in this course absorbs even half.
 
 So between 56 % and 89 % of your household's nitrogen has to go somewhere that is
 not your garden. **That is a design problem, not a design failure**, and a
-capstone that quietly applies all 13.6 kg to the beds will be marked down for the
+proposal that quietly applies all 13.6 kg to the beds will be marked down for the
 arithmetic, not the ambition.
 
 ## Storage, and why Canberra pays for being cold

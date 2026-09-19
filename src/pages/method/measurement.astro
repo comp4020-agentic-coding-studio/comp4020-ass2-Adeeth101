@@ -1,0 +1,186 @@
+---
+/** The measurement primer: the short reference a student reads before Assignment
+ *  1. It names the instrument classes the course expects, and it deliberately
+ *  stops short of a catalogue — the figures that matter are the ones the
+ *  register has to carry, not a list of products. */
+import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
+import { withBase } from "astro-theme-university/url";
+import Figure from "../../components/Figure.astro";
+import ReferenceBlock from "../../components/ReferenceBlock.astro";
+import { measurement, money } from "../../lib/cases";
+import { siteConfig } from "../../site-config";
+
+const CLASSES = [
+  {
+    id: "water",
+    title: "Water: rain, tank and use",
+    decides: "storage volume, which roof zones to connect, and whether a pump is needed at all",
+    rows: [
+      ["Rain at the site", "Tipping-bucket gauge, or a manual gauge read daily", "mm", "Continuous, totalled monthly", "±2 % to ±5 % of total; under-reads in high-intensity rain"],
+      ["Tank level", "Pressure or ultrasonic level sensor; manual dip as the check", "mm of depth, converted to kL", "Hourly logged, or weekly by dip", "±1 % to ±3 % of full scale — on a 5 kL tank that is ±50 to ±150 L"],
+      ["Household use", "Pulse meter on the incoming main; sub-meters on hot and on the garden line", "L, totalled daily", "Continuous", "±2 % at normal flows; poor below the meter's starting flow"],
+      ["Peak flow", "High-resolution logging on the main, or timed bucket tests at each fixture", "L/min", "A fortnight of logging, or one afternoon of bucket tests", "Bucket test ±5 %; it is the simultaneity you are really measuring"],
+      ["Water quality", "Laboratory sample, or a field kit for turbidity and pH", "NTU, MPN/100 mL, mg/L, pH units", "Three or four samples across the year, one after heavy rain", "Laboratory reports its own limits; field kits are a category, not a number"],
+    ],
+  },
+  {
+    id: "soil",
+    title: "Soil, shade and the growing area",
+    decides: "how much ground is worth planting, and which zones are worth improving",
+    rows: [
+      ["Soil texture and depth", "Hand texture in the field; auger or spade pit to rooting depth", "texture class, cm", "Once, at three or more points per zone", "Hand texture is a class, not a number; say who did it"],
+      ["pH and electrical conductivity", "Laboratory on a composite sample, or a calibrated field meter", "pH units, dS/m", "Once per zone, repeated if you amend", "Field meter ±0.2 pH when calibrated that day"],
+      ["Organic carbon and nutrients", "Laboratory: Colwell P, nitrate N, organic carbon", "mg/kg, %", "Once per zone at the start", "Laboratory method must be named; the numbers are method-specific"],
+      ["Soil moisture", "Capacitance probe at two depths per zone", "% volumetric", "Hourly logged through at least one dry spell", "±3 % volumetric uncalibrated; ±1 % calibrated to your own soil"],
+      ["Shade", "Hourly photographs from a fixed point, or a sun-path app checked against one real day", "hours of direct sun", "One clear day per season, minimum", "The winter figure is the one that decides anything"],
+    ],
+  },
+  {
+    id: "food",
+    title: "Food and waste logs",
+    decides: "what the insect and compost units could actually be fed, and what the garden produced",
+    rows: [
+      ["Food waste", "Kitchen scale and a tallied bin, separated into plant, meat and dairy", "kg/week", "One full week per season, four weeks total", "Household compliance is the error term, not the scale"],
+      ["Garden waste and prunings", "Weighed at the bin or estimated by volume with a stated bulk density", "kg/week", "Logged when it happens, seasonally", "Volume-to-mass conversion is an assumption — state it"],
+      ["Harvest", "Kitchen scale, logged by crop", "kg", "Every harvest, all year", "The gaps are the error: a harvest eaten in the garden is never weighed"],
+      ["Energy for the existing systems", "Plug-in energy meter on each appliance; tariff from the bill", "kWh, $/kWh", "Two weeks per appliance, one summer one winter", "±2 % on the meter; duty cycle is the uncertain part"],
+    ],
+  },
+];
+---
+
+<ContentLayout
+  title="Measurement primer"
+  description="What a household measurement programme actually measures: the instrument classes, their units, their frequencies and their honest accuracies, plus how to state an uncertainty."
+  {...siteConfig}
+>
+  <p class="lede">
+    Read this before you write <a href={withBase("/assessments/food-loop-design/")}>Assignment 1</a>.
+    It is short on purpose: what follows is the vocabulary the assignment expects, not a
+    catalogue of products. Choosing instruments is your job; knowing what a register row has
+    to carry is this page's.
+  </p>
+
+  <h2>The rule the whole programme runs on</h2>
+  <p>
+    <strong>Every measurement exists to settle a decision.</strong> Write the decision first
+    — "connect the house roof or leave it" — then the measurement that would settle it, then
+    the method, place, units, frequency and accuracy. A row you cannot attach to a decision
+    is a row to delete, and the money it costs is money you can spend on one that matters.
+  </p>
+  <p>
+    The programme has a budget of its own: <strong>{money(measurement.allowance)}</strong> for
+    equipment and services across the whole twelve months, separate from the implementation
+    allowance. Your hours are scheduled, not charged.
+  </p>
+
+  {
+    CLASSES.map((c) => (
+      <section>
+        <h2 id={c.id}>{c.title}</h2>
+        <p>Decides: {c.decides}.</p>
+        <Figure caption={`${c.title}. Accuracy figures are indicative instrument-class ranges, not product specifications.`} basis="course assumption">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">What</th>
+                <th scope="col">Method</th>
+                <th scope="col">Units</th>
+                <th scope="col">Frequency</th>
+                <th scope="col">Accuracy, honestly</th>
+              </tr>
+            </thead>
+            <tbody>
+              {c.rows.map((r) => (
+                <tr>
+                  <th scope="row">{r[0]}</th>
+                  <td>{r[1]}</td>
+                  <td>{r[2]}</td>
+                  <td>{r[3]}</td>
+                  <td>{r[4]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </Figure>
+      </section>
+    ))
+  }
+
+  <h2 id="uncertainty">Stating an uncertainty</h2>
+  <p>
+    Three things get confused, and the register should keep them apart.
+  </p>
+  <dl class="terms">
+    <dt>Resolution</dt>
+    <dd>
+      The smallest step the instrument reports. A tank sensor reading to the nearest centimetre
+      has a resolution of about 30 L on a slim 5 kL tank, whatever its accuracy claim.
+    </dd>
+    <dt>Accuracy</dt>
+    <dd>
+      How far the reading can be from the truth. Usually quoted as ± a percentage of reading or
+      of full scale — and those two are very different at the bottom of the range, which is
+      exactly where an emptying tank lives.
+    </dd>
+    <dt>The error that actually dominates</dt>
+    <dd>
+      Almost never the instrument. It is the household forgetting to weigh the scraps, the
+      gauge sited under the eave, the probe in the one spot that drains differently. Say which
+      error dominates your row, and the marker will believe the rest of it.
+    </dd>
+  </dl>
+  <p>
+    Carry uncertainty as a range, not a decoration. "Roof yield 18 to 24 kL" supports a
+    decision; "18 kL ± some" does not. Where a range straddles the threshold a decision turns
+    on, that is the finding: the measurement has told you the decision cannot be made yet, and
+    what it would take to make it.
+  </p>
+
+  <h2 id="gaps">Calibration, drift and gaps</h2>
+  <ul>
+    <li>
+      <strong>Check against something independent.</strong> A logged tank level against a manual
+      dip; a field pH meter against a buffer solution on the day; a rain gauge against the
+      nearest Bureau station's monthly total, allowing for the distance between them.
+    </li>
+    <li>
+      <strong>Expect drift and schedule the check.</strong> Monthly for anything with a
+      membrane or an optical window, quarterly for the rest, and after every power loss.
+    </li>
+    <li>
+      <strong>Mark gaps as gaps.</strong> Interpolating across a fortnight of missing tank
+      levels is defensible; recording it as a measurement is not. Your client's supplied
+      findings contain exactly this situation, flagged — go and look at how it is written up.
+    </li>
+  </ul>
+
+  <ReferenceBlock
+    title="While you write the register"
+    items={[
+      { href: "/clients/", label: "Your client's intake dossier", why: "the fixed constraints and the facts already marked unknown are your starting list of decisions" },
+      { href: "/method/costing/", label: "What the schedule prices and what it does not", why: "the investigation allowance is spent on services the schedule does not cover" },
+      { href: "/assessments/food-loop-design/", label: "The Assignment 1 brief", why: "the register's required columns are listed there, and a row missing one is incomplete" },
+    ]}
+  />
+</ContentLayout>
+
+<style>
+  .lede {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .terms dt {
+    font-weight: 600;
+    margin-top: 0.8rem;
+  }
+
+  .terms dd {
+    margin: 0.15rem 0 0;
+  }
+
+  th[scope="row"] {
+    text-align: left;
+  }
+</style>

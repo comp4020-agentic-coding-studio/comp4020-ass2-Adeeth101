@@ -167,15 +167,44 @@ describe("assessment", () => {
     expect(total).toBe(100);
   });
 
-  it("runs five quizzes at 8 % in weeks 3, 5, 8, 10 and 12", () => {
+  it("runs five quizzes at 4 % in weeks 3, 5, 8, 10 and 12", () => {
     const quizzes = assessments().filter((n) => slug(n).startsWith("quiz-"));
     expect(quizzes.length).toBe(5);
     expect(quizzes.map(week).sort((a, b) => a - b)).toEqual([3, 5, 8, 10, 12]);
-    for (const q of quizzes) expect(Number(q.meta?.weight), q.id).toBe(8);
+    for (const q of quizzes) expect(Number(q.meta?.weight), q.id).toBe(4);
   });
 
-  it("keeps the two design assessments at 20 % in week 7 and 40 % in the assessment period", () => {
-    const design = assessments().filter((n) => !slug(n).startsWith("quiz-"));
+  it("carries the tutorial checkpoints as one 20 % record of ten weekly parts", () => {
+    // Ten 2 % checkpoints are one assessment with ten deadlines, not ten
+    // assessments: eleven weighted records would misreport the course's shape to
+    // the catalogue and to the student.
+    const record = assessments().find((n) => slug(n) === "tutorial-checkpoints")!;
+    expect(record, "a tutorial-checkpoints assessment").toBeTruthy();
+    expect(Number(record.meta?.weight)).toBe(20);
+    const html = page(record.id);
+    const t = text(html);
+    // One row per checkpoint week, and the two ungraded weeks named as such.
+    for (const w of [2, 3, 4, 5, 6, 7, 8, 9, 10, 11]) {
+      expect(html, `checkpoint week ${w} is missing`).toContain(`sessions/week-${String(w).padStart(2, "0")}/`);
+    }
+    // Exactly ten linked tutorials: weeks 1 and 12 are ungraded and must not
+    // appear as checkpoint rows.
+    const linked = new Set(
+      [...html.matchAll(/sessions\/week-(\d\d)\//g)].map((m) => Number(m[1])),
+    );
+    expect([...linked].sort((a, b) => a - b), "linked checkpoint tutorials").toEqual([
+      2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
+    ]);
+    expect(t).toMatch(/2 % each|2 %/);
+    expect(t.toLowerCase(), "says weeks 1 and 12 are ungraded").toMatch(/weeks 1 and 12/);
+    expect(t.toLowerCase(), "attendance is not completion").toContain("attendance alone is not completion");
+    expect(t.toLowerCase(), "static site collects nothing").toMatch(/does not collect/);
+  });
+
+  it("keeps A1 at 20 % in week 7 and A2 at 40 % in the assessment period", () => {
+    const design = assessments().filter(
+      (n) => !slug(n).startsWith("quiz-") && slug(n) !== "tutorial-checkpoints",
+    );
     expect(design.length).toBe(2);
     const mid = design.find((n) => Number(n.meta?.weight) === 20)!;
     const capstone = design.find((n) => Number(n.meta?.weight) === 40)!;
@@ -193,12 +222,21 @@ describe("assessment", () => {
     expect(dateOnly(capstone.meta?.due) <= api.course.endDate).toBe(true);
   });
 
-  it("does not schedule a quiz in the week the mid-semester design is due", () => {
-    const mid = assessments().find((n) => Number(n.meta?.weight) === 20)!;
+  it("does not schedule a quiz in the week the mid-semester assignment is due", () => {
+    const mid = assessments().find((n) => slug(n) === "food-loop-design")!;
     const quizWeeks = assessments()
       .filter((n) => slug(n).startsWith("quiz-"))
       .map(week);
     expect(quizWeeks).not.toContain(week(mid));
+  });
+
+  it("adds up the way the assessment page says it does", () => {
+    const by = (test: (n: ApiNode) => boolean) =>
+      assessments().filter(test).reduce((sum, n) => sum + Number(n.meta?.weight ?? 0), 0);
+    expect(by((n) => slug(n).startsWith("quiz-")), "quizzes").toBe(20);
+    expect(by((n) => slug(n) === "tutorial-checkpoints"), "tutorial checkpoints").toBe(20);
+    expect(by((n) => slug(n) === "food-loop-design"), "A1").toBe(20);
+    expect(by((n) => slug(n) === "capstone-master-plan"), "A2").toBe(40);
   });
 
   it("states how every assessment is marked", () => {

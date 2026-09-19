@@ -1,0 +1,60 @@
+---
+/** The ten tutorial completion checkpoints, weeks 2 to 11.
+ *
+ *  Weeks, outputs and Friday deadlines are read from `lib/weeks.ts` and
+ *  `lib/calendar.ts`, never typed here — so the table, the weekly map, the
+ *  planner and the tutorial pages cannot disagree about what is due when. */
+import { withBase } from "astro-theme-university/url";
+import { fridayOf } from "../lib/calendar";
+import { formatCourseDate } from "../lib/dates";
+import { CHECKPOINT_WEEKS, CHECKPOINT_WEIGHT, courseWeeks, tutorialHref } from "../lib/weeks";
+
+const rows = CHECKPOINT_WEEKS.map((week) => {
+  const entry = courseWeeks.find((w) => w.week === week)!;
+  return { week, entry, due: fridayOf(week) };
+});
+---
+
+<table class="checkpoints">
+  <caption>
+    Ten checkpoints at {CHECKPOINT_WEIGHT} % each, {CHECKPOINT_WEIGHT * rows.length} % in total.
+    Weeks 1 and 12 are ungraded practice.
+  </caption>
+  <thead>
+    <tr>
+      <th scope="col">Week</th>
+      <th scope="col">Tutorial</th>
+      <th scope="col">What you submit</th>
+      <th scope="col">Due</th>
+    </tr>
+  </thead>
+  <tbody>
+    {
+      rows.map(({ week, entry, due }) => (
+        <tr>
+          <th scope="row">{week}</th>
+          <td><a href={withBase(tutorialHref(week))}>{entry.topic}</a></td>
+          <td>{entry.output}</td>
+          <td>{formatCourseDate(due)}</td>
+        </tr>
+      ))
+    }
+  </tbody>
+</table>
+
+<style>
+  .checkpoints caption {
+    margin-bottom: 0.5rem;
+    color: var(--at-text-secondary);
+    font-size: 0.92rem;
+    text-align: left;
+  }
+
+  .checkpoints th[scope="row"] {
+    text-align: left;
+  }
+
+  .checkpoints td:last-child {
+    white-space: nowrap;
+  }
+</style>

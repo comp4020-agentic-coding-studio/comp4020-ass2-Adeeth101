@@ -41,13 +41,13 @@ const knownCount = [d.slope, ...d.services, ...d.inventory, ...d.constraints].fi
 >
   <p class="fiction">
     <strong>Case material.</strong> The {home.family} household and this property are teaching fiction
-    for the <a href={withBase("/programme/")}>Household Resilience Loan Programme</a> case. Dimensions are
+    for the <a href={withBase("/method/#the-scenario")}>Household Resilience Loan Programme</a> case. Dimensions are
     an internally consistent educational model, not a survey.
   </p>
 
   <nav class="release-tabs" aria-label="Releases for this home">
     <span class="current">Release A · intake (week 1)</span>
-    <span>Release B · specialist findings, issued in week 7</span>
+    <a href={withBase(`/clients/${home.slug}/findings/`)}>Release B · specialist findings (week 7)</a>
   </nav>
 
   <h2>Intake note</h2>

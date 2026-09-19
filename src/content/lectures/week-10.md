@@ -92,6 +92,6 @@ easy to write a compost plan here that quietly needs water the site does not hav
 ## What this week hands you
 
 **A mass balance per stream**, in dry matter, with a destination for every
-kilogram and a stated loss term. This is the input to the capstone's waste-stream
+kilogram and a stated loss term. This is the input to the proposal's waste-stream
 recovery assessment, and the one place in the course where showing your working is
 literally the deliverable.

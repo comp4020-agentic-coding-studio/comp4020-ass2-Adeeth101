@@ -104,6 +104,6 @@ catchment has nowhere left for collectors.
 
 ## What this week hands you
 
-The **capstone skeleton**: assembled model, five checks run, failure modes named,
+The **proposal skeleton**: assembled model, five checks run, failure modes named,
 and an explicit list of what you did not model and what you were not sure about.
 The uncertainty list is marked. Leaving it short does not make it shorter.
