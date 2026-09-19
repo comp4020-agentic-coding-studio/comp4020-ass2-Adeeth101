@@ -1,28 +1,5 @@
 ---
-import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
 import { withBase } from "astro-theme-university/url";
-import SessionsGrid from "../../components/SessionsGrid.astro";
-import { sessionLabels, siteConfig } from "../../site-config";
+const destination = withBase("/tutorials/");
+return Astro.redirect(destination);
 ---
-
-<ContentLayout
-  title={sessionLabels.plural}
-  description="Two hours a week in which your design changes. You arrive with a sized subsystem and leave with it altered, corrected or thrown out."
-  {...siteConfig}
->
-  <p>
-    Tutorials are working sessions rather than revision. Each one has an activity with an
-    output, and that output feeds the next week — so a tutorial missed is a gap in the
-    design rather than a set of notes to catch up on. The
-    <a href={withBase("/weeks/")}>weekly map</a> lists what each one produces.
-  </p>
-  <p>
-    The <strong>spec</strong> on each page is the contract: every line is written so that you
-    can tell whether you have met it without asking anyone. Bring your site sheet
-    to all twelve.
-  </p>
-  <p>
-    Quizzes are sat on paper at the start of the tutorial in weeks 3, 5, 8, 10 and 12.
-  </p>
-  <SessionsGrid />
-</ContentLayout>

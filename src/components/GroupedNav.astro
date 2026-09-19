@@ -1,0 +1,126 @@
+---
+import Icon from "astro-theme-university/components/Icon.astro";
+import SearchDialog from "astro-theme-university/components/SearchDialog.astro";
+import type { NavLink } from "astro-theme-university/types";
+import { withBase } from "astro-theme-university/url";
+
+interface Props {
+  name: string;
+  links?: NavLink[];
+  search?: boolean;
+  logo?: ImageMetadata;
+  logoDark?: ImageMetadata;
+  logoCompact?: ImageMetadata;
+  logoCompactDark?: ImageMetadata;
+}
+
+const { name, links = [], search = true, logo, logoDark, logoCompact, logoCompactDark } = Astro.props;
+const currentPath = Astro.url.pathname;
+const groups = [
+  { label: "Weekly study", hrefs: ["/weeks/", "/lectures/", "/tutorials/", "/assessments/"] },
+  { label: "Course reference", hrefs: ["/clients/", "/method/"] },
+  { label: "People & policies", hrefs: ["/people/", "/policies/"] },
+].map((group, index) => ({
+  ...group,
+  id: `course-nav-group-${index + 1}`,
+  links: links.filter((link) => group.hrefs.includes(link.href)),
+}));
+---
+
+<nav class="at-nav course-nav" aria-label="Main">
+  <div class="at-nav-inner">
+    <a href={import.meta.env.BASE_URL} class="at-nav-brand">
+      {logo ? (
+        <>
+          <span class="at-nav-logo-full">
+            <img src={logo.src} width={logo.width} height={logo.height} alt={name} class:list={["at-nav-logo", { "at-nav-logo--has-dark": !!logoDark }]} />
+            {logoDark && <img src={logoDark.src} width={logoDark.width} height={logoDark.height} alt={name} class="at-nav-logo at-nav-logo--dark" />}
+          </span>
+          {logoCompact && (
+            <span class="at-nav-logo-compact">
+              <img src={logoCompact.src} width={logoCompact.width} height={logoCompact.height} alt={name} class:list={["at-nav-logo", { "at-nav-logo--has-dark": !!logoCompactDark }]} />
+              {logoCompactDark && <img src={logoCompactDark.src} width={logoCompactDark.width} height={logoCompactDark.height} alt={name} class="at-nav-logo at-nav-logo--dark" />}
+            </span>
+          )}
+        </>
+      ) : <span class="at-nav-wordmark">{name}</span>}
+    </a>
+
+    {links.length > 0 && (
+      <>
+        <button class="at-icon-button at-nav-toggle" aria-expanded="false" aria-controls="at-nav-menu" aria-label="Menu">
+          <Icon name="menu" size={20} class="at-nav-icon-open" />
+          <Icon name="xmark" size={20} class="at-nav-icon-close" />
+        </button>
+        <div class="at-nav-links-wrapper">
+          <div class="course-nav-groups" id="at-nav-menu">
+            {groups.map((group) => (
+              <section class="course-nav-group" aria-labelledby={group.id}>
+                <h2 id={group.id}>{group.label}</h2>
+                <ul class="at-nav-links" role="list">
+                  {group.links.map((link) => {
+                    const resolved = withBase(link.href);
+                    const isActive = currentPath === resolved || (resolved !== "/" && currentPath.startsWith(resolved));
+                    return <li><a href={resolved} aria-current={isActive ? "page" : undefined}>{link.text}</a></li>;
+                  })}
+                </ul>
+              </section>
+            ))}
+          </div>
+        </div>
+      </>
+    )}
+
+    {search && (
+      <button class="at-icon-button at-search-trigger" aria-label="Search (Cmd+K)" title="Search (Cmd+K)" data-search-trigger>
+        <Icon name="search" size={20} />
+      </button>
+    )}
+  </div>
+  {search && <SearchDialog basePath={import.meta.env.BASE_URL} />}
+</nav>
+
+<noscript><style>.course-nav { position: static; } .course-nav .at-nav-links-wrapper { grid-template-rows: 1fr; } .course-nav .at-nav-toggle { display: none; }</style></noscript>
+
+<script>
+  let navObserver: ResizeObserver | undefined;
+  function setupCourseNav() {
+    navObserver?.disconnect();
+    const nav = document.querySelector<HTMLElement>(".course-nav");
+    if (nav) {
+      const sizeNav = () => document.documentElement.style.setProperty("--course-nav-height", `${nav.getBoundingClientRect().height}px`);
+      sizeNav();
+      navObserver = new ResizeObserver(sizeNav);
+      navObserver.observe(nav);
+    }
+    for (const toggle of document.querySelectorAll<HTMLButtonElement>(".at-nav-toggle")) {
+      if (toggle.dataset.courseNavReady === "true") continue;
+      toggle.dataset.courseNavReady = "true";
+      toggle.addEventListener("click", () => {
+        const expanded = toggle.getAttribute("aria-expanded") === "true";
+        toggle.setAttribute("aria-expanded", String(!expanded));
+        const wrapper = toggle.closest(".at-nav")?.querySelector<HTMLElement>(".at-nav-links-wrapper");
+        if (wrapper) wrapper.inert = expanded;
+      });
+    }
+    for (const trigger of document.querySelectorAll<HTMLElement>("[data-search-trigger]")) {
+      if (trigger.dataset.courseSearchReady === "true") continue;
+      trigger.dataset.courseSearchReady = "true";
+      trigger.addEventListener("click", () => document.dispatchEvent(new CustomEvent("at-search-open")));
+    }
+    const sync = () => {
+      for (const wrapper of document.querySelectorAll<HTMLElement>(".at-nav-links-wrapper")) {
+        const toggle = wrapper.closest(".at-nav")?.querySelector<HTMLButtonElement>(".at-nav-toggle");
+        wrapper.inert = !!toggle && getComputedStyle(toggle).display !== "none" && toggle.getAttribute("aria-expanded") !== "true";
+      }
+    };
+    sync();
+    if (document.documentElement.dataset.courseNavMediaReady !== "true") {
+      document.documentElement.dataset.courseNavMediaReady = "true";
+      matchMedia("(width >= 640px)").addEventListener("change", sync);
+    }
+  }
+  setupCourseNav();
+  document.addEventListener("astro:page-load", setupCourseNav);
+</script>
+

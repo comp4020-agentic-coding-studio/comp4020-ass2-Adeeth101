@@ -1,8 +1,9 @@
 ---
 import Card from "astro-theme-university/components/Card.astro";
 import CardGrid from "astro-theme-university/components/CardGrid.astro";
-import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
+import ContentLayout from "../layouts/ContentLayout.astro";
 import { withBase } from "astro-theme-university/url";
+import homeHero from "../assets/images/home-hero.jpg";
 import Timeline from "../components/Timeline.astro";
 import Planner from "../components/Planner.astro";
 import WalkthroughButton from "../components/WalkthroughButton.astro";
@@ -10,6 +11,7 @@ import { courseMeta, helpful, prerequisites, sequel } from "../course-config";
 import { midSemesterBreak, teachingEnds } from "../lib/calendar";
 import { constraints } from "../lib/model";
 import { homes, measurement, money } from "../lib/cases";
+import { clientImageAlt, clientImages } from "../lib/client-images";
 import { formatCourseDate } from "../lib/dates";
 import { sessionLabels, siteConfig } from "../site-config";
 ---
@@ -17,6 +19,8 @@ import { sessionLabels, siteConfig } from "../site-config";
 <ContentLayout
   title={`${courseMeta.code}: ${courseMeta.title}`}
   description={courseMeta.description}
+  heroImage={homeHero}
+  heroImageAlt="An engineer reviews a suburban home, rainwater tank, garden beds and composting systems."
   {...siteConfig}
 >
   <ul class="course-tags" aria-label="Course tags">
@@ -36,8 +40,11 @@ import { sessionLabels, siteConfig } from "../site-config";
   </p>
 
   <div id="start-here" class="start">
-    <WalkthroughButton page="home" />
+    <a class="start-primary" href={withBase("/weeks/week-01/")}>Start with week 1</a>
+    <a class="start-secondary" href={withBase("/clients/")}>Choose a client home</a>
   </div>
+
+  <WalkthroughButton page="home" />
 
   <dl class="orient" id="orientation">
     <dt>What this course is</dt>
@@ -75,7 +82,7 @@ import { sessionLabels, siteConfig } from "../site-config";
         What you do each week. <a href={withBase("/weeks/")}>Weeks</a> first — it is the map, and
         the other three are entry points into the same material:
         <a href={withBase("/lectures/")}>Lectures</a>,
-        <a href={withBase("/sessions/")}>{sessionLabels.plural}</a> and
+        <a href={withBase("/tutorials/")}>{sessionLabels.plural}</a> and
         <a href={withBase("/assessments/")}>Assessments</a>.
       </p>
     </Card>
@@ -87,7 +94,7 @@ import { sessionLabels, siteConfig } from "../site-config";
         the bands, the price schedule and the datasets.
       </p>
     </Card>
-    <Card title="People &amp; policies">
+    <Card title={"People & policies"}>
       <p>
         Who teaches what and how to reach them (<a href={withBase("/people/")}>People</a>), and
         deadlines, extensions, generative AI and how the fiction and the facts are kept apart
@@ -130,8 +137,14 @@ import { sessionLabels, siteConfig } from "../site-config";
   </p>
   <CardGrid columns={3}>
     {homes.map((h) => (
-      <Card title={`${h.short}: the ${h.family}s`} href={`/clients/${h.slug}/`}>
+      <Card
+        title={`${h.short}: the ${h.family} household`}
+        href={`/clients/${h.slug}/`}
+        image={clientImages[h.slug]}
+        imageAlt={clientImageAlt[h.slug]}
+      >
         <p>{h.dossier.priorities[0]}</p>
+        <p class="art-label">Conceptual illustration · scaled plans govern.</p>
       </Card>
     ))}
   </CardGrid>
@@ -184,13 +197,13 @@ import { sessionLabels, siteConfig } from "../site-config";
     <Card title="The twelve weeks" href="/weeks/">
       <p>The weekly map: what each week asks, what it teaches, and what you leave holding.</p>
     </Card>
-    <Card title="Programme &amp; method" href="/method/">
+    <Card title={"Programme & method"} href="/method/">
       <p>The fictional loan programme and the consultancy, then every definition, band, price and dataset.</p>
     </Card>
     <Card title="Lectures" href="/lectures/">
       <p>One engineering question a week, a named method, and a worked example at that week's home.</p>
     </Card>
-    <Card title={sessionLabels.plural} href="/sessions/">
+    <Card title={sessionLabels.plural} href="/tutorials/">
       <p>Ninety-minute sessions with worked examples on a practice house and exercises on your own home.</p>
     </Card>
     <Card title="Assessment" href="/assessments/">
@@ -260,7 +273,42 @@ import { sessionLabels, siteConfig } from "../site-config";
   }
 
   .start {
-    margin-bottom: 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin: 0 0 1.25rem;
+  }
+
+  .start a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding: 0.55rem 1rem;
+    border: 1px solid var(--at-primary);
+    border-radius: 999px;
+    font-weight: 650;
+    text-decoration: none;
+  }
+
+  .start-primary {
+    background: var(--at-primary);
+    color: var(--at-bg);
+  }
+
+  .start-secondary {
+    color: var(--at-text);
+    background: var(--at-bg-alt);
+  }
+
+  .start a:hover,
+  .start a:focus-visible {
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--at-primary) 28%, transparent);
+  }
+
+  .art-label {
+    margin-top: 0.7rem;
+    color: var(--at-text-muted);
+    font-size: 0.78rem;
   }
 
   .claim {
@@ -269,5 +317,28 @@ import { sessionLabels, siteConfig } from "../site-config";
     border-left: 3px solid var(--at-primary);
     font-size: 1.25rem;
     line-height: 1.5;
+  }
+
+  :global(.at-hero-image) {
+    object-position: 68% center;
+  }
+
+  @media (max-width: 560px) {
+    :global(.at-hero) {
+      min-height: 31rem;
+    }
+
+    :global(.at-hero-image) {
+      object-position: 67% center;
+    }
+
+    :global(.at-hero-title) {
+      font-size: clamp(2rem, 10vw, 2.7rem);
+    }
+
+    .start a {
+      justify-content: center;
+      width: 100%;
+    }
   }
 </style>

@@ -313,3 +313,8 @@ balance and diagram readability are judged in the browser at both marking viewpo
   history; nothing was rewritten to look test-first.
 - **2026-09-19** (v6): weekly sequence, assessment weights, navigation, walkthroughs, shared
   planner, twelve decks and supplied conceptual artwork integrated into the final course site.
+
+
+### Final navigation and effort adjustment
+
+Public tutorial URLs use `/tutorials/`; the platform collection remains `sessions` and old URLs redirect. Week navigation links to the lecture; its opening button opens slides. Every lecture and tutorial ends with a return to its own week overview. Navigation group labels sit above their links. Weeks 1 and 2 have no assignment work (5 hours each); weeks 3?12 retain 8 hours each. The indicative total is 90 teaching hours plus 4 finalisation hours, 94 overall.

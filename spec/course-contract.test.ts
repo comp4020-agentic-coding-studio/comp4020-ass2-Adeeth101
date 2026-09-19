@@ -185,12 +185,12 @@ describe("assessment", () => {
     const t = text(html);
     // One row per checkpoint week, and the two ungraded weeks named as such.
     for (const w of [2, 3, 4, 5, 6, 7, 8, 9, 10, 11]) {
-      expect(html, `checkpoint week ${w} is missing`).toContain(`sessions/week-${String(w).padStart(2, "0")}/`);
+      expect(html, `checkpoint week ${w} is missing`).toContain(`tutorials/week-${String(w).padStart(2, "0")}/`);
     }
     // Exactly ten linked tutorials: weeks 1 and 12 are ungraded and must not
     // appear as checkpoint rows.
     const linked = new Set(
-      [...html.matchAll(/sessions\/week-(\d\d)\//g)].map((m) => Number(m[1])),
+      [...html.matchAll(/tutorials\/week-(\d\d)\//g)].map((m) => Number(m[1])),
     );
     expect([...linked].sort((a, b) => a - b), "linked checkpoint tutorials").toEqual([
       2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
@@ -836,7 +836,7 @@ describe("the weekly map", () => {
   it("links each overview to that week's own lecture and tutorial, not another's", () => {
     for (let w = 1; w <= 12; w++) {
       const html = page(`weeks/week-${pad(w)}`);
-      for (const route of [`lectures/week-${pad(w)}/`, `sessions/week-${pad(w)}/`]) {
+      for (const route of [`lectures/week-${pad(w)}/`, `tutorials/week-${pad(w)}/`]) {
         expect(html, `week ${w} overview does not link ${route}`).toContain(route);
       }
       for (let other = 1; other <= 12; other++) {
@@ -918,9 +918,14 @@ describe("navigation groups", () => {
   it("ships all three group headings on every page", () => {
     for (const route of ["", "weeks", "clients", "method", "policies", "lectures/week-03"]) {
       const html = page(route);
+      const visible = text(html);
       for (const g of GROUPS) {
-        expect(html, `${route || "home"} is missing the "${g}" nav group`).toContain(g);
+        expect(visible, `${route || "home"} is missing the "${g}" nav group`).toContain(g);
       }
+      expect(html.match(/<section class="course-nav-group" aria-labelledby=/g)?.length)
+        .toBe(3);
+      expect(html, `${route || "home"} falls back to generated CSS labels`)
+        .not.toMatch(/content:\s*["'](?:Weekly study|Course reference|People & policies)/);
     }
   });
 
@@ -995,6 +1000,26 @@ describe("the four walkthroughs", () => {
 
 // --------------------------------------------------------------------------
 describe("the semester planner", () => {
+  it("keeps orientation weeks free of assignment hours", () => {
+    for (const w of [1, 2]) {
+      const t = text(page(`weeks/week-${String(w).padStart(2, "0")}`));
+      expect(t).toContain("About 5 hours this week");
+      expect(t).toContain("no assignment work scheduled");
+    }
+  });
+
+  it("returns from every teaching page to its own week without duplicate slide tabs", () => {
+    for (let w = 1; w <= 12; w++) {
+      const id = String(w).padStart(2, "0");
+      for (const type of ["lectures", "tutorials"]) {
+        const html = page(`${type}/week-${id}`);
+        expect(html).toMatch(new RegExp(`class="week-return"[^]*?weeks/week-${id}/`));
+        expect(html.match(/<nav class="weeknav"[^]*?<\/nav>/)?.[0]).not.toMatch(/>Slides<\/a>/);
+      }
+    }
+    expect(page("sessions")).toContain("tutorials/");
+    expect(page("")).not.toContain("&amp;amp;");
+  });
   it("appears on the home page and the weekly map, from the same component", () => {
     for (const route of ["", "weeks"]) {
       const html = page(route);
@@ -1021,9 +1046,9 @@ describe("the semester planner", () => {
   it("sums to the published planning budget", () => {
     const html = page("weeks");
     const t = text(html);
-    // 12 teaching weeks at 8 hours, plus a 4-hour assessment-period allowance.
-    expect(t, "the 96-hour teaching total").toContain("96");
-    expect(t, "the 100-hour grand total").toContain("100");
+    // Two orientation weeks at 5 hours, ten weeks at 8, plus 4 for finalisation.
+    expect(t, "the 90-hour teaching total").toContain("90");
+    expect(t, "the 94-hour grand total").toContain("94");
     expect(t.toLowerCase(), "the planner must not pass itself off as data").toMatch(
       /illustrative planning guide/,
     );
@@ -1053,7 +1078,7 @@ describe("the semester planner", () => {
   it("agrees with each week overview about that week's hours", () => {
     for (let w = 1; w <= 12; w++) {
       const t = text(page(`weeks/week-${String(w).padStart(2, "0")}`));
-      expect(t, `week ${w} overview states no effort`).toMatch(/About 8 hours this week/);
+      expect(t, `week ${w} overview states no effort`).toContain(`About ${w <= 2 ? 5 : 8} hours this week`);
     }
   });
 });
@@ -1063,7 +1088,7 @@ describe("week resources", () => {
   it("gives every week overview, lecture and tutorial one to three reference links", () => {
     for (let w = 1; w <= 12; w++) {
       const pad = String(w).padStart(2, "0");
-      for (const route of [`weeks/week-${pad}`, `lectures/week-${pad}`, `sessions/week-${pad}`]) {
+      for (const route of [`weeks/week-${pad}`, `lectures/week-${pad}`, `tutorials/week-${pad}`]) {
         const html = page(route);
         expect(html, `${route} has no reference block`).toContain("refblock");
         const items = (html.match(/class="refblock"[\s\S]*?<\/aside>/)?.[0].match(/<li[ >]/g) ?? []).length;
@@ -1082,7 +1107,7 @@ describe("week resources", () => {
 
   it("tells every tutorial what to open, what to do and what it produces", () => {
     for (let w = 1; w <= 12; w++) {
-      const t = text(page(`sessions/week-${String(w).padStart(2, "0")}`));
+      const t = text(page(`tutorials/week-${String(w).padStart(2, "0")}`));
       for (const heading of ["What this tutorial is for", "Open these first", "The output"]) {
         expect(t, `week ${w} tutorial is missing "${heading}"`).toContain(heading);
       }
@@ -1091,7 +1116,7 @@ describe("week resources", () => {
   });
 
   it("gives week 1 a real workbook template rather than an instruction to go and find one", () => {
-    const html = page("sessions/week-01");
+    const html = page("tutorials/week-01");
     for (const file of [
       "TEMPLATE-1-client-facts.csv",
       "TEMPLATE-2-climate-normals.csv",

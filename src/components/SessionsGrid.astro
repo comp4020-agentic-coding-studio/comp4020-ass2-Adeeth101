@@ -11,7 +11,7 @@ const visible = sessions.sort((a, b) => a.data.week - b.data.week);
 <CardGrid columns={2}>
   {
     visible.map((session) => (
-      <Card headingLevel="h2" title={session.data.title} href={`/sessions/${session.id}/`}>
+      <Card headingLevel="h2" title={session.data.title} href={`/tutorials/${session.id}/`}>
         {session.data.description && <p>{session.data.description}</p>}
         <p>
           <small>Week {session.data.week} · {formatCourseDate(session.data.date)}</small>

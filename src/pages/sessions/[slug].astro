@@ -1,41 +1,10 @@
 ---
-import { render } from "astro:content";
 import { getPublishedCollection } from "astro-course-university/content";
-import RelatedContent from "astro-course-university/components/RelatedContent.astro";
-import SpecList from "astro-course-university/components/SpecList.astro";
-import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
-import TeachingTeam from "../../components/TeachingTeam.astro";
-import WeekNav from "../../components/WeekNav.astro";
-import TutorialMeta from "../../components/TutorialMeta.astro";
-import ReferenceBlock from "../../components/ReferenceBlock.astro";
-import { weekEntry } from "../../lib/weeks";
-import { formatCourseDate } from "../../lib/dates";
-import { graphCollections, sessionLabels, siteConfig } from "../../site-config";
-
+import { withBase } from "astro-theme-university/url";
 export async function getStaticPaths() {
-  const sessions = await getPublishedCollection("sessions");
-  return sessions.map((session) => ({ params: { slug: session.id }, props: { session } }));
+ const sessions = await getPublishedCollection("sessions");
+ return sessions.map(s => ({ params: { slug: s.id } }));
 }
-
-const { session } = Astro.props;
-const { Content } = await render(session);
-const entry = weekEntry(session.data.week);
+const destination = withBase(`/tutorials/${Astro.params.slug}/`);
+return Astro.redirect(destination);
 ---
-
-<ContentLayout
-  title={`Week ${session.data.week} ${sessionLabels.singular}: ${session.data.title}`}
-  description={session.data.description}
-  {...siteConfig}
->
-  <WeekNav week={session.data.week} current="tutorial" />
-  <p><strong>{formatCourseDate(session.data.date)}</strong></p>
-  <TutorialMeta week={session.data.week} />
-  <Content />
-  <SpecList spec={session.data.spec}>
-    What earns the checkpoint. Every line is written so you can tell whether you
-    have met it without asking anyone.
-  </SpecList>
-  <ReferenceBlock items={entry.references} />
-  <TeachingTeam teachers={session.data.teachers} />
-  <RelatedContent entry={session} collections={graphCollections} />
-</ContentLayout>

@@ -41,7 +41,7 @@ the obvious reason.
 ### If you are missing pieces
 
 Bring what you have and start from the options grid. If you have no grid, build one
-in the first twenty minutes from [week 11's tutorial](/sessions/week-11/) — the
+in the first twenty minutes from [week 11's tutorial](/tutorials/week-11/) — the
 proposal needs it more than it needs any single subsystem.
 
 ## The words this week uses

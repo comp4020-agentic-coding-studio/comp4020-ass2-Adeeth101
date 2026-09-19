@@ -1,4 +1,4 @@
-"# SLOP4761 client evidence workbook, sheet 1 of 4: client facts. Row 2 is a worked EXAMPLE for the Canberra home. Delete it and enter your own."
+"# SLOP4761 client evidence workbook, sheet 1 of 4: client facts. Rows below the column headings contain worked Canberra examples. Delete it and enter your own."
 field,value,unit,status,source
 example_row_marker,EXAMPLE ROW - delete before you submit,,,
 client_home,Canberra (Taylor),,known,/clients/canberra/

@@ -1,11 +1,12 @@
 ---
 import Card from "astro-theme-university/components/Card.astro";
 import CardGrid from "astro-theme-university/components/CardGrid.astro";
-import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
+import ContentLayout from "../../layouts/ContentLayout.astro";
 import { withBase } from "astro-theme-university/url";
 import Figure from "../../components/Figure.astro";
 import WalkthroughButton from "../../components/WalkthroughButton.astro";
 import { homes } from "../../lib/cases";
+import { clientImageAlt, clientImages } from "../../lib/client-images";
 import { sites } from "../../lib/model";
 import { siteConfig } from "../../site-config";
 
@@ -42,9 +43,15 @@ const fmt = (v: number) => v.toLocaleString("en-AU", { maximumFractionDigits: 0 
   <h2 id="the-homes">Choose a home</h2>
   <CardGrid columns={3}>
     {homes.map((h) => (
-      <Card title={`${h.short}: the ${h.family} household`} href={`/clients/${h.slug}/`}>
+      <Card
+        title={`${h.short}: the ${h.family} household`}
+        href={`/clients/${h.slug}/`}
+        image={clientImages[h.slug]}
+        imageAlt={clientImageAlt[h.slug]}
+      >
         <p>{h.dwelling}.</p>
         <p class="pri">{h.dossier.priorities[0]}</p>
+        <p class="art-label">Conceptual illustration · scaled plans govern.</p>
       </Card>
     ))}
   </CardGrid>
@@ -87,8 +94,9 @@ const fmt = (v: number) => v.toLocaleString("en-AU", { maximumFractionDigits: 0 
   <p>
     They span a cool inland suburb, an arid rural block, a subtropical townhouse, a Mediterranean
     suburb and a tropical wet-dry block, so between them they cover the problems the course teaches:
-    frost, water scarcity, space and approvals, seasonal mismatch, and storage timing. No home is
-    the easy one. Each leads two teaching weeks, and every week from 2 to 11 compares all five.
+    frost, water scarcity, space and approvals, seasonal mismatch, and storage timing. Different
+    constraints make different homes easier or harder in context. Each leads two teaching weeks,
+    and every week from 2 to 11 compares all five.
   </p>
   <p>
     Realistic parameters cannot make these climates equally hard, and the course does not pretend
@@ -109,6 +117,11 @@ const fmt = (v: number) => v.toLocaleString("en-AU", { maximumFractionDigits: 0 
   .pri {
     color: var(--at-text-secondary);
     font-size: 0.92rem;
+  }
+
+  .art-label {
+    color: var(--at-text-muted);
+    font-size: 0.78rem;
   }
 
   th[scope="row"] {

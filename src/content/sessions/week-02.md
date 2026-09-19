@@ -38,7 +38,7 @@ things Assignment 1 will propose to measure.
 
 ### If you missed week 1
 
-Build the workbook now from the [week 1 tutorial](/sessions/week-01/) — it takes
+Build the workbook now from the [week 1 tutorial](/tutorials/week-01/) — it takes
 about twenty minutes. If you would rather catch up afterwards, use the labelled
 practice climate instead and redo it on your own home later:
 

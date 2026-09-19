@@ -3,7 +3,7 @@
  *  from `lib/weeks.ts`; every title, date and weight is read from the content
  *  collections, so a week overview cannot drift away from the pages it links. */
 import { getPublishedCollection } from "astro-course-university/content";
-import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
+import ContentLayout from "../../layouts/ContentLayout.astro";
 import { withBase } from "astro-theme-university/url";
 import WeekNav from "../../components/WeekNav.astro";
 import ReferenceBlock from "../../components/ReferenceBlock.astro";
@@ -144,7 +144,7 @@ const next = courseWeeks.find((w) => w.week === week + 1);
     About <strong>{effort.total} hours</strong> this week:{" "}
     {EFFORT_CATEGORIES.filter((c) => effort.hours[c.key] > 0)
       .map((c) => `${effort.hours[c.key]} h ${c.label.toLowerCase()}`)
-      .join(", ")}. {effort.milestone && <>The assignment hours go into: {effort.milestone}.</>}
+      .join(", ")}. {effort.milestone && <>{week <= 2 ? "This week: " : "The assignment hours go into: "}{effort.milestone}.</>}
   </p>
   <p class="note">
     A planning guide from the <a href={withBase("/weeks/#planner")}>semester planner</a>, not a

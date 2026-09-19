@@ -209,3 +209,8 @@ the browser, not by tests.
 
 `PROCESS.md` and `reflections/` are the student's own words. An agent never
 writes prose into either.
+
+
+### Final navigation and effort adjustment
+
+Public tutorial URLs use `/tutorials/`; the platform collection remains `sessions` and old URLs redirect. Week navigation links to the lecture; its opening button opens slides. Every lecture and tutorial ends with a return to its own week overview. Navigation group labels sit above their links. Weeks 1 and 2 have no assignment work (5 hours each); weeks 3?12 retain 8 hours each. The indicative total is 90 teaching hours plus 4 finalisation hours, 94 overall.

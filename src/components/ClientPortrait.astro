@@ -1,0 +1,57 @@
+---
+import { Image } from "astro:assets";
+import { clientImageAlt, clientImages } from "../lib/client-images";
+
+interface Props {
+  slug: string;
+  label: string;
+  eager?: boolean;
+}
+
+const { slug, label, eager = false } = Astro.props;
+const image = clientImages[slug];
+const alt = clientImageAlt[slug];
+if (!image || !alt) throw new Error(`No client artwork mapped for ${slug}`);
+---
+
+<figure class="client-portrait">
+  <Image
+    src={image}
+    alt={alt}
+    widths={[480, 800, 1200]}
+    sizes="(min-width: 64rem) 52rem, (min-width: 42rem) 80vw, 100vw"
+    format="avif"
+    loading={eager ? "eager" : "lazy"}
+    fetchpriority={eager ? "high" : "auto"}
+  />
+  <figcaption>
+    Conceptual illustration of the {label} home. Use the scaled plans below for geometry.
+  </figcaption>
+</figure>
+
+<style>
+  .client-portrait {
+    margin: 1.25rem 0 2rem;
+    overflow: hidden;
+    border: 1px solid var(--at-border);
+    border-radius: 0.65rem;
+    background: var(--at-bg-alt);
+  }
+
+  .client-portrait :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: contain;
+    background: #f2ead9;
+  }
+
+  .client-portrait figcaption {
+    margin: 0;
+    padding: 0.65rem 0.85rem;
+    border-top: 1px solid var(--at-border);
+    color: var(--at-text-secondary);
+    font-size: 0.85rem;
+  }
+</style>

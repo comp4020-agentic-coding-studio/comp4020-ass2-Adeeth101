@@ -20,15 +20,13 @@ export const siteConfig = defineSiteConfig({
   ...slopBranding,
   name: "Slop University",
 
-  // Three groups, in this order. The group headings are attached to the first
-  // link of each group by `src/styles/site.css`, which keys on the href — so
-  // reordering these, or changing a group's first href, means changing that file
-  // too. One flat list keeps the desktop bar and the mobile menu in agreement.
+  // Three groups, in this order. `GroupedNav.astro` keeps these links in
+  // semantic labelled groups at desktop and mobile widths.
   links: [
     // Weekly study
     { text: "Weeks", href: "/weeks/" },
     { text: "Lectures", href: "/lectures/" },
-    { text: sessionLabels.plural, href: "/sessions/" },
+    { text: sessionLabels.plural, href: "/tutorials/" },
     { text: "Assessments", href: "/assessments/" },
     // Course reference
     { text: "Clients", href: "/clients/" },
@@ -39,9 +37,8 @@ export const siteConfig = defineSiteConfig({
   ],
 
   licence: "CC-BY-NC-SA-4.0",
-  // An image-free treatment: every figure on this site is a diagram drawn in the
-  // page, from the same data the model produced. A photograph would be either
-  // stock or invented, and neither belongs beside a costed design.
+  // The social card remains the course's data-derived loop diagram. Supplied
+  // conceptual artwork appears in the site itself and is labelled as such.
   socialImage: "/src/assets/images/card.png",
   socialImageAlt: `${courseMeta.code}: a closed-loop diagram of a household's food, water and waste streams, in the Slop palette`,
 });

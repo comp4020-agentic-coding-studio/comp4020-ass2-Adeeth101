@@ -75,9 +75,10 @@ together destroys both.
 
 Open each in your spreadsheet program and paste it into its own sheet of one
 file. Each template's first line is a comment describing the sheet; keep it or
-delete it, it does not matter. Row 2 of each is a **worked example for the
-Canberra home, marked EXAMPLE** — read it, then delete it and put your own home's
-values in.
+delete it, it does not matter. The next row contains the column headings.
+Below those are Canberra example values and blank rows. Keep the headings,
+remove the example marker where present, and replace the example values with
+your own home's values.
 
 If you would rather type the sheets out than download them, the column names are
 in the tables below and that is all the templates contain.

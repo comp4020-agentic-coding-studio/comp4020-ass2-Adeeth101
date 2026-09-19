@@ -444,5 +444,5 @@ export const isCheckpointWeek = (week: number): boolean => CHECKPOINT_WEEKS.incl
 export const weekSlug = (week: number): string => String(week).padStart(2, "0");
 
 export const lectureHref = (week: number): string => `/lectures/week-${weekSlug(week)}/`;
-export const tutorialHref = (week: number): string => `/sessions/week-${weekSlug(week)}/`;
+export const tutorialHref = (week: number): string => `/tutorials/week-${weekSlug(week)}/`;
 export const weekHref = (week: number): string => `/weeks/week-${weekSlug(week)}/`;

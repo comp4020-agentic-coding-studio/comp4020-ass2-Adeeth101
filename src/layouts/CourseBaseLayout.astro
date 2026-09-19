@@ -1,0 +1,97 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { Font } from "astro:assets";
+import { ClientRouter } from "astro:transitions";
+import { fontVariables, preloadFontVariables } from "virtual:astro-theme-university/fonts";
+import { llmsTxtHref } from "virtual:astro-theme-university/llms";
+import Footer from "astro-theme-university/components/Footer.astro";
+import Hero from "astro-theme-university/components/Hero.astro";
+import OpenGraph from "astro-theme-university/components/OpenGraph.astro";
+import "astro-theme-university/styles/base.css";
+import "astro-theme-university/styles/components.css";
+import { resolveHeroImage, resolveSocialImage } from "astro-theme-university/images";
+import type { AcknowledgementInfo, ContactInfo, NavLink, RemoteImage, SocialLink } from "astro-theme-university/types";
+import GroupedNav from "../components/GroupedNav.astro";
+
+export interface Props {
+  title: string;
+  description?: string;
+  unlisted?: boolean;
+  name?: string;
+  links?: NavLink[];
+  search?: boolean;
+  clientRouter?: boolean;
+  heroTitle?: string;
+  heroImage?: string | ImageMetadata | RemoteImage;
+  heroImageAlt?: string;
+  socialImage?: string | ImageMetadata | RemoteImage;
+  socialImageAlt?: string;
+  socialType?: "website" | "article" | "profile";
+  favicon?: ImageMetadata;
+  logo?: ImageMetadata;
+  logoDark?: ImageMetadata;
+  logoCompact?: ImageMetadata;
+  logoCompactDark?: ImageMetadata;
+  colorScheme?: "auto" | "light" | "dark";
+  mainAttrs?: HTMLAttributes<"main">;
+  contact?: ContactInfo;
+  socials?: SocialLink[];
+  licence?: string;
+  acknowledgement?: AcknowledgementInfo;
+  legalLinks?: { text: string; href: string }[];
+  partnerships?: { text: string; href: string; logo: string }[];
+  meta?: string[];
+}
+
+const {
+  title, description, unlisted = false, name = "Site", links = [], search,
+  clientRouter = true, heroTitle, heroImage, heroImageAlt, socialImage, socialImageAlt,
+  socialType, favicon, logo, logoDark, logoCompact, logoCompactDark, colorScheme = "auto",
+  mainAttrs = {}, contact, socials, licence, acknowledgement, legalLinks, partnerships, meta,
+} = Astro.props;
+const { class: mainClass, ...mainRest } = mainAttrs;
+const resolvedHeroImage = resolveHeroImage(heroImage);
+const resolvedSocialImage = resolveSocialImage(socialImage);
+---
+
+<!doctype html>
+<html lang="en" data-theme={colorScheme === "auto" ? undefined : colorScheme}>
+  <head>
+    <style is:inline>@layer at.tokens, at.base, at.components;</style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {fontVariables.map((cssVariable) => <Font cssVariable={cssVariable} preload={preloadFontVariables.includes(cssVariable)} />)}
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    {unlisted && <meta name="robots" content="noindex" />}
+    <OpenGraph title={title} description={description} name={name} type={socialType} image={resolvedSocialImage} imageAlt={socialImageAlt} />
+    <meta name="generator" content={Astro.generator} />
+    {favicon && <link rel="icon" type={favicon.format === "svg" ? "image/svg+xml" : undefined} href={favicon.src} />}
+    {llmsTxtHref && <link rel="alternate" type="text/markdown" href={llmsTxtHref} title="llms.txt" />}
+    {clientRouter && <ClientRouter />}
+    {colorScheme === "auto" && (
+      <script is:inline data-astro-rerun>
+        (function () {
+          var t = localStorage.getItem("at-theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+          document.documentElement.dataset.theme = t;
+          var label = t === "dark" ? "Switch to light theme" : "Switch to dark theme";
+          document.querySelectorAll(".at-footer-theme-toggle").forEach(function (btn) {
+            btn.setAttribute("aria-label", label);
+            btn.setAttribute("title", label);
+          });
+        })();
+      </script>
+    )}
+    <slot name="head" />
+  </head>
+  <body data-pagefind-ignore={unlisted ? "all" : undefined}>
+    <a href="#main" class="visually-hidden">Skip to main content</a>
+    <GroupedNav name={name} links={links} search={search} logo={logo} logoDark={logoDark} logoCompact={logoCompact} logoCompactDark={logoCompactDark} />
+    {heroTitle && resolvedHeroImage && <Hero title={heroTitle} image={resolvedHeroImage} imageAlt={heroImageAlt ?? ""} />}
+    <slot name="hero" />
+    <main id="main" class:list={["at-main", mainClass]} {...mainRest}><slot /></main>
+    <Footer name={name} contact={contact} socials={socials} licence={licence} colorScheme={colorScheme} acknowledgement={acknowledgement} legalLinks={legalLinks} partnerships={partnerships} meta={meta}>
+      <slot name="footer-legal" slot="footer-legal" />
+    </Footer>
+  </body>
+</html>

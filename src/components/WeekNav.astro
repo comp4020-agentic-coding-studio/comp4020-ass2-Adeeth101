@@ -36,8 +36,6 @@ const links: Link[] = [
 ];
 if (lecture) {
   links.push({ label: "Lecture", href: lectureHref(week), here: current === "lecture" });
-  const slides = (lecture.data as { slides?: string }).slides;
-  if (slides) links.push({ label: "Slides", href: slides, here: false });
 }
 if (tutorial) {
   links.push({

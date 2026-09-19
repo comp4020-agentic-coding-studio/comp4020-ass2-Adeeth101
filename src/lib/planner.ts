@@ -22,7 +22,7 @@ export const EFFORT_CATEGORIES: EffortCategory[] = [
   { key: "lecture", label: "Lecture and notes", note: "The lecture, its slides, and reading the week's notes afterwards" },
   { key: "tutorial", label: "Tutorial", note: "The session itself. Tidying and submitting the checkpoint is inside this, not extra" },
   { key: "prep", label: "Preparation and quiz", note: "Preparing for the tutorial. In a quiz week, sitting the quiz is inside this, not extra" },
-  { key: "a1", label: "Assignment 1", note: "The measurement programme, built a few hours a week from week 1" },
+  { key: "a1", label: "Assignment 1", note: "The measurement programme, built a few hours a week from week 3" },
   { key: "a2", label: "Assignment 2", note: "The investment proposal, built from week 7's handover onwards" },
 ];
 
@@ -36,7 +36,7 @@ export interface WeekEffort {
 
 /** The course planning assumption. Every teaching week carries 2 h lecture and
  *  notes, 2 h tutorial and 1 h preparation; the assignment hours bring each week
- *  to 8. Tutorial submission time sits inside the tutorial's 2 h and quiz time
+ *  to 8 from week 3; weeks 1 and 2 stay at 5. Tutorial submission time sits inside the tutorial's 2 h and quiz time
  *  inside the 1 h of preparation — neither is counted twice. */
 const BASE = { lecture: 2, tutorial: 2, prep: 1 } as const;
 
@@ -61,6 +61,7 @@ const A2_MILESTONES: Record<number, string> = {
 
 function hoursFor(week: number): Record<EffortKey, number> {
   const h: Record<EffortKey, number> = { ...BASE, a1: 0, a2: 0 };
+  if (week <= 2) return h;
   if (week <= 6) h.a1 = 3;
   else if (week === 7) {
     h.a1 = 2;
@@ -73,7 +74,7 @@ export const weekEffort: WeekEffort[] = Array.from({ length: TEACHING_WEEKS }, (
   const week = i + 1;
   const hours = hoursFor(week);
   const total = Object.values(hours).reduce((a, b) => a + b, 0);
-  const milestone = week <= 6 ? A1_MILESTONES[week] : A2_MILESTONES[week];
+  const milestone = week <= 2 ? "Orientation and tutorial practice only; no assignment work scheduled" : week <= 6 ? A1_MILESTONES[week] : week === 7 ? `${A1_MILESTONES[7]}; then ${A2_MILESTONES[7]}` : A2_MILESTONES[week];
   return { week, hours, total, milestone: milestone ?? "" };
 });
 
@@ -145,7 +146,7 @@ export function buildMarkers(
       detail: CHECKPOINT_WEEKS.includes(w)
         ? `Checkpoint ${CHECKPOINT_WEEKS.indexOf(w) + 1} of 10, 2 % — due 5 pm Friday`
         : "Ungraded practice",
-      href: `/sessions/week-${pad(w)}/`,
+      href: `/tutorials/week-${pad(w)}/`,
       date: studioDateOrFallback(w),
     });
   }

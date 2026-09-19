@@ -1,8 +1,10 @@
 ---
 import Card from "astro-theme-university/components/Card.astro";
 import CardGrid from "astro-theme-university/components/CardGrid.astro";
-import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
+import { Image } from "astro:assets";
+import ContentLayout from "../../layouts/ContentLayout.astro";
 import { withBase } from "astro-theme-university/url";
+import processImage from "../../assets/images/measurement-to-proposal.jpg";
 import BandTable from "../../components/BandTable.astro";
 import Figure from "../../components/Figure.astro";
 import { constraints, courseModel, indicators, sites, pct } from "../../lib/model";
@@ -61,6 +63,19 @@ const nameOf = (k: string) => indicators.find((i) => i.key === k)?.name ?? k;
   </p>
 
   <h2 id="two-phases">The two phases</h2>
+  <figure class="process-art">
+    <Image
+      src={processImage}
+      alt="Engineer reviewing measurement sheets, samples, calculations and a house model on a workbench."
+      widths={[640, 960, 1376]}
+      sizes="(min-width: 64rem) 56rem, 100vw"
+      format="avif"
+      loading="lazy"
+    />
+    <figcaption>
+      Conceptual illustration of the path from household evidence to an engineering recommendation.
+    </figcaption>
+  </figure>
   <ol class="phases">
     <li>
       <strong>Weeks 1 to 6 — work out what you would need to know.</strong> The homeowner supplies
@@ -351,6 +366,29 @@ const nameOf = (k: string) => indicators.find((i) => i.key === k)?.name ?? k;
 </ContentLayout>
 
 <style>
+  .process-art {
+    margin: 1rem 0 1.5rem;
+    overflow: hidden;
+    border: 1px solid var(--at-border);
+    border-radius: 0.65rem;
+    background: var(--at-bg-alt);
+  }
+
+  .process-art :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: #f2ead9;
+  }
+
+  .process-art figcaption {
+    margin: 0;
+    padding: 0.65rem 0.85rem;
+    border-top: 1px solid var(--at-border);
+    color: var(--at-text-secondary);
+    font-size: 0.85rem;
+  }
+
   .fiction {
     padding: 0.8rem 1rem;
     border-left: 3px solid var(--at-primary);

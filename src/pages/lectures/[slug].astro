@@ -2,12 +2,12 @@
 import { render } from "astro:content";
 import { getPublishedCollection } from "astro-course-university/content";
 import RelatedContent from "astro-course-university/components/RelatedContent.astro";
-import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
+import ContentLayout from "../../layouts/ContentLayout.astro";
 import { withBase } from "astro-theme-university/url";
 import TeachingTeam from "../../components/TeachingTeam.astro";
 import WeekNav from "../../components/WeekNav.astro";
 import ReferenceBlock from "../../components/ReferenceBlock.astro";
-import { weekEntry } from "../../lib/weeks";
+import { weekEntry, weekHref } from "../../lib/weeks";
 import { formatCourseDate } from "../../lib/dates";
 import { graphCollections, siteConfig } from "../../site-config";
 
@@ -36,6 +36,7 @@ const entry = weekEntry(lecture.data.week);
   <ReferenceBlock items={entry.references} />
   <TeachingTeam teachers={lecture.data.teachers} />
   <RelatedContent entry={lecture} collections={graphCollections} />
+  <p class="week-return"><a href={withBase(weekHref(lecture.data.week))}>Back to week {lecture.data.week} overview</a></p>
 </ContentLayout>
 
 <style>

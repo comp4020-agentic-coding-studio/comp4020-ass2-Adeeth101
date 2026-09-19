@@ -1,0 +1,26 @@
+---
+import Hero from "astro-theme-university/components/Hero.astro";
+import { resolveHeroImage } from "astro-theme-university/images";
+import CourseBaseLayout, { type Props as CourseBaseLayoutProps } from "./CourseBaseLayout.astro";
+
+export interface Props extends Omit<CourseBaseLayoutProps, "description"> {
+  description?: string | null;
+  wide?: boolean;
+}
+
+const { title, description, heroImage, heroImageAlt, wide = false, mainAttrs = {}, ...baseProps } = Astro.props;
+const resolvedHeroImage = resolveHeroImage(heroImage);
+const transitionName = `card-title-${Astro.url.pathname.replace(/^\/|\/$/g, "").replace(/\//g, "-")}`;
+const mergedMainAttrs = {
+  ...mainAttrs,
+  class: [mainAttrs.class, wide ? "course-main-wide" : ""].filter(Boolean).join(" "),
+};
+---
+
+<CourseBaseLayout title={title} description={description ?? undefined} mainAttrs={mergedMainAttrs} {...baseProps}>
+  <slot name="head" slot="head" />
+  {resolvedHeroImage && <Hero slot="hero" title={title} image={resolvedHeroImage} imageAlt={heroImageAlt ?? ""} transitionName={transitionName} />}
+  {!resolvedHeroImage && <h1 transition:name={transitionName}>{title}</h1>}
+  {description && <p class="lead">{description}</p>}
+  <slot />
+</CourseBaseLayout>

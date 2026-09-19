@@ -1,11 +1,12 @@
 ---
-import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
+import ContentLayout from "../../../layouts/ContentLayout.astro";
 import { withBase } from "astro-theme-university/url";
 import Figure from "../../../components/Figure.astro";
 import SitePlan from "../../../components/SitePlan.astro";
 import FloorPlan from "../../../components/FloorPlan.astro";
 import ParcelPlan from "../../../components/ParcelPlan.astro";
 import StatusTag from "../../../components/StatusTag.astro";
+import ClientPortrait from "../../../components/ClientPortrait.astro";
 import { homes, money, type Home } from "../../../lib/cases";
 import { INTAKE } from "../../../lib/story";
 import { siteConfig } from "../../../site-config";
@@ -49,6 +50,8 @@ const knownCount = [d.slope, ...d.services, ...d.inventory, ...d.constraints].fi
     <span class="current">Release A · intake (week 1)</span>
     <a href={withBase(`/clients/${home.slug}/findings/`)}>Release B · specialist findings (week 7)</a>
   </nav>
+
+  <ClientPortrait slug={home.slug} label={`${home.short} ${home.dwelling.toLowerCase()}`} eager />
 
   <h2>Intake note</h2>
   <p class="meta">Common Ground Engineering, first client meeting, {intake.date}</p>
