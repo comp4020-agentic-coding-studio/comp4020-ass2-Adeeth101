@@ -3,6 +3,7 @@ import ContentLayout from "../../layouts/ContentLayout.astro";
 import { withBase } from "astro-theme-university/url";
 import ChartCycling from "../../components/ChartCycling.astro";
 import ChartDryYear from "../../components/ChartDryYear.astro";
+import DatasetGenerator from "../../components/DatasetGenerator.astro";
 import Figure from "../../components/Figure.astro";
 import datasets from "../../data/datasets.json";
 import { siteConfig } from "../../site-config";
@@ -161,6 +162,16 @@ const sample = log.rows.filter((r) => [1, 8, 16, 24, 25, 30, 38, 45, 46, 53, 60]
     climate statistics it derives from are the Bureau of Meteorology long-record
     monthly tables for each site's station.
   </p>
+  <p>
+    You do not need the repository or Python to do it. The generator below is the
+    same code running in this page, from the same station statistics. With the
+    published seeds it writes the six files above and checks them against the
+    published copies. Change a seed and you get a different dry year and a
+    different log, which is a quick way to see whether a design only survives the
+    one year printed here.
+  </p>
+
+  <DatasetGenerator />
 </ContentLayout>
 
 <style>

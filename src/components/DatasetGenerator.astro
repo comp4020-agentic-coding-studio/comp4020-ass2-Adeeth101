@@ -1,0 +1,302 @@
+---
+/** Regenerate the synthetic datasets in the browser.
+ *
+ *  Runs the same generator as research/model/make_datasets.py (ported in
+ *  src/lib/dataset-generator.ts), from the same Bureau of Meteorology monthly
+ *  means, so a reader can reproduce the published files without cloning the
+ *  repository or installing Python. With the default seeds the output is
+ *  checked against the published files and should be identical; any other seed
+ *  gives a new synthetic set, labelled the same way. Without JavaScript the
+ *  published files above remain the way in. */
+import climate from "../../research/model/data/climate_stations.json";
+import { DROUGHT_SEED, LOG_SEED, SITE_KEYS } from "../lib/dataset-generator";
+
+const stations = climate.stations as Record<string, { rain: number[] }>;
+const sites = SITE_KEYS.map((s) => ({ ...s, rain: stations[s.station].rain.slice(0, 12) }));
+---
+
+<div class="gen" data-generator>
+  <script is:inline type="application/json" data-gen-sites set:html={JSON.stringify(sites)} />
+
+  <noscript>
+    <p class="gen-note">Generating in the page needs JavaScript. The published files above are the same output.</p>
+  </noscript>
+
+  <form class="gen-form" data-gen-form hidden>
+    <label>
+      Dry-year seed
+      <input type="number" name="drought" min="0" step="1" value={DROUGHT_SEED} required />
+    </label>
+    <label>
+      Cycling-log seed
+      <input type="number" name="log" min="0" step="1" value={LOG_SEED} required />
+    </label>
+    <p class="gen-actions">
+      <button type="submit" class="gen-primary">Generate the files</button>
+      <button type="button" data-gen-reset>Use the published seeds</button>
+    </p>
+  </form>
+
+  <p class="gen-status" aria-live="polite" data-gen-status></p>
+
+  <div class="gen-out" data-gen-out hidden>
+    <div class="gen-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">File</th>
+            <th scope="col">Summary</th>
+            <th scope="col">Download</th>
+          </tr>
+        </thead>
+        <tbody data-gen-rows></tbody>
+      </table>
+    </div>
+    <p><a class="gen-primary" data-gen-zip download>Download all six files (.zip)</a></p>
+  </div>
+</div>
+
+<script>
+  import { DROUGHT_SEED, LOG_SEED, generateAll, type GeneratorSite } from "../lib/dataset-generator";
+
+  // A store-only ZIP: six small CSVs need no compression, and this keeps the
+  // page free of a dependency for one button.
+  const CRC = new Uint32Array(256).map((_, n) => {
+    let c = n;
+    for (let k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1;
+    return c >>> 0;
+  });
+  const crc32 = (b: Uint8Array) => {
+    let c = 0xffffffff;
+    for (const x of b) c = CRC[(c ^ x) & 0xff] ^ (c >>> 8);
+    return (c ^ 0xffffffff) >>> 0;
+  };
+  function zip(files: { name: string; text: string }[]): Blob {
+    const enc = new TextEncoder();
+    const parts: Uint8Array[] = [];
+    const central: Uint8Array[] = [];
+    let offset = 0;
+    for (const f of files) {
+      const name = enc.encode(f.name);
+      const data = enc.encode(f.text);
+      const crc = crc32(data);
+      const head = new DataView(new ArrayBuffer(30));
+      head.setUint32(0, 0x04034b50, true);
+      head.setUint16(4, 20, true);
+      head.setUint16(8, 0, true);
+      head.setUint32(14, crc, true);
+      head.setUint32(18, data.length, true);
+      head.setUint32(22, data.length, true);
+      head.setUint16(26, name.length, true);
+      const dir = new DataView(new ArrayBuffer(46));
+      dir.setUint32(0, 0x02014b50, true);
+      dir.setUint16(4, 20, true);
+      dir.setUint16(6, 20, true);
+      dir.setUint32(16, crc, true);
+      dir.setUint32(20, data.length, true);
+      dir.setUint32(24, data.length, true);
+      dir.setUint16(28, name.length, true);
+      dir.setUint32(42, offset, true);
+      parts.push(new Uint8Array(head.buffer), name, data);
+      central.push(new Uint8Array(dir.buffer), name);
+      offset += 30 + name.length + data.length;
+    }
+    const size = central.reduce((s, p) => s + p.length, 0);
+    const end = new DataView(new ArrayBuffer(22));
+    end.setUint32(0, 0x06054b50, true);
+    end.setUint16(8, files.length, true);
+    end.setUint16(10, files.length, true);
+    end.setUint32(12, size, true);
+    end.setUint32(16, offset, true);
+    return new Blob([...parts, ...central, new Uint8Array(end.buffer)] as BlobPart[], { type: "application/zip" });
+  }
+
+  const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
+
+  for (const root of document.querySelectorAll<HTMLElement>("[data-generator]")) {
+    const sites = JSON.parse(root.querySelector("[data-gen-sites]")!.textContent!) as GeneratorSite[];
+    const form = root.querySelector<HTMLFormElement>("[data-gen-form]")!;
+    const status = root.querySelector<HTMLElement>("[data-gen-status]")!;
+    const out = root.querySelector<HTMLElement>("[data-gen-out]")!;
+    const rows = root.querySelector<HTMLElement>("[data-gen-rows]")!;
+    const zipLink = root.querySelector<HTMLAnchorElement>("[data-gen-zip]")!;
+    let urls: string[] = [];
+    form.hidden = false;
+
+    const cell = (text: string, tag = "td") => {
+      const el = document.createElement(tag);
+      el.textContent = text;
+      return el;
+    };
+
+    async function run() {
+      const droughtSeed = Math.trunc(Number(form.drought.value));
+      const logSeed = Math.trunc(Number(form.log.value));
+      if (!Number.isSafeInteger(droughtSeed) || !Number.isSafeInteger(logSeed) || droughtSeed < 0 || logSeed < 0) {
+        status.textContent = "Seeds must be whole numbers of zero or more.";
+        return;
+      }
+      const published = droughtSeed === DROUGHT_SEED && logSeed === LOG_SEED;
+      const suffix = published ? "" : `-seed-${droughtSeed}-${logSeed}`;
+      const { dry, log, files } = generateAll(sites, droughtSeed, logSeed);
+      const named = files.map((f) => ({ ...f, name: f.name.replace(/\.csv$/, `${suffix}.csv`) }));
+
+      urls.forEach((u) => URL.revokeObjectURL(u));
+      urls = [];
+      rows.replaceChildren();
+      const peakNitrite = Math.max(...log.map((r) => Number(r.nitrite_mg_l)));
+      const summaries = [
+        `60 days; peak nitrite ${peakNitrite} mg/L`,
+        ...dry.map((d) => `${d.site}: ${d.dry_annual_mm} mm against a mean of ${d.mean_annual_mm} mm (${Math.round(d.share_of_mean * 100)} %)`),
+      ];
+      named.forEach((f, i) => {
+        const url = URL.createObjectURL(new Blob([f.text], { type: "text/csv" }));
+        urls.push(url);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = f.name;
+        a.textContent = "CSV";
+        const tr = document.createElement("tr");
+        const name = cell(f.name, "th");
+        name.setAttribute("scope", "row");
+        const dl = document.createElement("td");
+        dl.append(a);
+        tr.append(name, cell(summaries[i]), dl);
+        rows.append(tr);
+      });
+      const zipUrl = URL.createObjectURL(zip(named));
+      urls.push(zipUrl);
+      zipLink.href = zipUrl;
+      zipLink.download = `SYNTHETIC-datasets${suffix}.zip`;
+      out.hidden = false;
+
+      if (!published) {
+        status.textContent = `Generated a new synthetic set from seeds ${droughtSeed} and ${logSeed}. It is not the set the assignments are marked against, and every file still says it is synthetic.`;
+        return;
+      }
+      status.textContent = "Generated. Checking against the published files…";
+      try {
+        const same = await Promise.all(
+          files.map(async (f) => {
+            const res = await fetch(`${base}data/${f.name}`);
+            if (!res.ok) throw new Error(String(res.status));
+            const norm = (s: string) => s.replace(/\r\n/g, "\n");
+            return norm(await res.text()) === norm(f.text);
+          }),
+        );
+        status.textContent = same.every(Boolean)
+          ? "Generated with the published seeds: all six files are identical to the published ones."
+          : "Generated, but some files differ from the published ones. Tell the course team; the published files are the ones that count.";
+      } catch {
+        status.textContent = "Generated with the published seeds. The published files could not be fetched to compare, so the match is unchecked.";
+      }
+    }
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      void run();
+    });
+    root.querySelector("[data-gen-reset]")!.addEventListener("click", () => {
+      form.drought.value = String(DROUGHT_SEED);
+      form.log.value = String(LOG_SEED);
+      void run();
+    });
+  }
+</script>
+
+<style>
+  .gen {
+    margin: 1.5rem 0 2rem;
+    padding: 1rem 1.15rem;
+    border: 1px solid var(--at-border);
+    border-left: 4px solid var(--at-primary);
+    border-radius: 4px;
+    background: var(--at-bg-alt);
+  }
+
+  .gen-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    gap: 0.75rem 1.25rem;
+  }
+
+  .gen-form label {
+    display: grid;
+    gap: 0.25rem;
+    font-size: 0.9rem;
+  }
+
+  .gen-form input {
+    width: 9rem;
+    padding: 0.4rem 0.5rem;
+    border: 1px solid var(--at-border);
+    border-radius: 4px;
+    background: var(--at-bg);
+    color: inherit;
+    font: inherit;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .gen-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0;
+  }
+
+  .gen button,
+  .gen-primary {
+    display: inline-block;
+    padding: 0.45rem 0.95rem;
+    border: 1px solid var(--at-primary);
+    border-radius: 999px;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: 0.95rem;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .gen .gen-primary {
+    background: var(--at-primary);
+    color: var(--at-bg);
+  }
+
+  .gen button:hover,
+  .gen button:focus-visible {
+    background: var(--at-accent-soft);
+  }
+
+  .gen .gen-primary:hover,
+  .gen .gen-primary:focus-visible {
+    background: color-mix(in srgb, var(--at-primary) 85%, black);
+  }
+
+  .gen-status:empty {
+    display: none;
+  }
+
+  .gen-status,
+  .gen-note {
+    margin: 0.9rem 0 0;
+  }
+
+  .gen-scroll {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  .gen-out table {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .gen-out th[scope="row"] {
+    font-family: var(--at-font-mono, monospace);
+    font-size: 0.8rem;
+    font-weight: 400;
+    overflow-wrap: anywhere;
+  }
+</style>
