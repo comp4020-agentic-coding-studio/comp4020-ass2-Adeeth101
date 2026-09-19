@@ -10,6 +10,7 @@ import ReferenceBlock from "../../components/ReferenceBlock.astro";
 import { homeById } from "../../lib/cases";
 import { formatCourseDate } from "../../lib/dates";
 import { STAGES, courseWeeks, lectureHref, tutorialHref, weekHref, weekSlug } from "../../lib/weeks";
+import { EFFORT_CATEGORIES, weekEffort } from "../../lib/planner";
 import { sessionLabels, siteConfig } from "../../site-config";
 
 export async function getStaticPaths() {
@@ -37,6 +38,8 @@ const assessed = assessments
 
 const lead = entry.lead ? homeById(entry.lead) : null;
 const spec = (tutorial?.data as { spec?: string[] } | undefined)?.spec ?? [];
+
+const effort = weekEffort.find((e) => e.week === week)!;
 
 const previous = courseWeeks.find((w) => w.week === week - 1);
 const next = courseWeeks.find((w) => w.week === week + 1);
@@ -136,6 +139,19 @@ const next = courseWeeks.find((w) => w.week === week + 1);
   <h2>Where this sits</h2>
   <p>{stage.blurb}</p>
 
+  <h2>Expected effort</h2>
+  <p>
+    About <strong>{effort.total} hours</strong> this week:{" "}
+    {EFFORT_CATEGORIES.filter((c) => effort.hours[c.key] > 0)
+      .map((c) => `${effort.hours[c.key]} h ${c.label.toLowerCase()}`)
+      .join(", ")}. {effort.milestone && <>The assignment hours go into: {effort.milestone}.</>}
+  </p>
+  <p class="note">
+    A planning guide from the <a href={withBase("/weeks/#planner")}>semester planner</a>, not a
+    requirement and not a measurement of anyone. Tutorial submission sits inside the tutorial
+    hours and the quiz inside preparation; neither is counted twice.
+  </p>
+
   <nav class="adjacent" aria-label="Adjacent weeks">
     {previous ? <a href={withBase(weekHref(previous.week))}>← Week {previous.week}: {previous.topic}</a> : <span />}
     {next && <a class="fwd" href={withBase(weekHref(next.week))}>Week {next.week}: {next.topic} →</a>}
@@ -143,6 +159,11 @@ const next = courseWeeks.find((w) => w.week === week + 1);
 </ContentLayout>
 
 <style>
+  .note {
+    font-size: 0.9rem;
+    color: var(--at-text-secondary);
+  }
+
   .brief {
     font-size: 1.1rem;
     line-height: 1.6;

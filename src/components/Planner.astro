@@ -474,11 +474,13 @@ const todayInCourse = today >= courseMeta.startDate && today <= courseMeta.endDa
     border-top: 1px solid var(--at-bg);
   }
 
-  .s-lecture { background: var(--at-primary); }
-  .s-tutorial { background: var(--at-secondary); }
-  .s-prep { background: var(--at-tertiary); }
-  .s-a1 { background: var(--at-text); }
-  .s-a2 { background: repeating-linear-gradient(135deg, var(--at-text) 0 4px, var(--at-bg-alt) 4px 8px); }
+  /* Scoped to .seg: the legend's <li> carry the same class names and must not
+     pick the bar colours up as their own background. */
+  .seg.s-lecture { background: var(--at-primary); }
+  .seg.s-tutorial { background: var(--at-secondary); }
+  .seg.s-prep { background: var(--at-tertiary); }
+  .seg.s-a1 { background: var(--at-text); }
+  .seg.s-a2 { background: repeating-linear-gradient(135deg, var(--at-text) 0 4px, var(--at-bg-alt) 4px 8px); }
 
   .barlab {
     height: 1.2rem;

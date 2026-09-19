@@ -886,3 +886,260 @@ describe("the weekly map", () => {
     }
   });
 });
+
+// --------------------------------------------------------------------------
+describe("slides", () => {
+  it("gives all twelve weeks a deck, and links each lecture to its own", () => {
+    for (let w = 1; w <= 12; w++) {
+      const pad = String(w).padStart(2, "0");
+      const node = nodesOf("lectures").find((n) => week(n) === w)!;
+      expect(node.meta?.slides, `week ${w} declares no deck`).toBe(`/decks/week-${pad}/`);
+      const html = page(`lectures/week-${pad}`);
+      expect(html, `week ${w}'s lecture does not link its deck`).toContain(`/decks/week-${pad}/`);
+      // Not a stub: a real deck with several slides of content.
+      const deck = page(`decks/week-${pad}`);
+      expect(text(deck).length, `week ${w}'s deck is too short to teach`).toBeGreaterThan(1200);
+      expect(deck.match(/<section/g)?.length ?? 0, `week ${w}'s deck slide count`).toBeGreaterThanOrEqual(8);
+    }
+  });
+
+  it("puts no placeholder or dead link in any deck", () => {
+    for (let w = 1; w <= 12; w++) {
+      const t = text(page(`decks/week-${String(w).padStart(2, "0")}`));
+      expect(t, `week ${w} deck has a placeholder`).not.toMatch(/TODO|lorem ipsum|coming soon|TBC/i);
+    }
+  });
+});
+
+// --------------------------------------------------------------------------
+describe("navigation groups", () => {
+  const GROUPS = ["Weekly study", "Course reference", "People & policies"];
+
+  it("ships all three group headings on every page", () => {
+    for (const route of ["", "weeks", "clients", "method", "policies", "lectures/week-03"]) {
+      const html = page(route);
+      for (const g of GROUPS) {
+        expect(html, `${route || "home"} is missing the "${g}" nav group`).toContain(g);
+      }
+    }
+  });
+
+  it("keeps one reference destination rather than two competing ones", () => {
+    const home = page("");
+    // /programme/ is no longer a top-level nav destination.
+    expect(home).not.toMatch(/<a href="[^"]*\/programme\/">\s*Programme\s*</);
+    // but it still resolves, and points onward.
+    const onward = page("programme");
+    expect(text(onward).toLowerCase()).toMatch(/has moved|now sit|now open/);
+    expect(onward).toContain("/method/");
+  });
+
+  it("opens the method page with the scenario before the reference material", () => {
+    const html = page("method");
+    const t = text(html);
+    expect(html).toContain('id="the-scenario"');
+    expect(html).toContain('id="two-phases"');
+    expect(html).toContain('id="contents"');
+    expect(t.indexOf("The scenario"), "the scenario comes first").toBeLessThan(
+      t.indexOf("What is measured"),
+    );
+    expect(t.toLowerCase()).toContain("teaching fiction");
+  });
+});
+
+// --------------------------------------------------------------------------
+describe("the four walkthroughs", () => {
+  const PAGES: Record<string, string> = {
+    "": "home",
+    weeks: "weeks",
+    clients: "clients",
+    method: "method",
+  };
+
+  it("puts a walkthrough on each of the four pages, and nowhere else", () => {
+    for (const [route, id] of Object.entries(PAGES)) {
+      const html = page(route);
+      expect(html, `${route || "home"} has no walkthrough`).toContain(`data-walkthrough="${id}"`);
+      expect(html, `${route || "home"} walkthrough has no open control`).toContain("data-wt-open");
+      expect(html, `${route || "home"} walkthrough has no controls`).toContain("data-wt-next");
+      expect(html, `${route || "home"} walkthrough has no live region`).toContain('aria-live="polite"');
+    }
+    expect(page("lectures/week-03"), "a lecture should not carry a tour").not.toContain(
+      "data-walkthrough=",
+    );
+  });
+
+  it("gives every step a real target section on its own page", () => {
+    for (const [route] of Object.entries(PAGES)) {
+      const html = page(route);
+      const targets = [...html.matchAll(/data-wt-target="([^"]+)"/g)].map((m) => m[1]);
+      expect(targets.length, `${route || "home"} step targets`).toBeGreaterThanOrEqual(4);
+      for (const id of new Set(targets)) {
+        expect(html, `${route || "home"}: no section with id="${id}"`).toContain(`id="${id}"`);
+      }
+    }
+  });
+
+  it("renders every step's text without JavaScript", () => {
+    // The panel ships open with all steps present; the script hides all but one.
+    for (const route of Object.keys(PAGES)) {
+      const html = page(route);
+      const steps = html.match(/data-wt-step="\d+"/g) ?? [];
+      expect(steps.length, `${route || "home"} steps in the HTML`).toBeGreaterThanOrEqual(4);
+      expect(html, `${route || "home"} hides its steps in the markup`).not.toMatch(
+        /data-wt-step="\d+"[^>]*\shidden/,
+      );
+    }
+  });
+});
+
+// --------------------------------------------------------------------------
+describe("the semester planner", () => {
+  it("appears on the home page and the weekly map, from the same component", () => {
+    for (const route of ["", "weeks"]) {
+      const html = page(route);
+      expect(html, `${route || "home"} has no planner`).toContain('data-planner');
+      expect(html, `${route || "home"} has no view switch`).toContain("data-planner-switch");
+      expect(html).toContain('data-view-panel="deadlines"');
+      expect(html).toContain('data-view-panel="effort"');
+    }
+  });
+
+  it("renders both datasets in the HTML, so neither needs JavaScript", () => {
+    const html = page("weeks");
+    // Deadlines view: a marker row per kind, and A2 in the assessment period column.
+    for (const label of ["Week overview", "Lecture and slides", "Tutorial", "Quiz", "Assignment deadline"]) {
+      expect(html, `planner is missing the ${label} row`).toContain(label);
+    }
+    expect(html).toContain("Assessment period");
+    // Effort view: the accessible table with every category.
+    for (const label of ["Lecture and notes", "Preparation and quiz", "Assignment 1", "Assignment 2"]) {
+      expect(html, `planner is missing the ${label} category`).toContain(label);
+    }
+  });
+
+  it("sums to the published planning budget", () => {
+    const html = page("weeks");
+    const t = text(html);
+    // 12 teaching weeks at 8 hours, plus a 4-hour assessment-period allowance.
+    expect(t, "the 96-hour teaching total").toContain("96");
+    expect(t, "the 100-hour grand total").toContain("100");
+    expect(t.toLowerCase(), "the planner must not pass itself off as data").toMatch(
+      /illustrative planning guide/,
+    );
+    expect(t.toLowerCase(), "break work must be optional").toMatch(/no compulsory work/);
+    expect(t.toLowerCase(), "the exam allowance is a block, not a weekly bar").toMatch(
+      /not four hours a week/,
+    );
+  });
+
+  it("puts A2 at its real due date rather than in week 12", () => {
+    const capstone = nodesOf("assessments").find((n) => Number(n.meta?.weight) === 40)!;
+    const due = dateOnly(capstone.meta?.due);
+    const html = page("weeks");
+    // The assessment-period column carries the capstone's own date.
+    expect(html, "A2 is not shown at its assessment-period date").toContain(due);
+  });
+
+  it("draws no today line outside the course's own calendar", () => {
+    const now = new Date().toISOString().slice(0, 10);
+    const inside = now >= api.course.startDate && now <= api.course.endDate;
+    const t = text(page("weeks"));
+    if (!inside) {
+      expect(t, "a fictional current week must not be drawn").toMatch(/no "today" line is drawn/);
+    }
+  });
+
+  it("agrees with each week overview about that week's hours", () => {
+    for (let w = 1; w <= 12; w++) {
+      const t = text(page(`weeks/week-${String(w).padStart(2, "0")}`));
+      expect(t, `week ${w} overview states no effort`).toMatch(/About 8 hours this week/);
+    }
+  });
+});
+
+// --------------------------------------------------------------------------
+describe("week resources", () => {
+  it("gives every week overview, lecture and tutorial one to three reference links", () => {
+    for (let w = 1; w <= 12; w++) {
+      const pad = String(w).padStart(2, "0");
+      for (const route of [`weeks/week-${pad}`, `lectures/week-${pad}`, `sessions/week-${pad}`]) {
+        const html = page(route);
+        expect(html, `${route} has no reference block`).toContain("refblock");
+        const items = (html.match(/class="refblock"[\s\S]*?<\/aside>/)?.[0].match(/<li[ >]/g) ?? []).length;
+        expect(items, `${route} reference links`).toBeGreaterThanOrEqual(1);
+        expect(items, `${route} dumps the whole index`).toBeLessThanOrEqual(3);
+      }
+    }
+  });
+
+  it("links a reference from every quiz", () => {
+    for (const q of nodesOf("assessments").filter((n) => slug(n).startsWith("quiz-"))) {
+      const t = text(page(q.id));
+      expect(t, `${q.id} sends the student to nothing`).toContain("One thing to read first");
+    }
+  });
+
+  it("tells every tutorial what to open, what to do and what it produces", () => {
+    for (let w = 1; w <= 12; w++) {
+      const t = text(page(`sessions/week-${String(w).padStart(2, "0")}`));
+      for (const heading of ["What this tutorial is for", "Open these first", "The output"]) {
+        expect(t, `week ${w} tutorial is missing "${heading}"`).toContain(heading);
+      }
+      expect(t, `week ${w} tutorial states no time allowance`).toMatch(/minutes in the room/);
+    }
+  });
+
+  it("gives week 1 a real workbook template rather than an instruction to go and find one", () => {
+    const html = page("sessions/week-01");
+    for (const file of [
+      "TEMPLATE-1-client-facts.csv",
+      "TEMPLATE-2-climate-normals.csv",
+      "TEMPLATE-3-measurement-register.csv",
+      "TEMPLATE-4-assumption-log.csv",
+    ]) {
+      expect(html, `week 1 does not link ${file}`).toContain(`/data/workbook/${file}`);
+      expect(existsSync(resolve("dist/data/workbook", file)), `${file} was not published`).toBe(true);
+    }
+    const t = text(html);
+    expect(t.toLowerCase(), "the workbook must be defined as the student's own file").toContain(
+      "it is your own spreadsheet",
+    );
+    expect(t, "week 1 must separate normals from the monitoring year").toMatch(
+      /simulated monitoring year/,
+    );
+  });
+});
+
+// --------------------------------------------------------------------------
+describe("specialist findings are published", () => {
+  it("gives every home a findings page with real downloads", () => {
+    for (const h of homes.homes) {
+      const html = page(`clients/${h.slug}/findings`);
+      const t = text(html);
+      expect(t.toLowerCase(), `${h.slug} findings must be labelled synthetic`).toContain(
+        "synthetic case data",
+      );
+      expect(t, `${h.slug} findings must not depend on A1`).toMatch(/whatever their Assignment 1|whatever your Assignment 1/);
+      for (const file of [
+        "SYNTHETIC-monthly.csv",
+        "SYNTHETIC-zones.csv",
+        "SYNTHETIC-water-quality.csv",
+        "SYNTHETIC-flow-events.csv",
+        "SYNTHETIC-food-waste-audit.csv",
+      ]) {
+        expect(html, `${h.slug} findings does not link ${file}`).toContain(
+          `/data/release-b/${h.slug}/${file}`,
+        );
+        expect(
+          existsSync(resolve(`dist/data/release-b/${h.slug}`, file)),
+          `${h.slug}/${file} was not published`,
+        ).toBe(true);
+      }
+      // and the intake page links onward to it
+      expect(page(`clients/${h.slug}`), `${h.slug} intake does not link its findings`).toContain(
+        `clients/${h.slug}/findings/`,
+      );
+    }
+  });
+});
