@@ -1,0 +1,101 @@
+---
+/** The same row of links on every page that belongs to a teaching week: the
+ *  overview, that week's lecture, its tutorial, and anything assessed in it.
+ *  Titles, dates and weights are read from the collections, so this can never
+ *  advertise a topic the page it links to does not teach. */
+import { getPublishedCollection } from "astro-course-university/content";
+import { withBase } from "astro-theme-university/url";
+import { sessionLabels } from "../site-config";
+import { STAGES, lectureHref, tutorialHref, weekHref, weekEntry } from "../lib/weeks";
+
+interface Props {
+  week: number;
+  /** Which of the week's pages is being rendered, so it is not linked to itself. */
+  current: "overview" | "lecture" | "tutorial";
+}
+
+const { week, current } = Astro.props;
+const entry = weekEntry(week);
+const stage = STAGES[entry.stage];
+
+const [lectures, sessions, assessments] = await Promise.all([
+  getPublishedCollection("lectures"),
+  getPublishedCollection("sessions"),
+  getPublishedCollection("assessments"),
+]);
+
+const lecture = lectures.find((l) => l.data.week === week);
+const tutorial = sessions.find((s) => s.data.week === week);
+const assessed = assessments
+  .filter((a) => a.data.week === week)
+  .sort((a, b) => a.data.due.getTime() - b.data.due.getTime());
+
+type Link = { label: string; href: string; here: boolean };
+const links: Link[] = [
+  { label: `Week ${week} overview`, href: weekHref(week), here: current === "overview" },
+];
+if (lecture) {
+  links.push({ label: "Lecture", href: lectureHref(week), here: current === "lecture" });
+}
+if (tutorial) {
+  links.push({
+    label: sessionLabels.singular,
+    href: tutorialHref(week),
+    here: current === "tutorial",
+  });
+}
+for (const a of assessed) {
+  links.push({ label: `${a.data.title} · ${a.data.weight} %`, href: `/assessments/${a.id}/`, here: false });
+}
+---
+
+<nav class="weeknav" aria-label={`Week ${week}`}>
+  <p class="stage">
+    <a href={withBase("/weeks/")}>{stage.span}</a> · {stage.label}
+  </p>
+  <ul>
+    {
+      links.map((link) =>
+        link.here ? (
+          <li><span aria-current="page">{link.label}</span></li>
+        ) : (
+          <li><a href={withBase(link.href)}>{link.label}</a></li>
+        ),
+      )
+    }
+  </ul>
+</nav>
+
+<style>
+  .weeknav {
+    margin: 0 0 1.5rem;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--at-border);
+    border-left: 4px solid var(--at-primary);
+    border-radius: 4px;
+    background: var(--at-bg-alt);
+  }
+
+  .stage {
+    margin: 0 0 0.45rem;
+    font-family: var(--at-font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--at-text-secondary);
+  }
+
+  .weeknav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.95rem;
+  }
+
+  .weeknav [aria-current="page"] {
+    font-weight: 600;
+  }
+</style>

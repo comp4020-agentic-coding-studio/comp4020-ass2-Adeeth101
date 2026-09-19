@@ -2,41 +2,48 @@
 /** The semester as one commission: measure, hand over, design, review. Built
  *  as an HTML grid rather than an SVG so that at phone width it becomes a
  *  list instead of shrinking its labels. */
+import { getPublishedCollection } from "astro-course-university/content";
 import { withBase } from "astro-theme-university/url";
-import { TOPICS, LEAD_HOMES, homeById } from "../lib/cases";
+import { homeById } from "../lib/cases";
+import { STAGES, courseWeeks, weekHref } from "../lib/weeks";
 
-const quiz = new Set([3, 5, 8, 10, 12]);
-const phase = (w: number) => (w <= 6 ? "measure" : w === 7 ? "handover" : "design");
-const weeks = Array.from({ length: 12 }, (_, i) => i + 1);
+const assessments = await getPublishedCollection("assessments");
+/** Weights and due weeks come from the assessment entries, never from a literal
+ *  here, so the timeline cannot advertise a mark the assessment page contradicts. */
+const capstone = assessments
+  .filter((a) => a.data.week === 12)
+  .sort((a, b) => b.data.weight - a.data.weight)[0];
+/** The capstone has its own tile at the end, so it is not also listed in week 12. */
+const assessedIn = (week: number) =>
+  assessments.filter((a) => a.data.week === week && a.id !== capstone?.id);
 ---
 
 <ol class="timeline" aria-label="The twelve weeks and the assessment period">
-  {weeks.map((w) => (
-    <li class={`wk ph-${phase(w)}`}>
-      <a href={withBase(`/lectures/week-${String(w).padStart(2, "0")}/`)}>
-        <span class="n">Week {w}</span>
-        <span class="t">{TOPICS[w]}</span>
+  {courseWeeks.map((entry) => (
+    <li class={`wk ph-${entry.stage}`}>
+      <a href={withBase(weekHref(entry.week))}>
+        <span class="n">Week {entry.week}</span>
+        <span class="t">{entry.topic}</span>
         <span class="m">
-          {LEAD_HOMES[w] ? `${homeById(LEAD_HOMES[w]!).short} leads` : "all five homes"}
-          {quiz.has(w) && " · quiz"}
-          {w === 7 && " · A1 due"}
+          {entry.lead ? `${homeById(entry.lead).short} leads` : "all five homes"}
+          {assessedIn(entry.week).map((a) => ` · ${a.data.title.split(":")[0]}`)}
         </span>
       </a>
     </li>
   ))}
   <li class="wk ph-exam">
     <a href={withBase("/assessments/")}>
-      <span class="n">Exam period</span>
-      <span class="t">A2 investment proposal</span>
-      <span class="m">40 %</span>
+      <span class="n">Assessment period</span>
+      <span class="t">{capstone?.data.title}</span>
+      <span class="m">{capstone?.data.weight} %</span>
     </a>
   </li>
 </ol>
 <ul class="phases" aria-hidden="true">
-  <li class="ph-measure">Measure: weeks 1–6</li>
-  <li class="ph-handover">Specialist handover: week 7</li>
-  <li class="ph-design">Design: weeks 8–12</li>
-  <li class="ph-exam">Proposal</li>
+  <li class="ph-learn">{STAGES.learn.label}: {STAGES.learn.span.toLowerCase()}</li>
+  <li class="ph-handover">{STAGES.handover.label}: {STAGES.handover.span.toLowerCase()}</li>
+  <li class="ph-design">{STAGES.design.label}: {STAGES.design.span.toLowerCase()}</li>
+  <li class="ph-exam">Assessment period</li>
 </ul>
 
 <style>
@@ -85,8 +92,8 @@ const weeks = Array.from({ length: 12 }, (_, i) => i + 1);
     color: var(--at-text-secondary);
   }
 
-  .ph-measure a,
-  li.ph-measure::before {
+  .ph-learn a,
+  li.ph-learn::before {
     border-top-color: var(--at-primary);
   }
 
@@ -123,7 +130,7 @@ const weeks = Array.from({ length: 12 }, (_, i) => i + 1);
     border-radius: 2px;
   }
 
-  .phases .ph-measure::before {
+  .phases .ph-learn::before {
     background: var(--at-primary);
   }
 

@@ -26,38 +26,6 @@ export function homeByShort(short: string): Home {
 
 export const findingsFor = (id: string): Findings => findings.homes[id as keyof typeof findings.homes] as Findings;
 
-/** Which home leads which week. Weeks 1 and 12 work with all five. */
-export const LEAD_HOMES: Record<number, string | null> = {
-  1: null,
-  2: "S1",
-  3: "S2",
-  4: "S3",
-  5: "S4",
-  6: "S5",
-  7: "S1",
-  8: "S2",
-  9: "S3",
-  10: "S4",
-  11: "S5",
-  12: null,
-};
-
-/** The twelve topics, measurement first, design second. */
-export const TOPICS: Record<number, string> = {
-  1: "Client commission and intake",
-  2: "Site survey, requirements and mass balances",
-  3: "Water monitoring",
-  4: "Soil, microclimate and crop demand",
-  5: "Food, waste and nutrient audits",
-  6: "Sampling, sensors, calibration and handover",
-  7: "Specialist findings and uncertainty",
-  8: "Water-system sizing",
-  9: "Food-system selection",
-  10: "Waste, sanitation and integrated balances",
-  11: "Alternatives, optimisation and resilience",
-  12: "Investment proposal and design review",
-};
-
 export const money = (v: number): string => `$${Math.round(v).toLocaleString("en-AU")}`;
 export const kl = (v: number, dp = 1): string => `${v.toLocaleString("en-AU", { maximumFractionDigits: dp, minimumFractionDigits: 0 })} kL`;
 export const m2 = (v: number, dp = 0): string => `${v.toLocaleString("en-AU", { maximumFractionDigits: dp })} m²`;

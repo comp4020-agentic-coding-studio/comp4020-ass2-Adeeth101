@@ -1,0 +1,198 @@
+---
+/** One overview per teaching week, from a single template. The narrative comes
+ *  from `lib/weeks.ts`; every title, date and weight is read from the content
+ *  collections, so a week overview cannot drift away from the pages it links. */
+import { getPublishedCollection } from "astro-course-university/content";
+import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
+import { withBase } from "astro-theme-university/url";
+import WeekNav from "../../components/WeekNav.astro";
+import { homeById } from "../../lib/cases";
+import { formatCourseDate } from "../../lib/dates";
+import { STAGES, courseWeeks, lectureHref, tutorialHref, weekHref, weekSlug } from "../../lib/weeks";
+import { sessionLabels, siteConfig } from "../../site-config";
+
+export async function getStaticPaths() {
+  return courseWeeks.map((entry) => ({
+    params: { slug: `week-${weekSlug(entry.week)}` },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const week = entry.week;
+const stage = STAGES[entry.stage];
+
+const [lectures, sessions, assessments] = await Promise.all([
+  getPublishedCollection("lectures"),
+  getPublishedCollection("sessions"),
+  getPublishedCollection("assessments"),
+]);
+
+const lecture = lectures.find((l) => l.data.week === week);
+const tutorial = sessions.find((s) => s.data.week === week);
+const assessed = assessments
+  .filter((a) => a.data.week === week)
+  .sort((a, b) => a.data.due.getTime() - b.data.due.getTime());
+
+const lead = entry.lead ? homeById(entry.lead) : null;
+const spec = (tutorial?.data as { spec?: string[] } | undefined)?.spec ?? [];
+
+const previous = courseWeeks.find((w) => w.week === week - 1);
+const next = courseWeeks.find((w) => w.week === week + 1);
+---
+
+<ContentLayout
+  title={`Week ${week}: ${entry.topic}`}
+  description={entry.summary}
+  {...siteConfig}
+>
+  <WeekNav week={week} current="overview" />
+
+  <p class="brief">{entry.brief}</p>
+
+  <h2>This week</h2>
+  <dl class="pieces">
+    {
+      lecture && (
+        <>
+          <dt>Lecture, {formatCourseDate(lecture.data.date)}</dt>
+          <dd>
+            <a href={withBase(lectureHref(week))}>{lecture.data.title}</a>
+            <span>{lecture.data.description}</span>
+          </dd>
+        </>
+      )
+    }
+    {
+      tutorial && (
+        <>
+          <dt>{sessionLabels.singular}, {formatCourseDate(tutorial.data.date)}</dt>
+          <dd>
+            <a href={withBase(tutorialHref(week))}>{tutorial.data.title}</a>
+            <span>{tutorial.data.description}</span>
+          </dd>
+        </>
+      )
+    }
+    {
+      assessed.map((a) => (
+        <>
+          <dt>Assessed, due {formatCourseDate(a.data.due)}</dt>
+          <dd>
+            <a href={withBase(`/assessments/${a.id}/`)}>{a.data.title}</a>
+            <span>{a.data.weight} % of the course mark. {a.data.description}</span>
+          </dd>
+        </>
+      ))
+    }
+    <dt>Worked example</dt>
+    <dd>
+      {
+        lead ? (
+          <>
+            <a href={withBase(`/clients/${lead.slug}/`)}>{lead.short}</a>
+            <span>
+              The {lead.family}s' home leads this week, because its climate
+              {entry.leadRole === "hurts" ? " makes this subsystem hard" : " makes this subsystem easy"}.
+              All five homes are compared on the lecture page.
+            </span>
+          </>
+        ) : (
+          <>
+            <a href={withBase("/clients/")}>All five homes</a>
+            <span>This week works across every home rather than leading with one.</span>
+          </>
+        )
+      }
+    </dd>
+  </dl>
+
+  <h2>What you leave with</h2>
+  <p>{entry.output}</p>
+  {
+    spec.length > 0 && (
+      <>
+        <p>
+          You have finished the {sessionLabels.singular.toLowerCase()} when all of this is true,
+          and you can tell without asking anyone:
+        </p>
+        <ul>{spec.map((line) => <li>{line}</li>)}</ul>
+      </>
+    )
+  }
+
+  {
+    entry.milestone && (
+      <>
+        <h2>Assignment milestone</h2>
+        <p>{entry.milestone}</p>
+      </>
+    )
+  }
+
+  <h2>Where this sits</h2>
+  <p>{stage.blurb}</p>
+
+  <nav class="adjacent" aria-label="Adjacent weeks">
+    {previous ? <a href={withBase(weekHref(previous.week))}>← Week {previous.week}: {previous.topic}</a> : <span />}
+    {next && <a class="fwd" href={withBase(weekHref(next.week))}>Week {next.week}: {next.topic} →</a>}
+  </nav>
+</ContentLayout>
+
+<style>
+  .brief {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .pieces {
+    display: grid;
+    grid-template-columns: minmax(10rem, 15rem) 1fr;
+    gap: 0.5rem 1.5rem;
+    margin: 1rem 0 2rem;
+  }
+
+  .pieces dt {
+    font-family: var(--at-font-mono);
+    font-size: 0.8rem;
+    color: var(--at-text-secondary);
+    padding-top: 0.15rem;
+  }
+
+  .pieces dd {
+    margin: 0;
+  }
+
+  .pieces dd span {
+    display: block;
+    color: var(--at-text-secondary);
+    font-size: 0.92rem;
+  }
+
+  .adjacent {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--at-border);
+    font-size: 0.95rem;
+  }
+
+  .adjacent .fwd {
+    margin-left: auto;
+    text-align: right;
+  }
+
+  @media (max-width: 560px) {
+    .pieces {
+      grid-template-columns: 1fr;
+      gap: 0.15rem;
+    }
+
+    .pieces dd {
+      margin-bottom: 0.9rem;
+    }
+  }
+</style>

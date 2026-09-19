@@ -1,0 +1,184 @@
+---
+/** The weekly map: the one page that answers "what is happening this week, and
+ *  what am I meant to have when it ends". Everything on it is joined from the
+ *  collections and `lib/weeks.ts`; nothing is retyped. */
+import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
+import { getPublishedCollection } from "astro-course-university/content";
+import { withBase } from "astro-theme-university/url";
+import { homeById } from "../../lib/cases";
+import { formatCourseDate } from "../../lib/dates";
+import { midSemesterBreak } from "../../lib/calendar";
+import { STAGES, courseWeeks, weekHref } from "../../lib/weeks";
+import { sessionLabels, siteConfig } from "../../site-config";
+
+const [lectures, sessions, assessments] = await Promise.all([
+  getPublishedCollection("lectures"),
+  getPublishedCollection("sessions"),
+  getPublishedCollection("assessments"),
+]);
+
+const rows = courseWeeks.map((entry) => ({
+  entry,
+  lecture: lectures.find((l) => l.data.week === entry.week),
+  tutorial: sessions.find((s) => s.data.week === entry.week),
+  assessed: assessments.filter((a) => a.data.week === entry.week),
+}));
+
+const stages = [STAGES.learn, STAGES.handover, STAGES.design];
+---
+
+<ContentLayout
+  title="The twelve weeks"
+  description="Every week on one page: its question, its lecture, its tutorial, what is assessed in it, and what you should be holding when it ends."
+  {...siteConfig}
+>
+  <p class="claim">
+    One commission, twelve weeks. Each week answers one question about the client's home and
+    leaves you holding one more piece of an assignment.
+  </p>
+
+  <ol class="stages">
+    {
+      stages.map((stage) => (
+        <li>
+          <h2>{stage.span} — {stage.label}</h2>
+          <p>{stage.blurb}</p>
+        </li>
+      ))
+    }
+  </ol>
+  <p class="note">
+    The mid-semester break falls between weeks 5 and 6, from{" "}
+    {formatCourseDate(midSemesterBreak.from)} to {formatCourseDate(midSemesterBreak.to)}.
+  </p>
+
+  <h2>Week by week</h2>
+  <ol class="weeks">
+    {
+      rows.map(({ entry, lecture, tutorial, assessed }) => (
+        <li class={`ph-${entry.stage}`}>
+          <h3>
+            <a href={withBase(weekHref(entry.week))}>
+              <span class="n">Week {entry.week}</span>
+              {entry.topic}
+            </a>
+          </h3>
+          <p class="meta">
+            {lecture && <>{formatCourseDate(lecture.data.date)}</>}
+            {" · "}
+            {entry.lead ? `${homeById(entry.lead).short} leads` : "all five homes"}
+            {assessed.map((a) => <> · <strong>{a.data.title}, {a.data.weight} %</strong></>)}
+          </p>
+          <p class="asks">{entry.summary}</p>
+          <p class="teaches">
+            <strong>Lecture.</strong> {lecture?.data.title}.{" "}
+            <strong>{sessionLabels.singular}.</strong> {tutorial?.data.title}.
+          </p>
+          <p class="out"><strong>You leave with:</strong> {entry.output}</p>
+        </li>
+      ))
+    }
+  </ol>
+</ContentLayout>
+
+<style>
+  .claim {
+    margin: 0 0 1.5rem;
+    padding-left: 1.1rem;
+    border-left: 3px solid var(--at-primary);
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+
+  .stages {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1rem;
+    margin: 0 0 1rem;
+    padding: 0;
+    list-style: none;
+  }
+
+  .stages li {
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--at-border);
+    border-top-width: 4px;
+    border-radius: 4px;
+  }
+
+  .stages li:nth-child(1) { border-top-color: var(--at-primary); }
+  .stages li:nth-child(2) { border-top-color: var(--at-tertiary); }
+  .stages li:nth-child(3) { border-top-color: var(--at-secondary); }
+
+  .stages h2 {
+    margin: 0 0 0.4rem;
+    font-size: 1rem;
+  }
+
+  .stages p {
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--at-text-secondary);
+  }
+
+  .note {
+    font-size: 0.92rem;
+    color: var(--at-text-secondary);
+  }
+
+  .weeks {
+    margin: 1rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .weeks > li {
+    padding: 0.9rem 0 0.9rem 1rem;
+    border-left: 4px solid var(--at-border);
+    margin-bottom: 0.6rem;
+  }
+
+  .weeks li.ph-learn { border-left-color: var(--at-primary); }
+  .weeks li.ph-handover { border-left-color: var(--at-tertiary); }
+  .weeks li.ph-design { border-left-color: var(--at-secondary); }
+
+  .weeks h3 {
+    margin: 0 0 0.3rem;
+    font-size: 1.05rem;
+  }
+
+  .weeks h3 a {
+    color: inherit;
+  }
+
+  .n {
+    display: block;
+    font-family: var(--at-font-mono);
+    font-size: 0.72rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--at-text-muted);
+  }
+
+  .meta {
+    margin: 0 0 0.3rem;
+    font-size: 0.85rem;
+    color: var(--at-text-secondary);
+  }
+
+  .asks {
+    margin: 0 0 0.35rem;
+    font-size: 0.98rem;
+  }
+
+  .teaches,
+  .out {
+    margin: 0 0 0.25rem;
+    font-size: 0.92rem;
+  }
+
+  .out {
+    color: var(--at-text-secondary);
+  }
+</style>

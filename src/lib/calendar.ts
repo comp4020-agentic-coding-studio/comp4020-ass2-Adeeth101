@@ -21,8 +21,8 @@ const iso = (d: Date): string => d.toISOString().slice(0, 10);
 /** Monday of a teaching week: when that week's lecture runs. */
 export const lectureDate = (week: number): string => iso(mondayOf(week));
 
-/** Thursday of a teaching week: when that week's studio runs. */
-export const studioDate = (week: number): string =>
+/** Thursday of a teaching week: when that week's tutorial runs. */
+export const tutorialDate = (week: number): string =>
   iso(new Date(mondayOf(week).getTime() + 3 * DAY));
 
 /** Friday of a teaching week, used for work due at the end of a week. */
