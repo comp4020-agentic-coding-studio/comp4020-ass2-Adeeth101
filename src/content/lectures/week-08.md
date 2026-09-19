@@ -96,3 +96,7 @@ A **treatment train drawn barrier by barrier**, each with its log reduction by
 pathogen class and its source, plus the train's counted energy load. Where you
 cannot source a figure, say the barrier is unquantified rather than assigning it a
 number.
+
+The water quality you are designing against now comes from your home's Release B
+findings, not from a generic assumption — which is usually where a train drawn
+before the handover stops being adequate.

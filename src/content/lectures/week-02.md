@@ -91,3 +91,7 @@ growable area you are choosing to leave unplanted because you cannot water it.
 
 Weeks 7 to 9 size the supply that curve is asking for. Do not adjust the curve to
 suit a tank you have not yet sized.
+
+Everything here is a **scoping estimate** from long-term climate records, not a
+measurement of this garden. What the garden actually draws is one of the things
+Assignment 1 has to buy.

@@ -1,7 +1,7 @@
 ---
 title: The supply curve
 description:
-  Week 7 studio — compute monthly roof yield from the enHealth formula, add any second source, and lay it against week 2's demand
+  Week 7 tutorial — compute monthly roof yield from the enHealth formula, add any second source, and lay it against week 2's demand
 week: 7
 date: 2027-04-22
 teachers:

@@ -1,7 +1,7 @@
 ---
 title: Sizing the insect unit against a scrap stream
 description:
-  Week 4 studio — work out how much larval biomass your household's plant-based waste can actually make, and where the rest of the fish feed comes from
+  Week 4 tutorial — work out how much larval biomass your household's plant-based waste can actually make, and where the rest of the fish feed comes from
 week: 4
 date: 2027-03-18
 teachers:

@@ -6,10 +6,10 @@ description:
 affiliation: Slop University School of Invented Disciplines
 role: tutor
 email: teodor.vasilache@slop.university
-contact: Studio weeks 7 to 9, or email. Send the spreadsheet, not a screenshot of it.
+contact: Tutorial weeks 7 to 9, or email. Send the spreadsheet, not a screenshot of it.
 ---
 
-Teodor runs the water studios — sourcing, treatment and storage — and marks the
+Teodor runs the water tutorials — sourcing, treatment and storage — and marks the
 water half of the capstone.
 
 His standing complaint is designs that report an annual water balance and call it

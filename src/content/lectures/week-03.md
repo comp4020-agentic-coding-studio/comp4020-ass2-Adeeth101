@@ -84,3 +84,7 @@ correctly now and week 10's mass balance will close.
 A **substrate mass balance**: dry substrate in, mushrooms out, spent substrate
 out, with the spent substrate's nitrogen carried forward into your soil plan.
 Both arrows, or the balance does not close.
+
+The yields above are published figures with a stated confidence, so the number
+you carry forward is a **scoping estimate**. What your client's own prunings
+supply is a measurement question, and it belongs in Assignment 1.

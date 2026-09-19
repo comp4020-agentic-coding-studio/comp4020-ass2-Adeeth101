@@ -109,3 +109,8 @@ That arrow belongs in your week 10 mass balance. Draw it now.
 A **preservation capacity figure** in kilograms and litres, its floor area, and —
 for Darwin and Alice Springs — a temperature-control load that goes straight into
 week 12's energy budget at its upper estimate.
+
+This is the last week before the handover, so it is where the six weeks of
+unknowns become one document: every module so far has left a list of things
+nobody has measured about this house, and Assignment 1 turns that list into a
+programme with instruments, positions, frequencies and a cost.

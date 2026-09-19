@@ -1,7 +1,7 @@
 ---
 title: Species, months and the approval you need
 description:
-  Week 5 studio — size the fish and bed pair from the feed-rate ratio, then establish what your jurisdiction actually requires before you keep anything
+  Week 5 tutorial — size the fish and bed pair from the feed-rate ratio, then establish what your jurisdiction actually requires before you keep anything
 week: 5
 date: 2027-03-25
 teachers:

@@ -1,7 +1,7 @@
 ---
 title: Running the tank balance, then breaking it
 description:
-  Week 9 studio — size storage on a monthly balance, find where the curve saturates, then re-run the whole thing against the synthetic dry year
+  Week 9 tutorial — size storage on a monthly balance, find where the curve saturates, then re-run the whole thing against the synthetic dry year
 week: 9
 date: 2027-05-06
 teachers:

@@ -8,7 +8,7 @@ role: convenor
 email: harriet.oyelaran@slop.university
 contact:
   Email for anything that affects the whole cohort — site approvals, the price
-  schedule, a band that looks wrong. Bring design questions to your studio, where
+  schedule, a band that looks wrong. Bring design questions to your tutorial, where
   the answer is useful to everyone in the room.
 ---
 

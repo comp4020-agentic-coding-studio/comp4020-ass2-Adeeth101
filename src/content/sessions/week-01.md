@@ -1,7 +1,7 @@
 ---
 title: Building the site sheet
 description:
-  The first studio — claim a preset, pull its climate data, and leave with a parameter sheet every later week writes into
+  The first tutorial — claim a preset, pull its climate data, and leave with a parameter sheet every later week writes into
 week: 1
 date: 2027-02-25
 teachers:
@@ -36,4 +36,4 @@ on theirs that has no source. There is always one.
 ## Afterwards
 
 Your site sheet goes in your own repository or folder and comes to every
-subsequent studio. The five homes are on the [clients page](/clients/).
+subsequent tutorial. The five homes are on the [clients page](/clients/).

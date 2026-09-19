@@ -1,7 +1,7 @@
 ---
 title: Substrate in, substrate out
 description:
-  Week 3 studio — size a fruiting operation from available substrate, and account for the five kilograms that leave for every kilogram picked
+  Week 3 tutorial — size a fruiting operation from available substrate, and account for the five kilograms that leave for every kilogram picked
 week: 3
 date: 2027-03-11
 teachers:

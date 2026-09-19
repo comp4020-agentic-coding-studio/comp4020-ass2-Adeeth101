@@ -1,7 +1,7 @@
 ---
 title: Assembly, and the failure you cannot design away
 description:
-  Week 12 studio — run the five whole-system checks, compare across sites, and leave with the capstone skeleton and an uncertainty list
+  Week 12 tutorial — run the five whole-system checks, compare across sites, and leave with the capstone skeleton and an uncertainty list
 week: 12
 date: 2027-05-27
 teachers:

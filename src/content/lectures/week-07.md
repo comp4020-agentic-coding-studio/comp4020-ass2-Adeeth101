@@ -83,3 +83,8 @@ the dry season. Holding both of those facts at once is what week 9 is for.
 A **twelve-row monthly supply curve** for your site, in kilolitres, with the first
 flush deducted and every source named. Put it beside week 2's demand curve. The
 gap between them is week 9's problem, and it is not a single number.
+
+This is also the week the story turns. Assignment 1 goes in, twelve fictional
+months pass, and the specialist team hands back Release B. From week 8 on, your
+inputs are findings from a measured year rather than the scoping estimates weeks
+2 to 6 produced.

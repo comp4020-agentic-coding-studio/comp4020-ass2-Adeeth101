@@ -1,7 +1,7 @@
 ---
 title: Where the nitrogen goes, and what the law says
 description:
-  Week 11 studio — size excreta and greywater systems to your site's storage band, then find and cite your own jurisdiction's actual requirement
+  Week 11 tutorial — size excreta and greywater systems to your site's storage band, then find and cite your own jurisdiction's actual requirement
 week: 11
 date: 2027-05-20
 teachers:

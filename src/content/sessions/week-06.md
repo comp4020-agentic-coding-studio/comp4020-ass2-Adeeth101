@@ -1,7 +1,7 @@
 ---
 title: Sizing preservation, not writing recipes
 description:
-  Week 6 studio — find the surplus your harvest curve actually produces, size the storage that moves it into the trough, and cost any temperature control it needs
+  Week 6 tutorial — find the surplus your harvest curve actually produces, size the storage that moves it into the trough, and cost any temperature control it needs
 week: 6
 date: 2027-04-15
 teachers:

@@ -1,7 +1,7 @@
 ---
 title: Drawing the treatment train
 description:
-  Week 8 studio — assemble a barrier sequence, put a sourced log reduction on each barrier, and work out what it costs to run
+  Week 8 tutorial — assemble a barrier sequence, put a sourced log reduction on each barrier, and work out what it costs to run
 week: 8
 date: 2027-04-29
 teachers:

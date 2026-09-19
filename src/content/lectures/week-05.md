@@ -118,3 +118,7 @@ say so.
 
 A sized fish and bed pair, the species named **with its approval pathway in your
 own jurisdiction**, and the imported-feed line carried forward from week 4.
+
+The operating conditions this week names — temperature band, pH, alkalinity — are
+also the readings a measurement programme would have to watch. Carry them into
+Assignment 1 rather than assuming a system that has not been built holds them.

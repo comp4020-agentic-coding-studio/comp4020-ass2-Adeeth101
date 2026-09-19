@@ -6,10 +6,10 @@ description:
 affiliation: Slop University School of Invented Disciplines
 role: tutor
 email: noor.bakhshi@slop.university
-contact: Studio weeks 2 to 6 and week 10, or email.
+contact: Tutorial weeks 2 to 6 and week 10, or email.
 ---
 
-Noor runs the soil, mycology, insect, aquaponics and fermentation studios, and
+Noor runs the soil, mycology, insect, aquaponics and fermentation tutorials, and
 marks the nutrient side of the capstone.
 
 They argued for protein closure as a second food indicator after a cohort of

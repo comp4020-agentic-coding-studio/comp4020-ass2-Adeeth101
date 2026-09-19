@@ -105,3 +105,7 @@ the transferable skill here**, and week 11 tests it again on greywater.
 A **feed mass balance** with the import line drawn in and labelled. If your
 diagram still shows a closed circle after this week, it is wrong, and week 12 will
 find it.
+
+The waste tonnage behind that balance is a standard per-household figure, so the
+larval yield is a **scoping estimate**. What this house throws out, and in which
+months, goes on the measurement list for Assignment 1.

@@ -1,7 +1,7 @@
 ---
 title: Closing the mass balance
 description:
-  Week 10 studio — route every organic stream to a destination and prove, in dry matter, that nothing has quietly disappeared
+  Week 10 tutorial — route every organic stream to a destination and prove, in dry matter, that nothing has quietly disappeared
 week: 10
 date: 2027-05-13
 teachers:

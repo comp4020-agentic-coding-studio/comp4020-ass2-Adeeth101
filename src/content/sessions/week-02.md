@@ -1,7 +1,7 @@
 ---
 title: The irrigation demand curve
 description:
-  Week 2 studio — compute your site's monthly evapotranspiration deficit and decide, on the numbers, how much of your growable area you will actually plant
+  Week 2 tutorial — compute your site's monthly evapotranspiration deficit and decide, on the numbers, how much of your growable area you will actually plant
 week: 2
 date: 2027-03-04
 teachers:

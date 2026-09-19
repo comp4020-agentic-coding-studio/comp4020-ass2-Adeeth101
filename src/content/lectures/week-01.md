@@ -93,4 +93,4 @@ thermodynamics to the prerequisites.
 The **site sheet**: your preset's plot, growing area, roof, existing tanks and
 bore allocation, with twelve rows of Bureau of Meteorology monthly climate behind
 it and a source for every value. Every later week writes into it. Bring it to
-every studio.
+every tutorial.

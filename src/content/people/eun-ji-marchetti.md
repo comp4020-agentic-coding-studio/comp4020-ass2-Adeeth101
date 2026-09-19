@@ -5,7 +5,7 @@ description:
   between Australian jurisdictions, and why that matters to a designer.
 affiliation: Slop University School of Invented Disciplines
 role: guest
-contact: Week 11 lecture and the week 11 studio. No consultation outside those.
+contact: Week 11 lecture and the week 11 tutorial. No consultation outside those.
 ---
 
 Eun-Ji gives the week 11 lecture on what the law actually requires of a household
