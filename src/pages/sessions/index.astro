@@ -1,5 +1,6 @@
 ---
 import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
+import { withBase } from "astro-theme-university/url";
 import SessionsGrid from "../../components/SessionsGrid.astro";
 import { sessionLabels, siteConfig } from "../../site-config";
 ---
@@ -10,9 +11,10 @@ import { sessionLabels, siteConfig } from "../../site-config";
   {...siteConfig}
 >
   <p>
-    Studios are working sessions, not tutorials. Each one has an activity with an
-    output, and the output feeds the next week — so a studio missed is a gap in
-    the design rather than a set of notes to catch up on.
+    Tutorials are working sessions rather than revision. Each one has an activity with an
+    output, and that output feeds the next week — so a tutorial missed is a gap in the
+    design rather than a set of notes to catch up on. The
+    <a href={withBase("/weeks/")}>weekly map</a> lists what each one produces.
   </p>
   <p>
     The <strong>spec</strong> on each page is the contract: every line is written so that you
@@ -20,7 +22,7 @@ import { sessionLabels, siteConfig } from "../../site-config";
     to all twelve.
   </p>
   <p>
-    Quizzes are sat at the start of the studio in weeks 3, 5, 8, 10 and 12.
+    Quizzes are sat on paper at the start of the tutorial in weeks 3, 5, 8, 10 and 12.
   </p>
   <SessionsGrid />
 </ContentLayout>

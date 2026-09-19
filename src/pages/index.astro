@@ -34,6 +34,27 @@ import { sessionLabels, siteConfig } from "../site-config";
     fiction; the climates, the water balances, the soil, the pumps and the prices are not.
   </p>
 
+  <dl class="orient">
+    <dt>What this course is</dt>
+    <dd>
+      A twelve-week engineering design course. You are given one real Australian climate, one
+      fixed existing house and one fictional client, and you decide what their household should
+      spend to become more self-reliant in food, water and waste.
+    </dd>
+    <dt>What you submit</dt>
+    <dd>
+      Five short quizzes in the tutorials, a measurement programme in week 7, and an investment
+      proposal in the assessment period. <a href={withBase("/assessments/")}>Assessment</a> has
+      the weights and the marking criteria.
+    </dd>
+    <dt>What to do this week</dt>
+    <dd>
+      Open <a href={withBase("/weeks/")}>the weekly map</a>, find your week, and read the two
+      paragraphs at the top of it. Each week names the question it answers and what you should be
+      holding when it ends.
+    </dd>
+  </dl>
+
   <h2>One commission, two assignments</h2>
   <p>
     First you work out what you would need to know. From an intake dossier and a scaled plan of an
@@ -49,6 +70,10 @@ import { sessionLabels, siteConfig } from "../site-config";
   </p>
 
   <Timeline />
+  <p class="under">
+    Every tile is a <a href={withBase("/weeks/")}>week overview</a>: its question, its lecture,
+    its tutorial, what is assessed in it, and what you leave holding.
+  </p>
 
   <h2>The five clients</h2>
   <p>
@@ -108,11 +133,14 @@ import { sessionLabels, siteConfig } from "../site-config";
 
   <h2>Where to go next</h2>
   <CardGrid columns={2}>
+    <Card title="The twelve weeks" href="/weeks/">
+      <p>The weekly map: what each week asks, what it teaches, and what you leave holding.</p>
+    </Card>
     <Card title="The programme and the practice" href="/programme/">
       <p>The fictional loan programme, the consultancy you work for, and the rules they set.</p>
     </Card>
     <Card title="Lectures" href="/lectures/">
-      <p>Twelve weeks: six on measurement, one handover, five on design, each with its slides.</p>
+      <p>One engineering question a week, a named method, and a worked example at that week's home.</p>
     </Card>
     <Card title={sessionLabels.plural} href="/sessions/">
       <p>Ninety-minute sessions with worked examples on a practice house and exercises on your own home.</p>
@@ -145,6 +173,42 @@ import { sessionLabels, siteConfig } from "../site-config";
     color: var(--at-text-secondary);
     background: var(--at-bg-alt);
     font-size: 0.9rem;
+  }
+
+  .orient {
+    display: grid;
+    grid-template-columns: minmax(9rem, 12rem) 1fr;
+    gap: 0.6rem 1.5rem;
+    margin: 0 0 2rem;
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--at-border);
+    border-radius: 4px;
+    background: var(--at-bg-alt);
+  }
+
+  .orient dt {
+    font-weight: 600;
+  }
+
+  .orient dd {
+    margin: 0;
+  }
+
+  .under {
+    margin-top: -0.5rem;
+    font-size: 0.92rem;
+    color: var(--at-text-secondary);
+  }
+
+  @media (max-width: 560px) {
+    .orient {
+      grid-template-columns: 1fr;
+      gap: 0.2rem;
+    }
+
+    .orient dd {
+      margin-bottom: 0.8rem;
+    }
   }
 
   .claim {
