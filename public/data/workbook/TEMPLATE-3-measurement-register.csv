@@ -1,0 +1,5 @@
+"# SLOP4761 client evidence workbook, sheet 3 of 4: measurement register. This sheet becomes Assignment 1. Row 2 is a worked EXAMPLE. Every row needs every column filled."
+id,what_is_measured,decision_it_informs,method,location,units,frequency,accuracy_or_resolution,equipment_cost_aud,service_cost_aud
+M01,tank water level,whether the house roof is worth connecting to storage,pressure level sensor with a monthly manual dip as the check,existing 5 kL tank on the garage roof,kL,hourly logged,plus or minus 3 per cent of full scale (about 150 L),180,0
+M02,,,,,,,,,
+M03,,,,,,,,,

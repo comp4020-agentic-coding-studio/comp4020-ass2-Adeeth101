@@ -76,6 +76,16 @@ export interface WeekEntry {
   output: string;
   /** An assignment milestone that falls in this week, if any. */
   milestone?: string;
+  /** One to three deep links this week's pages actually need, each with the
+   *  reason. Shown on the week overview, the lecture and the tutorial. */
+  references: ReferenceItem[];
+}
+
+export interface ReferenceItem {
+  href: string;
+  label: string;
+  /** Why a student needs it this week. Not a description of the page. */
+  why: string;
 }
 
 const ENTRIES: WeekEntry[] = [
@@ -85,6 +95,11 @@ const ENTRIES: WeekEntry[] = [
     summary:
       "What crosses this fence line in a year, and how much of it nobody has actually measured.",
     stage: "learn",
+    references: [
+      { href: "/clients/", label: "The five client homes", why: "you choose one in this tutorial and keep it for the rest of the course" },
+      { href: "/method/measurement/", label: "The measurement primer", why: "it names the instrument classes your register will be built from" },
+      { href: "/method/#the-scenario", label: "The scenario and the two phases", why: "it says what the fiction is and what you actually produce" },
+    ],
     lead: null,
     brief:
       "You are handed one of five households and asked the question the whole course turns on: " +
@@ -105,6 +120,11 @@ const ENTRIES: WeekEntry[] = [
     summary:
       "Why water rather than sunlight decides how much of the garden is worth planting.",
     stage: "learn",
+    references: [
+      { href: "/method/datasets/", label: "Climate normals and what is sourced", why: "the deficit is computed from long-term records, not from this year" },
+      { href: "/clients/", label: "Your home's growing envelope and retained areas", why: "the planted area you choose has to fit inside what the client will allow" },
+      { href: "/method/measurement/#soil", label: "Soil and shade measurement", why: "what you assume about the zones here is what week 6 will propose to measure" },
+    ],
     lead: "S1",
     leadRole: "helps",
     brief:
@@ -127,6 +147,11 @@ const ENTRIES: WeekEntry[] = [
     summary:
       "What a household fruiting operation really contributes, and where the substrate goes afterwards.",
     stage: "learn",
+    references: [
+      { href: "/method/datasets/", label: "What is sourced and what is not", why: "this week's yields are the course's least-verified figures and are labelled so" },
+      { href: "/clients/", label: "Your home's growing zones and prunings", why: "the substrate supply estimate comes off the planting plan, not off a catalogue" },
+      { href: "/method/costing/", label: "The price schedule", why: "a fruiting chamber and its humidity control are priced from it, not guessed" },
+    ],
     lead: "S3",
     leadRole: "helps",
     brief:
@@ -149,6 +174,11 @@ const ENTRIES: WeekEntry[] = [
     summary:
       "How much of the fish feed a household's own scraps can actually cover.",
     stage: "learn",
+    references: [
+      { href: "/method/costing/", label: "The price schedule", why: "an insect unit and any indoor rearing load are priced from it" },
+      { href: "/clients/", label: "Your home's constraints", why: "some sites will not permit an outdoor larval unit where you want to put it" },
+      { href: "/method/measurement/#food", label: "Food and waste logging", why: "the 380 kg figure is a convention; what this house throws out is a measurement" },
+    ],
     lead: "S5",
     leadRole: "helps",
     brief:
@@ -171,6 +201,11 @@ const ENTRIES: WeekEntry[] = [
     summary:
       "Sizing a system from its feed, and finding out what you are allowed to keep in it.",
     stage: "learn",
+    references: [
+      { href: "/method/", label: "The closure definitions", why: "counted fish protein is net of imported feed, and the definition says why" },
+      { href: "/clients/", label: "Your home's jurisdiction", why: "which species you may keep is a legal question and differs across the five" },
+      { href: "/method/costing/", label: "The price schedule", why: "the aquaponics line is a bundle; an extra bed is not a second bundle" },
+    ],
     lead: "S4",
     leadRole: "hurts",
     brief:
@@ -193,6 +228,11 @@ const ENTRIES: WeekEntry[] = [
     summary:
       "Moving the glut into the trough, then turning six weeks of unknowns into a measurement programme.",
     stage: "learn",
+    references: [
+      { href: "/method/measurement/", label: "The measurement primer", why: "this is the week the register is assembled, and the primer has its columns" },
+      { href: "/assessments/food-loop-design/", label: "The Assignment 1 brief", why: "everything you assemble today is a numbered item in it" },
+      { href: "/method/costing/", label: "What the schedule does not price", why: "the $1,500 investigation allowance is spent mostly on things it does not cover" },
+    ],
     lead: "S4",
     leadRole: "helps",
     brief:
@@ -215,6 +255,11 @@ const ENTRIES: WeekEntry[] = [
     summary:
       "What a roof delivers month by month — and the week the measured year comes back.",
     stage: "handover",
+    references: [
+      { href: "/assessments/food-loop-design/", label: "The Assignment 1 brief", why: "it is due at 5 pm on Friday of this week" },
+      { href: "/clients/", label: "Your home's roof zones and guttering", why: "the runoff calculation needs the connected area, not the roof plan area" },
+      { href: "/method/datasets/", label: "Climate normals", why: "the supply curve is built from long-term rain, not from the year you are about to be handed" },
+    ],
     lead: "S2",
     leadRole: "hurts",
     brief:
@@ -238,6 +283,11 @@ const ENTRIES: WeekEntry[] = [
     summary:
       "What each barrier removes, expressed as a number somebody else could check.",
     stage: "design",
+    references: [
+      { href: "/clients/", label: "Your home's specialist findings", why: "the water quality you design against is the one the measured year found" },
+      { href: "/method/costing/", label: "The price schedule", why: "every barrier in the train is priced from it, and some are not priced at all" },
+      { href: "/method/", label: "How the bands treat treatment", why: "nothing about a treatment train is banded, and the page says why" },
+    ],
     lead: "S3",
     leadRole: "hurts",
     brief:
@@ -260,6 +310,11 @@ const ENTRIES: WeekEntry[] = [
     summary:
       "What size store, what it costs, and the month it still runs dry.",
     stage: "design",
+    references: [
+      { href: "/method/datasets/", label: "The synthetic dry year", why: "the balance has to be re-run against it before you can claim reliability" },
+      { href: "/clients/", label: "Your home's measured year", why: "the supply side of the balance is now a finding rather than an estimate" },
+      { href: "/method/comparison/", label: "The worked comparison", why: "it shows where a storage curve flattens and what that costs" },
+    ],
     lead: "S5",
     leadRole: "hurts",
     brief:
@@ -282,6 +337,11 @@ const ENTRIES: WeekEntry[] = [
     summary:
       "Where every organic stream goes, and whether the balance closes when you add it up.",
     stage: "design",
+    references: [
+      { href: "/method/", label: "Why waste-stream recovery is not banded", why: "the table is the evidence, not a number derived from it" },
+      { href: "/clients/", label: "Your home's food-waste audit", why: "four weeks of audit replace the 380 kg convention you used in week 4" },
+      { href: "/method/costing/", label: "The price schedule", why: "compost bays, digesters and their unpriced items are listed there" },
+    ],
     lead: "S2",
     leadRole: "helps",
     brief:
@@ -304,6 +364,11 @@ const ENTRIES: WeekEntry[] = [
     summary:
       "The nitrogen the garden cannot absorb, and how to choose between the alternatives.",
     stage: "design",
+    references: [
+      { href: "/method/", label: "The nutrient closure definition", why: "it caps at what the garden can take up, which is the whole point of the week" },
+      { href: "/clients/", label: "Your home's jurisdiction and its greywater instrument", why: "the citation exercise is the point of this session" },
+      { href: "/method/costing/", label: "The price schedule", why: "chamber capacity and greywater diversion are priced from it" },
+    ],
     lead: "S1",
     leadRole: "hurts",
     brief:
@@ -326,6 +391,11 @@ const ENTRIES: WeekEntry[] = [
     summary:
       "Putting eleven sized subsystems into one model and finding out which gives way first.",
     stage: "design",
+    references: [
+      { href: "/assessments/capstone-master-plan/", label: "The Assignment 2 brief", why: "today's assembly is its skeleton, item by item" },
+      { href: "/method/comparison/", label: "The worked comparison across five sites", why: "it sets out the cross-site exercise you run in the second half" },
+      { href: "/method/costing/", label: "The price schedule and its contingency", why: "the bill of materials is checked against it before the criteria are applied" },
+    ],
     lead: null,
     brief:
       "Eleven weeks have each produced a sized subsystem, and each one assumed it had first call on " +

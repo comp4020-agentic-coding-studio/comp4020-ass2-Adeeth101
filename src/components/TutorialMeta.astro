@@ -1,0 +1,78 @@
+---
+/** The three facts a student wants at the top of a tutorial page: how long it
+ *  takes, whether it is graded, and when the output is due. All derived — the
+ *  markdown body never carries a date. */
+import { fridayOf } from "../lib/calendar";
+import { formatCourseDate } from "../lib/dates";
+import { CHECKPOINT_WEEKS, CHECKPOINT_WEIGHT, isCheckpointWeek } from "../lib/weeks";
+import { withBase } from "astro-theme-university/url";
+
+interface Props {
+  week: number;
+  /** Minutes in the room. Tutorials are 90 unless a page says otherwise. */
+  minutes?: number;
+}
+
+const { week, minutes = 90 } = Astro.props;
+const graded = isCheckpointWeek(week);
+const index = CHECKPOINT_WEEKS.indexOf(week) + 1;
+---
+
+<dl class="tutmeta">
+  <div>
+    <dt>Time</dt>
+    <dd>{minutes} minutes in the room, plus about 30 to tidy the output</dd>
+  </div>
+  <div>
+    <dt>Graded</dt>
+    <dd>
+      {
+        graded ? (
+          <>
+            <a href={withBase("/assessments/tutorial-checkpoints/")}>
+              Checkpoint {index} of {CHECKPOINT_WEEKS.length}
+            </a>, {CHECKPOINT_WEIGHT} % — a good-faith attempt at the output below
+          </>
+        ) : (
+          <>No. Ungraded practice — but everything after it assumes you did it</>
+        )
+      }
+    </dd>
+  </div>
+  <div>
+    <dt>Due</dt>
+    <dd>
+      {graded ? <>5 pm, {formatCourseDate(fridayOf(week))}</> : <>Nothing to submit</>}
+    </dd>
+  </div>
+</dl>
+
+<style>
+  .tutmeta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 2rem;
+    margin: 0 0 1.75rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--at-border);
+    border-radius: 4px;
+    background: var(--at-bg-alt);
+  }
+
+  .tutmeta > div {
+    min-width: 12rem;
+  }
+
+  .tutmeta dt {
+    font-family: var(--at-font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--at-text-secondary);
+  }
+
+  .tutmeta dd {
+    margin: 0.1rem 0 0;
+    font-size: 0.95rem;
+  }
+</style>

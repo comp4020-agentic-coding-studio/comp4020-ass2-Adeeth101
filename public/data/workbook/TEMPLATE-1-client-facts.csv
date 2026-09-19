@@ -1,0 +1,12 @@
+"# SLOP4761 client evidence workbook, sheet 1 of 4: client facts. Row 2 is a worked EXAMPLE for the Canberra home. Delete it and enter your own."
+field,value,unit,status,source
+example_row_marker,EXAMPLE ROW - delete before you submit,,,
+client_home,Canberra (Taylor),,known,/clients/canberra/
+household,two adults and two children aged 9 to 13,persons,known,course demand convention
+parcel_area,800,m2,known,/clients/canberra/
+roof_plan_area,295.7,m2,known,/clients/canberra/
+roof_connected_to_storage_now,41.6,m2,known,/clients/canberra/
+growing_envelope,442.9,m2,known,/clients/canberra/
+existing_storage,5,kL,known,/clients/canberra/ (2009 poly tank on the garage roof)
+slope,3,per cent fall to street,estimate,ACT contour map via the intake dossier
+soil_texture_zone_G1,,texture class,unknown,to be measured

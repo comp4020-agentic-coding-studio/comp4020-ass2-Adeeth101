@@ -6,6 +6,7 @@ import { getPublishedCollection } from "astro-course-university/content";
 import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
 import { withBase } from "astro-theme-university/url";
 import WeekNav from "../../components/WeekNav.astro";
+import ReferenceBlock from "../../components/ReferenceBlock.astro";
 import { homeById } from "../../lib/cases";
 import { formatCourseDate } from "../../lib/dates";
 import { STAGES, courseWeeks, lectureHref, tutorialHref, weekHref, weekSlug } from "../../lib/weeks";
@@ -129,6 +130,8 @@ const next = courseWeeks.find((w) => w.week === week + 1);
       </>
     )
   }
+
+  <ReferenceBlock items={entry.references} />
 
   <h2>Where this sits</h2>
   <p>{stage.blurb}</p>

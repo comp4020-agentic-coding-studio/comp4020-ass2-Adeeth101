@@ -6,6 +6,9 @@ import SpecList from "astro-course-university/components/SpecList.astro";
 import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
 import TeachingTeam from "../../components/TeachingTeam.astro";
 import WeekNav from "../../components/WeekNav.astro";
+import TutorialMeta from "../../components/TutorialMeta.astro";
+import ReferenceBlock from "../../components/ReferenceBlock.astro";
+import { weekEntry } from "../../lib/weeks";
 import { formatCourseDate } from "../../lib/dates";
 import { graphCollections, sessionLabels, siteConfig } from "../../site-config";
 
@@ -16,6 +19,7 @@ export async function getStaticPaths() {
 
 const { session } = Astro.props;
 const { Content } = await render(session);
+const entry = weekEntry(session.data.week);
 ---
 
 <ContentLayout
@@ -25,11 +29,13 @@ const { Content } = await render(session);
 >
   <WeekNav week={session.data.week} current="tutorial" />
   <p><strong>{formatCourseDate(session.data.date)}</strong></p>
+  <TutorialMeta week={session.data.week} />
   <Content />
   <SpecList spec={session.data.spec}>
-    What you bring to the session. Written so a reader can tell whether it has
-    been met without asking you.
+    What earns the checkpoint. Every line is written so you can tell whether you
+    have met it without asking anyone.
   </SpecList>
+  <ReferenceBlock items={entry.references} />
   <TeachingTeam teachers={session.data.teachers} />
   <RelatedContent entry={session} collections={graphCollections} />
 </ContentLayout>
