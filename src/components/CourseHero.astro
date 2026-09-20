@@ -1,0 +1,60 @@
+---
+import { Image } from "astro:assets";
+import type { HeroProps } from "astro-theme-university/components/Hero.astro";
+import { isRemoteImage } from "astro-theme-university/images";
+
+type Props = HeroProps;
+const { title, image, imageAlt, transitionName } = Astro.props;
+const local = isRemoteImage(image) ? undefined : image;
+const remote = isRemoteImage(image) ? image : undefined;
+const widths = local ? [...new Set([480, 768, 1024, local.width].filter(w => w <= local.width))] : [];
+---
+
+<section class="course-hero" aria-label={title}>
+  <div class="course-hero-inner">
+    <h1 transition:name={transitionName}>{title}</h1>
+    <div class="course-hero-art">
+      {local && <Image src={local} alt={imageAlt} widths={widths}
+        sizes="(min-width: 1440px) 800px, (min-width: 900px) 56vw, calc(100vw - 36px)"
+        width={local.width} format="avif" quality={85} loading="eager" fetchpriority="high" />}
+      {remote && <img src={remote.src} alt={imageAlt} width={remote.width} height={remote.height} loading="eager" fetchpriority="high" />}
+    </div>
+  </div>
+</section>
+
+<style>
+  .course-hero {
+    position: relative;
+    z-index: 1;
+    grid-column: full;
+    padding: clamp(1.5rem, 4vw, 3.5rem) 1rem;
+    background: var(--at-bg-alt);
+    border-bottom: 1px solid var(--at-border);
+  }
+  .course-hero-inner {
+    max-width: 1376px;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.3fr);
+    align-items: center;
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+  }
+  h1 {
+    margin: 0;
+    color: var(--at-text);
+    font-size: clamp(2rem, 3vw, 3.25rem);
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+  .course-hero-art { overflow: hidden; border-radius: 0.65rem; }
+  .course-hero-art :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  @media (width < 900px) {
+    .course-hero-inner { grid-template-columns: 1fr; }
+    h1 { max-width: 25ch; }
+  }
+</style>
